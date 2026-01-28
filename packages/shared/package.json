@@ -8,12 +8,17 @@
     ".": "./src/index.ts",
     "./types": "./src/types.ts"
   },
+  "scripts": {
+    "lint": "tsc && eslint",
+    "lint:fix": "pnpm lint --fix"
+  },
   "dependencies": {
     "date-fns": "^4.1.0",
     "fuse.js": "^7.1.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@viclafouch/eslint-config-viclafouch": "4.22.1-beta.9",
     "typescript": "^5.9.3"
   }
 }

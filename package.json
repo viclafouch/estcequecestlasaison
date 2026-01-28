@@ -6,8 +6,8 @@
     "dev": "pnpm --filter @estcequecestlasaison/web dev",
     "build": "pnpm --filter @estcequecestlasaison/web build",
     "start": "pnpm --filter @estcequecestlasaison/web start",
-    "lint": "pnpm --filter @estcequecestlasaison/web lint",
-    "lint:fix": "pnpm --filter @estcequecestlasaison/web lint:fix",
+    "lint": "pnpm -r lint",
+    "lint:fix": "pnpm -r lint:fix",
     "test": "vitest run",
     "prepare": "husky"
   },

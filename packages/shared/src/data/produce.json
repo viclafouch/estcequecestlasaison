@@ -1,0 +1,1563 @@
+[
+  {
+    "id": "pomme",
+    "slug": "pomme",
+    "name": "Pomme",
+    "type": "fruit",
+    "icon": "emojione:red-apple",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "8": "partial",
+      "9": "peak",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 52,
+      "vitamins": ["C", "B6", "K"],
+      "benefits": "Riche en fibres et antioxydants, favorise la digestion"
+    }
+  },
+  {
+    "id": "poire",
+    "slug": "poire",
+    "name": "Poire",
+    "type": "fruit",
+    "icon": "emojione:pear",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "partial",
+      "8": "partial",
+      "9": "peak",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 57,
+      "vitamins": ["C", "K"],
+      "benefits": "Excellente source de fibres, hydratante"
+    }
+  },
+  {
+    "id": "banane",
+    "slug": "banane",
+    "name": "Banane",
+    "type": "fruit",
+    "icon": "emojione:banana",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "peak",
+      "5": "peak",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 89,
+      "vitamins": ["B6", "C"],
+      "benefits": "Riche en potassium, énergie rapide"
+    }
+  },
+  {
+    "id": "orange",
+    "slug": "orange",
+    "name": "Orange",
+    "type": "fruit",
+    "icon": "emojione:tangerine",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "partial",
+      "11": "partial",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 47,
+      "vitamins": ["C", "B1", "B9"],
+      "benefits": "Excellente source de vitamine C, renforce l'immunité"
+    }
+  },
+  {
+    "id": "citron",
+    "slug": "citron",
+    "name": "Citron",
+    "type": "fruit",
+    "icon": "emojione:lemon",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "partial",
+      "11": "partial",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 29,
+      "vitamins": ["C"],
+      "benefits": "Antiseptique naturel, aide à la digestion"
+    }
+  },
+  {
+    "id": "clementine",
+    "slug": "clementine",
+    "name": "Clémentine",
+    "type": "fruit",
+    "icon": "emojione:tangerine",
+    "seasons": {
+      "1": "peak",
+      "2": "partial",
+      "11": "partial",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 47,
+      "vitamins": ["C", "B9"],
+      "benefits": "Facile à peler, riche en vitamine C"
+    }
+  },
+  {
+    "id": "mandarine",
+    "slug": "mandarine",
+    "name": "Mandarine",
+    "type": "fruit",
+    "icon": "emojione:tangerine",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "11": "partial",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 53,
+      "vitamins": ["C", "A"],
+      "benefits": "Parfumée, riche en antioxydants"
+    }
+  },
+  {
+    "id": "pamplemousse",
+    "slug": "pamplemousse",
+    "name": "Pamplemousse",
+    "type": "fruit",
+    "icon": "emojione:melon",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "peak",
+      "5": "partial"
+    },
+    "nutrition": {
+      "calories": 42,
+      "vitamins": ["C", "A"],
+      "benefits": "Peu calorique, favorise la perte de poids"
+    }
+  },
+  {
+    "id": "fraise",
+    "slug": "fraise",
+    "name": "Fraise",
+    "type": "fruit",
+    "icon": "emojione:strawberry",
+    "seasons": {
+      "4": "partial",
+      "5": "peak",
+      "6": "peak",
+      "7": "peak",
+      "8": "partial"
+    },
+    "nutrition": {
+      "calories": 33,
+      "vitamins": ["C", "B9"],
+      "benefits": "Très riche en vitamine C, antioxydante"
+    }
+  },
+  {
+    "id": "framboise",
+    "slug": "framboise",
+    "name": "Framboise",
+    "type": "fruit",
+    "icon": "emojione:grapes",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "partial"
+    },
+    "nutrition": {
+      "calories": 52,
+      "vitamins": ["C", "E"],
+      "benefits": "Riche en fibres et antioxydants"
+    }
+  },
+  {
+    "id": "myrtille",
+    "slug": "myrtille",
+    "name": "Myrtille",
+    "type": "fruit",
+    "icon": "emojione:grapes",
+    "seasons": {
+      "7": "peak",
+      "8": "peak",
+      "9": "partial"
+    },
+    "nutrition": {
+      "calories": 57,
+      "vitamins": ["C", "K"],
+      "benefits": "Excellente pour la vue, très antioxydante"
+    }
+  },
+  {
+    "id": "cassis",
+    "slug": "cassis",
+    "name": "Cassis",
+    "type": "fruit",
+    "icon": "emojione:grapes",
+    "seasons": {
+      "7": "peak",
+      "8": "peak"
+    },
+    "nutrition": {
+      "calories": 63,
+      "vitamins": ["C", "E"],
+      "benefits": "Champion de la vitamine C, anti-inflammatoire"
+    }
+  },
+  {
+    "id": "groseille",
+    "slug": "groseille",
+    "name": "Groseille",
+    "type": "fruit",
+    "icon": "emojione:grapes",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "partial"
+    },
+    "nutrition": {
+      "calories": 56,
+      "vitamins": ["C"],
+      "benefits": "Acidulée, riche en vitamine C"
+    }
+  },
+  {
+    "id": "mure",
+    "slug": "mure",
+    "name": "Mûre",
+    "type": "fruit",
+    "icon": "emojione:grapes",
+    "seasons": {
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 43,
+      "vitamins": ["C", "K", "E"],
+      "benefits": "Riche en antioxydants et fibres"
+    }
+  },
+  {
+    "id": "cerise",
+    "slug": "cerise",
+    "name": "Cerise",
+    "type": "fruit",
+    "icon": "emojione:cherries",
+    "seasons": {
+      "5": "partial",
+      "6": "peak",
+      "7": "peak"
+    },
+    "nutrition": {
+      "calories": 63,
+      "vitamins": ["C", "A"],
+      "benefits": "Anti-inflammatoire, aide au sommeil"
+    }
+  },
+  {
+    "id": "abricot",
+    "slug": "abricot",
+    "name": "Abricot",
+    "type": "fruit",
+    "icon": "emojione:peach",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak"
+    },
+    "nutrition": {
+      "calories": 48,
+      "vitamins": ["A", "C"],
+      "benefits": "Excellent pour la peau, riche en bêta-carotène"
+    }
+  },
+  {
+    "id": "peche",
+    "slug": "peche",
+    "name": "Pêche",
+    "type": "fruit",
+    "icon": "emojione:peach",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "partial"
+    },
+    "nutrition": {
+      "calories": 39,
+      "vitamins": ["C", "A"],
+      "benefits": "Hydratante, bonne pour la peau"
+    }
+  },
+  {
+    "id": "nectarine",
+    "slug": "nectarine",
+    "name": "Nectarine",
+    "type": "fruit",
+    "icon": "emojione:peach",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "partial"
+    },
+    "nutrition": {
+      "calories": 44,
+      "vitamins": ["C", "A"],
+      "benefits": "Similaire à la pêche, peau lisse"
+    }
+  },
+  {
+    "id": "prune",
+    "slug": "prune",
+    "name": "Prune",
+    "type": "fruit",
+    "icon": "emojione:grapes",
+    "seasons": {
+      "7": "partial",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 46,
+      "vitamins": ["C", "K"],
+      "benefits": "Favorise le transit, riche en antioxydants"
+    }
+  },
+  {
+    "id": "mirabelle",
+    "slug": "mirabelle",
+    "name": "Mirabelle",
+    "type": "fruit",
+    "icon": "emojione:peach",
+    "seasons": {
+      "8": "peak",
+      "9": "peak"
+    },
+    "nutrition": {
+      "calories": 67,
+      "vitamins": ["C", "A"],
+      "benefits": "Spécialité lorraine, très sucrée"
+    }
+  },
+  {
+    "id": "raisin",
+    "slug": "raisin",
+    "name": "Raisin",
+    "type": "fruit",
+    "icon": "emojione:grapes",
+    "seasons": {
+      "8": "partial",
+      "9": "peak",
+      "10": "peak",
+      "11": "partial"
+    },
+    "nutrition": {
+      "calories": 69,
+      "vitamins": ["C", "K"],
+      "benefits": "Énergétique, bon pour le cœur"
+    }
+  },
+  {
+    "id": "melon",
+    "slug": "melon",
+    "name": "Melon",
+    "type": "fruit",
+    "icon": "emojione:melon",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "partial"
+    },
+    "nutrition": {
+      "calories": 34,
+      "vitamins": ["A", "C"],
+      "benefits": "Très hydratant, rafraîchissant"
+    }
+  },
+  {
+    "id": "pasteque",
+    "slug": "pasteque",
+    "name": "Pastèque",
+    "type": "fruit",
+    "icon": "emojione:watermelon",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "partial"
+    },
+    "nutrition": {
+      "calories": 30,
+      "vitamins": ["A", "C"],
+      "benefits": "92% d'eau, très rafraîchissante"
+    }
+  },
+  {
+    "id": "figue",
+    "slug": "figue",
+    "name": "Figue",
+    "type": "fruit",
+    "icon": "emojione:eggplant",
+    "seasons": {
+      "7": "partial",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 74,
+      "vitamins": ["B6", "K"],
+      "benefits": "Riche en fibres et minéraux"
+    }
+  },
+  {
+    "id": "kiwi",
+    "slug": "kiwi",
+    "name": "Kiwi",
+    "type": "fruit",
+    "icon": "emojione:kiwi-fruit",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "peak",
+      "11": "partial",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 61,
+      "vitamins": ["C", "K", "E"],
+      "benefits": "Plus de vitamine C que l'orange"
+    }
+  },
+  {
+    "id": "grenade",
+    "slug": "grenade",
+    "name": "Grenade",
+    "type": "fruit",
+    "icon": "emojione:grapes",
+    "seasons": {
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 83,
+      "vitamins": ["C", "K"],
+      "benefits": "Très antioxydante, bon pour le cœur"
+    }
+  },
+  {
+    "id": "chataigne",
+    "slug": "chataigne",
+    "name": "Châtaigne",
+    "type": "fruit",
+    "icon": "emojione:chestnut",
+    "seasons": {
+      "10": "peak",
+      "11": "peak",
+      "12": "partial"
+    },
+    "nutrition": {
+      "calories": 131,
+      "vitamins": ["B6", "C"],
+      "benefits": "Énergétique, riche en glucides complexes"
+    }
+  },
+  {
+    "id": "noix",
+    "slug": "noix",
+    "name": "Noix",
+    "type": "fruit",
+    "icon": "emojione:chestnut",
+    "seasons": {
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 654,
+      "vitamins": ["E", "B6"],
+      "benefits": "Riche en oméga-3, bon pour le cerveau"
+    }
+  },
+  {
+    "id": "noisette",
+    "slug": "noisette",
+    "name": "Noisette",
+    "type": "fruit",
+    "icon": "emojione:chestnut",
+    "seasons": {
+      "9": "peak",
+      "10": "peak",
+      "11": "peak"
+    },
+    "nutrition": {
+      "calories": 628,
+      "vitamins": ["E", "B6"],
+      "benefits": "Riche en vitamine E et magnésium"
+    }
+  },
+  {
+    "id": "rhubarbe",
+    "slug": "rhubarbe",
+    "name": "Rhubarbe",
+    "type": "fruit",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "4": "partial",
+      "5": "peak",
+      "6": "peak",
+      "7": "partial"
+    },
+    "nutrition": {
+      "calories": 21,
+      "vitamins": ["C", "K"],
+      "benefits": "Très peu calorique, riche en fibres"
+    }
+  },
+  {
+    "id": "carotte",
+    "slug": "carotte",
+    "name": "Carotte",
+    "type": "vegetable",
+    "icon": "emojione:carrot",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "partial",
+      "5": "partial",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 41,
+      "vitamins": ["A", "K", "B6"],
+      "benefits": "Excellente pour la vue, riche en bêta-carotène"
+    }
+  },
+  {
+    "id": "tomate",
+    "slug": "tomate",
+    "name": "Tomate",
+    "type": "vegetable",
+    "icon": "emojione:tomato",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 18,
+      "vitamins": ["C", "K", "A"],
+      "benefits": "Riche en lycopène, antioxydant puissant"
+    }
+  },
+  {
+    "id": "courgette",
+    "slug": "courgette",
+    "name": "Courgette",
+    "type": "vegetable",
+    "icon": "emojione:cucumber",
+    "seasons": {
+      "5": "partial",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 17,
+      "vitamins": ["C", "B6"],
+      "benefits": "Très peu calorique, hydratante"
+    }
+  },
+  {
+    "id": "aubergine",
+    "slug": "aubergine",
+    "name": "Aubergine",
+    "type": "vegetable",
+    "icon": "emojione:eggplant",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 25,
+      "vitamins": ["B1", "B6"],
+      "benefits": "Riche en fibres, antioxydante"
+    }
+  },
+  {
+    "id": "poivron",
+    "slug": "poivron",
+    "name": "Poivron",
+    "type": "vegetable",
+    "icon": "emojione:hot-pepper",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 31,
+      "vitamins": ["C", "A", "B6"],
+      "benefits": "Très riche en vitamine C (surtout rouge)"
+    }
+  },
+  {
+    "id": "concombre",
+    "slug": "concombre",
+    "name": "Concombre",
+    "type": "vegetable",
+    "icon": "emojione:cucumber",
+    "seasons": {
+      "5": "partial",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 16,
+      "vitamins": ["K", "C"],
+      "benefits": "96% d'eau, très rafraîchissant"
+    }
+  },
+  {
+    "id": "haricot-vert",
+    "slug": "haricot-vert",
+    "name": "Haricot vert",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 31,
+      "vitamins": ["C", "K", "A"],
+      "benefits": "Riche en fibres, peu calorique"
+    }
+  },
+  {
+    "id": "petit-pois",
+    "slug": "petit-pois",
+    "name": "Petit pois",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "4": "partial",
+      "5": "peak",
+      "6": "peak",
+      "7": "peak"
+    },
+    "nutrition": {
+      "calories": 81,
+      "vitamins": ["C", "K", "B1"],
+      "benefits": "Riche en protéines végétales"
+    }
+  },
+  {
+    "id": "feve",
+    "slug": "feve",
+    "name": "Fève",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "4": "partial",
+      "5": "peak",
+      "6": "peak",
+      "7": "partial"
+    },
+    "nutrition": {
+      "calories": 88,
+      "vitamins": ["B1", "B6", "C"],
+      "benefits": "Riche en protéines et fibres"
+    }
+  },
+  {
+    "id": "epinard",
+    "slug": "epinard",
+    "name": "Épinard",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "3": "partial",
+      "4": "peak",
+      "5": "peak",
+      "6": "peak",
+      "9": "partial",
+      "10": "peak",
+      "11": "peak"
+    },
+    "nutrition": {
+      "calories": 23,
+      "vitamins": ["K", "A", "C"],
+      "benefits": "Très riche en fer et vitamines"
+    }
+  },
+  {
+    "id": "salade",
+    "slug": "salade",
+    "name": "Salade",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "4": "peak",
+      "5": "peak",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak"
+    },
+    "nutrition": {
+      "calories": 15,
+      "vitamins": ["K", "A", "C"],
+      "benefits": "Très peu calorique, hydratante"
+    }
+  },
+  {
+    "id": "mache",
+    "slug": "mache",
+    "name": "Mâche",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 21,
+      "vitamins": ["C", "B9", "A"],
+      "benefits": "Riche en oméga-3 et fer"
+    }
+  },
+  {
+    "id": "roquette",
+    "slug": "roquette",
+    "name": "Roquette",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "4": "partial",
+      "5": "peak",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 25,
+      "vitamins": ["K", "C", "A"],
+      "benefits": "Goût poivré, riche en antioxydants"
+    }
+  },
+  {
+    "id": "cresson",
+    "slug": "cresson",
+    "name": "Cresson",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "4": "peak",
+      "5": "peak",
+      "6": "peak",
+      "10": "partial",
+      "11": "peak"
+    },
+    "nutrition": {
+      "calories": 11,
+      "vitamins": ["K", "C", "A"],
+      "benefits": "Un des légumes les plus nutritifs"
+    }
+  },
+  {
+    "id": "chou-fleur",
+    "slug": "chou-fleur",
+    "name": "Chou-fleur",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "peak",
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 25,
+      "vitamins": ["C", "K", "B6"],
+      "benefits": "Riche en fibres, anti-cancer"
+    }
+  },
+  {
+    "id": "brocoli",
+    "slug": "brocoli",
+    "name": "Brocoli",
+    "type": "vegetable",
+    "icon": "emojione:broccoli",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "peak"
+    },
+    "nutrition": {
+      "calories": 34,
+      "vitamins": ["C", "K", "B9"],
+      "benefits": "Excellente source de vitamine C, anti-cancer"
+    }
+  },
+  {
+    "id": "chou-vert",
+    "slug": "chou-vert",
+    "name": "Chou vert",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 25,
+      "vitamins": ["C", "K"],
+      "benefits": "Très riche en vitamine C"
+    }
+  },
+  {
+    "id": "chou-rouge",
+    "slug": "chou-rouge",
+    "name": "Chou rouge",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 31,
+      "vitamins": ["C", "K"],
+      "benefits": "Riche en anthocyanes antioxydants"
+    }
+  },
+  {
+    "id": "chou-de-bruxelles",
+    "slug": "chou-de-bruxelles",
+    "name": "Chou de Bruxelles",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 43,
+      "vitamins": ["C", "K", "B6"],
+      "benefits": "Très riche en vitamines C et K"
+    }
+  },
+  {
+    "id": "chou-chinois",
+    "slug": "chou-chinois",
+    "name": "Chou chinois",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 13,
+      "vitamins": ["C", "K", "A"],
+      "benefits": "Très peu calorique, croquant"
+    }
+  },
+  {
+    "id": "chou-kale",
+    "slug": "chou-kale",
+    "name": "Chou kale",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 49,
+      "vitamins": ["K", "C", "A"],
+      "benefits": "Superaliment, très riche en nutriments"
+    }
+  },
+  {
+    "id": "poireau",
+    "slug": "poireau",
+    "name": "Poireau",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "partial",
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 61,
+      "vitamins": ["K", "C", "B6"],
+      "benefits": "Diurétique, riche en fibres"
+    }
+  },
+  {
+    "id": "oignon",
+    "slug": "oignon",
+    "name": "Oignon",
+    "type": "vegetable",
+    "icon": "emojione:onion",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "peak",
+      "5": "peak",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 40,
+      "vitamins": ["C", "B6"],
+      "benefits": "Antibactérien, bon pour le cœur"
+    }
+  },
+  {
+    "id": "echalote",
+    "slug": "echalote",
+    "name": "Échalote",
+    "type": "vegetable",
+    "icon": "emojione:onion",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 72,
+      "vitamins": ["B6", "C"],
+      "benefits": "Saveur délicate, antioxydante"
+    }
+  },
+  {
+    "id": "ail",
+    "slug": "ail",
+    "name": "Ail",
+    "type": "vegetable",
+    "icon": "emojione:garlic",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "peak",
+      "5": "peak",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 149,
+      "vitamins": ["B6", "C"],
+      "benefits": "Antibactérien puissant, bon pour l'immunité"
+    }
+  },
+  {
+    "id": "pomme-de-terre",
+    "slug": "pomme-de-terre",
+    "name": "Pomme de terre",
+    "type": "vegetable",
+    "icon": "emojione:potato",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "partial",
+      "5": "partial",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 77,
+      "vitamins": ["C", "B6"],
+      "benefits": "Source d'énergie, riche en potassium"
+    }
+  },
+  {
+    "id": "patate-douce",
+    "slug": "patate-douce",
+    "name": "Patate douce",
+    "type": "vegetable",
+    "icon": "emojione:roasted-sweet-potato",
+    "seasons": {
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 86,
+      "vitamins": ["A", "C", "B6"],
+      "benefits": "Index glycémique bas, riche en bêta-carotène"
+    }
+  },
+  {
+    "id": "topinambour",
+    "slug": "topinambour",
+    "name": "Topinambour",
+    "type": "vegetable",
+    "icon": "emojione:potato",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "partial",
+      "11": "partial",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 73,
+      "vitamins": ["B1", "B3"],
+      "benefits": "Prébiotique, bon pour la flore intestinale"
+    }
+  },
+  {
+    "id": "panais",
+    "slug": "panais",
+    "name": "Panais",
+    "type": "vegetable",
+    "icon": "emojione:carrot",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 75,
+      "vitamins": ["C", "K", "B9"],
+      "benefits": "Saveur douce, riche en fibres"
+    }
+  },
+  {
+    "id": "navet",
+    "slug": "navet",
+    "name": "Navet",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "partial",
+      "5": "partial",
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 28,
+      "vitamins": ["C", "K"],
+      "benefits": "Peu calorique, bon pour la digestion"
+    }
+  },
+  {
+    "id": "radis",
+    "slug": "radis",
+    "name": "Radis",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "3": "partial",
+      "4": "peak",
+      "5": "peak",
+      "6": "peak",
+      "7": "peak"
+    },
+    "nutrition": {
+      "calories": 16,
+      "vitamins": ["C", "B6"],
+      "benefits": "Croquant, aide à la digestion"
+    }
+  },
+  {
+    "id": "radis-noir",
+    "slug": "radis-noir",
+    "name": "Radis noir",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "11": "partial",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 20,
+      "vitamins": ["C", "B9"],
+      "benefits": "Détoxifiant pour le foie"
+    }
+  },
+  {
+    "id": "betterave",
+    "slug": "betterave",
+    "name": "Betterave",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "partial",
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 43,
+      "vitamins": ["B9", "C"],
+      "benefits": "Améliore l'endurance, riche en nitrates"
+    }
+  },
+  {
+    "id": "celeri-rave",
+    "slug": "celeri-rave",
+    "name": "Céleri-rave",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 42,
+      "vitamins": ["K", "C", "B6"],
+      "benefits": "Peu calorique, riche en fibres"
+    }
+  },
+  {
+    "id": "celeri-branche",
+    "slug": "celeri-branche",
+    "name": "Céleri branche",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "partial"
+    },
+    "nutrition": {
+      "calories": 16,
+      "vitamins": ["K", "C"],
+      "benefits": "Très peu calorique, croquant"
+    }
+  },
+  {
+    "id": "fenouil",
+    "slug": "fenouil",
+    "name": "Fenouil",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "partial"
+    },
+    "nutrition": {
+      "calories": 31,
+      "vitamins": ["C", "B9"],
+      "benefits": "Aide à la digestion, saveur anisée"
+    }
+  },
+  {
+    "id": "artichaut",
+    "slug": "artichaut",
+    "name": "Artichaut",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "3": "partial",
+      "4": "peak",
+      "5": "peak",
+      "6": "peak",
+      "9": "partial",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 47,
+      "vitamins": ["C", "K", "B9"],
+      "benefits": "Bon pour le foie, riche en fibres"
+    }
+  },
+  {
+    "id": "asperge",
+    "slug": "asperge",
+    "name": "Asperge",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "4": "peak",
+      "5": "peak",
+      "6": "partial"
+    },
+    "nutrition": {
+      "calories": 20,
+      "vitamins": ["K", "B9", "C"],
+      "benefits": "Diurétique, riche en acide folique"
+    }
+  },
+  {
+    "id": "endive",
+    "slug": "endive",
+    "name": "Endive",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "partial",
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 17,
+      "vitamins": ["K", "B9"],
+      "benefits": "Croquante, favorise la digestion"
+    }
+  },
+  {
+    "id": "blette",
+    "slug": "blette",
+    "name": "Blette",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "6": "partial",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "partial"
+    },
+    "nutrition": {
+      "calories": 19,
+      "vitamins": ["K", "A", "C"],
+      "benefits": "Très riche en vitamines K et A"
+    }
+  },
+  {
+    "id": "potiron",
+    "slug": "potiron",
+    "name": "Potiron",
+    "type": "vegetable",
+    "icon": "emojione:jack-o-lantern",
+    "seasons": {
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 26,
+      "vitamins": ["A", "C"],
+      "benefits": "Riche en bêta-carotène"
+    }
+  },
+  {
+    "id": "potimarron",
+    "slug": "potimarron",
+    "name": "Potimarron",
+    "type": "vegetable",
+    "icon": "emojione:jack-o-lantern",
+    "seasons": {
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 63,
+      "vitamins": ["A", "C", "E"],
+      "benefits": "Goût de châtaigne, riche en vitamines"
+    }
+  },
+  {
+    "id": "butternut",
+    "slug": "butternut",
+    "name": "Butternut",
+    "type": "vegetable",
+    "icon": "emojione:jack-o-lantern",
+    "seasons": {
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 45,
+      "vitamins": ["A", "C", "E"],
+      "benefits": "Texture fondante, riche en bêta-carotène"
+    }
+  },
+  {
+    "id": "courge-spaghetti",
+    "slug": "courge-spaghetti",
+    "name": "Courge spaghetti",
+    "type": "vegetable",
+    "icon": "emojione:jack-o-lantern",
+    "seasons": {
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 31,
+      "vitamins": ["C", "B6"],
+      "benefits": "Alternative aux pâtes, peu calorique"
+    }
+  },
+  {
+    "id": "champignon-de-paris",
+    "slug": "champignon-de-paris",
+    "name": "Champignon de Paris",
+    "type": "vegetable",
+    "icon": "emojione:mushroom",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "peak",
+      "5": "peak",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 22,
+      "vitamins": ["D", "B2", "B3"],
+      "benefits": "Source de vitamine D, peu calorique"
+    }
+  },
+  {
+    "id": "mais",
+    "slug": "mais",
+    "name": "Maïs",
+    "type": "vegetable",
+    "icon": "emojione:ear-of-corn",
+    "seasons": {
+      "7": "partial",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 86,
+      "vitamins": ["B1", "B9", "C"],
+      "benefits": "Énergétique, riche en fibres"
+    }
+  },
+  {
+    "id": "chou-rave",
+    "slug": "chou-rave",
+    "name": "Chou-rave",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "5": "partial",
+      "6": "peak",
+      "7": "peak",
+      "8": "peak",
+      "9": "peak",
+      "10": "partial"
+    },
+    "nutrition": {
+      "calories": 27,
+      "vitamins": ["C", "B6"],
+      "benefits": "Croquant, très riche en vitamine C"
+    }
+  },
+  {
+    "id": "salsifis",
+    "slug": "salsifis",
+    "name": "Salsifis",
+    "type": "vegetable",
+    "icon": "emojione:carrot",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "partial",
+      "11": "partial",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 82,
+      "vitamins": ["B6", "C"],
+      "benefits": "Riche en inuline, bon pour les intestins"
+    }
+  },
+  {
+    "id": "rutabaga",
+    "slug": "rutabaga",
+    "name": "Rutabaga",
+    "type": "vegetable",
+    "icon": "emojione:leafy-green",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "partial",
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 37,
+      "vitamins": ["C", "B6"],
+      "benefits": "Ancien légume oublié, riche en vitamine C"
+    }
+  },
+  {
+    "id": "crosne",
+    "slug": "crosne",
+    "name": "Crosne",
+    "type": "vegetable",
+    "icon": "emojione:potato",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "11": "partial",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 75,
+      "vitamins": ["B1", "B3"],
+      "benefits": "Saveur délicate, riche en glucides"
+    }
+  }
+]
