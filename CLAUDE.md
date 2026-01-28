@@ -28,65 +28,7 @@ estcequecestlasaison/
 └── pnpm-workspace.yaml
 ```
 
----
-
-## Tech Stack
-
-### Décisions clés
-| Aspect | Choix |
-|--------|-------|
-| Monorepo | pnpm workspaces |
-| Hosting | Railway (auto-deploy main) |
-| Icons | @iconify/react (Emojione) |
-| Recherche | Fuse.js |
-| Données | JSON statique (figé) |
-| Langue | Français uniquement |
-
-### Web (`apps/web/`)
-| Layer | Tech |
-|-------|------|
-| Framework | TanStack Start (React 19, SSR) |
-| Routing | TanStack Router |
-| UI | Tailwind CSS 4, Radix UI, vaul |
-| Styling | clsx, tailwind-merge, cva |
-| Animation | motion (Framer), tw-animate-css |
-| SEO | schema-dts (Schema.org) |
-| Ads | Google AdSense (native ads) |
-
-### Mobile (`apps/mobile/`) - Phase 2
-| Layer | Tech |
-|-------|------|
-| Framework | React Native + Expo |
-| Navigation | Expo Router |
-| Offline | Données embarquées |
-| Notifications | Expo Notifications |
-
----
-
-## Monétisation
-
-| Plateforme | Modèle |
-|------------|--------|
-| Web | AdSense (native ads dans grille) |
-| Mobile | Gratuit, sans pub |
-
----
-
-## Routes Web
-
-- `/` - Page d'accueil (grille produits du mois)
-- `/:slug` - Page produit SEO (`/pomme`, `/banane`)
-- `/mentions-legales` - Mentions légales
-
----
-
-## Design
-
-- **Style** : Nature/Organique
-- **Palette** : Verts, terre, beige, marron
-- **Dark mode** : Auto (prefers-color-scheme)
-- **Logo** : Texte stylé (pas d'icône)
-- **Responsive** : Mobile-first
+Voir les `CLAUDE.md` dans chaque workspace pour les détails spécifiques.
 
 ---
 
@@ -160,6 +102,7 @@ TOUJOURS lire et respecter ces règles.
 | `pnpm start` | Start prod |
 | `pnpm lint` | TS + ESLint |
 | `pnpm lint:fix` | Lint + fix |
+| `pnpm test` | Tests Vitest |
 
 ---
 

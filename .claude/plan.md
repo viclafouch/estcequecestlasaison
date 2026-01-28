@@ -220,14 +220,15 @@ type Produce = {
 
 ## Milestones
 
-### Milestone 0 : Setup Monorepo
-- [ ] Restructurer en monorepo (apps/web, packages/shared)
-- [ ] Configurer pnpm workspaces
-- [ ] Migrer code existant vers apps/web
-- [ ] Créer packages/shared avec structure de base
-- [ ] Installer dépendances web (clsx, tailwind-merge, cva, radix, vaul, motion, etc.)
-- [ ] Installer dépendances shared (date-fns, zod)
-- [ ] Installer devDependencies root (husky, vitest)
+### Milestone 0 : Setup Monorepo ✅
+- [x] Restructurer en monorepo (apps/web, packages/shared)
+- [x] Configurer pnpm workspaces
+- [x] Migrer code existant vers apps/web
+- [x] Créer packages/shared avec structure de base
+- [x] Installer dépendances web (clsx, tailwind-merge, cva, radix, vaul, motion, etc.)
+- [x] Installer dépendances shared (date-fns, zod, fuse.js)
+- [x] Installer devDependencies root (husky, vitest)
+- [x] Créer CLAUDE.md par workspace (root, web, shared)
 
 ### Milestone 1 : Données & Types
 - [ ] Installer @iconify/react dans apps/web
