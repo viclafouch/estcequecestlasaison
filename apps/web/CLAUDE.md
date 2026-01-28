@@ -19,40 +19,27 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 
 ---
 
-## Routes
+## Pages
 
-| Route | Description |
-|-------|-------------|
-| `/` | Page d'accueil (grille produits du mois) |
-| `/:slug` | Page produit SEO (`/pomme`, `/banane`) |
-| `/mentions-legales` | Mentions légales |
+3 pages au total :
+- Page d'accueil (grille produits du mois)
+- Page produit dynamique (SEO optimisé)
+- Mentions légales
 
 ---
 
-## Structure
+## Librairies UI
 
-```
-src/
-├── routes/
-│   ├── __root.tsx        → Layout (Header, Footer, Banner)
-│   ├── index.tsx         → Page d'accueil
-│   ├── $slug.tsx         → Page produit dynamique
-│   └── mentions-legales.tsx
-├── components/
-│   ├── ui/               → Composants UI réutilisables
-│   ├── AppBanner.tsx     → Bannière promo app
-│   ├── Header.tsx        → Logo + Recherche
-│   ├── MonthSelector.tsx
-│   ├── ProduceGrid.tsx
-│   ├── ProduceCard.tsx
-│   ├── SeasonCalendar.tsx
-│   ├── NutritionInfo.tsx
-│   ├── FilterToggle.tsx
-│   └── Footer.tsx
-├── hooks/
-│   └── useSearch.ts
-└── styles.css
-```
+| Lib | Usage |
+|-----|-------|
+| `clsx` | Construction de classNames conditionnels |
+| `tailwind-merge` | Merge classes Tailwind sans conflits |
+| `class-variance-authority` | Créer des variants de composants (cva) |
+| `@radix-ui/react-dialog` | Modal accessible pour détails produit |
+| `vaul` | Drawer mobile-friendly |
+| `lucide-react` | Icônes UI (flèches, fermer, menu) |
+| `motion` | Animations subtiles (fade, stagger) |
+| `tw-animate-css` | Classes d'animation Tailwind |
 
 ---
 
@@ -65,20 +52,6 @@ src/
 | Dark mode | Auto (prefers-color-scheme) |
 | Logo | Texte stylé (pas d'icône) |
 | Responsive | Mobile-first |
-
----
-
-## Librairies UI
-
-| Lib | Usage |
-|-----|-------|
-| `clsx` | Construction de classNames |
-| `tailwind-merge` | Merge classes Tailwind |
-| `class-variance-authority` | Variants de composants (cva) |
-| `@radix-ui/react-dialog` | Modal accessible |
-| `vaul` | Drawer mobile-friendly |
-| `lucide-react` | Icônes UI (flèches, fermer) |
-| `motion` | Animations subtiles |
 
 ---
 

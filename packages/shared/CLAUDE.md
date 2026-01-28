@@ -1,23 +1,6 @@
 # CLAUDE.md - Shared Package
 
-Package partagé entre le web et le mobile contenant les données, types et helpers.
-
----
-
-## Structure
-
-```
-src/
-├── data/
-│   ├── produce.json      → Données fruits/légumes
-│   └── index.ts          → Exports et helpers data
-├── helpers/
-│   ├── season.ts         → Utils saisonnalité
-│   ├── search.ts         → Fuzzy search (Fuse.js)
-│   └── index.ts
-├── types.ts              → Types TypeScript
-└── index.ts              → Export principal
-```
+Package partagé entre le web et le mobile.
 
 ---
 
@@ -39,13 +22,13 @@ type SeasonIntensity = 'peak' | 'partial'
 
 type Produce = {
   id: string
-  slug: string              // URL-friendly
-  name: string              // Nom affiché
+  slug: string
+  name: string
   type: ProduceType
-  icon: string              // Icône @iconify (emojione:xxx)
-  seasons: Partial<Record<number, SeasonIntensity>>  // 1-12
+  icon: string
+  seasons: Partial<Record<number, SeasonIntensity>>
   nutrition: {
-    calories: number        // pour 100g
+    calories: number
     vitamins: string[]
     benefits: string
   }
@@ -54,32 +37,8 @@ type Produce = {
 
 ---
 
-## Helpers disponibles
-
-### Season (`helpers/season.ts`)
-- `getCurrentMonth()` → Mois actuel (1-12)
-- `getSeasonStatus(produce, month)` → 'peak' | 'partial' | null
-- `isInSeason(produce, month)` → boolean
-- `getProduceInSeason(list, month)` → Produce[]
-- `getSeasonLabel(intensity)` → String FR
-
-### Search (`helpers/search.ts`)
-- `createSearchIndex(list)` → Fuse instance
-- `searchProduce(fuse, query)` → Produce[]
-
----
-
-## Imports
+## Import
 
 ```typescript
-// Depuis apps/web ou apps/mobile
-import { PRODUCE_LIST, getProduceBySlug } from '@estcequecestlasaison/shared'
-import { getCurrentMonth, isInSeason } from '@estcequecestlasaison/shared/helpers'
-import type { Produce } from '@estcequecestlasaison/shared/types'
+import type { Produce } from '@estcequecestlasaison/shared'
 ```
-
----
-
-## Données
-
-Le fichier `produce.json` contient ~50-100 fruits et légumes avec leurs saisons en France métropolitaine. Les données sont **statiques** (les saisons ne changent pas).
