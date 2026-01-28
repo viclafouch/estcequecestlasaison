@@ -47,7 +47,10 @@ estcequecestlasaison/
 |-------|------|
 | Framework | TanStack Start (React 19, SSR) |
 | Routing | TanStack Router |
-| UI | Tailwind CSS 4 |
+| UI | Tailwind CSS 4, Radix UI, vaul |
+| Styling | clsx, tailwind-merge, cva |
+| Animation | motion (Framer), tw-animate-css |
+| SEO | schema-dts (Schema.org) |
 | Ads | Google AdSense (native ads) |
 
 ### Mobile (`apps/mobile/`) - Phase 2

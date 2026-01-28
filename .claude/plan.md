@@ -25,6 +25,47 @@ Site web + Application mobile permettant de connaître la saisonnalité des frui
 
 ---
 
+## Librairies
+
+### UI & Styling (`apps/web`)
+| Librairie | Usage |
+|-----------|-------|
+| `clsx` | Construction de classNames conditionnels |
+| `tailwind-merge` | Merge les classes Tailwind sans conflits |
+| `class-variance-authority` | Variants de composants (cva) |
+| `@radix-ui/react-dialog` | Modal accessible (détails produit) |
+| `vaul` | Drawer mobile-friendly |
+| `lucide-react` | Icônes UI (flèches, fermer, etc.) |
+
+### Animation (`apps/web`)
+| Librairie | Usage |
+|-----------|-------|
+| `motion` | Framer Motion - animations subtiles |
+| `tw-animate-css` | Classes d'animation Tailwind |
+
+### Dates (`packages/shared`)
+| Librairie | Usage |
+|-----------|-------|
+| `date-fns` | Navigation mois, formatage dates |
+
+### SEO (`apps/web`)
+| Librairie | Usage |
+|-----------|-------|
+| `schema-dts` | Types TypeScript pour Schema.org |
+
+### Validation (`packages/shared`)
+| Librairie | Usage |
+|-----------|-------|
+| `zod` | Validation des données |
+
+### Dev Experience (root)
+| Librairie | Usage |
+|-----------|-------|
+| `husky` | Git hooks (lint avant commit) |
+| `vitest` | Tests unitaires |
+
+---
+
 ## Monétisation
 
 | Plateforme | Modèle |
@@ -184,12 +225,15 @@ type Produce = {
 - [ ] Configurer pnpm workspaces
 - [ ] Migrer code existant vers apps/web
 - [ ] Créer packages/shared avec structure de base
+- [ ] Installer dépendances web (clsx, tailwind-merge, cva, radix, vaul, motion, etc.)
+- [ ] Installer dépendances shared (date-fns, zod)
+- [ ] Installer devDependencies root (husky, vitest)
 
 ### Milestone 1 : Données & Types
-- [ ] Installer @iconify/react
+- [ ] Installer @iconify/react dans apps/web
 - [ ] Créer `produce.json` complet (~50-100 items)
 - [ ] Définir types TypeScript dans shared
-- [ ] Helpers saisonnalité dans shared
+- [ ] Helpers saisonnalité dans shared (avec date-fns)
 - [ ] Setup Tailwind palette Nature/Organique
 
 ### Milestone 2 : Page d'accueil
