@@ -1,15 +1,58 @@
 @import 'tailwindcss';
 
-body {
-  @apply m-0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+  --color-forest-50: oklch(0.98 0.01 145);
+  --color-forest-100: oklch(0.95 0.03 145);
+  --color-forest-200: oklch(0.9 0.06 145);
+  --color-forest-300: oklch(0.8 0.1 145);
+  --color-forest-400: oklch(0.7 0.14 145);
+  --color-forest-500: oklch(0.55 0.15 145);
+  --color-forest-600: oklch(0.45 0.13 145);
+  --color-forest-700: oklch(0.38 0.11 145);
+  --color-forest-800: oklch(0.3 0.08 145);
+  --color-forest-900: oklch(0.22 0.06 145);
+  --color-forest-950: oklch(0.15 0.04 145);
+
+  --color-earth-50: oklch(0.98 0.01 55);
+  --color-earth-100: oklch(0.94 0.02 55);
+  --color-earth-200: oklch(0.88 0.04 55);
+  --color-earth-300: oklch(0.8 0.06 55);
+  --color-earth-400: oklch(0.7 0.08 55);
+  --color-earth-500: oklch(0.58 0.09 55);
+  --color-earth-600: oklch(0.48 0.08 55);
+  --color-earth-700: oklch(0.4 0.07 55);
+  --color-earth-800: oklch(0.32 0.05 55);
+  --color-earth-900: oklch(0.25 0.04 55);
+  --color-earth-950: oklch(0.18 0.03 55);
+
+  --color-sand-50: oklch(0.98 0.01 85);
+  --color-sand-100: oklch(0.96 0.02 85);
+  --color-sand-200: oklch(0.92 0.03 85);
+  --color-sand-300: oklch(0.86 0.04 85);
+  --color-sand-400: oklch(0.78 0.05 85);
+  --color-sand-500: oklch(0.68 0.05 85);
+  --color-sand-600: oklch(0.58 0.05 85);
+  --color-sand-700: oklch(0.48 0.04 85);
+  --color-sand-800: oklch(0.38 0.03 85);
+  --color-sand-900: oklch(0.28 0.02 85);
+  --color-sand-950: oklch(0.2 0.02 85);
+
+  --color-season-peak: oklch(0.72 0.19 142);
+  --color-season-partial: oklch(0.8 0.15 85);
+  --color-season-off: oklch(0.92 0.01 0);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  @apply m-0 bg-sand-50 text-earth-900 antialiased;
+  font-family: var(--font-sans);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-earth-950 text-sand-100;
+  }
 }

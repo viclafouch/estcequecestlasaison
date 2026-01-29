@@ -6,7 +6,7 @@ import appCss from '../styles.css?url'
 
 const RootDocument = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>

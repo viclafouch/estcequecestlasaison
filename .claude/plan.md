@@ -151,44 +151,6 @@ estcequecestlasaison/
 
 ---
 
-## Package Shared (`packages/shared/`)
-
-```
-packages/shared/
-├── src/
-│   ├── data/
-│   │   └── produce.json
-│   ├── types.ts
-│   ├── helpers/
-│   │   ├── season.ts
-│   │   └── search.ts
-│   └── index.ts
-├── package.json
-└── tsconfig.json
-```
-
-### Type Produce
-```typescript
-type ProduceType = 'fruit' | 'vegetable'
-type SeasonIntensity = 'peak' | 'partial' | null
-
-type Produce = {
-  id: string
-  slug: string                              // URL-friendly
-  name: string                              // Nom affiché
-  type: ProduceType
-  icon: string                              // Nom icône Emojione (@iconify)
-  seasons: Record<number, SeasonIntensity>  // 1-12
-  nutrition: {
-    calories: number                        // pour 100g
-    vitamins: string[]
-    benefits: string
-  }
-}
-```
-
----
-
 ## Design
 
 - **Style** : Nature/Organique
@@ -230,12 +192,12 @@ type Produce = {
 - [x] Installer devDependencies root (husky, vitest)
 - [x] Créer CLAUDE.md par workspace (root, web, shared)
 
-### Milestone 1 : Données & Types
-- [ ] Installer @iconify/react dans apps/web
-- [ ] Créer `produce.json` complet (~50-100 items)
-- [ ] Définir types TypeScript dans shared
-- [ ] Helpers saisonnalité dans shared (avec date-fns)
-- [ ] Setup Tailwind palette Nature/Organique
+### Milestone 1 : Données & Types ✅
+- [x] Installer @iconify/react dans apps/web
+- [x] Créer `produce.json` complet (~50-100 items)
+- [x] Définir types TypeScript dans shared
+- [x] Helpers saisonnalité dans shared (avec date-fns)
+- [x] Setup Tailwind palette Nature/Organique
 
 ### Milestone 2 : Page d'accueil
 - [ ] Header avec logo texte + recherche
