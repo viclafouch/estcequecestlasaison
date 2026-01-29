@@ -52,7 +52,7 @@ TOUJOURS lire et respecter ces règles.
 
 | Agent | Usage |
 |-------|-------|
-| `code-simplifier:code-simplifier` | **Obligatoire** après chaque tâche |
+| `code-refactoring` | **Obligatoire** après chaque tâche |
 | `Explore` | Recherche codebase |
 | `Plan` | Tâches complexes |
 
@@ -85,7 +85,7 @@ TOUJOURS lire et respecter ces règles.
 3. Consulter Context7
 
 **Après chaque tâche :**
-1. `code-simplifier:code-simplifier` (obligatoire)
+1. `code-refactoring` (obligatoire)
 2. Relire les règles
 3. `pnpm run lint:fix`
 4. Cocher `[x]` dans le plan
