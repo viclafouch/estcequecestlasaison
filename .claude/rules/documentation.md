@@ -8,6 +8,8 @@ After modifying a workspace, **always check** if `CLAUDE.md` needs updates:
 - Changing architecture (icons, routing, state) → Update relevant section
 - Adding new patterns or conventions → Document them
 
+**NEVER put code examples in CLAUDE.md files.** Describe concepts, list functions, explain logic - but no code blocks. Code changes too often and documentation becomes stale.
+
 ### Dependency Hygiene
 
 When removing or replacing a library:

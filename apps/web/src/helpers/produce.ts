@@ -2,6 +2,7 @@ import Fuse from 'fuse.js'
 import type { Month, Produce, ProduceType } from '@estcequecestlasaison/shared'
 import {
   filterProduceByType,
+  groupProduceBySeason,
   matchIsInSeason,
   produceData,
   sortProduceBySeason
@@ -14,6 +15,29 @@ const fuseInstance = new Fuse(typedProduceData, {
   threshold: 0.3
 })
 
+type SearchAndFilterParams = {
+  searchQuery: string
+  category: ProduceType | 'all'
+}
+
+function searchAndFilterProduce({
+  searchQuery,
+  category
+}: SearchAndFilterParams) {
+  const trimmedQuery = searchQuery.trim()
+
+  const searchedProduce = trimmedQuery
+    ? fuseInstance.search(trimmedQuery).map((result) => {
+        return result.item
+      })
+    : typedProduceData
+
+  return filterProduceByType({
+    produceList: searchedProduce,
+    type: category
+  })
+}
+
 type FilterProduceParams = {
   searchQuery: string
   category: ProduceType | 'all'
@@ -25,18 +49,7 @@ export function getFilteredProduce({
   category,
   month
 }: FilterProduceParams) {
-  const trimmedQuery = searchQuery.trim()
-
-  const searchedProduce = trimmedQuery
-    ? fuseInstance.search(trimmedQuery).map((result) => {
-        return result.item
-      })
-    : typedProduceData
-
-  const filteredByType = filterProduceByType({
-    produceList: searchedProduce,
-    type: category
-  })
+  const filteredByType = searchAndFilterProduce({ searchQuery, category })
 
   return sortProduceBySeason({ produceList: filteredByType, month })
 }
@@ -45,4 +58,29 @@ export function getInSeasonCount(produceList: Produce[], month: Month) {
   return produceList.filter((produce) => {
     return matchIsInSeason(produce, month)
   }).length
+}
+
+type GetGroupedProduceParams = {
+  searchQuery: string
+  category: ProduceType | 'all'
+  month: Month
+}
+
+export function getGroupedProduce({
+  searchQuery,
+  category,
+  month
+}: GetGroupedProduceParams) {
+  const filteredByType = searchAndFilterProduce({ searchQuery, category })
+
+  const grouped = groupProduceBySeason({
+    produceList: filteredByType,
+    currentMonth: month
+  })
+
+  return {
+    inSeason: sortProduceBySeason({ produceList: grouped.inSeason, month }),
+    comingNextMonth: grouped.comingNextMonth,
+    offSeason: grouped.offSeason
+  }
 }

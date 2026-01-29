@@ -64,7 +64,7 @@ TOUJOURS lire et respecter ces règles.
 |-------|-------|
 | `/frontend-design` | Interfaces haute qualité |
 | `/react-useeffect` | Audit useEffect |
-| `/frontend-accessibility` | Accessibilité WCAG |
+| `/vercel-react-best-practices` | Performance React/Next.js |
 
 ---
 

@@ -4,42 +4,32 @@ paths: "**/*.{ts,tsx}"
 
 ## TypeScript Rules
 
-### Naming Conventions
-- Prefer type over interface
-- camelCase for functions, variables, methods
-- SCREAMING_SNAKE_CASE for constants
-- kebab-case for file names
+### TRUST INFERENCE (CRITICAL - MOST IMPORTANT RULE)
+
+TypeScript's inference is extremely powerful. Let it do its job.
+
+**NEVER add explicit types when TypeScript can infer them:**
+- NO return types on functions
+- NO type annotations on variables initialized with a value
+- NO type annotations on parameters with default values
+- NO type annotations on array/object literals
+- NO type annotations on function expressions or arrow functions
+
+**The ONLY exceptions where explicit types are allowed:**
+- Uninitialized variables
+- Generic type parameters that cannot be inferred
+- Type narrowing with `as` when inference is impossible
+
+**If you think you need an explicit type, you're probably wrong.** TypeScript will infer the correct type. Adding explicit types creates maintenance burden and can hide type errors.
 
 ### Type Safety
-- NO `any`, `as any` and excluding files from `tsconfig.json`
-- NO `@ts-ignore`, `@ts-expect-error`, `@ts-nocheck`
-- Prefer `unknown` over `any` when type is truly unknown
 - NEVER recreate types that exist in schemas or libraries
-- **Reuse existing types** from libraries, React, schemas, or internal code for precision and autocompletion
+- Reuse existing types from libraries, React, schemas, or internal code
 
-### Single Source of Truth (Drizzle)
-- **Drizzle schema is THE source of truth** for all database-related types
-- Extract field types from entities using indexed access types
-- NEVER manually type primitives for DB fields - derive from schema
-- Types in constants must reference Drizzle types
+### Constants Pattern
+- Arrays/Objects: use `as const satisfies Type` for literal preservation + validation
+- Primitives: simple assignment, no annotations
 
-### Trust TypeScript Inference (CRITICAL)
-- **NEVER type function return types** - trust inference
-- **Use `as const satisfies` for constant arrays/objects only** - combines literal preservation + type validation
-- **Avoid explicit type annotations on literals** - use satisfies instead
-- Only exception: uninitialized variables or generic parameters
-
-### Constants Pattern (MANDATORY)
-- **Arrays and Objects ONLY** - use `as const satisfies Type`
-- **Primitives (number, string, boolean)** - NO `as const satisfies`, just assign directly
-- Arrays: `[...] as const satisfies Type[]` (no `readonly` needed, `as const` handles it)
-- Objects/Records: `{...} as const satisfies Record<Key, Value>`
-- Numbers/Strings: `const MAX_COUNT = 10` (simple assignment, no `as const`)
-
-### Async/Await & Error Handling (CRITICAL)
-- **Every promise must have error handling** - no unhandled rejections
-- **Backend**: wrap async calls in try/catch, throw with French message and appropriate HTTP status
-- **Frontend**: every mutation/async operation must display errors to user via `getErrorMessage()`
-- **Order matters**: operations that can fail externally must run BEFORE irreversible mutations
-- **User-facing errors**: always in French, always displayed in UI
-- **Never use `void`** for fire-and-forget promises - use `.catch(console.error)` instead
+### Error Handling
+- Every promise must have error handling
+- Operations that can fail must run BEFORE irreversible mutations

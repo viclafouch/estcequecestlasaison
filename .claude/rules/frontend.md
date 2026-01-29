@@ -11,8 +11,9 @@ paths: "**/*.{ts,tsx}"
   - Passing callbacks to heavily memoized child components (`React.memo`)
   - Expensive computations that are measurably slow (profile first)
   - Dependencies in `useEffect` that would cause infinite loops without memoization
-- **Conditional rendering in parent** - never render a component that returns null internally; check condition in parent instead
+- **NEVER return null in child components** - conditional rendering must happen in the parent, not inside the child. If a component might not render, the parent decides whether to render it at all. Child components should always render something when called.
 - **Use functional updates for state derived from previous state** - `setState(prev => !prev)` instead of `setState(!state)`. This avoids bugs with React's batching.
+- **Extract logic into custom hooks** - any useEffect, useState combo, or reusable logic should become a custom hook in `src/hooks/`. Keep components focused on rendering. Hooks go in dedicated files named `use-*.ts`.
 
 ### Libraries
 - ALWAYS use shadcn components instead of raw HTML elements, `<Input>` instead of `<input>`,`<Textarea>` instead of `<textarea>`, etc.

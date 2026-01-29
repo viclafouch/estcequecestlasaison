@@ -1,11 +1,15 @@
 import * as React from 'react'
 import type { ProduceType } from '@estcequecestlasaison/shared'
-import { getCurrentMonth } from '@estcequecestlasaison/shared'
+import {
+  getCurrentMonth,
+  getMonthName,
+  getNextMonth
+} from '@estcequecestlasaison/shared'
 import { createFileRoute } from '@tanstack/react-router'
 import { Header } from '../components/header'
-import { ProduceGrid } from '../components/produce-grid'
+import { ProduceCarousel } from '../components/produce-carousel'
 import { SearchBar } from '../components/search-bar'
-import { getFilteredProduce, getInSeasonCount } from '../helpers/produce'
+import { getGroupedProduce } from '../helpers/produce'
 
 const Home = () => {
   const [activeCategory, setActiveCategory] = React.useState<
@@ -14,14 +18,15 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = React.useState('')
 
   const currentMonth = getCurrentMonth()
+  const nextMonth = getNextMonth(currentMonth)
+  const currentMonthName = getMonthName(currentMonth)
+  const nextMonthName = getMonthName(nextMonth)
 
-  const filteredProduce = getFilteredProduce({
+  const groupedProduce = getGroupedProduce({
     searchQuery,
     category: activeCategory,
     month: currentMonth
   })
-
-  const inSeasonCount = getInSeasonCount(filteredProduce, currentMonth)
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -34,13 +39,32 @@ const Home = () => {
         onSearchChange={setSearchQuery}
         currentMonth={currentMonth}
       />
-      <main className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="mb-8">
-          <h1 className="text-2xl font-semibold text-gray-900">
-            {inSeasonCount} produits de saison
-          </h1>
-        </div>
-        <ProduceGrid produceList={filteredProduce} month={currentMonth} />
+      <main className="mx-auto max-w-7xl space-y-12 px-6 pb-20">
+        {groupedProduce.inSeason.length > 0 ? (
+          <ProduceCarousel
+            title="En pleine saison"
+            subtitle={`Fruits et légumes disponibles en ${currentMonthName}`}
+            produceList={groupedProduce.inSeason}
+            month={currentMonth}
+          />
+        ) : null}
+        {groupedProduce.comingNextMonth.length > 0 ? (
+          <ProduceCarousel
+            title={`Arrive en ${nextMonthName}`}
+            subtitle="Bientôt de saison, à découvrir le mois prochain"
+            produceList={groupedProduce.comingNextMonth}
+            month={nextMonth}
+          />
+        ) : null}
+        {groupedProduce.offSeason.length > 0 ? (
+          <ProduceCarousel
+            title="Hors saison"
+            subtitle="Pas disponibles en ce moment"
+            produceList={groupedProduce.offSeason}
+            month={currentMonth}
+            variant="muted"
+          />
+        ) : null}
       </main>
     </div>
   )

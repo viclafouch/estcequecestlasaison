@@ -19,12 +19,35 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 
 ---
 
+## Structure
+
+| Dossier | Contenu |
+|---------|---------|
+| `src/components/` | Composants UI |
+| `src/hooks/` | Custom hooks (use-*.ts) |
+| `src/helpers/` | Fonctions utilitaires |
+| `src/routes/` | Pages (file-based routing) |
+| `src/styles.css` | Styles globaux + Tailwind |
+
+---
+
 ## Pages
 
 3 pages au total :
-- Page d'accueil (grille produits du mois)
+- Page d'accueil (carousels par mois, style Airbnb)
 - Page produit dynamique (SEO optimisé)
 - Mentions légales
+
+---
+
+## Homepage Layout
+
+3 sections en carousel horizontal (scroll + flèches) :
+1. **En pleine saison** - Produits du mois en cours
+2. **Arrive en [mois]** - Produits du mois prochain
+3. **Hors saison** - Produits ni ce mois ni le prochain (grisé)
+
+Les produits peuvent apparaître dans plusieurs sections (duplications autorisées).
 
 ---
 
@@ -36,6 +59,14 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 - Un fichier par icône (`strawberry.tsx`, `carrot.tsx`, etc.)
 - Type partagé dans `icons/types.ts`
 - Composant `ProduceIcon` avec fallback div vide si icône absente
+
+---
+
+## Custom Hooks
+
+| Hook | Usage |
+|------|-------|
+| `useCarouselScroll` | Logique scroll horizontal avec flèches |
 
 ---
 

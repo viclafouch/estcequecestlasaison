@@ -10,7 +10,8 @@ type ProduceCardProps = {
 
 const SEASON_BADGE_STYLES = {
   peak: 'bg-season-peak text-white',
-  partial: 'bg-season-partial text-gray-900',
+  start: 'bg-season-partial text-gray-900',
+  end: 'bg-season-partial text-gray-900',
   off: 'bg-gray-200 text-gray-600'
 } as const satisfies { [K in ReturnType<typeof getSeasonStatus>]: string }
 

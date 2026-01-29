@@ -1,18 +1,21 @@
-import { getMonth } from 'date-fns'
+import { format, getMonth } from 'date-fns'
+import { fr } from 'date-fns/locale'
 import type { Month, Produce } from '../types'
 
-export type SeasonStatus = 'peak' | 'partial' | 'off'
+export type SeasonStatus = 'peak' | 'start' | 'end' | 'off'
 
 const SEASON_LABELS = {
   peak: 'En pleine saison',
-  partial: 'Début/fin de saison',
+  start: 'Début de saison',
+  end: 'Fin de saison',
   off: 'Hors saison'
 } as const satisfies { [K in SeasonStatus]: string }
 
 const SEASON_PRIORITY = {
   peak: 0,
-  partial: 1,
-  off: 2
+  start: 1,
+  end: 2,
+  off: 3
 } as const satisfies { [K in SeasonStatus]: number }
 
 const ALL_MONTHS = [
@@ -27,18 +30,40 @@ export function getSeasonIntensity(produce: Produce, month: Month) {
   return produce.seasons[month]
 }
 
-export function getSeasonStatus(produce: Produce, month: Month) {
+function getPreviousMonth(month: Month) {
+  return (month === 1 ? 12 : month - 1) as Month
+}
+
+export function getSeasonStatus(produce: Produce, month: Month): SeasonStatus {
   const intensity = getSeasonIntensity(produce, month)
 
+  if (!intensity) {
+    return 'off'
+  }
+
   if (intensity === 'peak') {
-    return 'peak' as const
+    return 'peak'
   }
 
-  if (intensity === 'partial') {
-    return 'partial' as const
+  const prevMonth = getPreviousMonth(month)
+  const nextMonth = getNextMonth(month)
+  const prevIntensity = getSeasonIntensity(produce, prevMonth)
+  const nextIntensity = getSeasonIntensity(produce, nextMonth)
+
+  const wasInSeasonLastMonth =
+    prevIntensity === 'peak' || prevIntensity === 'partial'
+  const willBeInSeasonNextMonth =
+    nextIntensity === 'peak' || nextIntensity === 'partial'
+
+  if (!wasInSeasonLastMonth && willBeInSeasonNextMonth) {
+    return 'start'
   }
 
-  return 'off' as const
+  if (wasInSeasonLastMonth && !willBeInSeasonNextMonth) {
+    return 'end'
+  }
+
+  return 'start'
 }
 
 export function getSeasonLabel(status: SeasonStatus) {
@@ -120,4 +145,55 @@ export function getNextSeasonMonth(produce: Produce, fromMonth: Month) {
   return orderedMonths.find((month) => {
     return month !== fromMonth && matchIsInSeason(produce, month)
   })
+}
+
+export function getNextMonth(month: Month) {
+  return (month === 12 ? 1 : month + 1) as Month
+}
+
+export function getMonthName(month: Month) {
+  const date = new Date(2024, month - 1, 1)
+
+  return format(date, 'MMMM', { locale: fr })
+}
+
+export type GroupProduceBySeasonParams = {
+  produceList: Produce[]
+  currentMonth: Month
+}
+
+export type GroupedProduce = {
+  inSeason: Produce[]
+  comingNextMonth: Produce[]
+  offSeason: Produce[]
+}
+
+export function groupProduceBySeason({
+  produceList,
+  currentMonth
+}: GroupProduceBySeasonParams) {
+  const nextMonth = getNextMonth(currentMonth)
+
+  const inSeason: Produce[] = []
+  const nextMonthSeason: Produce[] = []
+  const offSeason: Produce[] = []
+
+  for (const produce of produceList) {
+    const isCurrentlyInSeason = matchIsInSeason(produce, currentMonth)
+    const isInSeasonNextMonth = matchIsInSeason(produce, nextMonth)
+
+    if (isCurrentlyInSeason) {
+      inSeason.push(produce)
+    }
+
+    if (isInSeasonNextMonth) {
+      nextMonthSeason.push(produce)
+    }
+
+    if (!isCurrentlyInSeason && !isInSeasonNextMonth) {
+      offSeason.push(produce)
+    }
+  }
+
+  return { inSeason, comingNextMonth: nextMonthSeason, offSeason }
 }
