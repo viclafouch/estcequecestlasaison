@@ -153,9 +153,9 @@ estcequecestlasaison/
 
 ## Design
 
-- **Style** : Nature/Organique
-- **Palette** : Verts, terre, beige, marron
-- **Dark mode** : Auto (prefers-color-scheme)
+- **Style** : Clean, inspiré Airbnb
+- **Palette** : Blanc, gris, accent rouge-orange
+- **Theme** : Light uniquement
 - **Responsive** : Mobile-first
 - **Logo** : Texte stylé, pas d'icône
 
@@ -230,7 +230,6 @@ estcequecestlasaison/
 - [ ] Respecter UX (pas trop intrusif)
 
 ### Milestone 7 : Polish & Deploy
-- [ ] Dark mode auto
 - [ ] Animations subtiles
 - [ ] Tests responsive
 - [ ] Configurer Railway

@@ -44,6 +44,7 @@ TOUJOURS lire et respecter ces règles.
 | `comments.md` | Commentaires |
 | `testing.md` | Tests |
 | `git.md` | Git workflow |
+| `documentation.md` | CLAUDE.md + dépendances |
 
 ---
 

@@ -12,7 +12,7 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 | Routing | TanStack Router (file-based) |
 | UI | Tailwind CSS 4, Radix UI, vaul |
 | Styling | clsx, tailwind-merge, cva |
-| Icons | @iconify/react (Emojione) |
+| Icons | SVG inline (emojione via shadcn.io) |
 | Animation | motion (Framer), tw-animate-css |
 | SEO | schema-dts (Schema.org) |
 | Ads | Google AdSense (native ads) |
@@ -25,6 +25,17 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 - Page d'accueil (grille produits du mois)
 - Page produit dynamique (SEO optimisé)
 - Mentions légales
+
+---
+
+## Icônes
+
+Les icônes produits sont des composants SVG inline dans `src/components/icons/`.
+
+- Source : shadcn.io (emojione)
+- Un fichier par icône (`strawberry.tsx`, `carrot.tsx`, etc.)
+- Type partagé dans `icons/types.ts`
+- Composant `ProduceIcon` avec fallback div vide si icône absente
 
 ---
 
@@ -47,9 +58,9 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 
 | Aspect | Valeur |
 |--------|--------|
-| Style | Nature/Organique |
-| Palette | Verts, terre, beige, marron |
-| Dark mode | Auto (prefers-color-scheme) |
+| Style | Clean, inspiré Airbnb |
+| Palette | Blanc, gris, accent rouge-orange |
+| Theme | Light uniquement |
 | Logo | Texte stylé (pas d'icône) |
 | Responsive | Mobile-first |
 

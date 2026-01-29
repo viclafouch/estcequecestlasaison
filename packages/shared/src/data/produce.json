@@ -4,7 +4,7 @@
     "slug": "pomme",
     "name": "Pomme",
     "type": "fruit",
-    "icon": "emojione:red-apple",
+    "icon": "red-apple",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -26,7 +26,7 @@
     "slug": "poire",
     "name": "Poire",
     "type": "fruit",
-    "icon": "emojione:pear",
+    "icon": "pear",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -48,7 +48,7 @@
     "slug": "banane",
     "name": "Banane",
     "type": "fruit",
-    "icon": "emojione:banana",
+    "icon": "banana",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -74,7 +74,7 @@
     "slug": "orange",
     "name": "Orange",
     "type": "fruit",
-    "icon": "emojione:tangerine",
+    "icon": "tangerine",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -94,7 +94,7 @@
     "slug": "citron",
     "name": "Citron",
     "type": "fruit",
-    "icon": "emojione:lemon",
+    "icon": "lemon",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -114,7 +114,7 @@
     "slug": "clementine",
     "name": "Clémentine",
     "type": "fruit",
-    "icon": "emojione:tangerine",
+    "icon": "tangerine",
     "seasons": {
       "1": "peak",
       "2": "partial",
@@ -132,7 +132,7 @@
     "slug": "mandarine",
     "name": "Mandarine",
     "type": "fruit",
-    "icon": "emojione:tangerine",
+    "icon": "tangerine",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -150,7 +150,7 @@
     "slug": "pamplemousse",
     "name": "Pamplemousse",
     "type": "fruit",
-    "icon": "emojione:melon",
+    "icon": "melon",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -169,7 +169,7 @@
     "slug": "fraise",
     "name": "Fraise",
     "type": "fruit",
-    "icon": "emojione:strawberry",
+    "icon": "strawberry",
     "seasons": {
       "4": "partial",
       "5": "peak",
@@ -188,7 +188,7 @@
     "slug": "framboise",
     "name": "Framboise",
     "type": "fruit",
-    "icon": "emojione:grapes",
+    "icon": "grapes",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -206,7 +206,7 @@
     "slug": "myrtille",
     "name": "Myrtille",
     "type": "fruit",
-    "icon": "emojione:grapes",
+    "icon": "grapes",
     "seasons": {
       "7": "peak",
       "8": "peak",
@@ -223,7 +223,7 @@
     "slug": "cassis",
     "name": "Cassis",
     "type": "fruit",
-    "icon": "emojione:grapes",
+    "icon": "grapes",
     "seasons": {
       "7": "peak",
       "8": "peak"
@@ -239,7 +239,7 @@
     "slug": "groseille",
     "name": "Groseille",
     "type": "fruit",
-    "icon": "emojione:grapes",
+    "icon": "grapes",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -256,7 +256,7 @@
     "slug": "mure",
     "name": "Mûre",
     "type": "fruit",
-    "icon": "emojione:grapes",
+    "icon": "grapes",
     "seasons": {
       "8": "peak",
       "9": "peak",
@@ -273,7 +273,7 @@
     "slug": "cerise",
     "name": "Cerise",
     "type": "fruit",
-    "icon": "emojione:cherries",
+    "icon": "cherries",
     "seasons": {
       "5": "partial",
       "6": "peak",
@@ -290,7 +290,7 @@
     "slug": "abricot",
     "name": "Abricot",
     "type": "fruit",
-    "icon": "emojione:peach",
+    "icon": "peach",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -307,7 +307,7 @@
     "slug": "peche",
     "name": "Pêche",
     "type": "fruit",
-    "icon": "emojione:peach",
+    "icon": "peach",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -325,7 +325,7 @@
     "slug": "nectarine",
     "name": "Nectarine",
     "type": "fruit",
-    "icon": "emojione:peach",
+    "icon": "peach",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -343,7 +343,7 @@
     "slug": "prune",
     "name": "Prune",
     "type": "fruit",
-    "icon": "emojione:grapes",
+    "icon": "grapes",
     "seasons": {
       "7": "partial",
       "8": "peak",
@@ -361,7 +361,7 @@
     "slug": "mirabelle",
     "name": "Mirabelle",
     "type": "fruit",
-    "icon": "emojione:peach",
+    "icon": "peach",
     "seasons": {
       "8": "peak",
       "9": "peak"
@@ -377,7 +377,7 @@
     "slug": "raisin",
     "name": "Raisin",
     "type": "fruit",
-    "icon": "emojione:grapes",
+    "icon": "grapes",
     "seasons": {
       "8": "partial",
       "9": "peak",
@@ -395,7 +395,7 @@
     "slug": "melon",
     "name": "Melon",
     "type": "fruit",
-    "icon": "emojione:melon",
+    "icon": "melon",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -413,7 +413,7 @@
     "slug": "pasteque",
     "name": "Pastèque",
     "type": "fruit",
-    "icon": "emojione:watermelon",
+    "icon": "watermelon",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -431,7 +431,7 @@
     "slug": "figue",
     "name": "Figue",
     "type": "fruit",
-    "icon": "emojione:eggplant",
+    "icon": "eggplant",
     "seasons": {
       "7": "partial",
       "8": "peak",
@@ -449,7 +449,7 @@
     "slug": "kiwi",
     "name": "Kiwi",
     "type": "fruit",
-    "icon": "emojione:kiwi-fruit",
+    "icon": "kiwi-fruit",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -469,7 +469,7 @@
     "slug": "grenade",
     "name": "Grenade",
     "type": "fruit",
-    "icon": "emojione:grapes",
+    "icon": "grapes",
     "seasons": {
       "10": "peak",
       "11": "peak",
@@ -486,7 +486,7 @@
     "slug": "chataigne",
     "name": "Châtaigne",
     "type": "fruit",
-    "icon": "emojione:chestnut",
+    "icon": "chestnut",
     "seasons": {
       "10": "peak",
       "11": "peak",
@@ -503,7 +503,7 @@
     "slug": "noix",
     "name": "Noix",
     "type": "fruit",
-    "icon": "emojione:chestnut",
+    "icon": "chestnut",
     "seasons": {
       "9": "partial",
       "10": "peak",
@@ -521,7 +521,7 @@
     "slug": "noisette",
     "name": "Noisette",
     "type": "fruit",
-    "icon": "emojione:chestnut",
+    "icon": "chestnut",
     "seasons": {
       "9": "peak",
       "10": "peak",
@@ -538,7 +538,7 @@
     "slug": "rhubarbe",
     "name": "Rhubarbe",
     "type": "fruit",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "4": "partial",
       "5": "peak",
@@ -556,7 +556,7 @@
     "slug": "carotte",
     "name": "Carotte",
     "type": "vegetable",
-    "icon": "emojione:carrot",
+    "icon": "carrot",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -582,7 +582,7 @@
     "slug": "tomate",
     "name": "Tomate",
     "type": "vegetable",
-    "icon": "emojione:tomato",
+    "icon": "tomato",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -601,7 +601,7 @@
     "slug": "courgette",
     "name": "Courgette",
     "type": "vegetable",
-    "icon": "emojione:cucumber",
+    "icon": "cucumber",
     "seasons": {
       "5": "partial",
       "6": "peak",
@@ -621,7 +621,7 @@
     "slug": "aubergine",
     "name": "Aubergine",
     "type": "vegetable",
-    "icon": "emojione:eggplant",
+    "icon": "eggplant",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -640,7 +640,7 @@
     "slug": "poivron",
     "name": "Poivron",
     "type": "vegetable",
-    "icon": "emojione:hot-pepper",
+    "icon": "hot-pepper",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -659,7 +659,7 @@
     "slug": "concombre",
     "name": "Concombre",
     "type": "vegetable",
-    "icon": "emojione:cucumber",
+    "icon": "cucumber",
     "seasons": {
       "5": "partial",
       "6": "peak",
@@ -679,7 +679,7 @@
     "slug": "haricot-vert",
     "name": "Haricot vert",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -698,7 +698,7 @@
     "slug": "petit-pois",
     "name": "Petit pois",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "4": "partial",
       "5": "peak",
@@ -716,7 +716,7 @@
     "slug": "feve",
     "name": "Fève",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "4": "partial",
       "5": "peak",
@@ -734,7 +734,7 @@
     "slug": "epinard",
     "name": "Épinard",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "3": "partial",
       "4": "peak",
@@ -755,7 +755,7 @@
     "slug": "salade",
     "name": "Salade",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "4": "peak",
       "5": "peak",
@@ -776,7 +776,7 @@
     "slug": "mache",
     "name": "Mâche",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -796,7 +796,7 @@
     "slug": "roquette",
     "name": "Roquette",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "4": "partial",
       "5": "peak",
@@ -817,7 +817,7 @@
     "slug": "cresson",
     "name": "Cresson",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "4": "peak",
       "5": "peak",
@@ -836,7 +836,7 @@
     "slug": "chou-fleur",
     "name": "Chou-fleur",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -858,7 +858,7 @@
     "slug": "brocoli",
     "name": "Brocoli",
     "type": "vegetable",
-    "icon": "emojione:broccoli",
+    "icon": "broccoli",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -878,7 +878,7 @@
     "slug": "chou-vert",
     "name": "Chou vert",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -898,7 +898,7 @@
     "slug": "chou-rouge",
     "name": "Chou rouge",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -919,7 +919,7 @@
     "slug": "chou-de-bruxelles",
     "name": "Chou de Bruxelles",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -938,7 +938,7 @@
     "slug": "chou-chinois",
     "name": "Chou chinois",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -958,7 +958,7 @@
     "slug": "chou-kale",
     "name": "Chou kale",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -977,7 +977,7 @@
     "slug": "poireau",
     "name": "Poireau",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -999,7 +999,7 @@
     "slug": "oignon",
     "name": "Oignon",
     "type": "vegetable",
-    "icon": "emojione:onion",
+    "icon": "onion",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1025,7 +1025,7 @@
     "slug": "echalote",
     "name": "Échalote",
     "type": "vegetable",
-    "icon": "emojione:onion",
+    "icon": "onion",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1045,7 +1045,7 @@
     "slug": "ail",
     "name": "Ail",
     "type": "vegetable",
-    "icon": "emojione:garlic",
+    "icon": "garlic",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1071,7 +1071,7 @@
     "slug": "pomme-de-terre",
     "name": "Pomme de terre",
     "type": "vegetable",
-    "icon": "emojione:potato",
+    "icon": "potato",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1097,7 +1097,7 @@
     "slug": "patate-douce",
     "name": "Patate douce",
     "type": "vegetable",
-    "icon": "emojione:roasted-sweet-potato",
+    "icon": "roasted-sweet-potato",
     "seasons": {
       "9": "partial",
       "10": "peak",
@@ -1115,7 +1115,7 @@
     "slug": "topinambour",
     "name": "Topinambour",
     "type": "vegetable",
-    "icon": "emojione:potato",
+    "icon": "potato",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1134,7 +1134,7 @@
     "slug": "panais",
     "name": "Panais",
     "type": "vegetable",
-    "icon": "emojione:carrot",
+    "icon": "carrot",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1154,7 +1154,7 @@
     "slug": "navet",
     "name": "Navet",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1176,7 +1176,7 @@
     "slug": "radis",
     "name": "Radis",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "3": "partial",
       "4": "peak",
@@ -1195,7 +1195,7 @@
     "slug": "radis-noir",
     "name": "Radis noir",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1213,7 +1213,7 @@
     "slug": "betterave",
     "name": "Betterave",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1234,7 +1234,7 @@
     "slug": "celeri-rave",
     "name": "Céleri-rave",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1254,7 +1254,7 @@
     "slug": "celeri-branche",
     "name": "Céleri branche",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -1274,7 +1274,7 @@
     "slug": "fenouil",
     "name": "Fenouil",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -1294,7 +1294,7 @@
     "slug": "artichaut",
     "name": "Artichaut",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "3": "partial",
       "4": "peak",
@@ -1314,7 +1314,7 @@
     "slug": "asperge",
     "name": "Asperge",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "4": "peak",
       "5": "peak",
@@ -1331,7 +1331,7 @@
     "slug": "endive",
     "name": "Endive",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1352,7 +1352,7 @@
     "slug": "blette",
     "name": "Blette",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "6": "partial",
       "7": "peak",
@@ -1372,7 +1372,7 @@
     "slug": "potiron",
     "name": "Potiron",
     "type": "vegetable",
-    "icon": "emojione:jack-o-lantern",
+    "icon": "jack-o-lantern",
     "seasons": {
       "9": "partial",
       "10": "peak",
@@ -1390,7 +1390,7 @@
     "slug": "potimarron",
     "name": "Potimarron",
     "type": "vegetable",
-    "icon": "emojione:jack-o-lantern",
+    "icon": "jack-o-lantern",
     "seasons": {
       "9": "partial",
       "10": "peak",
@@ -1408,7 +1408,7 @@
     "slug": "butternut",
     "name": "Butternut",
     "type": "vegetable",
-    "icon": "emojione:jack-o-lantern",
+    "icon": "jack-o-lantern",
     "seasons": {
       "9": "partial",
       "10": "peak",
@@ -1426,7 +1426,7 @@
     "slug": "courge-spaghetti",
     "name": "Courge spaghetti",
     "type": "vegetable",
-    "icon": "emojione:jack-o-lantern",
+    "icon": "jack-o-lantern",
     "seasons": {
       "9": "partial",
       "10": "peak",
@@ -1444,7 +1444,7 @@
     "slug": "champignon-de-paris",
     "name": "Champignon de Paris",
     "type": "vegetable",
-    "icon": "emojione:mushroom",
+    "icon": "mushroom",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1470,7 +1470,7 @@
     "slug": "mais",
     "name": "Maïs",
     "type": "vegetable",
-    "icon": "emojione:ear-of-corn",
+    "icon": "ear-of-corn",
     "seasons": {
       "7": "partial",
       "8": "peak",
@@ -1488,7 +1488,7 @@
     "slug": "chou-rave",
     "name": "Chou-rave",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "5": "partial",
       "6": "peak",
@@ -1508,7 +1508,7 @@
     "slug": "salsifis",
     "name": "Salsifis",
     "type": "vegetable",
-    "icon": "emojione:carrot",
+    "icon": "carrot",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1527,7 +1527,7 @@
     "slug": "rutabaga",
     "name": "Rutabaga",
     "type": "vegetable",
-    "icon": "emojione:leafy-green",
+    "icon": "leafy-green",
     "seasons": {
       "1": "peak",
       "2": "peak",
@@ -1547,7 +1547,7 @@
     "slug": "crosne",
     "name": "Crosne",
     "type": "vegetable",
-    "icon": "emojione:potato",
+    "icon": "potato",
     "seasons": {
       "1": "peak",
       "2": "peak",
