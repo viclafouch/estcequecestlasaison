@@ -49,7 +49,7 @@ export const ProduceCarousel = ({
             }}
             disabled={!canScrollLeft}
             aria-label="Défiler vers la gauche"
-            className="flex size-8 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
+            className="btn-icon-sm focus-ring border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
           >
             <ChevronLeft className="size-4" />
           </button>
@@ -60,7 +60,7 @@ export const ProduceCarousel = ({
             }}
             disabled={!canScrollRight}
             aria-label="Défiler vers la droite"
-            className="flex size-8 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
+            className="btn-icon-sm focus-ring border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
           >
             <ChevronRight className="size-4" />
           </button>

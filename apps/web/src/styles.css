@@ -49,3 +49,35 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2;
+}
+
+.focus-ring-inset {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900;
+}
+
+.btn-icon {
+  @apply flex shrink-0 items-center justify-center rounded-full transition-colors;
+}
+
+.btn-icon-sm {
+  @apply flex shrink-0 items-center justify-center rounded-full transition-colors size-8;
+}
+
+.btn-icon-md {
+  @apply flex shrink-0 items-center justify-center rounded-full transition-colors size-10;
+}
+
+.btn-icon-lg {
+  @apply flex shrink-0 items-center justify-center rounded-full transition-colors size-12;
+}
+
+.pill {
+  @apply flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm;
+}
+
+.card-section {
+  @apply flex items-center justify-between rounded-2xl px-4 py-3;
+}

@@ -4,13 +4,11 @@ import {
   filterProduceByType,
   groupProduceBySeason,
   matchIsInSeason,
-  produceData,
   sortProduceBySeason
 } from '@estcequecestlasaison/shared'
+import { PRODUCE_LIST } from '../constants/produce'
 
-const typedProduceData = produceData as Produce[]
-
-const fuseInstance = new Fuse(typedProduceData, {
+const fuseInstance = new Fuse(PRODUCE_LIST, {
   keys: ['name'],
   threshold: 0.3
 })
@@ -30,7 +28,7 @@ function searchAndFilterProduce({
     ? fuseInstance.search(trimmedQuery).map((result) => {
         return result.item
       })
-    : typedProduceData
+    : PRODUCE_LIST
 
   return filterProduceByType({
     produceList: searchedProduce,

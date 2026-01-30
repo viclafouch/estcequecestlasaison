@@ -40,7 +40,7 @@ export const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
                   onClick={() => {
                     return onCategoryChange(tab.type)
                   }}
-                  className={`relative flex flex-col items-center gap-1 px-8 py-4 transition-colors ${
+                  className={`focus-ring relative flex flex-col items-center gap-1 px-8 py-4 transition-colors ${
                     isActive
                       ? 'text-gray-900'
                       : 'text-gray-500 hover:text-gray-900'

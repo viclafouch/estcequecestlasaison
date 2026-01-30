@@ -200,10 +200,16 @@ estcequecestlasaison/
 - [x] Setup Tailwind palette Nature/Organique
 
 ### Milestone 2 : Page d'accueil
-- [ ] Header avec logo texte + recherche
-- [ ] MonthSelector (navigation mois)
-- [ ] ProduceGrid + ProduceCard avec icônes @iconify
-- [ ] FilterToggle (Tous/Fruits/Légumes)
+- [x] Header avec logo texte + filtres catégories
+- [x] SearchBar avec zone mois cliquable
+- [x] ProduceCarousel + ProduceCard avec icônes SVG
+- [x] Filtres (Tous/Fruits/Légumes)
+- [x] **MonthSelector avec Drawer (vaul)**
+  - Trigger : zone mois dans SearchBar (cliquable)
+  - Drawer : navigation ←/→, stats, "arrivent"/"partent"
+  - Mise à jour page à la confirmation uniquement
+  - Même comportement desktop/mobile
+- [x] Helpers shared : `getArrivingProduce`, `getLeavingProduce`, `getMonthStats`
 - [ ] Footer minimaliste
 
 ### Milestone 3 : Pages produits (SEO)

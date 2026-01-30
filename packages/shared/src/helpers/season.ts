@@ -30,7 +30,7 @@ export function getSeasonIntensity(produce: Produce, month: Month) {
   return produce.seasons[month]
 }
 
-function getPreviousMonth(month: Month) {
+export function getPreviousMonth(month: Month) {
   return (month === 1 ? 12 : month - 1) as Month
 }
 
@@ -196,4 +196,77 @@ export function groupProduceBySeason({
   }
 
   return { inSeason, comingNextMonth: nextMonthSeason, offSeason }
+}
+
+export type GetArrivingProduceParams = {
+  produceList: Produce[]
+  month: Month
+}
+
+export function getArrivingProduce({
+  produceList,
+  month
+}: GetArrivingProduceParams) {
+  const previousMonth = getPreviousMonth(month)
+
+  return produceList.filter((produce) => {
+    const wasInSeasonLastMonth = matchIsInSeason(produce, previousMonth)
+    const isInSeasonThisMonth = matchIsInSeason(produce, month)
+
+    return !wasInSeasonLastMonth && isInSeasonThisMonth
+  })
+}
+
+export type GetLeavingProduceParams = {
+  produceList: Produce[]
+  month: Month
+}
+
+export function getLeavingProduce({
+  produceList,
+  month
+}: GetLeavingProduceParams) {
+  const nextMonth = getNextMonth(month)
+
+  return produceList.filter((produce) => {
+    const isInSeasonThisMonth = matchIsInSeason(produce, month)
+    const willBeInSeasonNextMonth = matchIsInSeason(produce, nextMonth)
+
+    return isInSeasonThisMonth && !willBeInSeasonNextMonth
+  })
+}
+
+export type MonthStats = {
+  fruits: number
+  vegetables: number
+  total: number
+  arriving: Produce[]
+  leaving: Produce[]
+}
+
+export type GetMonthStatsParams = {
+  produceList: Produce[]
+  month: Month
+}
+
+export function getMonthStats({ produceList, month }: GetMonthStatsParams) {
+  const inSeason = produceList.filter((produce) => {
+    return matchIsInSeason(produce, month)
+  })
+
+  const fruits = inSeason.filter((produce) => {
+    return produce.type === 'fruit'
+  }).length
+
+  const vegetables = inSeason.filter((produce) => {
+    return produce.type === 'vegetable'
+  }).length
+
+  return {
+    fruits,
+    vegetables,
+    total: fruits + vegetables,
+    arriving: getArrivingProduce({ produceList, month }),
+    leaving: getLeavingProduce({ produceList, month })
+  }
 }

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import type { ProduceType } from '@estcequecestlasaison/shared'
+import type { Month, ProduceType } from '@estcequecestlasaison/shared'
 import {
   getCurrentMonth,
   getMonthName,
@@ -7,8 +7,10 @@ import {
 } from '@estcequecestlasaison/shared'
 import { createFileRoute } from '@tanstack/react-router'
 import { Header } from '../components/header'
+import { MonthDrawer } from '../components/month-drawer'
 import { ProduceCarousel } from '../components/produce-carousel'
 import { SearchBar } from '../components/search-bar'
+import { PRODUCE_LIST } from '../constants/produce'
 import { getGroupedProduce } from '../helpers/produce'
 
 const Home = () => {
@@ -16,16 +18,18 @@ const Home = () => {
     ProduceType | 'all'
   >('all')
   const [searchQuery, setSearchQuery] = React.useState('')
+  const [selectedMonth, setSelectedMonth] =
+    React.useState<Month>(getCurrentMonth)
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
 
-  const currentMonth = getCurrentMonth()
-  const nextMonth = getNextMonth(currentMonth)
-  const currentMonthName = getMonthName(currentMonth)
+  const nextMonth = getNextMonth(selectedMonth)
+  const currentMonthName = getMonthName(selectedMonth)
   const nextMonthName = getMonthName(nextMonth)
 
   const groupedProduce = getGroupedProduce({
     searchQuery,
     category: activeCategory,
-    month: currentMonth
+    month: selectedMonth
   })
 
   return (
@@ -37,7 +41,17 @@ const Home = () => {
       <SearchBar
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
-        currentMonth={currentMonth}
+        currentMonth={selectedMonth}
+        onMonthClick={() => {
+          setIsDrawerOpen(true)
+        }}
+      />
+      <MonthDrawer
+        selectedMonth={selectedMonth}
+        onMonthChange={setSelectedMonth}
+        isOpen={isDrawerOpen}
+        onOpenChange={setIsDrawerOpen}
+        produceList={PRODUCE_LIST}
       />
       <main className="mx-auto max-w-7xl space-y-12 px-6 pb-20">
         {groupedProduce.inSeason.length > 0 ? (
@@ -45,7 +59,7 @@ const Home = () => {
             title="En pleine saison"
             subtitle={`Fruits et légumes disponibles en ${currentMonthName}`}
             produceList={groupedProduce.inSeason}
-            month={currentMonth}
+            month={selectedMonth}
           />
         ) : null}
         {groupedProduce.comingNextMonth.length > 0 ? (
@@ -61,7 +75,7 @@ const Home = () => {
             title="Hors saison"
             subtitle="Pas disponibles en ce moment"
             produceList={groupedProduce.offSeason}
-            month={currentMonth}
+            month={selectedMonth}
             variant="muted"
           />
         ) : null}

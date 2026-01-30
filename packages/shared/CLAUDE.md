@@ -32,6 +32,7 @@ Package partagé entre le web et le mobile.
 |----------|-------------|
 | `getCurrentMonth()` | Mois actuel (1-12) |
 | `getNextMonth(month)` | Mois suivant |
+| `getPreviousMonth(month)` | Mois précédent |
 | `getMonthName(month)` | Nom du mois en français |
 | `getSeasonStatus(produce, month)` | Statut détaillé (peak/start/end/off) |
 | `getSeasonLabel(status)` | Label français du statut |
@@ -40,6 +41,9 @@ Package partagé entre le web et le mobile.
 | `sortProduceBySeason(params)` | Trie par priorité saison |
 | `filterProduceByMonth(params)` | Filtre par mois |
 | `filterProduceByType(params)` | Filtre par type (fruit/vegetable) |
+| `getArrivingProduce(params)` | Produits qui arrivent ce mois (nouveautés) |
+| `getLeavingProduce(params)` | Produits qui partent ce mois (fin de saison) |
+| `getMonthStats(params)` | Stats du mois (fruits, vegetables, arriving, leaving) |
 
 ---
 

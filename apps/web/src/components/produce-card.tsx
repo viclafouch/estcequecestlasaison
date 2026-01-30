@@ -20,7 +20,11 @@ export const ProduceCard = ({ produce, month }: ProduceCardProps) => {
   const label = getSeasonLabel(status)
 
   return (
-    <Link to="/$slug" params={{ slug: produce.slug }} className="flex flex-col">
+    <Link
+      to="/$slug"
+      params={{ slug: produce.slug }}
+      className="focus-ring flex flex-col rounded-2xl"
+    >
       <div className="relative mb-3 overflow-hidden rounded-2xl bg-gray-100">
         <div className="flex aspect-square items-center justify-center p-6">
           {matchIsAvailableIcon(produce.icon) ? (
