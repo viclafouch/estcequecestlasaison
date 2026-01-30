@@ -23,7 +23,7 @@ export const ProduceCard = ({ produce, month }: ProduceCardProps) => {
     <Link
       to="/$slug"
       params={{ slug: produce.slug }}
-      className="focus-ring flex flex-col rounded-2xl"
+      className="focus-ring flex min-w-0 flex-col rounded-2xl"
     >
       <div className="relative mb-3 overflow-hidden rounded-2xl bg-gray-100">
         <div className="flex aspect-square items-center justify-center p-6">
@@ -39,7 +39,7 @@ export const ProduceCard = ({ produce, month }: ProduceCardProps) => {
           {label}
         </span>
       </div>
-      <h3 className="font-semibold text-gray-900">{produce.name}</h3>
+      <h3 className="truncate font-semibold text-gray-900">{produce.name}</h3>
       <p className="text-sm text-gray-500">
         {produce.type === 'fruit' ? 'Fruit' : 'Légume'}
       </p>

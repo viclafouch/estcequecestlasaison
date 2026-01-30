@@ -219,11 +219,13 @@ estcequecestlasaison/
 - [ ] Meta tags SEO optimisés
 - [ ] Structured data (Schema.org)
 
-### Milestone 4 : Recherche
-- [ ] Installer Fuse.js
-- [ ] Hook useSearch dans shared
-- [ ] Intégration Header
-- [ ] Navigation vers pages produits
+### Milestone 4 : Recherche ✅
+- [x] Installer Fuse.js
+- [x] Recherche fuzzy (Fuse.js) intégrée dans helpers/produce
+- [x] Intégration SearchBar dans la page d'accueil
+- [x] Navigation vers pages produits (ProduceCard → /$slug)
+- [x] Debounce recherche (useDebouncedValue, 200ms)
+- [x] Reset scroll carousels sur changement recherche/catégorie/mois
 
 ### Milestone 5 : Bannière App + Mentions légales
 - [ ] AppBanner component (fermeture localStorage)

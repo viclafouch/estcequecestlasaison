@@ -66,7 +66,7 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 
 | Hook | Usage |
 |------|-------|
-| `useCarouselScroll` | Logique scroll horizontal avec flèches |
+| `useCarouselScroll` | Logique scroll horizontal avec flèches + scrollToStart |
 
 ---
 
@@ -80,6 +80,7 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 | `@radix-ui/react-dialog` | Modal accessible pour détails produit |
 | `vaul` | Drawer mobile-friendly |
 | `lucide-react` | Icônes UI (flèches, fermer, menu) |
+| `@tanstack/react-pacer` | Debounce (useDebouncedValue) |
 | `motion` | Animations subtiles (fade, stagger) |
 | `tw-animate-css` | Classes d'animation Tailwind |
 
