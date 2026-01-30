@@ -24,7 +24,7 @@ export const SearchBar = ({
         <button
           type="button"
           onClick={onMonthClick}
-          className="focus-ring-inset flex w-40 items-center gap-3 rounded-l-full border-r border-gray-200 py-3 pl-6 pr-6 transition-colors hover:bg-gray-50"
+          className="focus-ring-inset hidden w-40 items-center gap-3 rounded-l-full border-r border-gray-200 py-3 pl-6 pr-6 transition-colors hover:bg-gray-50 md:flex"
         >
           <ProduceIcon
             name="calendar"
@@ -38,7 +38,7 @@ export const SearchBar = ({
             </span>
           </div>
         </button>
-        <div className="flex-1 px-4">
+        <div className="flex-1 pl-6 pr-4 md:px-4">
           <input
             id="search-produce"
             type="search"

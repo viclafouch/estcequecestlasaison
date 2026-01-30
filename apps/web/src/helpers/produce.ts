@@ -1,9 +1,8 @@
 import Fuse from 'fuse.js'
-import type { Month, Produce, ProduceType } from '@estcequecestlasaison/shared'
+import type { Month, ProduceType } from '@estcequecestlasaison/shared'
 import {
   filterProduceByType,
   groupProduceBySeason,
-  matchIsInSeason,
   sortProduceBySeason
 } from '@estcequecestlasaison/shared'
 import { PRODUCE_LIST } from '../constants/produce'
@@ -34,28 +33,6 @@ function searchAndFilterProduce({
     produceList: searchedProduce,
     type: category
   })
-}
-
-type FilterProduceParams = {
-  searchQuery: string
-  category: ProduceType | 'all'
-  month: Month
-}
-
-export function getFilteredProduce({
-  searchQuery,
-  category,
-  month
-}: FilterProduceParams) {
-  const filteredByType = searchAndFilterProduce({ searchQuery, category })
-
-  return sortProduceBySeason({ produceList: filteredByType, month })
-}
-
-export function getInSeasonCount(produceList: Produce[], month: Month) {
-  return produceList.filter((produce) => {
-    return matchIsInSeason(produce, month)
-  }).length
 }
 
 type GetGroupedProduceParams = {

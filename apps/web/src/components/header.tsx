@@ -25,11 +25,14 @@ export const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="flex h-20 items-center justify-between">
-          <Link to="/" className="text-xl font-bold text-accent">
+        <div className="flex h-16 items-center justify-between md:h-20">
+          <Link
+            to="/"
+            className="hidden text-xl font-bold text-accent md:block"
+          >
             estcequecestlasaison
           </Link>
-          <nav className="flex">
+          <nav className="grid flex-1 grid-cols-3 md:w-96 md:flex-none">
             {CATEGORY_TABS.map((tab) => {
               const isActive = activeCategory === tab.type
 
@@ -40,7 +43,7 @@ export const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
                   onClick={() => {
                     return onCategoryChange(tab.type)
                   }}
-                  className={`focus-ring relative flex flex-col items-center gap-1 px-8 py-4 transition-colors ${
+                  className={`focus-ring relative flex flex-col items-center gap-1 py-3 transition-colors md:py-4 ${
                     isActive
                       ? 'text-gray-900'
                       : 'text-gray-500 hover:text-gray-900'
@@ -51,7 +54,7 @@ export const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
                   {isActive ? (
                     <motion.span
                       layoutId="category-underline"
-                      className="absolute bottom-0 left-4 right-4 h-0.5 rounded-full bg-gray-900"
+                      className="absolute bottom-1 left-6 right-6 h-0.75 rounded-full bg-gray-900 md:left-4 md:right-4 md:h-0.5"
                       transition={{
                         type: 'spring',
                         stiffness: 500,
@@ -63,7 +66,7 @@ export const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
               )
             })}
           </nav>
-          <div className="w-44" />
+          <div className="hidden w-44 md:block" />
         </div>
       </div>
     </header>

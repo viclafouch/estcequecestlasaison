@@ -8,6 +8,7 @@ import {
 import { useDebouncedValue } from '@tanstack/react-pacer'
 import { createFileRoute } from '@tanstack/react-router'
 import { Header } from '../components/header'
+import { MonthBar } from '../components/month-bar'
 import { MonthDrawer } from '../components/month-drawer'
 import { ProduceCarousel } from '../components/produce-carousel'
 import { SearchBar } from '../components/search-bar'
@@ -62,7 +63,7 @@ const Home = () => {
         onOpenChange={setIsDrawerOpen}
         produceList={PRODUCE_LIST}
       />
-      <main className="mx-auto max-w-7xl space-y-12 px-6 pb-20">
+      <main className="mx-auto max-w-7xl space-y-12 px-6 pb-24 md:pb-20">
         {hasResults ? (
           <>
             {groupedProduce.inSeason.length > 0 ? (
@@ -97,7 +98,7 @@ const Home = () => {
         ) : (
           <div className="flex flex-col items-center py-20 text-center">
             <p className="text-lg font-semibold text-gray-900">
-              Aucun produit trouv&eacute;
+              Aucun produit trouvé
             </p>
             <p className="mt-2 text-sm text-gray-500">
               Essayez avec un autre terme de recherche
@@ -105,6 +106,13 @@ const Home = () => {
           </div>
         )}
       </main>
+      <MonthBar
+        selectedMonth={selectedMonth}
+        onMonthChange={setSelectedMonth}
+        onMonthClick={() => {
+          setIsDrawerOpen(true)
+        }}
+      />
     </div>
   )
 }
