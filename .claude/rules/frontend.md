@@ -90,6 +90,12 @@ paths: "**/*.{ts,tsx}"
 - If a value is used more than once, it should be a utility class or CSS variable
 - **Prefer `gap`/`space-y`/`space-x`** over `mt-*`/`mb-*` for spacing between siblings
 
+### Attribute-Driven Styling
+- **Never use dynamic classes for state** — use `aria-*` or `data-*` attributes on the element, then style with Tailwind modifiers (`aria-selected:bg-primary`, `data-active:bg-accent`)
+- **Tailwind `data-*` shorthand** — use `data-foo:` instead of `data-[foo]:` for boolean data attributes. Use bracket syntax `data-[foo=value]:` only when matching a specific value
+- Avoid `cn("bg-muted", isActive && "bg-primary")` — prefer setting an attribute and letting CSS handle the rest
+- **Exceptions**: variant props (size, color), layout changes without a semantic attribute, third-party constraints
+
 ### Hover & Interaction Consistency
 - **No custom hover effects** that don't exist elsewhere on the site
 - **Forbidden hover effects**: `hover:scale-*`, `hover:rotate-*`, `hover:-translate-y-*` (lift effects)

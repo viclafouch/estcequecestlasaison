@@ -43,11 +43,8 @@ export const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
                   onClick={() => {
                     return onCategoryChange(tab.type)
                   }}
-                  className={`focus-ring relative flex flex-col items-center gap-1 py-3 transition-colors md:py-4 ${
-                    isActive
-                      ? 'text-gray-900'
-                      : 'text-gray-500 hover:text-gray-900'
-                  }`}
+                  data-active={isActive || undefined}
+                  className="focus-ring relative flex flex-col items-center gap-1 py-3 text-gray-500 transition-colors hover:text-gray-900 data-active:text-gray-900 md:py-4"
                 >
                   <ProduceIcon name={tab.icon} className="size-7" />
                   <span className="text-xs font-medium">{tab.label}</span>

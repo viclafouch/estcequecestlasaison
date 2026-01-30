@@ -8,13 +8,6 @@ type ProduceCardProps = {
   month: Month
 }
 
-const SEASON_BADGE_STYLES = {
-  peak: 'bg-season-peak text-white',
-  start: 'bg-season-partial text-gray-900',
-  end: 'bg-season-partial text-gray-900',
-  off: 'bg-gray-200 text-gray-600'
-} as const satisfies { [K in ReturnType<typeof getSeasonStatus>]: string }
-
 export const ProduceCard = ({ produce, month }: ProduceCardProps) => {
   const status = getSeasonStatus(produce, month)
   const label = getSeasonLabel(status)
@@ -34,7 +27,8 @@ export const ProduceCard = ({ produce, month }: ProduceCardProps) => {
           )}
         </div>
         <span
-          className={`absolute left-3 top-3 rounded-lg px-2.5 py-1 text-xs font-medium ${SEASON_BADGE_STYLES[status]}`}
+          data-status={status}
+          className="absolute left-3 top-3 rounded-lg px-2.5 py-1 text-xs font-medium data-[status=peak]:bg-season-peak data-[status=peak]:text-white data-[status=start]:bg-season-partial data-[status=start]:text-gray-900 data-[status=end]:bg-season-partial data-[status=end]:text-gray-900 data-[status=off]:bg-gray-200 data-[status=off]:text-gray-600"
         >
           {label}
         </span>

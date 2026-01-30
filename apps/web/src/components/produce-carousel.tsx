@@ -74,9 +74,8 @@ export const ProduceCarousel = ({
           return (
             <div
               key={produce.id}
-              className={`w-36 shrink-0 snap-start sm:w-40 md:w-44 lg:w-48 ${
-                variant === 'muted' ? 'opacity-50 grayscale' : ''
-              }`}
+              data-muted={variant === 'muted' || undefined}
+              className="w-36 shrink-0 snap-start data-muted:opacity-50 data-muted:grayscale sm:w-40 md:w-44 lg:w-48"
             >
               <ProduceCard produce={produce} month={month} />
             </div>
