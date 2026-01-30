@@ -68,7 +68,7 @@ export const ProduceCarousel = ({
       </div>
       <div
         ref={scrollContainerRef}
-        className="scrollbar-hide -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 sm:gap-6"
+        className="scrollbar-hide -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 sm:gap-6"
       >
         {produceList.map((produce) => {
           return (
