@@ -31,9 +31,9 @@
   --color-gray-900: oklch(0.15 0 0);
   --color-gray-950: oklch(0.1 0 0);
 
-  --color-season-peak: oklch(0.7 0.2 145);
-  --color-season-partial: oklch(0.75 0.15 70);
-  --color-season-off: oklch(0.7 0 0);
+  --color-badge-positive: oklch(0.36 0.08 155);
+  --color-badge-warning: oklch(0.45 0.1 55);
+  --color-badge-neutral: oklch(0.45 0 0);
 }
 
 body {

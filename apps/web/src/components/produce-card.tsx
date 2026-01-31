@@ -31,7 +31,7 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
         </div>
         <span
           data-variant={badge.variant}
-          className="absolute left-3 top-3 rounded-lg px-2.5 py-1 text-xs font-medium data-[variant=positive]:bg-season-peak data-[variant=positive]:text-white data-[variant=warning]:bg-season-partial data-[variant=warning]:text-gray-900 data-[variant=neutral]:bg-gray-200 data-[variant=neutral]:text-gray-600"
+          className="absolute left-3 top-3 rounded-full bg-white/80 px-2.5 py-1 text-xs font-medium shadow-sm backdrop-blur-sm data-[variant=positive]:text-badge-positive data-[variant=warning]:text-badge-warning data-[variant=neutral]:text-badge-neutral"
         >
           {badge.label}
         </span>
