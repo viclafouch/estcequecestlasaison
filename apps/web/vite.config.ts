@@ -22,7 +22,7 @@ export default defineConfig({
       projects: ['./tsconfig.json']
     }),
     tailwindcss(),
-    devtools(),
+    devtools({ injectSource: { enabled: false } }),
     tanstackStart(),
     nitro({
       routeRules: {
