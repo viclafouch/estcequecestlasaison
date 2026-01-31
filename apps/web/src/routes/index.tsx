@@ -51,7 +51,7 @@ const Home = () => {
     groupedProduce.offSeason.length > 0
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-hero min-h-screen bg-gray-50">
       <Header
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
