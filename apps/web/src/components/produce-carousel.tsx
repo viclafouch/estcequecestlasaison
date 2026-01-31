@@ -1,5 +1,9 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import type { Month, Produce } from '@estcequecestlasaison/shared'
+import type {
+  Month,
+  Produce,
+  ProduceSection
+} from '@estcequecestlasaison/shared'
 import { useCarouselScroll } from '../hooks/use-carousel-scroll'
 import { ProduceCard } from './produce-card'
 
@@ -8,6 +12,7 @@ type ProduceCarouselProps = {
   subtitle?: string
   produceList: Produce[]
   month: Month
+  section: ProduceSection
   variant?: 'default' | 'muted'
 }
 
@@ -16,6 +21,7 @@ export const ProduceCarousel = ({
   subtitle,
   produceList,
   month,
+  section,
   variant = 'default'
 }: ProduceCarouselProps) => {
   const {
@@ -77,7 +83,7 @@ export const ProduceCarousel = ({
               data-muted={variant === 'muted' || undefined}
               className="w-36 shrink-0 snap-start data-muted:opacity-50 data-muted:grayscale sm:w-40 md:w-44 lg:w-48"
             >
-              <ProduceCard produce={produce} month={month} />
+              <ProduceCard produce={produce} month={month} section={section} />
             </div>
           )
         })}

@@ -8,17 +8,18 @@ import {
 
 type MonthBarProps = {
   selectedMonth: Month
+  currentYear: number
   onMonthChange: (month: Month) => void
   onMonthClick: () => void
 }
 
 export const MonthBar = ({
   selectedMonth,
+  currentYear,
   onMonthChange,
   onMonthClick
 }: MonthBarProps) => {
   const monthName = getMonthName(selectedMonth)
-  const currentYear = new Date().getFullYear()
 
   const handlePreviousMonth = () => {
     onMonthChange(getPreviousMonth(selectedMonth))

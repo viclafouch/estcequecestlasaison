@@ -20,13 +20,18 @@ const Home = () => {
     ProduceType | 'all'
   >('all')
   const [searchQuery, setSearchQuery] = React.useState('')
+  const [currentMonth] = React.useState<Month>(getCurrentMonth)
   const [selectedMonth, setSelectedMonth] =
     React.useState<Month>(getCurrentMonth)
+  const [currentYear] = React.useState(() => {
+    return new Date().getFullYear()
+  })
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
 
   const [debouncedSearch] = useDebouncedValue(searchQuery, { wait: 200 })
   const carouselKey = `${debouncedSearch}-${activeCategory}-${selectedMonth}`
 
+  const isCurrentMonth = selectedMonth === currentMonth
   const nextMonth = getNextMonth(selectedMonth)
   const currentMonthName = getMonthName(selectedMonth)
   const nextMonthName = getMonthName(nextMonth)
@@ -37,9 +42,12 @@ const Home = () => {
     month: selectedMonth
   })
 
+  const showComingNextMonth =
+    isCurrentMonth && groupedProduce.comingNextMonth.length > 0
+
   const hasResults =
     groupedProduce.inSeason.length > 0 ||
-    groupedProduce.comingNextMonth.length > 0 ||
+    showComingNextMonth ||
     groupedProduce.offSeason.length > 0
 
   return (
@@ -73,15 +81,17 @@ const Home = () => {
                 subtitle={`Fruits et légumes disponibles en ${currentMonthName}`}
                 produceList={groupedProduce.inSeason}
                 month={selectedMonth}
+                section="in-season"
               />
             ) : null}
-            {groupedProduce.comingNextMonth.length > 0 ? (
+            {showComingNextMonth ? (
               <ProduceCarousel
                 key={`coming-${carouselKey}`}
-                title={`Arrive en ${nextMonthName}`}
+                title={`Nouveautés en ${nextMonthName}`}
                 subtitle="Bientôt de saison, à découvrir le mois prochain"
                 produceList={groupedProduce.comingNextMonth}
                 month={nextMonth}
+                section="coming-next-month"
               />
             ) : null}
             {groupedProduce.offSeason.length > 0 ? (
@@ -91,6 +101,7 @@ const Home = () => {
                 subtitle="Pas disponibles en ce moment"
                 produceList={groupedProduce.offSeason}
                 month={selectedMonth}
+                section="off-season"
                 variant="muted"
               />
             ) : null}
@@ -108,6 +119,7 @@ const Home = () => {
       </main>
       <MonthBar
         selectedMonth={selectedMonth}
+        currentYear={currentYear}
         onMonthChange={setSelectedMonth}
         onMonthClick={() => {
           setIsDrawerOpen(true)

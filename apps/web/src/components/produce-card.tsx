@@ -1,16 +1,23 @@
-import type { Month, Produce } from '@estcequecestlasaison/shared'
-import { getSeasonLabel, getSeasonStatus } from '@estcequecestlasaison/shared'
+import {
+  getDefaultProduceBadge,
+  getProduceBadge,
+  type Month,
+  type Produce,
+  type ProduceSection
+} from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
 import { matchIsAvailableIcon, ProduceIcon } from './icons'
 
 type ProduceCardProps = {
   produce: Produce
   month: Month
+  section?: ProduceSection
 }
 
-export const ProduceCard = ({ produce, month }: ProduceCardProps) => {
-  const status = getSeasonStatus(produce, month)
-  const label = getSeasonLabel(status)
+export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
+  const badge = section
+    ? getProduceBadge({ produce, month, section })
+    : getDefaultProduceBadge({ produce, month })
 
   return (
     <Link
@@ -27,10 +34,10 @@ export const ProduceCard = ({ produce, month }: ProduceCardProps) => {
           )}
         </div>
         <span
-          data-status={status}
-          className="absolute left-3 top-3 rounded-lg px-2.5 py-1 text-xs font-medium data-[status=peak]:bg-season-peak data-[status=peak]:text-white data-[status=start]:bg-season-partial data-[status=start]:text-gray-900 data-[status=end]:bg-season-partial data-[status=end]:text-gray-900 data-[status=off]:bg-gray-200 data-[status=off]:text-gray-600"
+          data-variant={badge.variant}
+          className="absolute left-3 top-3 rounded-lg px-2.5 py-1 text-xs font-medium data-[variant=positive]:bg-season-peak data-[variant=positive]:text-white data-[variant=warning]:bg-season-partial data-[variant=warning]:text-gray-900 data-[variant=neutral]:bg-gray-200 data-[variant=neutral]:text-gray-600"
         >
-          {label}
+          {badge.label}
         </span>
       </div>
       <h3 className="truncate font-semibold text-gray-900">{produce.name}</h3>

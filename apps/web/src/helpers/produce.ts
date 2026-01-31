@@ -3,7 +3,7 @@ import type { Month, ProduceType } from '@estcequecestlasaison/shared'
 import {
   filterProduceByType,
   groupProduceBySeason,
-  sortProduceBySeason
+  sortProduceBySeasonEnd
 } from '@estcequecestlasaison/shared'
 import { PRODUCE_LIST } from '../constants/produce'
 
@@ -54,7 +54,7 @@ export function getGroupedProduce({
   })
 
   return {
-    inSeason: sortProduceBySeason({ produceList: grouped.inSeason, month }),
+    inSeason: sortProduceBySeasonEnd({ produceList: grouped.inSeason, month }),
     comingNextMonth: grouped.comingNextMonth,
     offSeason: grouped.offSeason
   }
