@@ -102,7 +102,7 @@ const Home = () => {
                 produceList={groupedProduce.offSeason}
                 month={selectedMonth}
                 section="off-season"
-                variant="muted"
+                variant="default"
               />
             ) : null}
           </>
