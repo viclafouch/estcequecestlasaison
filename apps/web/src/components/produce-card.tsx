@@ -6,7 +6,7 @@ import {
   type ProduceSection
 } from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
-import { matchIsAvailableIcon, ProduceIcon } from './icons'
+import { ProduceImage } from './produce-image'
 
 type ProduceCardProps = {
   produce: Produce
@@ -26,12 +26,8 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
       className="focus-ring flex min-w-0 flex-col rounded-2xl"
     >
       <div className="relative mb-3 overflow-hidden rounded-2xl bg-gray-100">
-        <div className="flex aspect-square items-center justify-center p-6">
-          {matchIsAvailableIcon(produce.icon) ? (
-            <ProduceIcon name={produce.icon} className="size-24" />
-          ) : (
-            <div className="size-24" />
-          )}
+        <div className="aspect-square">
+          <ProduceImage produce={produce} />
         </div>
         <span
           data-variant={badge.variant}
