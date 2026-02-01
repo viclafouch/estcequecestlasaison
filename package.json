@@ -1,5 +1,23 @@
 {
   "name": "estcequecestlasaison",
+  "description": "Monorepo for estcequecestlasaison.fr - Seasonal fruits and vegetables in France",
+  "author": "Victor de la Fouchardiere",
+  "license": "UNLICENSED",
+  "keywords": [
+    "seasonal",
+    "fruits",
+    "vegetables",
+    "france",
+    "seasonality"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/viclafouch/estcequecestlasaison.git"
+  },
+  "homepage": "https://estcequecestlasaison.fr",
+  "bugs": {
+    "url": "https://github.com/viclafouch/estcequecestlasaison/issues"
+  },
   "private": true,
   "type": "module",
   "scripts": {

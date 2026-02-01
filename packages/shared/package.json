@@ -1,5 +1,14 @@
 {
   "name": "@estcequecestlasaison/shared",
+  "description": "Shared data, types and helpers for estcequecestlasaison",
+  "author": "Victor de la Fouchardiere",
+  "license": "UNLICENSED",
+  "keywords": [
+    "seasonal",
+    "fruits",
+    "vegetables",
+    "shared"
+  ],
   "private": true,
   "type": "module",
   "main": "./src/index.ts",

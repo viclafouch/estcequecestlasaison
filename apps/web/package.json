@@ -1,5 +1,15 @@
 {
   "name": "@estcequecestlasaison/web",
+  "description": "Web application - estcequecestlasaison.fr",
+  "author": "Victor de la Fouchardiere",
+  "license": "UNLICENSED",
+  "keywords": [
+    "seasonal",
+    "fruits",
+    "vegetables",
+    "web",
+    "ssr"
+  ],
   "private": true,
   "type": "module",
   "scripts": {
