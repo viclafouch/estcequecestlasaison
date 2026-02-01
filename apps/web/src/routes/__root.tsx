@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+import { Footer } from '@/components/footer'
 import { WEBSITE_JSON_LD } from '@/constants/json-ld'
 import { SITE_DOMAIN, SITE_NAME, THEME_COLOR } from '@/constants/site'
 import appCss from '@/styles.css?url'
@@ -24,6 +25,7 @@ const RootDocument = ({ children }: { children: React.ReactNode }) => {
       </head>
       <body>
         {children}
+        <Footer />
         <TanStackDevtools
           config={{ position: 'bottom-right' }}
           plugins={[

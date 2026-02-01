@@ -199,7 +199,7 @@ estcequecestlasaison/
 - [x] Helpers saisonnalité dans shared (avec date-fns)
 - [x] Setup Tailwind palette Nature/Organique
 
-### Milestone 2 : Page d'accueil
+### Milestone 2 : Page d'accueil ✅
 - [x] Header avec logo texte + filtres catégories
 - [x] SearchBar avec zone mois cliquable
 - [x] ProduceCarousel + ProduceCard avec icônes SVG
@@ -210,7 +210,7 @@ estcequecestlasaison/
   - Mise à jour page à la confirmation uniquement
   - Même comportement desktop/mobile
 - [x] Helpers shared : `getArrivingProduce`, `getLeavingProduce`, `getMonthStats`
-- [ ] Footer minimaliste
+- [x] Footer minimaliste
 
 ### Milestone 3 : Pages produits (SEO)
 - [ ] Route dynamique `$slug.tsx`
