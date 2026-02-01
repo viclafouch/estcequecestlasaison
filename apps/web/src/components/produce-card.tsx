@@ -16,6 +16,7 @@ type ProduceCardProps = {
   produce: Produce
   month: Month
   section?: ProduceSection
+  priority?: boolean
 }
 
 const HOVER_TRANSITION = {
@@ -38,7 +39,12 @@ const BADGE_SHADOW_VARIANTS = {
   hover: { boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.1)' }
 } as const satisfies Variants
 
-export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
+export const ProduceCard = ({
+  produce,
+  month,
+  section,
+  priority
+}: ProduceCardProps) => {
   const isReducedMotion = useReducedMotion()
 
   const badge = section
@@ -66,7 +72,11 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
             variants={IMAGE_VARIANTS}
             transition={HOVER_TRANSITION}
           >
-            <ProduceImage produce={produce} />
+            <ProduceImage
+              produce={produce}
+              loading={priority ? 'eager' : 'lazy'}
+              fetchPriority={priority ? 'high' : undefined}
+            />
           </motion.div>
           <motion.span
             data-variant={badge.variant}

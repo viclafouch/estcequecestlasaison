@@ -4,7 +4,7 @@ import sharp from 'sharp'
 
 const INPUT_DIR = './generated-images'
 const OUTPUT_DIR = './apps/web/public/images/produce'
-const SIZES = [256, 512, 1024]
+const SIZES = [256, 512]
 const WEBP_QUALITY = 80
 
 async function matchFileExists(path: string) {
@@ -36,7 +36,9 @@ async function optimizeImages() {
       const outputPath = join(OUTPUT_DIR, `${slug}-${size}w.webp`)
       const isAlreadyOptimized = await matchFileExists(outputPath)
 
-      if (!isAlreadyOptimized) missingSizes.push(size)
+      if (!isAlreadyOptimized) {
+        missingSizes.push(size)
+      }
     }
 
     if (missingSizes.length === 0) {

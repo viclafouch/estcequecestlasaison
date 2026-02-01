@@ -91,6 +91,7 @@ const Home = () => {
                 produceList={groupedProduce.inSeason}
                 month={selectedMonth}
                 section="in-season"
+                priority
               />
             ) : null}
             {showComingNextMonth ? (
@@ -109,7 +110,6 @@ const Home = () => {
                 produceList={groupedProduce.offSeason}
                 month={selectedMonth}
                 section="off-season"
-                variant="default"
               />
             ) : null}
           </>

@@ -10,6 +10,8 @@ import { ProduceCard } from './produce-card'
 import { CountingNumber } from './ui/counting-number'
 import './produce-carousel.css'
 
+const PRIORITY_COUNT = 4
+
 type ProduceCarouselProps = {
   title: string
   subtitle?: string
@@ -17,6 +19,7 @@ type ProduceCarouselProps = {
   month: Month
   section: ProduceSection
   variant?: 'default' | 'muted'
+  priority?: boolean
 }
 
 export const ProduceCarousel = ({
@@ -25,7 +28,8 @@ export const ProduceCarousel = ({
   produceList,
   month,
   section,
-  variant = 'default'
+  variant = 'default',
+  priority
 }: ProduceCarouselProps) => {
   const {
     scrollContainerRef,
@@ -83,7 +87,7 @@ export const ProduceCarousel = ({
         ref={scrollContainerRef}
         className="scrollbar-hide -mx-6 flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-px-6 px-6 sm:gap-3"
       >
-        {produceList.map((produce) => {
+        {produceList.map((produce, index) => {
           return (
             <div
               key={produce.id}
@@ -95,6 +99,7 @@ export const ProduceCarousel = ({
                   produce={produce}
                   month={month}
                   section={section}
+                  priority={priority ? index < PRIORITY_COUNT : undefined}
                 />
               </div>
             </div>
