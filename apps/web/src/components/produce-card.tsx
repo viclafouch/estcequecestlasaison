@@ -1,9 +1,13 @@
+import type { Variants } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
+import type {
+  Month,
+  Produce,
+  ProduceSection
+} from '@estcequecestlasaison/shared'
 import {
   getDefaultProduceBadge,
-  getProduceBadge,
-  type Month,
-  type Produce,
-  type ProduceSection
+  getProduceBadge
 } from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
 import { ProduceImage } from './produce-image'
@@ -14,7 +18,29 @@ type ProduceCardProps = {
   section?: ProduceSection
 }
 
+const HOVER_TRANSITION = {
+  duration: 0.3,
+  ease: [0.4, 0, 0.2, 1]
+} as const
+
+const IMAGE_VARIANTS = {
+  idle: { scale: 1 },
+  hover: { scale: 1.05 }
+} as const satisfies Variants
+
+const CARD_SHADOW_VARIANTS = {
+  idle: { boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)' },
+  hover: { boxShadow: '0 8px 24px -4px rgba(0, 0, 0, 0.12)' }
+} as const satisfies Variants
+
+const BADGE_SHADOW_VARIANTS = {
+  idle: { boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)' },
+  hover: { boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.1)' }
+} as const satisfies Variants
+
 export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
+  const isReducedMotion = useReducedMotion()
+
   const badge = section
     ? getProduceBadge({ produce, month, section })
     : getDefaultProduceBadge({ produce, month })
@@ -23,23 +49,39 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
     <Link
       to="/$slug"
       params={{ slug: produce.slug }}
-      className="focus-ring flex min-w-0 flex-col rounded-2xl"
+      className="focus-ring block min-w-0 rounded-2xl"
     >
-      <div className="relative mb-3 overflow-hidden rounded-2xl bg-gray-100">
-        <div className="aspect-square">
-          <ProduceImage produce={produce} />
-        </div>
-        <span
-          data-variant={badge.variant}
-          className="absolute left-3 top-3 rounded-full bg-white/80 px-2.5 py-1 text-xs font-medium shadow-sm backdrop-blur-sm data-[variant=positive]:text-badge-positive data-[variant=warning]:text-badge-warning data-[variant=neutral]:text-badge-neutral"
+      <motion.div
+        className="flex flex-col"
+        whileHover={isReducedMotion ? undefined : 'hover'}
+        initial="idle"
+      >
+        <motion.div
+          className="relative mb-3 overflow-hidden rounded-2xl bg-gray-100"
+          variants={CARD_SHADOW_VARIANTS}
+          transition={HOVER_TRANSITION}
         >
-          {badge.label}
-        </span>
-      </div>
-      <h3 className="truncate font-semibold text-gray-900">{produce.name}</h3>
-      <p className="text-sm text-gray-500">
-        {produce.type === 'fruit' ? 'Fruit' : 'Légume'}
-      </p>
+          <motion.div
+            className="aspect-square"
+            variants={IMAGE_VARIANTS}
+            transition={HOVER_TRANSITION}
+          >
+            <ProduceImage produce={produce} />
+          </motion.div>
+          <motion.span
+            data-variant={badge.variant}
+            className="absolute left-3 top-3 rounded-full bg-white/80 px-2.5 py-1 text-xs font-medium backdrop-blur-sm data-[variant=positive]:text-badge-positive data-[variant=warning]:text-badge-warning data-[variant=neutral]:text-badge-neutral"
+            variants={BADGE_SHADOW_VARIANTS}
+            transition={HOVER_TRANSITION}
+          >
+            {badge.label}
+          </motion.span>
+        </motion.div>
+        <h3 className="truncate font-semibold text-gray-900">{produce.name}</h3>
+        <p className="text-sm text-gray-500">
+          {produce.type === 'fruit' ? 'Fruit' : 'Légume'}
+        </p>
+      </motion.div>
     </Link>
   )
 }
