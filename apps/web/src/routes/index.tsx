@@ -17,6 +17,12 @@ import {
 import { useDebouncedValue } from '@tanstack/react-pacer'
 import { createFileRoute } from '@tanstack/react-router'
 
+const CATEGORY_SUBTITLE_LABELS = {
+  all: 'Fruits et légumes',
+  fruit: 'Fruits',
+  vegetable: 'Légumes'
+} as const satisfies Record<ProduceType | 'all', string>
+
 const Home = () => {
   const [activeCategory, setActiveCategory] = React.useState<
     ProduceType | 'all'
@@ -33,6 +39,9 @@ const Home = () => {
   const nextMonth = getNextMonth(selectedMonth)
   const currentMonthName = getMonthName(selectedMonth)
   const nextMonthName = getMonthName(nextMonth)
+  const categoryLabel = CATEGORY_SUBTITLE_LABELS[activeCategory]
+  const hasMonthVowelStart = /^[aeiouàâéèêëïîôùûü]/i.test(currentMonthName)
+  const seasonTitle = `En pleine saison d${hasMonthVowelStart ? '\u2019' : 'e '}${currentMonthName}`
 
   // eslint-disable-next-line no-restricted-syntax -- Fuse.js search + filtering is expensive, skip re-run on unrelated state changes (drawer, etc.)
   const groupedProduce = React.useMemo(() => {
@@ -86,8 +95,8 @@ const Home = () => {
           <>
             {groupedProduce.inSeason.length > 0 ? (
               <ProduceCarousel
-                title="En pleine saison"
-                subtitle={`Fruits et légumes disponibles en ${currentMonthName}`}
+                title={seasonTitle}
+                subtitle={`${categoryLabel} disponibles en ${currentMonthName}`}
                 produceList={groupedProduce.inSeason}
                 month={selectedMonth}
                 section="in-season"
