@@ -10,6 +10,7 @@
     "lint:fix": "pnpm -r lint:fix",
     "test": "vitest run",
     "prepare": "husky",
+    "generate-images": "npx tsx --env-file=.env.local scripts/generate-images.ts",
     "optimize-images": "npx tsx scripts/optimize-images.ts"
   },
   "devDependencies": {
