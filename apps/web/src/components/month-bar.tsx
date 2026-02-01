@@ -1,10 +1,12 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { Month } from '@estcequecestlasaison/shared'
-import {
-  getMonthName,
-  getNextMonth,
-  getPreviousMonth
-} from '@estcequecestlasaison/shared'
+import { getMonthName } from '@estcequecestlasaison/shared'
+import { useMonthBarScroll } from '../hooks/use-month-bar-scroll'
+
+const ALL_MONTHS = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+] as const satisfies Month[]
+
+const MONTH_SETS = [0, 1, 2] as const
 
 type MonthBarProps = {
   selectedMonth: Month
@@ -12,48 +14,73 @@ type MonthBarProps = {
   onMonthClick: () => void
 }
 
+const preventFocus = (event: React.MouseEvent) => {
+  event.preventDefault()
+}
+
 export const MonthBar = ({
   selectedMonth,
   onMonthChange,
   onMonthClick
 }: MonthBarProps) => {
-  const monthName = getMonthName(selectedMonth)
-
-  const handlePreviousMonth = () => {
-    onMonthChange(getPreviousMonth(selectedMonth))
-  }
-
-  const handleNextMonth = () => {
-    onMonthChange(getNextMonth(selectedMonth))
-  }
+  const { scrollContainerRef, isReady, handleKeyDown } = useMonthBarScroll({
+    selectedMonth,
+    onMonthChange
+  })
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.06)] md:hidden">
-      <div className="flex h-14 items-center justify-between px-4">
-        <button
-          type="button"
-          onClick={handlePreviousMonth}
-          className="focus-ring flex size-10 items-center justify-center rounded-full transition-colors hover:bg-gray-100"
-          aria-label="Mois précédent"
-        >
-          <ChevronLeft className="size-5 text-gray-600" />
-        </button>
-        <button
-          type="button"
-          onClick={onMonthClick}
-          className="focus-ring rounded-lg px-4 py-1.5 text-base font-semibold capitalize text-gray-900 transition-colors hover:bg-gray-100"
-        >
-          {monthName}
-        </button>
-        <button
-          type="button"
-          onClick={handleNextMonth}
-          className="focus-ring flex size-10 items-center justify-center rounded-full transition-colors hover:bg-gray-100"
-          aria-label="Mois suivant"
-        >
-          <ChevronRight className="size-5 text-gray-600" />
-        </button>
+    <nav
+      data-ready={isReady || undefined}
+      aria-label="Sélection du mois"
+      className="month-bar fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.06)] md:hidden"
+    >
+      <div
+        ref={scrollContainerRef}
+        role="tablist"
+        aria-orientation="horizontal"
+        tabIndex={-1}
+        onKeyDown={handleKeyDown}
+        className="scrollbar-hide flex snap-x snap-mandatory items-center overflow-x-auto"
+      >
+        <div className="month-bar-spacer shrink-0" aria-hidden="true" />
+        {MONTH_SETS.map((setIndex) => {
+          const isCloneSet = setIndex !== 1
+
+          return ALL_MONTHS.map((month) => {
+            const isSelected = month === selectedMonth
+
+            const handleClick = () => {
+              if (isSelected) {
+                onMonthClick()
+              } else {
+                onMonthChange(month)
+              }
+            }
+
+            return (
+              <button
+                key={`${setIndex}-${month}`}
+                type="button"
+                role="tab"
+                data-month={month}
+                data-set={setIndex}
+                data-active={isSelected || undefined}
+                aria-selected={isCloneSet ? undefined : isSelected}
+                aria-hidden={isCloneSet || undefined}
+                tabIndex={isCloneSet || !isSelected ? -1 : 0}
+                onMouseDown={preventFocus}
+                onClick={handleClick}
+                className="month-bar-item focus-ring shrink-0 snap-center"
+              >
+                <span className="month-bar-label capitalize">
+                  {getMonthName(month)}
+                </span>
+              </button>
+            )
+          })
+        })}
+        <div className="month-bar-spacer shrink-0" aria-hidden="true" />
       </div>
-    </div>
+    </nav>
   )
 }

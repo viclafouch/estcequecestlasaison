@@ -65,7 +65,9 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 
 | Hook | Usage |
 |------|-------|
+| `useIsomorphicLayoutEffect` | useLayoutEffect SSR-safe (useEffect côté serveur) |
 | `useCarouselScroll` | Logique scroll horizontal avec flèches + scrollToStart |
+| `useMonthBarScroll` | Scroll snap horizontal du sélecteur de mois (mobile, scroll infini) |
 
 ---
 
