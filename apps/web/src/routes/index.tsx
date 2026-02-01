@@ -24,9 +24,6 @@ const Home = () => {
   const [currentMonth] = React.useState<Month>(getCurrentMonth)
   const [selectedMonth, setSelectedMonth] =
     React.useState<Month>(getCurrentMonth)
-  const [currentYear] = React.useState(() => {
-    return new Date().getFullYear()
-  })
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
 
   const [debouncedSearch] = useDebouncedValue(searchQuery, { wait: 200 })
@@ -131,7 +128,6 @@ const Home = () => {
       </main>
       <MonthBar
         selectedMonth={selectedMonth}
-        currentYear={currentYear}
         onMonthChange={setSelectedMonth}
         onMonthClick={handleOpenDrawer}
       />

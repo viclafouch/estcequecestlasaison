@@ -8,14 +8,12 @@ import {
 
 type MonthBarProps = {
   selectedMonth: Month
-  currentYear: number
   onMonthChange: (month: Month) => void
   onMonthClick: () => void
 }
 
 export const MonthBar = ({
   selectedMonth,
-  currentYear,
   onMonthChange,
   onMonthClick
 }: MonthBarProps) => {
@@ -45,7 +43,7 @@ export const MonthBar = ({
           onClick={onMonthClick}
           className="focus-ring rounded-lg px-4 py-1.5 text-base font-semibold capitalize text-gray-900 transition-colors hover:bg-gray-100"
         >
-          {monthName} {currentYear}
+          {monthName}
         </button>
         <button
           type="button"

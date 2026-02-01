@@ -1,5 +1,6 @@
 /* eslint-disable */
 import * as React from 'react'
+import { cn } from '../../lib/cn'
 import {
   type SpringOptions,
   useInView,
@@ -29,7 +30,7 @@ const CountingNumber = ({
   inViewMargin = '0px',
   inViewOnce = true,
   decimalSeparator = '.',
-  transition = { stiffness: 90, damping: 50 },
+  transition = { stiffness: 500, damping: 50 },
   decimalPlaces = 0,
   className,
   ...props
@@ -102,7 +103,7 @@ const CountingNumber = ({
 
   return (
     <span
-      className={className}
+      className={cn('tabular-nums', className)}
       data-slot="counting-number"
       ref={localRef}
       {...(props as any)}
