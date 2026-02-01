@@ -80,14 +80,14 @@ export const ProduceCarousel = ({
       </div>
       <div
         ref={scrollContainerRef}
-        className="scrollbar-hide -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 sm:gap-6"
+        className="scrollbar-hide -mx-6 flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-px-6 px-6 sm:gap-3"
       >
         {produceList.map((produce) => {
           return (
             <div
               key={produce.id}
               data-muted={variant === 'muted' || undefined}
-              className="w-36 shrink-0 snap-start data-muted:opacity-50 data-muted:grayscale sm:w-40 md:w-44 lg:w-48"
+              className="w-36 max-w-42.5 shrink-0 snap-start data-muted:opacity-50 data-muted:grayscale sm:w-40 md:w-44 lg:w-48"
             >
               <ProduceCard produce={produce} month={month} section={section} />
             </div>

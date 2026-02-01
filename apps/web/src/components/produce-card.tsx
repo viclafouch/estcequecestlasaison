@@ -49,7 +49,7 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
     <Link
       to="/$slug"
       params={{ slug: produce.slug }}
-      className="focus-ring block min-w-0 rounded-2xl"
+      className="focus-ring block min-w-0 rounded-3xl"
     >
       <motion.div
         className="flex flex-col"
@@ -57,7 +57,7 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
         initial="idle"
       >
         <motion.div
-          className="relative mb-3 overflow-hidden rounded-2xl bg-gray-100"
+          className="relative mb-3 overflow-hidden rounded-3xl bg-gray-100"
           variants={CARD_SHADOW_VARIANTS}
           transition={HOVER_TRANSITION}
         >
