@@ -33,10 +33,9 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 
 ## Pages
 
-3 pages au total :
+2 pages au total :
 - Page d'accueil (carousels par mois, style Airbnb)
 - Page produit dynamique (SEO optimisé)
-- Mentions légales
 
 ---
 
@@ -58,7 +57,7 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 - Source : shadcn.io (emojione)
 - Un fichier par icône (`strawberry.tsx`, `carrot.tsx`, etc.)
 - Type partagé dans `icons/types.ts`
-- Composant `ProduceIcon` avec fallback div vide si icône absente
+- Composant `ProduceIcon` qui rend l'icône correspondant au nom fourni (typage strict via `AvailableIconName`)
 
 ---
 
@@ -82,6 +81,7 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 | `lucide-react` | Icônes UI (flèches, fermer, menu) |
 | `@tanstack/react-pacer` | Debounce (useDebouncedValue) |
 | `motion` | Animations subtiles (fade, stagger) |
+| `fuse.js` | Recherche fuzzy sur les produits |
 | `tw-animate-css` | Classes d'animation Tailwind |
 
 ---
@@ -91,7 +91,7 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 | Aspect | Valeur |
 |--------|--------|
 | Style | Clean, inspiré Airbnb |
-| Palette | Blanc, gris, accent rouge-orange |
+| Palette | Blanc, gris, accent vert émeraude |
 | Theme | Light uniquement |
 | Logo | Texte stylé (pas d'icône) |
 | Responsive | Mobile-first |
