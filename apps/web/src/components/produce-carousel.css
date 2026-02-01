@@ -21,12 +21,14 @@
 }
 
 @supports (animation-timeline: view()) {
-  .carousel-card-reveal {
-    animation:
-      carousel-card-enter auto ease-out backwards,
-      carousel-card-exit auto ease-in forwards;
-    animation-timeline: view(inline), view(inline);
-    animation-range: entry, exit;
+  @media (min-width: 700px) {
+    .carousel-card-reveal {
+      animation:
+        carousel-card-enter auto ease-out backwards,
+        carousel-card-exit auto ease-in forwards;
+      animation-timeline: view(inline), view(inline);
+      animation-range: entry, exit;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
