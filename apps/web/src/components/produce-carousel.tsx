@@ -11,6 +11,8 @@ import { CountingNumber } from './ui/counting-number'
 import './produce-carousel.css'
 
 const PRIORITY_COUNT = 4
+const SCROLL_BUTTON_CLASS =
+  'btn-icon-sm focus-ring border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40'
 
 type ProduceCarouselProps = {
   title: string
@@ -33,6 +35,7 @@ export const ProduceCarousel = ({
 }: ProduceCarouselProps) => {
   const {
     scrollContainerRef,
+    hasOverflow,
     canScrollLeft,
     canScrollRight,
     scrollByDirection
@@ -58,30 +61,32 @@ export const ProduceCarousel = ({
             <p className="mt-1 text-sm text-gray-500">{subtitle}</p>
           ) : null}
         </div>
-        <div className="hidden gap-2 md:flex">
-          <button
-            type="button"
-            onClick={() => {
-              return scrollByDirection('left')
-            }}
-            disabled={!canScrollLeft}
-            aria-label="Défiler vers la gauche"
-            className="btn-icon-sm focus-ring border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <ChevronLeft className="size-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              return scrollByDirection('right')
-            }}
-            disabled={!canScrollRight}
-            aria-label="Défiler vers la droite"
-            className="btn-icon-sm focus-ring border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <ChevronRight className="size-4" />
-          </button>
-        </div>
+        {hasOverflow ? (
+          <div className="hidden gap-2 md:flex">
+            <button
+              type="button"
+              onClick={() => {
+                scrollByDirection('left')
+              }}
+              disabled={!canScrollLeft}
+              aria-label="Défiler vers la gauche"
+              className={SCROLL_BUTTON_CLASS}
+            >
+              <ChevronLeft aria-hidden className="size-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                scrollByDirection('right')
+              }}
+              disabled={!canScrollRight}
+              aria-label="Défiler vers la droite"
+              className={SCROLL_BUTTON_CLASS}
+            >
+              <ChevronRight aria-hidden className="size-4" />
+            </button>
+          </div>
+        ) : null}
       </div>
       <div
         ref={scrollContainerRef}

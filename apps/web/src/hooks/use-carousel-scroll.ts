@@ -3,6 +3,8 @@ import * as React from 'react'
 const DEFAULT_GAP = 24
 const DEFAULT_CARD_WIDTH = 200
 
+type ScrollDirection = 'left' | 'right'
+
 type UseCarouselScrollParams = {
   gap?: number
 }
@@ -13,6 +15,7 @@ export function useCarouselScroll({
   const scrollContainerRef = React.useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = React.useState(false)
   const [canScrollRight, setCanScrollRight] = React.useState(false)
+  const [hasOverflow, setHasOverflow] = React.useState(false)
 
   React.useEffect(() => {
     const container = scrollContainerRef.current
@@ -25,6 +28,7 @@ export function useCarouselScroll({
       const { scrollLeft, scrollWidth, clientWidth } = container
       setCanScrollLeft(scrollLeft > 0)
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1)
+      setHasOverflow(scrollWidth > clientWidth)
     }
 
     updateScrollButtons()
@@ -37,7 +41,7 @@ export function useCarouselScroll({
     }
   }, [])
 
-  function scrollByDirection(direction: 'left' | 'right') {
+  const scrollByDirection = (direction: ScrollDirection) => {
     const container = scrollContainerRef.current
 
     if (!container) {
@@ -47,16 +51,17 @@ export function useCarouselScroll({
     const cardWidth =
       container.querySelector('a')?.offsetWidth ?? DEFAULT_CARD_WIDTH
     const scrollAmount = cardWidth + gap
-    const signedAmount = direction === 'left' ? -scrollAmount : scrollAmount
+    const scrollOffset = direction === 'left' ? -scrollAmount : scrollAmount
 
     container.scrollBy({
-      left: signedAmount,
+      left: scrollOffset,
       behavior: 'smooth'
     })
   }
 
   return {
     scrollContainerRef,
+    hasOverflow,
     canScrollLeft,
     canScrollRight,
     scrollByDirection
