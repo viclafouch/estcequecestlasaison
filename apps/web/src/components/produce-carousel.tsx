@@ -8,6 +8,7 @@ import type {
 import { useCarouselScroll } from '../hooks/use-carousel-scroll'
 import { ProduceCard } from './produce-card'
 import { CountingNumber } from './ui/counting-number'
+import './produce-carousel.css'
 
 type ProduceCarouselProps = {
   title: string
@@ -89,7 +90,13 @@ export const ProduceCarousel = ({
               data-muted={variant === 'muted' || undefined}
               className="w-36 max-w-42.5 shrink-0 snap-start data-muted:opacity-50 data-muted:grayscale sm:w-40 md:w-44 lg:w-48"
             >
-              <ProduceCard produce={produce} month={month} section={section} />
+              <div className="carousel-card-reveal">
+                <ProduceCard
+                  produce={produce}
+                  month={month}
+                  section={section}
+                />
+              </div>
             </div>
           )
         })}
