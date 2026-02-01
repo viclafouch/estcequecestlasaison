@@ -12,6 +12,7 @@ import { MonthBar } from '../components/month-bar'
 import { MonthDrawer } from '../components/month-drawer'
 import { ProduceCarousel } from '../components/produce-carousel'
 import { SearchBar } from '../components/search-bar'
+import { SearchDrawer } from '../components/search-drawer'
 import { PRODUCE_LIST } from '../constants/produce'
 import { getGroupedProduce } from '../helpers/produce'
 
@@ -36,11 +37,18 @@ const Home = () => {
   const currentMonthName = getMonthName(selectedMonth)
   const nextMonthName = getMonthName(nextMonth)
 
-  const groupedProduce = getGroupedProduce({
-    searchQuery: debouncedSearch,
-    category: activeCategory,
-    month: selectedMonth
-  })
+  // eslint-disable-next-line no-restricted-syntax -- Fuse.js search + filtering is expensive, skip re-run on unrelated state changes (drawer, etc.)
+  const groupedProduce = React.useMemo(() => {
+    return getGroupedProduce({
+      searchQuery: debouncedSearch,
+      category: activeCategory,
+      month: selectedMonth
+    })
+  }, [debouncedSearch, activeCategory, selectedMonth])
+
+  const handleOpenDrawer = () => {
+    setIsDrawerOpen(true)
+  }
 
   const showComingNextMonth =
     isCurrentMonth && groupedProduce.comingNextMonth.length > 0
@@ -52,6 +60,12 @@ const Home = () => {
 
   return (
     <div className="bg-hero min-h-screen bg-gray-50">
+      <div className="md:hidden">
+        <SearchDrawer
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+        />
+      </div>
       <Header
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
@@ -60,9 +74,7 @@ const Home = () => {
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         currentMonth={selectedMonth}
-        onMonthClick={() => {
-          setIsDrawerOpen(true)
-        }}
+        onMonthClick={handleOpenDrawer}
       />
       <MonthDrawer
         selectedMonth={selectedMonth}
@@ -71,7 +83,8 @@ const Home = () => {
         onOpenChange={setIsDrawerOpen}
         produceList={PRODUCE_LIST}
       />
-      <main className="mx-auto max-w-7xl space-y-12 px-6 pb-24 md:pb-20">
+      <main className="mx-auto max-w-7xl space-y-12 px-6 pt-6 pb-24 md:pt-0 md:pb-20">
+        <h1 className="sr-only">Fruits et legumes de saison</h1>
         {hasResults ? (
           <>
             {groupedProduce.inSeason.length > 0 ? (
@@ -107,7 +120,10 @@ const Home = () => {
             ) : null}
           </>
         ) : (
-          <div className="flex flex-col items-center py-20 text-center">
+          <div
+            role="status"
+            className="flex flex-col items-center py-20 text-center"
+          >
             <p className="text-lg font-semibold text-gray-900">
               Aucun produit trouvé
             </p>
@@ -121,9 +137,7 @@ const Home = () => {
         selectedMonth={selectedMonth}
         currentYear={currentYear}
         onMonthChange={setSelectedMonth}
-        onMonthClick={() => {
-          setIsDrawerOpen(true)
-        }}
+        onMonthClick={handleOpenDrawer}
       />
     </div>
   )

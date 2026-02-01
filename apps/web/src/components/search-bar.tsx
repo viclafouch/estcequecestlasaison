@@ -19,7 +19,7 @@ export const SearchBar = ({
   const monthName = getMonthName(currentMonth)
 
   return (
-    <div className="flex justify-center px-6 py-8">
+    <div className="hidden justify-center px-6 py-8 md:flex">
       <div className="flex w-full max-w-2xl items-center rounded-full border border-gray-200 bg-white shadow-lg transition-shadow hover:shadow-xl">
         <button
           type="button"
