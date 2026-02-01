@@ -237,7 +237,13 @@ estcequecestlasaison/
 - [ ] Native ads dans la grille
 - [ ] Respecter UX (pas trop intrusif)
 
-### Milestone 7 : Polish & Deploy
+### Milestone 7 : SEO & Assets
+- [ ] Générer favicon (16x16, 32x32, 180x180, 192x192, 512x512) + manifest.webmanifest
+- [ ] Créer OG image (`/images/og-image.webp`, 1200x630)
+- [ ] Sitemap dynamique (générer les URLs `/$slug` pour chaque produit)
+- [ ] Supporter le query param `?q=` sur la homepage (SearchAction JSON-LD)
+
+### Milestone 8 : Polish & Deploy
 - [ ] Animations subtiles
 - [ ] Tests responsive
 - [ ] Configurer Railway

@@ -17,6 +17,7 @@ const SECURITY_HEADERS = {
 }
 
 export default defineConfig({
+  envDir: '../../',
   plugins: [
     viteTsConfigPaths({
       projects: ['./tsconfig.json']

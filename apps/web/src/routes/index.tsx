@@ -1,4 +1,13 @@
 import * as React from 'react'
+import { Header } from '@/components/header'
+import { MonthBar } from '@/components/month-bar'
+import { MonthDrawer } from '@/components/month-drawer'
+import { ProduceCarousel } from '@/components/produce-carousel'
+import { SearchBar } from '@/components/search-bar'
+import { SearchDrawer } from '@/components/search-drawer'
+import { PRODUCE_LIST } from '@/constants/produce'
+import { getGroupedProduce } from '@/helpers/produce'
+import { seo } from '@/lib/seo'
 import type { Month, ProduceType } from '@estcequecestlasaison/shared'
 import {
   getCurrentMonth,
@@ -7,14 +16,6 @@ import {
 } from '@estcequecestlasaison/shared'
 import { useDebouncedValue } from '@tanstack/react-pacer'
 import { createFileRoute } from '@tanstack/react-router'
-import { Header } from '../components/header'
-import { MonthBar } from '../components/month-bar'
-import { MonthDrawer } from '../components/month-drawer'
-import { ProduceCarousel } from '../components/produce-carousel'
-import { SearchBar } from '../components/search-bar'
-import { SearchDrawer } from '../components/search-drawer'
-import { PRODUCE_LIST } from '../constants/produce'
-import { getGroupedProduce } from '../helpers/produce'
 
 const Home = () => {
   const [activeCategory, setActiveCategory] = React.useState<
@@ -136,5 +137,15 @@ const Home = () => {
 }
 
 export const Route = createFileRoute('/')({
+  head: () => {
+    return seo({
+      title: 'Fruits et légumes de saison en France',
+      description:
+        'Découvrez quels fruits et légumes sont de saison en France. Calendrier interactif mois par mois pour manger local et de saison toute l\u2019année.',
+      keywords:
+        'fruits de saison, légumes de saison, est-ce que c\u2019est la saison, calendrier fruits et légumes, produits de saison france, manger de saison, fruits et légumes du mois, saison fruits france, saison légumes france, alimentation locale',
+      pathname: '/'
+    })
+  },
   component: Home
 })

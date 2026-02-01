@@ -14,7 +14,8 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 | Styling | clsx, tailwind-merge, cva |
 | Icons | SVG inline (emojione via shadcn.io) |
 | Animation | motion (Framer), tw-animate-css |
-| SEO | schema-dts (Schema.org) |
+| SEO | schema-dts (Schema.org), seo() utility |
+| Env | @t3-oss/env-core + Zod (validation env vars) |
 | Ads | Google AdSense (native ads) |
 
 ---
@@ -27,6 +28,8 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 | `src/hooks/` | Custom hooks (use-*.ts) |
 | `src/helpers/` | Fonctions utilitaires |
 | `src/routes/` | Pages (file-based routing) |
+| `src/constants/env.ts` | Variables d'environnement (validées via @t3-oss/env-core) |
+| `src/lib/seo.ts` | Utilitaire SEO (meta tags, OG, canonical) |
 | `src/styles.css` | Styles globaux + Tailwind |
 
 ---
@@ -109,6 +112,14 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 
 ## SEO
 
-- Meta tags optimisés par page produit
+- Utilitaire `seo()` dans `src/lib/seo.ts` pour générer meta + OG + Twitter + canonical
+- Chaque route définit son `head()` avec `seo()` pour les meta tags
 - Schema.org structured data (schema-dts)
 - SSR pour indexation Google
+- Variable `VITE_SITE_URL` pour les URLs absolues (canonical, OG)
+
+## Environnement
+
+- `VITE_SITE_URL` : URL du site (localhost en dev, domaine en prod)
+- Validé via `@t3-oss/env-core` + Zod dans `src/constants/env.ts`
+- Fichier `.env.local` à la racine du monorepo (Vite `envDir: '../../'`)

@@ -1,4 +1,7 @@
 /// <reference types="vite/client" />
+import { WEBSITE_JSON_LD } from '@/constants/json-ld'
+import { SITE_DOMAIN, SITE_NAME, THEME_COLOR } from '@/constants/site'
+import appCss from '@/styles.css?url'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import {
   createRootRoute,
@@ -7,12 +10,16 @@ import {
   Scripts
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import appCss from '../styles.css?url'
 
 const RootDocument = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="fr">
       <head>
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: WEBSITE_JSON_LD }}
+        />
         <HeadContent />
       </head>
       <body>
@@ -54,10 +61,32 @@ export const Route = createRootRoute({
     return {
       meta: [
         { charSet: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { title: 'TanStack Start Starter' }
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1, viewport-fit=cover'
+        },
+        { name: 'theme-color', content: THEME_COLOR },
+        { name: 'color-scheme', content: 'light' },
+        { name: 'robots', content: 'index,follow,noai,noimageai' },
+        { httpEquiv: 'Content-Language', content: 'fr' },
+        { httpEquiv: 'X-Robots-Tag', content: 'noai,noimageai' },
+        { name: 'application-name', content: SITE_NAME },
+        { name: 'apple-mobile-web-app-title', content: SITE_NAME },
+        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        {
+          name: 'apple-mobile-web-app-status-bar-style',
+          content: 'default'
+        },
+        { name: 'mobile-web-app-capable', content: 'yes' },
+        { name: 'format-detection', content: 'telephone=no' },
+        { name: 'msapplication-TileColor', content: THEME_COLOR },
+        { name: 'author', content: SITE_DOMAIN },
+        { name: 'copyright', content: SITE_DOMAIN }
       ],
-      links: [{ rel: 'stylesheet', href: appCss }]
+      links: [
+        { rel: 'stylesheet', href: appCss },
+        { rel: 'icon', href: '/favicon.ico', sizes: '48x48' }
+      ]
     }
   },
   shellComponent: RootDocument,
