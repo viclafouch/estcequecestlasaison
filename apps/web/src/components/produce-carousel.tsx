@@ -47,7 +47,7 @@ export const ProduceCarousel = ({
             <p className="mt-1 text-sm text-gray-500">{subtitle}</p>
           ) : null}
         </div>
-        <div className="flex gap-2">
+        <div className="hidden gap-2 md:flex">
           <button
             type="button"
             onClick={() => {
