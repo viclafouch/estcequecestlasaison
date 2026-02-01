@@ -30,7 +30,6 @@ const Home = () => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
 
   const [debouncedSearch] = useDebouncedValue(searchQuery, { wait: 200 })
-  const carouselKey = `${debouncedSearch}-${activeCategory}-${selectedMonth}`
 
   const isCurrentMonth = selectedMonth === currentMonth
   const nextMonth = getNextMonth(selectedMonth)
@@ -89,7 +88,6 @@ const Home = () => {
           <>
             {groupedProduce.inSeason.length > 0 ? (
               <ProduceCarousel
-                key={`in-season-${carouselKey}`}
                 title="En pleine saison"
                 subtitle={`Fruits et légumes disponibles en ${currentMonthName}`}
                 produceList={groupedProduce.inSeason}
@@ -99,7 +97,6 @@ const Home = () => {
             ) : null}
             {showComingNextMonth ? (
               <ProduceCarousel
-                key={`coming-${carouselKey}`}
                 title={`Nouveautés en ${nextMonthName}`}
                 subtitle="Bientôt de saison, à découvrir le mois prochain"
                 produceList={groupedProduce.comingNextMonth}
@@ -109,7 +106,6 @@ const Home = () => {
             ) : null}
             {groupedProduce.offSeason.length > 0 ? (
               <ProduceCarousel
-                key={`off-season-${carouselKey}`}
                 title="Hors saison"
                 subtitle="Pas disponibles en ce moment"
                 produceList={groupedProduce.offSeason}

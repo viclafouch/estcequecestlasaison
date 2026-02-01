@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type {
   Month,
@@ -6,6 +7,7 @@ import type {
 } from '@estcequecestlasaison/shared'
 import { useCarouselScroll } from '../hooks/use-carousel-scroll'
 import { ProduceCard } from './produce-card'
+import { CountingNumber } from './ui/counting-number'
 
 type ProduceCarouselProps = {
   title: string
@@ -31,6 +33,10 @@ export const ProduceCarousel = ({
     scrollByDirection
   } = useCarouselScroll()
 
+  React.useEffect(() => {
+    scrollContainerRef.current?.scrollTo({ left: 0, behavior: 'instant' })
+  }, [produceList, scrollContainerRef])
+
   const countLabel = produceList.length === 1 ? 'produit' : 'produits'
 
   return (
@@ -40,7 +46,7 @@ export const ProduceCarousel = ({
           <div className="flex items-baseline gap-3">
             <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
             <span className="text-sm text-gray-500">
-              {produceList.length} {countLabel}
+              <CountingNumber number={produceList.length} /> {countLabel}
             </span>
           </div>
           {subtitle ? (
