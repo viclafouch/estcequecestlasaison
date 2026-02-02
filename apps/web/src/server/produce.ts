@@ -4,6 +4,7 @@ import type { Month } from '@estcequecestlasaison/shared'
 import {
   filterProduceByType,
   getCurrentMonth,
+  getMonthName,
   getMonthStats,
   groupProduceBySeason,
   matchIsInSeason,
@@ -37,6 +38,31 @@ const monthStatsInputSchema = z.object({
 function toProduceIconItem(item: { id: string; name: string; icon: string }) {
   return { id: item.id, name: item.name, icon: item.icon }
 }
+
+function toProduceFooterItem(item: {
+  slug: string
+  name: string
+  icon: string
+}) {
+  return { slug: item.slug, name: item.name, icon: item.icon }
+}
+
+export const getSeasonalFooterData = createServerFn({ method: 'GET' }).handler(
+  async () => {
+    const { PRODUCE_LIST } = await import('./produce-data')
+
+    const currentMonth = getCurrentMonth()
+
+    const seasonalProduce = PRODUCE_LIST.filter((produce) => {
+      return matchIsInSeason(produce, currentMonth)
+    }).map(toProduceFooterItem)
+
+    return {
+      seasonalProduce,
+      monthName: getMonthName(currentMonth)
+    }
+  }
+)
 
 export const getSlugPageData = createServerFn({ method: 'GET' })
   .inputValidator(slugInputSchema)

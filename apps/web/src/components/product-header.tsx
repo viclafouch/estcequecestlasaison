@@ -14,8 +14,17 @@ export const ProductHeader = () => {
           >
             <ChevronLeft aria-hidden="true" className="size-4" />
           </Link>
-          <Link to="/" className="text-xl font-bold text-accent">
-            {SITE_NAME_DISPLAY}
+          <Link to="/" className="focus-ring rounded-sm">
+            <picture>
+              <source srcSet="/logo.webp" type="image/webp" />
+              <img
+                src="/logo.png"
+                alt={SITE_NAME_DISPLAY}
+                width={545}
+                height={196}
+                className="h-14 w-auto"
+              />
+            </picture>
           </Link>
           <div className="size-8" aria-hidden="true" />
         </div>

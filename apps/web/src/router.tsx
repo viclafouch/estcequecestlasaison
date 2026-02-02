@@ -33,7 +33,8 @@ export function getRouter() {
     defaultPendingMs: 1000,
     defaultPendingMinMs: 200,
     notFoundMode: 'fuzzy',
-    defaultViewTransition: true
+    defaultViewTransition: true,
+    scrollRestoration: true
   })
 
   setupRouterSsrQueryIntegration({

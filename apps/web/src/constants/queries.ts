@@ -1,4 +1,8 @@
-import { getGroupedProduceData, getMonthStatsData } from '@/server/produce'
+import {
+  getGroupedProduceData,
+  getMonthStatsData,
+  getSeasonalFooterData
+} from '@/server/produce'
 import type { Month, ProduceType } from '@estcequecestlasaison/shared'
 import { queryOptions } from '@tanstack/react-query'
 
@@ -28,6 +32,15 @@ export function monthStatsOptions(month: Month) {
     queryKey: ['month-stats', month],
     queryFn: () => {
       return getMonthStatsData({ data: { month } })
+    }
+  })
+}
+
+export function seasonalFooterOptions() {
+  return queryOptions({
+    queryKey: ['seasonal-footer'],
+    queryFn: () => {
+      return getSeasonalFooterData()
     }
   })
 }

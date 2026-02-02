@@ -70,7 +70,7 @@ const Home = () => {
 
   return (
     <div className="bg-hero min-h-screen bg-gray-50">
-      <div className="md:hidden">
+      <div className="md:hidden bg-white">
         <SearchDrawer
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}

@@ -2,6 +2,7 @@
 import { Footer } from '@/components/footer'
 import { NotFound } from '@/components/not-found'
 import { WEBSITE_JSON_LD } from '@/constants/json-ld'
+import { seasonalFooterOptions } from '@/constants/queries'
 import { SITE_DOMAIN, SITE_NAME, THEME_COLOR } from '@/constants/site'
 import appCss from '@/styles.css?url'
 import { TanStackDevtools } from '@tanstack/react-devtools'
@@ -61,6 +62,9 @@ const RootError = () => {
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient
 }>()({
+  loader: async ({ context: { queryClient } }) => {
+    await queryClient.ensureQueryData(seasonalFooterOptions())
+  },
   head: () => {
     return {
       meta: [
@@ -88,7 +92,25 @@ export const Route = createRootRouteWithContext<{
       ],
       links: [
         { rel: 'stylesheet', href: appCss },
-        { rel: 'icon', href: '/favicon.ico', sizes: '48x48' }
+        { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '32x32',
+          href: '/favicon-32x32.png'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '16x16',
+          href: '/favicon-16x16.png'
+        },
+        {
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: '/apple-touch-icon.png'
+        },
+        { rel: 'manifest', href: '/site.webmanifest' }
       ]
     }
   },

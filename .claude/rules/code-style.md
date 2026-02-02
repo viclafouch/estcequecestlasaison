@@ -65,6 +65,11 @@ Avoid over-simplification that could:
 - Required properties first, optional last in type definition
 - Destructure directly in function signature, not in body
 
+### Arrow Functions
+- **Always use block body with explicit `return`** — never use implicit returns
+- **Never remove curly braces** from arrow functions
+- This applies to all arrow functions: callbacks, handlers, `.map()`, `.filter()`, etc.
+
 ### Code Structure
 - Functions do one thing well
 - Under 30 lines when possible

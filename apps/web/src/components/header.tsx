@@ -27,11 +27,18 @@ export const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white shadow-sm md:shadow-none">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex h-16 items-center justify-between md:h-20">
-          <Link
-            to="/"
-            className="hidden text-xl font-bold text-accent md:block"
-          >
-            {SITE_NAME_DISPLAY}
+          <Link to="/" className="hidden md:block">
+            <picture>
+              <source srcSet="/logo.webp" type="image/webp" />
+              <img
+                src="/logo.png"
+                alt={SITE_NAME_DISPLAY}
+                width={545}
+                height={196}
+                fetchPriority="high"
+                className="h-14 w-auto"
+              />
+            </picture>
           </Link>
           <nav aria-label="Categories" className="flex-1 md:w-96 md:flex-none">
             <div role="tablist" className="grid grid-cols-3">

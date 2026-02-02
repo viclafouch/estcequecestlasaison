@@ -118,6 +118,23 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 - SSR pour indexation Google
 - Variable `VITE_SITE_URL` pour les URLs absolues (canonical, OG)
 
+## Data Flow
+
+JAMAIS importer `produceData` (le JSON) dans du code client (composants, hooks). Le JSON entier se retrouverait dans le bundle navigateur.
+
+Toute donnée produit transite par des server functions (TanStack Start) :
+- `src/server/produce-data.ts` : importe le JSON (server-only) et crée `PRODUCE_LIST`
+- `src/server/produce.ts` : expose les données via `createServerFn` (RPC)
+- `src/constants/queries.ts` : wraps les server functions en `queryOptions` (TanStack Query)
+- Les routes utilisent `loader` pour précharger via `queryClient.ensureQueryData()`
+- Les composants consomment les données via `useQuery()` / `Route.useLoaderData()`
+
+Pattern : **Server Function** -> **Query Options** -> **Loader (SSR prefetch)** -> **useQuery (client)**
+
+Les server functions ne retournent que les champs nécessaires (slug, name, icon) pour minimiser le payload.
+
+---
+
 ## Environnement
 
 - `VITE_SITE_URL` : URL du site (localhost en dev, domaine en prod)
