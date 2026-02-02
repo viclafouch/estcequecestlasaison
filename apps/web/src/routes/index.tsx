@@ -99,7 +99,10 @@ const Home = () => {
         onOpenChange={setIsDrawerOpen}
         stats={monthStatsQuery.data}
       />
-      <main className="mx-auto max-w-7xl space-y-12 px-6 pt-6 pb-24 md:pt-0 md:pb-20">
+      <main
+        id="main-content"
+        className="mx-auto max-w-7xl space-y-12 px-6 pt-6 pb-24 md:pt-0 md:pb-20"
+      >
         <h1 className="sr-only">Fruits et legumes de saison</h1>
         {hasResults ? (
           <>

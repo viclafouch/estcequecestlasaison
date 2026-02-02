@@ -2,6 +2,8 @@ export type ProduceType = 'fruit' | 'vegetable'
 
 export type SeasonIntensity = 'peak' | 'partial'
 
+export type SeasonStatus = SeasonIntensity | 'off'
+
 export type Month = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 
 export type Seasons = { [K in Month]?: SeasonIntensity }

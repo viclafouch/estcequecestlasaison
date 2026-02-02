@@ -6,5 +6,6 @@ type NavLink = LinkOptions & {
 }
 
 export const HEADER_NAV_LINKS = [
+  { to: '/calendrier', label: 'Calendrier', exact: false },
   { to: '/faq', label: 'FAQ', exact: true }
 ] as const satisfies readonly NavLink[]

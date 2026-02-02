@@ -234,42 +234,214 @@ estcequecestlasaison/
 - [ ] AppBanner component (fermeture localStorage)
 - [ ] Liens stores (placeholders)
 
-### Milestone 6 : Publicités (AdSense) ✅
-- [x] Page /mentions-legales (obligation légale française)
-- [x] Page /politique-de-confidentialite (RGPD + pré-requis AdSense)
-- [x] Bandeau de consentement cookies (RGPD)
-- [x] Intégrer Google AdSense
-- [x] Native ads dans la grille
-- [x] Respecter UX (pas trop intrusif)
+### Milestone 6 : Publicités (AdSense)
+- [ ] Page /mentions-legales (obligation légale française)
+- [ ] Page /politique-de-confidentialite (RGPD + pré-requis AdSense)
+- [ ] Bandeau de consentement cookies (RGPD)
+- [ ] Intégrer Google AdSense
+- [ ] Native ads dans la grille
+- [ ] Respecter UX (pas trop intrusif)
 
-### Milestone 7 : SEO & Assets
+### Milestone 7 : SEO & Assets ✅
 - [x] Générer favicon (16x16, 32x32, 180x180, 192x192, 512x512) + manifest.webmanifest
 - [x] Créer OG images (1200x630, 1 par produit + default)
 - [x] Sitemap dynamique (générer les URLs `/$slug` pour chaque produit)
 - [x] Supporter le query param `?q=` sur la homepage (SearchAction JSON-LD)
 
-### Milestone 8 : Polish & Deploy
+### Milestone 8 : Polish & Deploy ✅
 - [x] Animations subtiles (search drawer, header underline, month bar)
 - [x] Tests responsive
 - [x] Configurer Railway
 - [x] Acheter domaine estcequecestlasaison.fr
 
+---
+
+### Milestone 9 : Page Calendrier Annuel
+
+**Objectif :** Page de reference SEO "calendrier fruits et legumes de saison" avec vue annuelle imprimable.
+
+**Routes (3 routes distinctes via route group layout) :**
+- `/calendrier` - Tous les produits (80, mixed alphabetical A-Z)
+- `/calendrier/fruits` - Fruits uniquement (30)
+- `/calendrier/legumes` - Legumes uniquement (50)
+
+**Structure fichiers :**
+```
+src/routes/calendrier/
+├── _layout.tsx          → CalendarHeader + breadcrumb + print button
+├── index.tsx            → Table "Tous" (80 items)
+├── fruits.tsx           → Table "Fruits" (30 items)
+└── legumes.tsx          → Table "Legumes" (50 items)
+```
+
+**CalendarHeader (nouveau composant) :**
+- Logo (lien vers `/`)
+- Breadcrumb : Accueil > Calendrier > [Fruits|Legumes] (BreadcrumbList schema)
+- Onglets navigation : Tous / Fruits / Legumes (Links vers les 3 routes)
+- Bouton "Imprimer" (window.print())
+- Lien FAQ
+
+**Table calendrier :**
+- Tableau 12 colonnes (Janvier a Decembre) + colonne sticky produit
+- Ligne par produit : icone + nom (lien vers `/$slug`)
+- Toujours depart Janvier (gauche), mois courant surligne (fond distinct)
+- Cellules : dot coloree + label texte ("P" pleine, "D/F" debut/fin, vide hors saison)
+- Tri : `/calendrier` = alphabetique A-Z mixte, `/calendrier/fruits` et `/calendrier/legumes` = alphabetique
+- Mobile : scroll horizontal avec colonne produit sticky a gauche
+
+**Data loading :**
+- Full SSR dans le route loader (80 produits, payload minimal : name, slug, icon, seasons)
+- Pas de nutrition/conservation/origin dans le payload calendrier
+
+**SEO par route :**
+- `/calendrier` : "Calendrier des fruits et legumes de saison en France"
+- `/calendrier/fruits` : "Calendrier des fruits de saison en France"
+- `/calendrier/legumes` : "Calendrier des legumes de saison en France"
+- Structured data : BreadcrumbList + ItemList
+- Ajouter les 3 routes au sitemap (priority 0.8, monthly)
+
+**Impression (@media print) :**
+- Header brande : logo + titre page + date courante
+- Legende couleurs : vert = pleine saison, ambre = debut/fin, gris = hors saison
+- Labels texte dans cellules (P, D/F) pour impression noir et blanc
+- Masquer : navigation, footer, bouton imprimer
+
+**Navigation :**
+- Ajouter lien "Calendrier" dans SiteHeader (a cote de FAQ)
+
+**Taches :**
+- [x] Creer route group `calendrier/` avec `_layout.tsx`
+- [x] Composant `CalendarHeader` (logo, breadcrumb, onglets, print)
+- [x] Composant `CalendarTable` (tableau produits x mois)
+- [x] Server function pour charger les donnees calendrier (minimal payload)
+- [x] Route `/calendrier/index.tsx` avec loader "tous"
+- [x] Route `/calendrier/fruits.tsx` avec loader "fruits"
+- [x] Route `/calendrier/legumes.tsx` avec loader "legumes"
+- [x] SEO : head() avec seo() pour chaque route
+- [x] Structured data : BreadcrumbList + ItemList
+- [x] Ajouter au sitemap (3 URLs)
+- [x] Stylesheet @media print (header brande + legende + labels texte)
+- [x] Ajouter lien "Calendrier" dans SiteHeader
+- [ ] Tests responsive (mobile scroll horizontal, desktop full grid)
+
+---
+
+### Milestone 10 : Alternatives Hors Saison
+
+**Objectif :** Quand un produit est hors saison, suggerer des alternatives de la meme categorie actuellement en saison.
+
+**Logique :**
+- Afficher uniquement quand le produit est hors saison pour le mois courant
+- Selectionner les 3 premiers produits (tri alphabetique) de la meme categorie (fruit/legume) qui sont en saison (peak ou partial)
+- Deterministe : toujours les memes 3 pour un produit donne a un mois donne (alphabetique = pas de random)
+- Si moins de 3 alternatives disponibles, afficher ce qu'il y a
+
+**UI :**
+- Position : inline dans la section hero, sous le badge "Hors saison"
+- Label : "Essayez plutot" suivi de chips/pills cliquables
+- Chips : icone produit (16px) + nom, fond leger, coins arrondis
+- Liens vers `/$slug` de chaque alternative
+- Centrage mobile, alignement gauche desktop (coherent avec la page produit)
+
+**Implementation :**
+- Nouvelle server function ou extension de `getSlugPageData` pour retourner les alternatives
+- Helper shared : `getSeasonAlternatives({ produce, month, allProduce })` retourne `Produce[]`
+- Composant `SeasonAlternatives` avec les chips
+
+**Taches :**
+- [ ] Helper shared `getSeasonAlternatives` (meme categorie, en saison, tri alpha, limit 3)
+- [ ] Etendre `getSlugPageData` pour inclure les alternatives
+- [ ] Composant `SeasonAlternatives` (chips/pills avec icone + nom)
+- [ ] Integrer dans `$slug.tsx` sous le badge hors saison
+- [ ] Ne pas afficher si le produit est en saison
+
+---
+
+### Milestone 11 : Bouton Partage (Mobile)
+
+**Objectif :** Permettre le partage d'une fiche produit via le Web Share API sur mobile.
+
+**Placement :**
+- Bouton icone (share arrow) a cote du H1 nom du produit
+- Mobile uniquement (masque sur `md:` et au-dessus)
+- Petit format, discret, ne casse pas la hierarchie visuelle
+
+**Comportement :**
+- Utilise `navigator.share()` (Web Share API)
+- Fallback : si Web Share API non supportee, bouton masque (pas de fallback desktop)
+- Detection via `typeof navigator.share === 'function'`
+
+**Donnees partagees :**
+- `title` : nom du produit (ex: "Pomme")
+- `text` : ton conversationnel, genere dynamiquement selon le statut saison
+  - En saison : "Savais-tu que la pomme est de saison en ce moment ? Decouvre les fruits et legumes de saison sur estcequecestlasaison.fr"
+  - Hors saison : "Decouvre quand commence la saison de la pomme sur estcequecestlasaison.fr"
+- `url` : URL canonique de la page produit
+
+**Taches :**
+- [ ] Composant `ShareButton` (icone, mobile-only, detection Web Share API)
+- [ ] Helper `getShareText({ produce, month })` pour generer le texte conversationnel
+- [ ] Integrer dans `$slug.tsx` a cote du H1
+- [ ] Tester sur mobile (iOS Safari, Chrome Android)
+
+---
+
+### Milestone 12 : Tagline Homepage (Desktop)
+
+**Objectif :** Ajouter une tagline visible sur la homepage pour les visiteurs desktop, ameliorant la comprehension immediate du site.
+
+**Specification :**
+- Texte : "Decouvrez les fruits et legumes de saison en France"
+- Position : sous la SearchBar, au-dessus du premier carousel
+- Visible uniquement sur `md:` et au-dessus (masque sur mobile)
+- Remplace le `<h1 className="sr-only">` actuel sur desktop (le sr-only reste pour mobile)
+- Style : texte gris-600, taille base, centre ou aligne selon le layout
+
+**Taches :**
+- [ ] Modifier `index.tsx` : H1 visible sur md+, sr-only sur mobile
+- [ ] Style coherent avec le design existant
+
+---
+
 ### Phase 2 : App Mobile
 - [ ] Setup Expo
-- [ ] Écrans principaux
-- [ ] Offline avec données embarquées
-- [ ] Système de notifications saison
+- [ ] Ecrans principaux
+- [ ] Offline avec donnees embarquees
+- [ ] Systeme de notifications saison
 - [ ] Publication App Store
 - [ ] Publication Google Play
 
 ---
 
+## Ordre de priorite (Sprint UX)
+
+1. **Milestone 9** : Page Calendrier (plus gros impact SEO + feature manquante critique)
+2. **Milestone 10** : Alternatives Hors Saison (ameliore l'UX pages produit)
+3. **Milestone 11** : Bouton Partage (viralite mobile)
+4. **Milestone 12** : Tagline Homepage (quick win desktop)
+5. **Milestone 6** : AdSense + pages legales (apres avoir du trafic a monetiser)
+6. **Milestone 5** : Banniere App (quand l'app mobile approche)
+
+---
+
+## Differe (decisions documentees)
+
+| Feature | Raison du report |
+|---------|-----------------|
+| Search typeahead/autocomplete | La recherche filtre deja les carousels en temps reel, le typeahead n'ajoute pas assez de valeur |
+| Newsletter / email capture | Necessite un service tiers + creation de contenu mensuel, reporter apres lancement app |
+| Shopping list (liste de courses) | Nice-to-have, pas dans le scope actuel |
+| Analytics | Pas de tracking, utiliser Search Console pour les donnees de base |
+| Dark mode | Pas prioritaire, le theme light est coherent |
+| Filtres avances (vitamines, calories) | Le dataset ne le justifie pas encore |
+| PWA / service worker | Pont vers l'app mobile, a faire quand Phase 2 approche |
+
+---
+
 ## Non inclus (hors scope)
 
-- ❌ Authentification
-- ❌ Base de données serveur
-- ❌ Analytics (pour l'instant)
-- ❌ Error tracking (pour l'instant)
-- ❌ Multi-langues
-- ❌ Multi-régions
-- ❌ Backend API
+- Authentification
+- Base de donnees serveur
+- Multi-langues
+- Multi-regions
+- Backend API

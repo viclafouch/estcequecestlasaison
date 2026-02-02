@@ -1,4 +1,5 @@
 import {
+  getCalendarData,
   getGroupedProduceData,
   getMonthStatsData,
   getSeasonalFooterData
@@ -41,6 +42,17 @@ export function seasonalFooterOptions() {
     queryKey: ['seasonal-footer'],
     queryFn: () => {
       return getSeasonalFooterData()
+    }
+  })
+}
+
+type CalendarType = 'all' | ProduceType
+
+export function calendarOptions(type: CalendarType) {
+  return queryOptions({
+    queryKey: ['calendar', type],
+    queryFn: () => {
+      return getCalendarData({ data: { type } })
     }
   })
 }

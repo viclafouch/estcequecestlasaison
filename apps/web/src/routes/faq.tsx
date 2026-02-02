@@ -234,6 +234,7 @@ const FaqPage = () => {
     <div className="min-h-screen bg-gray-50">
       <SiteHeader />
       <main
+        id="main-content"
         itemScope
         itemType="https://schema.org/FAQPage"
         className="mx-auto max-w-3xl px-6 pt-12 pb-24 md:pt-16 md:pb-20"

@@ -1,4 +1,10 @@
-import type { BreadcrumbList, FAQPage, Thing, WithContext } from 'schema-dts'
+import type {
+  BreadcrumbList,
+  FAQPage,
+  ItemList,
+  Thing,
+  WithContext
+} from 'schema-dts'
 import { clientEnv } from '@/constants/env'
 import { SITE_NAME } from '@/constants/site'
 import type { Month, Produce } from '@estcequecestlasaison/shared'
@@ -187,6 +193,58 @@ function buildProductThing(produce: Produce): WithContext<Thing> {
     url: buildUrl(`/${produce.slug}`),
     image: buildUrl(`/images/produce/${produce.slug}-512w.webp`)
   }
+}
+
+type BreadcrumbItem = {
+  name: string
+  pathname: string
+}
+
+export function calendarBreadcrumbJsonLd(items: BreadcrumbItem[]) {
+  const breadcrumb: WithContext<BreadcrumbList> = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => {
+      return {
+        '@type': 'ListItem' as const,
+        position: index + 1,
+        name: item.name,
+        item: buildUrl(item.pathname)
+      }
+    })
+  }
+
+  return JSON.stringify(breadcrumb)
+}
+
+type CalendarItemListParams = {
+  items: Pick<Produce, 'slug' | 'name'>[]
+  listName: string
+  pathname: string
+}
+
+export function calendarItemListJsonLd({
+  items,
+  listName,
+  pathname
+}: CalendarItemListParams) {
+  const itemList: WithContext<ItemList> = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: listName,
+    url: buildUrl(pathname),
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => {
+      return {
+        '@type': 'ListItem' as const,
+        position: index + 1,
+        name: item.name,
+        url: buildUrl(`/${item.slug}`)
+      }
+    })
+  }
+
+  return JSON.stringify(itemList)
 }
 
 export function produceJsonLd({ produce, month }: ProduceSeoParams) {

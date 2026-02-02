@@ -5,6 +5,7 @@ import { ProduceCarousel } from '@/components/produce-carousel'
 import { ProduceImage } from '@/components/produce-image'
 import { SeasonCalendar } from '@/components/season-calendar'
 import { SiteHeader } from '@/components/site-header'
+import { BADGE_VARIANT_TO_SEASON, SEASON_DOT_STYLES } from '@/constants/season'
 import { produceSeo } from '@/lib/seo'
 import { getSlugPageData } from '@/server/produce'
 import type {
@@ -15,6 +16,7 @@ import type {
 } from '@estcequecestlasaison/shared'
 import {
   getDefaultProduceBadge,
+  getPreviousMonth,
   matchIsInSeason,
   matchIsInSeasonAllYear
 } from '@estcequecestlasaison/shared'
@@ -45,9 +47,23 @@ function getSeasonDisplay({
     }
   }
 
-  if (matchIsInSeason(produce, month)) {
+  const intensity = produce.seasons[month]
+
+  if (intensity === 'peak') {
     return {
-      label: 'En saison',
+      label: 'En pleine saison',
+      detail: badge.label,
+      variant: badge.variant
+    }
+  }
+
+  if (intensity === 'partial') {
+    const previousMonth = getPreviousMonth(month)
+    const wasInSeasonLastMonth = matchIsInSeason(produce, previousMonth)
+    const label = wasInSeasonLastMonth ? 'Fin de saison' : 'Début de saison'
+
+    return {
+      label,
       detail: badge.label,
       variant: badge.variant
     }
@@ -86,7 +102,10 @@ const ProductPage = () => {
           />
         )
       })}
-      <main className="mx-auto max-w-7xl space-y-12 px-6 pt-8 pb-24 md:pt-12 md:pb-20">
+      <main
+        id="main-content"
+        className="mx-auto max-w-7xl space-y-12 px-6 pt-8 pb-24 md:pt-12 md:pb-20"
+      >
         <section className="flex flex-col gap-6 md:grid md:grid-cols-[1fr_2fr] md:items-stretch md:gap-12">
           <div className="size-40 self-center overflow-hidden rounded-3xl bg-gray-100 md:size-auto md:self-stretch">
             <ProduceImage
@@ -104,13 +123,12 @@ const ProductPage = () => {
               </h1>
               <p className="text-sm text-gray-500">{typeLabel}</p>
             </div>
-            <div className="flex items-center justify-center gap-2 md:justify-start">
+            <div className="flex items-center justify-center gap-2.5 md:justify-start">
               <span
-                data-variant={seasonDisplay.variant}
-                className="size-2.5 rounded-full data-[variant=positive]:bg-primary-500 data-[variant=warning]:bg-amber-400 data-[variant=neutral]:bg-gray-300"
+                className={`size-3 ${SEASON_DOT_STYLES[BADGE_VARIANT_TO_SEASON[seasonDisplay.variant]].className}`}
                 aria-hidden="true"
               />
-              <span className="text-sm font-semibold text-gray-900">
+              <span className="text-lg font-bold text-gray-900">
                 {seasonDisplay.label}
               </span>
               {seasonDisplay.detail ? (
@@ -120,7 +138,7 @@ const ProductPage = () => {
                   </span>
                   <span
                     data-variant={seasonDisplay.variant}
-                    className="text-sm data-[variant=positive]:text-primary-700 data-[variant=warning]:text-amber-600 data-[variant=neutral]:text-gray-500"
+                    className="text-base font-medium data-[variant=positive]:text-primary-700 data-[variant=warning]:text-warning-600 data-[variant=neutral]:text-gray-500"
                   >
                     {seasonDisplay.detail}
                   </span>

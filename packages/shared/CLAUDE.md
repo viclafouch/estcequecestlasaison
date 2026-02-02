@@ -20,6 +20,7 @@ Package partagé entre le web et le mobile.
 |------|-------------|
 | `ProduceType` | 'fruit' ou 'vegetable' |
 | `SeasonIntensity` | 'peak' ou 'partial' (données JSON) |
+| `SeasonStatus` | SeasonIntensity ou 'off' (état résolu d'un mois) |
 | `ProduceSection` | 'in-season', 'coming-next-month', 'off-season' (section d'affichage) |
 | `BadgeVariant` | 'positive', 'warning', 'neutral' (style du badge) |
 | `ProduceBadge` | Objet { label, variant } pour l'affichage contextuel |
@@ -36,6 +37,7 @@ Package partagé entre le web et le mobile.
 | `getNextMonth(month)` | Mois suivant |
 | `getPreviousMonth(month)` | Mois précédent |
 | `getMonthName(month)` | Nom du mois en français |
+| `getShortMonthName(month)` | Nom du mois abrégé (3 caractères) |
 | `matchIsInSeason(produce, month)` | Boolean si en saison |
 | `matchIsInSeasonAllYear(produce)` | Boolean si en saison les 12 mois |
 | `filterProduceByType(params)` | Filtre par type (fruit/vegetable) |
@@ -48,6 +50,7 @@ Package partagé entre le web et le mobile.
 | `getSeasonRangeLabel(produce)` | Label des plages de saison ("Juin à Août", "Mars") |
 | `getProduceBadge(params)` | Badge contextuel { label, variant } selon la section |
 | `getDefaultProduceBadge(params)` | Badge par défaut (fallback sans section) |
+| `SEASON_STATUS_LABELS` | Labels humains par statut de saison (peak, partial, off) |
 
 ---
 

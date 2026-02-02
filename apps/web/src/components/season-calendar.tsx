@@ -1,13 +1,12 @@
 import { motion, useReducedMotion } from 'motion/react'
-import type {
-  Month,
-  Produce,
-  SeasonIntensity
-} from '@estcequecestlasaison/shared'
+import { SEASON_DOT_STYLES } from '@/constants/season'
+import type { Month, Produce, SeasonStatus } from '@estcequecestlasaison/shared'
 import {
   ALL_MONTHS,
   getMonthName,
-  getSeasonRangeLabel
+  getSeasonRangeLabel,
+  getShortMonthName,
+  SEASON_STATUS_LABELS
 } from '@estcequecestlasaison/shared'
 
 const STAGGER_DELAY = 0.04
@@ -21,15 +20,9 @@ function getSeasonType(produce: Produce, month: Month) {
   return produce.seasons[month] ?? 'off'
 }
 
-function getShortMonthName(month: Month) {
-  return getMonthName(month).slice(0, 3)
+function getGridDotClassName(seasonType: SeasonStatus) {
+  return `size-2 ${SEASON_DOT_STYLES[seasonType].className}`
 }
-
-const SEASON_TYPE_LABELS = {
-  peak: 'Pleine saison',
-  partial: 'D\u00E9but ou fin de saison',
-  off: 'Hors saison'
-} as const satisfies Record<SeasonIntensity | 'off', string>
 
 export const SeasonCalendar = ({
   produce,
@@ -51,14 +44,14 @@ export const SeasonCalendar = ({
         {ALL_MONTHS.map((month, index) => {
           const seasonType = getSeasonType(produce, month)
           const isCurrent = month === currentMonth
+          const displaySeason = isCurrent ? 'current' : seasonType
 
           return (
             <motion.div
               key={month}
               role="listitem"
-              aria-label={`${getMonthName(month)} - ${SEASON_TYPE_LABELS[seasonType]}`}
-              data-season={seasonType}
-              data-current={isCurrent || undefined}
+              aria-label={`${getMonthName(month)} - ${SEASON_STATUS_LABELS[seasonType]}`}
+              data-season={displaySeason}
               initial={isReducedMotion ? false : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={
@@ -70,17 +63,16 @@ export const SeasonCalendar = ({
                       ease: [0.4, 0, 0.2, 1]
                     }
               }
-              className="flex flex-col items-center gap-1.5 rounded-2xl py-3 transition-colors duration-300 data-[season=peak]:bg-primary-100 data-[season=partial]:bg-amber-100 data-[season=off]:bg-gray-100 data-current:ring-2 data-current:ring-gray-900"
+              className="flex flex-col items-center gap-1.5 rounded-2xl py-3 transition-colors duration-300 data-[season=peak]:bg-primary-100 data-[season=partial]:bg-warning-100 data-[season=off]:bg-gray-100 data-[season=current]:bg-active-50"
             >
               <span
-                data-season={seasonType}
-                className="text-xs font-semibold uppercase transition-colors duration-300 data-[season=peak]:text-primary-700 data-[season=partial]:text-amber-700 data-[season=off]:text-gray-400"
+                data-season={displaySeason}
+                className="text-xs font-semibold uppercase transition-colors duration-300 data-[season=peak]:text-primary-700 data-[season=partial]:text-warning-700 data-[season=off]:text-gray-400 data-[season=current]:text-active-700"
               >
                 {getShortMonthName(month)}
               </span>
               <span
-                data-season={seasonType}
-                className="size-2 rounded-full transition-colors duration-300 data-[season=peak]:bg-primary-500 data-[season=partial]:bg-amber-400 data-[season=off]:bg-gray-300"
+                className={getGridDotClassName(seasonType)}
                 aria-hidden="true"
               />
             </motion.div>
@@ -90,24 +82,30 @@ export const SeasonCalendar = ({
       <div className="mt-4 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
           <span
-            className="size-2.5 rounded-full bg-primary-500"
+            className={`size-2.5 ${SEASON_DOT_STYLES.peak.className}`}
             aria-hidden="true"
           />
-          <span className="text-xs text-gray-500">Pleine saison</span>
+          <span className="text-xs text-gray-500">
+            {SEASON_DOT_STYLES.peak.label}
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <span
-            className="size-2.5 rounded-full bg-amber-400"
+            className={`size-2.5 ${SEASON_DOT_STYLES.partial.className}`}
             aria-hidden="true"
           />
-          <span className="text-xs text-gray-500">Début/fin de saison</span>
+          <span className="text-xs text-gray-500">
+            {SEASON_DOT_STYLES.partial.label}
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <span
-            className="size-2.5 rounded-full bg-gray-300"
+            className={`size-2.5 ${SEASON_DOT_STYLES.off.className}`}
             aria-hidden="true"
           />
-          <span className="text-xs text-gray-500">Hors saison</span>
+          <span className="text-xs text-gray-500">
+            {SEASON_DOT_STYLES.off.label}
+          </span>
         </div>
       </div>
     </section>

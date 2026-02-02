@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { produceJsonLd } from '@/lib/seo'
-import type { Month } from '@estcequecestlasaison/shared'
+import type { Month, Produce } from '@estcequecestlasaison/shared'
 import {
   filterProduceByType,
   getCurrentMonth,
@@ -11,6 +11,10 @@ import {
   sortProduceBySeasonEnd
 } from '@estcequecestlasaison/shared'
 import { createServerFn } from '@tanstack/react-start'
+
+const calendarInputSchema = z.object({
+  type: z.enum(['all', 'fruit', 'vegetable'])
+})
 
 const slugInputSchema = z.object({
   slug: z.string().min(1).trim().toLowerCase()
@@ -35,15 +39,21 @@ const monthStatsInputSchema = z.object({
   month: monthSchema
 })
 
-function toProduceIconItem(item: { id: string; name: string; icon: string }) {
+function toCalendarItem(item: Produce) {
+  return {
+    slug: item.slug,
+    name: item.name,
+    icon: item.icon,
+    type: item.type,
+    seasons: item.seasons
+  }
+}
+
+function toProduceIconItem(item: Pick<Produce, 'id' | 'name' | 'icon'>) {
   return { id: item.id, name: item.name, icon: item.icon }
 }
 
-function toProduceFooterItem(item: {
-  slug: string
-  name: string
-  icon: string
-}) {
+function toProduceFooterItem(item: Pick<Produce, 'slug' | 'name' | 'icon'>) {
   return { slug: item.slug, name: item.name, icon: item.icon }
 }
 
@@ -143,5 +153,27 @@ export const getMonthStatsData = createServerFn({ method: 'GET' })
       total: stats.total,
       arriving: stats.arriving.map(toProduceIconItem),
       leaving: stats.leaving.map(toProduceIconItem)
+    }
+  })
+
+export const getCalendarData = createServerFn({ method: 'GET' })
+  .inputValidator(calendarInputSchema)
+  .handler(async ({ data }) => {
+    const { PRODUCE_LIST } = await import('./produce-data')
+
+    const filtered = filterProduceByType({
+      produceList: PRODUCE_LIST,
+      type: data.type
+    })
+
+    const produceList = filtered
+      .toSorted((left, right) => {
+        return left.name.localeCompare(right.name, 'fr')
+      })
+      .map(toCalendarItem)
+
+    return {
+      produceList,
+      currentMonth: getCurrentMonth()
     }
   })

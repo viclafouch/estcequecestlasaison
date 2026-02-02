@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
-import type { Month, Produce } from '../types'
+import type { Month, Produce, SeasonStatus } from '../types'
 
 function capitalize(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1)
@@ -41,6 +41,16 @@ export function getMonthName(month: Month) {
 
   return format(date, 'MMMM', { locale: fr })
 }
+
+export function getShortMonthName(month: Month) {
+  return getMonthName(month).slice(0, 3)
+}
+
+export const SEASON_STATUS_LABELS = {
+  peak: 'Pleine saison',
+  partial: 'D\u00E9but ou fin de saison',
+  off: 'Hors saison'
+} as const satisfies Record<SeasonStatus, string>
 
 function getSeasonIntensity(produce: Produce, month: Month) {
   return produce.seasons[month]

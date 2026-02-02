@@ -18,7 +18,15 @@
   --color-primary-900: oklch(0.28 0.08 160);
   --color-primary-950: oklch(0.18 0.05 160);
 
-  --color-accent: oklch(0.50 0.16 160);
+  --color-active-50: oklch(0.97 0.01 250);
+  --color-active-100: oklch(0.93 0.04 250);
+  --color-active-500: oklch(0.62 0.21 259);
+  --color-active-700: oklch(0.49 0.22 264);
+
+  --color-warning-100: oklch(0.93 0.08 95);
+  --color-warning-400: oklch(0.82 0.17 80);
+  --color-warning-600: oklch(0.67 0.17 55);
+  --color-warning-700: oklch(0.56 0.15 50);
 
   --color-gray-50: oklch(0.985 0 0);
   --color-gray-100: oklch(0.97 0 0);
@@ -146,11 +154,27 @@ input[type='search']::-webkit-search-cancel-button {
 
 .month-bar-item[data-active] .month-bar-label::after {
   content: '';
-  @apply absolute -bottom-2 left-1/2 size-1 -translate-x-1/2 rounded-full bg-primary-500;
+  @apply absolute -bottom-2 left-1/2 size-1 -translate-x-1/2 rounded-full bg-active-500;
 }
 
 .month-bar-spacer {
   width: calc(50% - var(--month-bar-item-width) / 2);
+}
+
+@media print {
+  body {
+    background: white !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  table {
+    font-size: 10px;
+  }
+
+  table [style] {
+    transform: none !important;
+  }
 }
 
 @media (min-width: 1280px) {

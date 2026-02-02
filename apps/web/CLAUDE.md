@@ -86,6 +86,7 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 | `lucide-react` | Icônes UI (flèches, fermer, menu) |
 | `@tanstack/react-pacer` | Debounce (useDebouncedValue) |
 | `motion` | Animations subtiles (fade, stagger) |
+| `@tanstack/react-table` | Tableau calendrier saisonnalité (colonnes, filtrage global, rendering via flexRender) |
 | `fuse.js` | Recherche fuzzy sur les produits |
 | `tw-animate-css` | Classes d'animation Tailwind |
 
