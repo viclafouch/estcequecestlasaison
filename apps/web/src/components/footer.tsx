@@ -54,7 +54,7 @@ export const Footer = () => {
   const seasonalQuery = useQuery(seasonalFooterOptions())
 
   return (
-    <footer className="border-t border-gray-200 bg-gray-50">
+    <footer className="border-t border-gray-200 bg-white">
       <div className="mx-auto max-w-7xl px-6 py-10 pb-24 md:py-12 md:pb-12">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-4">
