@@ -1,4 +1,4 @@
-const SIZES = [256, 512, 768] as const
+const SIZES = [256, 512] as const
 const DEFAULT_SIZE = 256
 
 export function getProduceImageSrc(slug: string) {
