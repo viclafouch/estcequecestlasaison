@@ -132,7 +132,7 @@ export const CalendarTable = ({
                           <th
                             key={header.id}
                             scope="col"
-                            className="sticky left-0 z-40 w-28 min-w-28 bg-gray-50 py-3 pr-2 pl-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 md:w-auto md:min-w-0 md:pr-4 md:pl-4 print:static"
+                            className="sticky left-0 z-40 w-28 min-w-28 bg-gray-50 py-3 pr-2 pl-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 md:w-auto md:min-w-0 md:px-4 print:static"
                           >
                             {flexRender(
                               header.column.columnDef.header,
@@ -219,7 +219,7 @@ export const CalendarTable = ({
                           <th
                             key={cell.id}
                             scope="row"
-                            className="sticky left-0 z-10 w-28 min-w-28 bg-white py-2 pr-2 pl-3 text-left font-normal shadow-[2px_0_4px_-2px_rgba(0,0,0,0.05)] transition-colors group-hover:bg-gray-50 md:w-auto md:min-w-0 md:py-2.5 md:pr-4 md:pl-4 print:static print:shadow-none"
+                            className="sticky left-0 z-10 w-28 min-w-28 bg-white py-2 pr-2 pl-3 text-left font-normal shadow-[2px_0_4px_-2px_rgba(0,0,0,0.05)] transition-colors group-hover:bg-gray-50 md:w-auto md:min-w-0 md:py-2.5 md:px-4 print:static print:shadow-none"
                           >
                             {flexRender(
                               cell.column.columnDef.cell,

@@ -124,7 +124,7 @@ export const CalendarHeader = () => {
             <button
               type="button"
               onClick={handlePrint}
-              className="focus-ring hidden size-11 shrink-0 items-center justify-center rounded-full text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 md:flex"
+              className="focus-ring btn-icon hidden size-11 text-gray-600 hover:bg-gray-100 hover:text-gray-900 md:flex"
               aria-label="Imprimer le calendrier"
             >
               <Printer className="size-4" aria-hidden="true" />

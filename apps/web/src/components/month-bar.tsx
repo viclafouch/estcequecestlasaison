@@ -32,7 +32,7 @@ export const MonthBar = ({
     <nav
       data-ready={isReady || undefined}
       aria-label="Sélection du mois"
-      className="month-bar fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.06)] md:hidden"
+      className="month-bar fixed inset-x-0 bottom-0 z-50 border-t border-gray-200 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.06)] md:hidden"
     >
       <div
         ref={scrollContainerRef}

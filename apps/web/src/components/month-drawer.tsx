@@ -102,7 +102,7 @@ export const MonthDrawer = ({
     <Drawer.Root open={isOpen} onOpenChange={onOpenChange}>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-50 bg-black/40" />
-        <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 rounded-t-3xl bg-gray-50 focus:outline-none">
+        <Drawer.Content className="fixed inset-x-0 bottom-0 z-50 rounded-t-3xl bg-gray-50 focus:outline-none">
           <div className="mx-auto w-full max-w-lg px-6 pb-6 pt-4">
             <Drawer.Handle className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-gray-300" />
             <Drawer.Description className="sr-only">
