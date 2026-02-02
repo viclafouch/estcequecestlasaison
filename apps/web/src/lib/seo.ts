@@ -9,7 +9,7 @@ import {
 
 const OG_IMAGE_WIDTH = 1200
 const OG_IMAGE_HEIGHT = 630
-const DEFAULT_OG_IMAGE = '/images/og-image.webp'
+const DEFAULT_OG_IMAGE = '/images/og/default.png'
 
 type SeoParams = {
   title: string
@@ -135,7 +135,7 @@ export function produceSeo({ produce, month }: ProduceSeoParams) {
     description: `${descriptionParts.join('. ')}.`,
     keywords: `${produce.name.toLowerCase()}, saison ${produce.name.toLowerCase()}, est-ce que c'est la saison ${produce.name.toLowerCase()}, ${typeLabel} de saison, calendrier saisonnalit\u00E9 ${produce.name.toLowerCase()}`,
     pathname: `/${produce.slug}`,
-    image: `/images/produce/${produce.slug}-512w.webp`,
+    image: `/images/og/${produce.slug}.png`,
     imageAlt: `${produce.name} - ${typeLabel} de saison`,
     ogType: 'article'
   })

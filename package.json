@@ -29,12 +29,14 @@
     "test": "vitest run",
     "prepare": "husky",
     "generate-images": "npx tsx --env-file=.env.local scripts/generate-images.ts",
-    "optimize-images": "npx tsx scripts/optimize-images.ts"
+    "optimize-images": "npx tsx scripts/optimize-images.ts",
+    "generate-og": "npx tsx scripts/generate-og-images.ts"
   },
   "devDependencies": {
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
     "prettier": "^3.8.1",
+    "satori": "^0.19.1",
     "sharp": "^0.34.5",
     "vitest": "^4.0.18"
   },
