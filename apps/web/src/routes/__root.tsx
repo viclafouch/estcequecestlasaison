@@ -1,11 +1,13 @@
 /// <reference types="vite/client" />
 import { Footer } from '@/components/footer'
+import { NotFound } from '@/components/not-found'
 import { WEBSITE_JSON_LD } from '@/constants/json-ld'
 import { SITE_DOMAIN, SITE_NAME, THEME_COLOR } from '@/constants/site'
 import appCss from '@/styles.css?url'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import type { QueryClient } from '@tanstack/react-query'
 import {
-  createRootRoute,
+  createRootRouteWithContext,
   HeadContent,
   Link,
   Scripts
@@ -41,13 +43,11 @@ const RootDocument = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-const NotFound = () => {
+const RootError = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 px-6">
-      <p className="text-6xl font-bold text-gray-900">404</p>
-      <p className="mt-4 text-lg text-gray-500">
-        Cette page n&apos;existe pas.
-      </p>
+      <p className="text-6xl font-bold text-gray-900">Erreur</p>
+      <p className="mt-4 text-lg text-gray-500">Une erreur est survenue.</p>
       <Link
         to="/"
         className="focus-ring mt-8 rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white hover:bg-gray-800"
@@ -58,7 +58,9 @@ const NotFound = () => {
   )
 }
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient
+}>()({
   head: () => {
     return {
       meta: [
@@ -70,7 +72,6 @@ export const Route = createRootRoute({
         { name: 'theme-color', content: THEME_COLOR },
         { name: 'color-scheme', content: 'light' },
         { name: 'robots', content: 'index,follow,noai,noimageai' },
-        { httpEquiv: 'Content-Language', content: 'fr' },
         { httpEquiv: 'X-Robots-Tag', content: 'noai,noimageai' },
         { name: 'application-name', content: SITE_NAME },
         { name: 'apple-mobile-web-app-title', content: SITE_NAME },
@@ -92,5 +93,6 @@ export const Route = createRootRoute({
     }
   },
   shellComponent: RootDocument,
-  notFoundComponent: NotFound
+  notFoundComponent: NotFound,
+  errorComponent: RootError
 })

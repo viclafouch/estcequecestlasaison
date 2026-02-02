@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { ChevronLeft, ChevronRight, Leaf, Sprout } from 'lucide-react'
 import { Drawer } from 'vaul'
-import type { Month, Produce } from '@estcequecestlasaison/shared'
+import type { Month } from '@estcequecestlasaison/shared'
 import {
   getMonthName,
-  getMonthStats,
   getNextMonth,
   getPreviousMonth
 } from '@estcequecestlasaison/shared'
@@ -13,28 +12,34 @@ import { matchIsAvailableIcon, ProduceIcon } from './icons'
 
 const MAX_VISIBLE_ICONS = 6
 
-type ProduceIconRowProps = {
-  produceList: Produce[]
+type ProduceIconItem = {
+  id: string
+  name: string
+  icon: string
 }
 
-const ProduceIconRow = ({ produceList }: ProduceIconRowProps) => {
-  const visibleProduce = produceList.slice(0, MAX_VISIBLE_ICONS)
-  const remainingCount = produceList.length - MAX_VISIBLE_ICONS
+type ProduceIconRowProps = {
+  items: ProduceIconItem[]
+}
+
+const ProduceIconRow = ({ items }: ProduceIconRowProps) => {
+  const visibleItems = items.slice(0, MAX_VISIBLE_ICONS)
+  const remainingCount = items.length - MAX_VISIBLE_ICONS
 
   return (
     <div className="flex items-center gap-1">
-      {visibleProduce.map((produce) => {
-        const hasIcon = matchIsAvailableIcon(produce.icon)
+      {visibleItems.map((item) => {
+        const hasIcon = matchIsAvailableIcon(item.icon)
 
         return (
           <div
-            key={produce.id}
+            key={item.id}
             className="btn-icon size-9 bg-white shadow-sm"
-            title={produce.name}
+            title={item.name}
           >
             {hasIcon ? (
               <ProduceIcon
-                name={produce.icon as AvailableIconName}
+                name={item.icon as AvailableIconName}
                 className="size-5"
               />
             ) : (
@@ -52,12 +57,20 @@ const ProduceIconRow = ({ produceList }: ProduceIconRowProps) => {
   )
 }
 
+export type MonthStatsData = {
+  fruits: number
+  vegetables: number
+  total: number
+  arriving: ProduceIconItem[]
+  leaving: ProduceIconItem[]
+}
+
 type MonthDrawerProps = {
   selectedMonth: Month
   onMonthChange: (month: Month) => void
   isOpen: boolean
   onOpenChange: (open: boolean) => void
-  produceList: Produce[]
+  stats: MonthStatsData | undefined
 }
 
 export const MonthDrawer = ({
@@ -65,7 +78,7 @@ export const MonthDrawer = ({
   onMonthChange,
   isOpen,
   onOpenChange,
-  produceList
+  stats
 }: MonthDrawerProps) => {
   const previousButtonRef = React.useRef<HTMLButtonElement>(null)
 
@@ -74,11 +87,6 @@ export const MonthDrawer = ({
       previousButtonRef.current?.focus()
     }
   }, [isOpen])
-
-  const stats = getMonthStats({
-    produceList,
-    month: selectedMonth
-  })
 
   const monthName = getMonthName(selectedMonth)
 
@@ -115,7 +123,7 @@ export const MonthDrawer = ({
                   {monthName}
                 </Drawer.Title>
                 <p className="mt-1 text-sm text-gray-500">
-                  {stats.total} produits de saison
+                  {stats ? `${stats.total} produits de saison` : '\u00A0'}
                 </p>
               </div>
               <button
@@ -127,56 +135,60 @@ export const MonthDrawer = ({
                 <ChevronRight className="size-5 text-gray-600" />
               </button>
             </div>
-            <div className="mt-4 flex justify-center gap-6">
-              <div className="pill">
-                <ProduceIcon name="red-apple" className="size-4" />
-                <span className="text-sm font-medium text-gray-700">
-                  {stats.fruits} fruits
-                </span>
-              </div>
-              <div className="pill">
-                <ProduceIcon name="carrot" className="size-4" />
-                <span className="text-sm font-medium text-gray-700">
-                  {stats.vegetables} légumes
-                </span>
-              </div>
-            </div>
-            <div className="mt-6 space-y-3">
-              <div className="card-section bg-emerald-50">
-                <div className="flex items-center gap-3">
-                  <div className="btn-icon size-8 bg-emerald-100">
-                    <Sprout className="size-4 text-emerald-600" />
+            {stats ? (
+              <>
+                <div className="mt-4 flex justify-center gap-6">
+                  <div className="pill">
+                    <ProduceIcon name="red-apple" className="size-4" />
+                    <span className="text-sm font-medium text-gray-700">
+                      {stats.fruits} fruits
+                    </span>
                   </div>
-                  <span className="text-sm font-medium text-emerald-900">
-                    Nouveautés
-                  </span>
-                </div>
-                {stats.arriving.length > 0 ? (
-                  <ProduceIconRow produceList={stats.arriving} />
-                ) : (
-                  <span className="flex h-9 items-center text-sm text-emerald-600">
-                    Aucune
-                  </span>
-                )}
-              </div>
-              <div className="card-section bg-amber-50">
-                <div className="flex items-center gap-3">
-                  <div className="btn-icon size-8 bg-amber-100">
-                    <Leaf className="size-4 text-amber-600" />
+                  <div className="pill">
+                    <ProduceIcon name="carrot" className="size-4" />
+                    <span className="text-sm font-medium text-gray-700">
+                      {stats.vegetables} légumes
+                    </span>
                   </div>
-                  <span className="text-sm font-medium text-amber-900">
-                    Fin de saison
-                  </span>
                 </div>
-                {stats.leaving.length > 0 ? (
-                  <ProduceIconRow produceList={stats.leaving} />
-                ) : (
-                  <span className="flex h-9 items-center text-sm text-amber-600">
-                    Aucune
-                  </span>
-                )}
-              </div>
-            </div>
+                <div className="mt-6 space-y-3">
+                  <div className="card-section bg-emerald-50">
+                    <div className="flex items-center gap-3">
+                      <div className="btn-icon size-8 bg-emerald-100">
+                        <Sprout className="size-4 text-emerald-600" />
+                      </div>
+                      <span className="text-sm font-medium text-emerald-900">
+                        Nouveautés
+                      </span>
+                    </div>
+                    {stats.arriving.length > 0 ? (
+                      <ProduceIconRow items={stats.arriving} />
+                    ) : (
+                      <span className="flex h-9 items-center text-sm text-emerald-600">
+                        Aucune
+                      </span>
+                    )}
+                  </div>
+                  <div className="card-section bg-amber-50">
+                    <div className="flex items-center gap-3">
+                      <div className="btn-icon size-8 bg-amber-100">
+                        <Leaf className="size-4 text-amber-600" />
+                      </div>
+                      <span className="text-sm font-medium text-amber-900">
+                        Fin de saison
+                      </span>
+                    </div>
+                    {stats.leaving.length > 0 ? (
+                      <ProduceIconRow items={stats.leaving} />
+                    ) : (
+                      <span className="flex h-9 items-center text-sm text-amber-600">
+                        Aucune
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </>
+            ) : null}
           </div>
         </Drawer.Content>
       </Drawer.Portal>

@@ -1,20 +1,30 @@
-import React from 'react'
+import * as React from 'react'
 import { ChevronDown } from 'lucide-react'
+import { NotFound } from '@/components/not-found'
 import { ProduceCarousel } from '@/components/produce-carousel'
 import { ProduceImage } from '@/components/produce-image'
 import { ProductHeader } from '@/components/product-header'
 import { SeasonCalendar } from '@/components/season-calendar'
-import { PRODUCE_LIST } from '@/constants/produce'
-import { findProduceBySlug, getRelatedProduce } from '@/helpers/produce'
-import { produceJsonLd, produceSeo } from '@/lib/seo'
-import type { Month, Produce, ProduceBadge } from '@estcequecestlasaison/shared'
+import { produceSeo } from '@/lib/seo'
+import { getSlugPageData } from '@/server/produce'
+import type {
+  BadgeVariant,
+  Month,
+  Produce,
+  ProduceBadge
+} from '@estcequecestlasaison/shared'
 import {
-  getCurrentMonth,
   getDefaultProduceBadge,
   matchIsInSeason,
   matchIsInSeasonAllYear
 } from '@estcequecestlasaison/shared'
 import { createFileRoute, notFound } from '@tanstack/react-router'
+
+type SeasonDisplay = {
+  label: string
+  detail: string | null
+  variant: BadgeVariant
+}
 
 type GetSeasonDisplayParams = {
   produce: Produce
@@ -22,12 +32,16 @@ type GetSeasonDisplayParams = {
   badge: ProduceBadge
 }
 
-function getSeasonDisplay({ produce, month, badge }: GetSeasonDisplayParams) {
+function getSeasonDisplay({
+  produce,
+  month,
+  badge
+}: GetSeasonDisplayParams): SeasonDisplay {
   if (matchIsInSeasonAllYear(produce)) {
     return {
       label: "Disponible toute l'ann\u00E9e",
       detail: null,
-      variant: 'positive' as const
+      variant: 'positive'
     }
   }
 
@@ -42,7 +56,7 @@ function getSeasonDisplay({ produce, month, badge }: GetSeasonDisplayParams) {
   return {
     label: 'Hors saison',
     detail: badge.label,
-    variant: 'neutral' as const
+    variant: 'neutral'
   }
 }
 
@@ -67,6 +81,7 @@ const ProductPage = () => {
           <script
             key={index}
             type="application/ld+json"
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: schema }}
           />
         )
@@ -209,32 +224,20 @@ const ProductPage = () => {
 }
 
 export const Route = createFileRoute('/$slug')({
-  beforeLoad: ({ params }) => {
-    const produce = findProduceBySlug(params.slug)
+  loader: async ({ params }) => {
+    const data = await getSlugPageData({ data: { slug: params.slug } })
 
-    if (!produce) {
+    if (!data) {
       throw notFound()
     }
 
-    return { produce }
-  },
-  loader: ({ context: { produce } }) => {
-    const currentMonth = getCurrentMonth()
-
-    return {
-      produce,
-      currentMonth,
-      relatedProduce: getRelatedProduce({
-        produce,
-        produceList: PRODUCE_LIST,
-        month: currentMonth
-      }),
-      jsonLd: produceJsonLd({ produce, month: currentMonth })
-    }
+    return data
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return {}
+      return {
+        meta: [{ name: 'robots', content: 'noindex,nofollow' }]
+      }
     }
 
     return produceSeo({
@@ -242,5 +245,6 @@ export const Route = createFileRoute('/$slug')({
       month: loaderData.currentMonth
     })
   },
+  notFoundComponent: NotFound,
   component: ProductPage
 })

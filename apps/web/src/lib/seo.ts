@@ -18,6 +18,7 @@ type SeoParams = {
   imageAlt?: string
   keywords?: string
   pathname?: string
+  ogType?: string
 }
 
 function buildUrl(pathname: string) {
@@ -44,7 +45,8 @@ export function seo({
   keywords,
   image,
   imageAlt,
-  pathname = '/'
+  pathname = '/',
+  ogType = 'website'
 }: SeoParams) {
   const fullTitle = `${title} | ${SITE_NAME}`
   const url = buildUrl(pathname)
@@ -53,7 +55,7 @@ export function seo({
 
   const baseMeta = [
     { title: fullTitle },
-    { property: 'og:type', content: 'website' },
+    { property: 'og:type', content: ogType },
     { property: 'og:site_name', content: SITE_NAME },
     { property: 'og:title', content: fullTitle },
     { property: 'og:url', content: url },
@@ -134,7 +136,8 @@ export function produceSeo({ produce, month }: ProduceSeoParams) {
     keywords: `${produce.name.toLowerCase()}, saison ${produce.name.toLowerCase()}, est-ce que c'est la saison ${produce.name.toLowerCase()}, ${typeLabel} de saison, calendrier saisonnalit\u00E9 ${produce.name.toLowerCase()}`,
     pathname: `/${produce.slug}`,
     image: `/images/produce/${produce.slug}-512w.webp`,
-    imageAlt: `${produce.name} - ${typeLabel} de saison`
+    imageAlt: `${produce.name} - ${typeLabel} de saison`,
+    ogType: 'article'
   })
 
   return {
@@ -151,7 +154,7 @@ export function produceSeo({ produce, month }: ProduceSeoParams) {
   }
 }
 
-function buildBreadcrumbList(produce: Produce) {
+function buildBreadcrumbList(produce: Produce): WithContext<BreadcrumbList> {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -169,10 +172,10 @@ function buildBreadcrumbList(produce: Produce) {
         item: buildUrl(`/${produce.slug}`)
       }
     ]
-  } as const satisfies WithContext<BreadcrumbList>
+  }
 }
 
-function buildProductThing(produce: Produce) {
+function buildProductThing(produce: Produce): WithContext<Thing> {
   const seasonRange = getSeasonRangeLabel(produce)
   const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'L\u00E9gume'
 
@@ -183,7 +186,7 @@ function buildProductThing(produce: Produce) {
     description: `${produce.name} - ${typeLabel} de saison. Saison : ${seasonRange}. ${produce.nutrition.benefits}.`,
     url: buildUrl(`/${produce.slug}`),
     image: buildUrl(`/images/produce/${produce.slug}-512w.webp`)
-  } as const satisfies WithContext<Thing>
+  }
 }
 
 export function produceJsonLd({ produce, month }: ProduceSeoParams) {
@@ -198,7 +201,7 @@ export function produceJsonLd({ produce, month }: ProduceSeoParams) {
     produce.nutrition.benefits
   ].filter(Boolean)
 
-  const faqSchema = {
+  const faqSchema: WithContext<FAQPage> = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
@@ -211,9 +214,9 @@ export function produceJsonLd({ produce, month }: ProduceSeoParams) {
         }
       }
     ]
-  } as const satisfies WithContext<FAQPage>
+  }
 
-  const schemas = [
+  const schemas: WithContext<BreadcrumbList | FAQPage | Thing>[] = [
     faqSchema,
     buildBreadcrumbList(produce),
     buildProductThing(produce)

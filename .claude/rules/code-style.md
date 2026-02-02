@@ -8,8 +8,10 @@ Analyze recently modified code and apply refinements. Focus on code touched in t
 
 ## Core Principles
 
-### 1. Preserve Functionality
+### 1. Preserve Functionality and Type Contracts
 Never change what the code does - only how it does it. All original features, outputs, and behaviors must remain intact.
+
+**Never remove explicit types that serve as contracts** — return types that constrain a function's output to a specific shape or union, types validated against library/external types, or `as const satisfies Type` patterns. If an explicit type would catch a bug at compile time that inference alone would miss, it must stay.
 
 ### 2. Clarity Over Brevity
 - **Avoid nested ternaries** - prefer switch/if-else for multiple conditions

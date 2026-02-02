@@ -5,16 +5,16 @@ import { MonthDrawer } from '@/components/month-drawer'
 import { ProduceCarousel } from '@/components/produce-carousel'
 import { SearchBar } from '@/components/search-bar'
 import { SearchDrawer } from '@/components/search-drawer'
-import { PRODUCE_LIST } from '@/constants/produce'
-import { getGroupedProduce } from '@/helpers/produce'
+import { groupedProduceOptions, monthStatsOptions } from '@/constants/queries'
 import { seo } from '@/lib/seo'
-import type { Month, ProduceType } from '@estcequecestlasaison/shared'
+import type { ProduceType } from '@estcequecestlasaison/shared'
 import {
   getCurrentMonth,
   getMonthName,
   getNextMonth
 } from '@estcequecestlasaison/shared'
 import { useDebouncedValue } from '@tanstack/react-pacer'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 
 const CATEGORY_SUBTITLE_LABELS = {
@@ -28,12 +28,25 @@ const Home = () => {
     ProduceType | 'all'
   >('all')
   const [searchQuery, setSearchQuery] = React.useState('')
-  const [currentMonth] = React.useState<Month>(getCurrentMonth)
-  const [selectedMonth, setSelectedMonth] =
-    React.useState<Month>(getCurrentMonth)
+  const [currentMonth] = React.useState(getCurrentMonth)
+  const [selectedMonth, setSelectedMonth] = React.useState(getCurrentMonth)
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
 
   const [debouncedSearch] = useDebouncedValue(searchQuery, { wait: 200 })
+
+  const groupedProduceQuery = useQuery({
+    ...groupedProduceOptions({
+      searchQuery: debouncedSearch,
+      category: activeCategory,
+      month: selectedMonth
+    }),
+    placeholderData: keepPreviousData
+  })
+
+  const monthStatsQuery = useQuery({
+    ...monthStatsOptions(selectedMonth),
+    placeholderData: keepPreviousData
+  })
 
   const isCurrentMonth = selectedMonth === currentMonth
   const nextMonth = getNextMonth(selectedMonth)
@@ -43,26 +56,17 @@ const Home = () => {
   const hasMonthVowelStart = /^[aeiouàâéèêëïîôùûü]/i.test(currentMonthName)
   const seasonTitle = `En pleine saison d${hasMonthVowelStart ? '\u2019' : 'e '}${currentMonthName}`
 
-  // eslint-disable-next-line no-restricted-syntax -- Fuse.js search + filtering is expensive, skip re-run on unrelated state changes (drawer, etc.)
-  const groupedProduce = React.useMemo(() => {
-    return getGroupedProduce({
-      searchQuery: debouncedSearch,
-      category: activeCategory,
-      month: selectedMonth
-    })
-  }, [debouncedSearch, activeCategory, selectedMonth])
-
   const handleOpenDrawer = () => {
     setIsDrawerOpen(true)
   }
 
-  const showComingNextMonth =
-    isCurrentMonth && groupedProduce.comingNextMonth.length > 0
+  const hasInSeason = (groupedProduceQuery.data?.inSeason.length ?? 0) > 0
+  const hasOffSeason = (groupedProduceQuery.data?.offSeason.length ?? 0) > 0
+  const hasComingNextMonth =
+    isCurrentMonth &&
+    (groupedProduceQuery.data?.comingNextMonth.length ?? 0) > 0
 
-  const hasResults =
-    groupedProduce.inSeason.length > 0 ||
-    showComingNextMonth ||
-    groupedProduce.offSeason.length > 0
+  const hasResults = hasInSeason || hasComingNextMonth || hasOffSeason
 
   return (
     <div className="bg-hero min-h-screen bg-gray-50">
@@ -87,36 +91,36 @@ const Home = () => {
         onMonthChange={setSelectedMonth}
         isOpen={isDrawerOpen}
         onOpenChange={setIsDrawerOpen}
-        produceList={PRODUCE_LIST}
+        stats={monthStatsQuery.data}
       />
       <main className="mx-auto max-w-7xl space-y-12 px-6 pt-6 pb-24 md:pt-0 md:pb-20">
         <h1 className="sr-only">Fruits et legumes de saison</h1>
         {hasResults ? (
           <>
-            {groupedProduce.inSeason.length > 0 ? (
+            {hasInSeason ? (
               <ProduceCarousel
                 title={seasonTitle}
                 subtitle={`${categoryLabel} disponibles en ${currentMonthName}`}
-                produceList={groupedProduce.inSeason}
+                produceList={groupedProduceQuery.data!.inSeason}
                 month={selectedMonth}
                 section="in-season"
                 priority
               />
             ) : null}
-            {showComingNextMonth ? (
+            {hasComingNextMonth ? (
               <ProduceCarousel
                 title={`Nouveautés en ${nextMonthName}`}
                 subtitle="Bientôt de saison, à découvrir le mois prochain"
-                produceList={groupedProduce.comingNextMonth}
+                produceList={groupedProduceQuery.data!.comingNextMonth}
                 month={nextMonth}
                 section="coming-next-month"
               />
             ) : null}
-            {groupedProduce.offSeason.length > 0 ? (
+            {hasOffSeason ? (
               <ProduceCarousel
                 title="Hors saison"
                 subtitle="Pas disponibles en ce moment"
-                produceList={groupedProduce.offSeason}
+                produceList={groupedProduceQuery.data!.offSeason}
                 month={selectedMonth}
                 section="off-season"
               />
@@ -125,12 +129,12 @@ const Home = () => {
         ) : (
           <div
             role="status"
-            className="flex flex-col items-center py-20 text-center"
+            className="flex flex-col items-center gap-2 py-20 text-center"
           >
             <p className="text-lg font-semibold text-gray-900">
               Aucun produit trouvé
             </p>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="text-sm text-gray-500">
               Essayez avec un autre terme de recherche
             </p>
           </div>
@@ -146,8 +150,22 @@ const Home = () => {
 }
 
 export const Route = createFileRoute('/')({
+  loader: async ({ context: { queryClient } }) => {
+    const month = getCurrentMonth()
+
+    await Promise.all([
+      queryClient.ensureQueryData(
+        groupedProduceOptions({
+          searchQuery: '',
+          category: 'all',
+          month
+        })
+      ),
+      queryClient.ensureQueryData(monthStatsOptions(month))
+    ])
+  },
   head: () => {
-    const result = seo({
+    const headData = seo({
       title: 'Fruits et légumes de saison en France',
       description:
         'Découvrez quels fruits et légumes sont de saison en France. Calendrier interactif mois par mois pour manger local et de saison toute l\u2019année.',
@@ -157,9 +175,9 @@ export const Route = createFileRoute('/')({
     })
 
     return {
-      ...result,
+      ...headData,
       links: [
-        ...result.links,
+        ...headData.links,
         {
           rel: 'preload',
           as: 'image',
