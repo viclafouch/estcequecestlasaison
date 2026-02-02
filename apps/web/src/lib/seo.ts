@@ -1,4 +1,4 @@
-import type { FAQPage, WithContext } from 'schema-dts'
+import type { BreadcrumbList, FAQPage, Thing, WithContext } from 'schema-dts'
 import { clientEnv } from '@/constants/env'
 import { SITE_NAME } from '@/constants/site'
 import type { Month, Produce } from '@estcequecestlasaison/shared'
@@ -102,6 +102,14 @@ function getSeasonStatusLabel(produce: Produce, month: Month) {
   return 'Hors saison'
 }
 
+function getVitaminsLabel(vitamins: string[]) {
+  if (vitamins.length === 0) {
+    return ''
+  }
+
+  return `Riche en vitamines ${vitamins.join(', ')}`
+}
+
 type ProduceSeoParams = {
   produce: Produce
   month: Month
@@ -109,20 +117,75 @@ type ProduceSeoParams = {
 
 export function produceSeo({ produce, month }: ProduceSeoParams) {
   const statusLabel = getSeasonStatusLabel(produce, month)
+  const seasonRange = getSeasonRangeLabel(produce)
+  const vitaminsLabel = getVitaminsLabel(produce.nutrition.vitamins)
+  const typeLabel = produce.type === 'fruit' ? 'fruit' : 'l\u00E9gume'
+
+  const descriptionParts = [
+    `${produce.name} : ${statusLabel.toLowerCase()}`,
+    matchIsInSeasonAllYear(produce) ? null : `Saison : ${seasonRange}`,
+    vitaminsLabel,
+    `D\u00E9couvrez le calendrier de saisonnalit\u00E9 complet de ce ${typeLabel}.`
+  ].filter(Boolean)
 
   return seo({
     title: `${produce.name} : est-ce que c'est la saison ?`,
-    description: `${produce.name} : ${statusLabel.toLowerCase()}. ${produce.nutrition.benefits}. Calendrier de saisonnalit\u00E9 complet.`,
-    keywords: `${produce.name.toLowerCase()}, saison ${produce.name.toLowerCase()}, est-ce que c'est la saison ${produce.name.toLowerCase()}, ${produce.type === 'fruit' ? 'fruit' : 'l\u00E9gume'} de saison, calendrier saisonnalit\u00E9 ${produce.name.toLowerCase()}`,
-    pathname: `/${produce.slug}`
+    description: `${descriptionParts.join('. ')}.`,
+    keywords: `${produce.name.toLowerCase()}, saison ${produce.name.toLowerCase()}, est-ce que c'est la saison ${produce.name.toLowerCase()}, ${typeLabel} de saison, calendrier saisonnalit\u00E9 ${produce.name.toLowerCase()}`,
+    pathname: `/${produce.slug}`,
+    image: `/images/produce/${produce.slug}-512w.webp`,
+    imageAlt: `${produce.name} - ${typeLabel} de saison`
   })
+}
+
+function buildBreadcrumbList(produce: Produce) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Accueil',
+        item: buildUrl('/')
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: produce.name,
+        item: buildUrl(`/${produce.slug}`)
+      }
+    ]
+  } as const satisfies WithContext<BreadcrumbList>
+}
+
+function buildProductThing(produce: Produce) {
+  const seasonRange = getSeasonRangeLabel(produce)
+  const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'L\u00E9gume'
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Thing',
+    name: produce.name,
+    description: `${produce.name} - ${typeLabel} de saison. Saison : ${seasonRange}. ${produce.nutrition.benefits}.`,
+    url: buildUrl(`/${produce.slug}`),
+    image: buildUrl(`/images/produce/${produce.slug}-512w.webp`)
+  } as const satisfies WithContext<Thing>
 }
 
 export function produceJsonLd({ produce, month }: ProduceSeoParams) {
   const statusLabel = getSeasonStatusLabel(produce, month)
   const seasonRange = getSeasonRangeLabel(produce)
+  const vitaminsLabel = getVitaminsLabel(produce.nutrition.vitamins)
 
-  const schema = {
+  const answerParts = [
+    `${produce.name} : ${statusLabel.toLowerCase()}`,
+    `Saison : ${seasonRange}`,
+    vitaminsLabel,
+    produce.nutrition.benefits
+  ].filter(Boolean)
+
+  const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
@@ -131,11 +194,19 @@ export function produceJsonLd({ produce, month }: ProduceSeoParams) {
         name: `${produce.name} : est-ce que c'est la saison ?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `${produce.name} : ${statusLabel.toLowerCase()}. Saison : ${seasonRange}.`
+          text: `${answerParts.join('. ')}.`
         }
       }
     ]
   } as const satisfies WithContext<FAQPage>
 
-  return JSON.stringify(schema)
+  const schemas = [
+    faqSchema,
+    buildBreadcrumbList(produce),
+    buildProductThing(produce)
+  ]
+
+  return schemas.map((schema) => {
+    return JSON.stringify(schema)
+  })
 }

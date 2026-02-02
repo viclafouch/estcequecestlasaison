@@ -48,7 +48,7 @@ export const ProduceCarousel = ({
   const countLabel = produceList.length === 1 ? 'produit' : 'produits'
 
   return (
-    <section className="relative">
+    <section className="relative" aria-label={title}>
       <div className="mb-4 flex items-center justify-between">
         <div>
           <div className="flex items-baseline gap-3">
@@ -72,7 +72,7 @@ export const ProduceCarousel = ({
               aria-label="Défiler vers la gauche"
               className={SCROLL_BUTTON_CLASS}
             >
-              <ChevronLeft aria-hidden className="size-4" />
+              <ChevronLeft aria-hidden="true" className="size-4" />
             </button>
             <button
               type="button"
@@ -83,7 +83,7 @@ export const ProduceCarousel = ({
               aria-label="Défiler vers la droite"
               className={SCROLL_BUTTON_CLASS}
             >
-              <ChevronRight aria-hidden className="size-4" />
+              <ChevronRight aria-hidden="true" className="size-4" />
             </button>
           </div>
         ) : null}

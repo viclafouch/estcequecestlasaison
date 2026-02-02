@@ -33,7 +33,8 @@ export function getRouter() {
     defaultPreloadStaleTime: 30_000,
     defaultPendingMs: 1000,
     defaultPendingMinMs: 200,
-    notFoundMode: 'fuzzy'
+    notFoundMode: 'fuzzy',
+    defaultViewTransition: true
   })
 
   setupRouterSsrQueryIntegration({

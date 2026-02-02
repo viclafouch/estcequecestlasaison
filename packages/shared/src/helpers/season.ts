@@ -1,4 +1,4 @@
-import { format, getMonth } from 'date-fns'
+import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 import type { Month, Produce } from '../types'
 
@@ -20,7 +20,12 @@ export const ALL_MONTHS = [
 ] as const satisfies Month[]
 
 export function getCurrentMonth() {
-  return (getMonth(new Date()) + 1) as Month
+  const parisMonth = new Intl.DateTimeFormat('fr-FR', {
+    timeZone: 'Europe/Paris',
+    month: 'numeric'
+  }).format(new Date())
+
+  return Number(parisMonth) as Month
 }
 
 export function getPreviousMonth(month: Month) {

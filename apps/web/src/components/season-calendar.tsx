@@ -1,5 +1,9 @@
 import { motion, useReducedMotion } from 'motion/react'
-import type { Month, Produce } from '@estcequecestlasaison/shared'
+import type {
+  Month,
+  Produce,
+  SeasonIntensity
+} from '@estcequecestlasaison/shared'
 import {
   ALL_MONTHS,
   getMonthName,
@@ -20,6 +24,12 @@ function getSeasonType(produce: Produce, month: Month) {
 function getShortMonthName(month: Month) {
   return getMonthName(month).slice(0, 3)
 }
+
+const SEASON_TYPE_LABELS = {
+  peak: 'Pleine saison',
+  partial: 'D\u00E9but ou fin de saison',
+  off: 'Hors saison'
+} as const satisfies Record<SeasonIntensity | 'off', string>
 
 export const SeasonCalendar = ({
   produce,
@@ -46,6 +56,7 @@ export const SeasonCalendar = ({
             <motion.div
               key={month}
               role="listitem"
+              aria-label={`${getMonthName(month)} - ${SEASON_TYPE_LABELS[seasonType]}`}
               data-season={seasonType}
               data-current={isCurrent || undefined}
               initial={isReducedMotion ? false : { opacity: 0, y: 8 }}

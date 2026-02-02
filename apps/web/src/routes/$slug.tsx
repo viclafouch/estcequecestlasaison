@@ -16,8 +16,6 @@ import {
 } from '@estcequecestlasaison/shared'
 import { createFileRoute, notFound } from '@tanstack/react-router'
 
-const CURRENT_MONTH = getCurrentMonth()
-
 type GetSeasonDisplayParams = {
   produce: Produce
   month: Month
@@ -64,15 +62,21 @@ const ProductPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <ProductHeader />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLd }}
-      />
+      {jsonLd.map((schema, index) => {
+        return (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: schema }}
+          />
+        )
+      })}
       <main className="mx-auto max-w-7xl space-y-12 px-6 pt-8 pb-24 md:pt-12 md:pb-20">
         <section className="flex flex-col gap-6 md:grid md:grid-cols-[1fr_2fr] md:items-stretch md:gap-12">
           <div className="size-40 self-center overflow-hidden rounded-3xl bg-gray-100 md:size-auto md:self-stretch">
             <ProduceImage
               produce={produce}
+              altSuffix={`${typeLabel} de saison`}
               loading="eager"
               fetchPriority="high"
               sizes="(max-width: 768px) 160px, 288px"
@@ -89,7 +93,7 @@ const ProductPage = () => {
               <span
                 data-variant={seasonDisplay.variant}
                 className="size-2.5 rounded-full data-[variant=positive]:bg-primary-500 data-[variant=warning]:bg-amber-400 data-[variant=neutral]:bg-gray-300"
-                aria-hidden
+                aria-hidden="true"
               />
               <span className="text-sm font-semibold text-gray-900">
                 {seasonDisplay.label}
@@ -108,19 +112,19 @@ const ProductPage = () => {
                 </>
               ) : null}
             </div>
-            <div className="grid grid-cols-2 gap-3 text-left">
+            <dl className="grid grid-cols-2 gap-3 text-left">
               <div className="flex flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3">
-                <p className="text-xs font-medium text-gray-500">Calories</p>
-                <p className="text-base font-semibold text-gray-900">
+                <dt className="text-xs font-medium text-gray-500">Calories</dt>
+                <dd className="text-base font-semibold text-gray-900">
                   {produce.nutrition.calories}{' '}
                   <span className="text-xs font-normal text-gray-500">
                     kcal
                   </span>
-                </p>
+                </dd>
               </div>
               <div className="flex flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3">
-                <p className="text-xs font-medium text-gray-500">Vitamines</p>
-                <div className="flex flex-wrap gap-1">
+                <dt className="text-xs font-medium text-gray-500">Vitamines</dt>
+                <dd className="flex flex-wrap gap-1">
                   {produce.nutrition.vitamins.map((vitamin) => {
                     return (
                       <span
@@ -131,15 +135,17 @@ const ProductPage = () => {
                       </span>
                     )
                   })}
-                </div>
+                </dd>
               </div>
-            </div>
+            </dl>
             <button
               type="button"
+              aria-expanded={isDetailsExpanded}
+              aria-controls="product-details"
               data-expanded={isDetailsExpanded || undefined}
               className="flex w-full items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white py-3 text-sm font-medium text-gray-600 md:hidden"
               onClick={() => {
-                return setIsDetailsExpanded((prev) => {
+                setIsDetailsExpanded((prev) => {
                   return !prev
                 })
               }}
@@ -153,35 +159,38 @@ const ProductPage = () => {
                 aria-hidden="true"
               />
             </button>
-            <div
+            <dl
+              id="product-details"
               data-expanded={isDetailsExpanded || undefined}
               className="hidden grid-cols-2 gap-3 text-left data-expanded:grid md:grid"
             >
               <div className="flex flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3">
-                <p className="text-xs font-medium text-gray-500">Origine</p>
-                <p className="text-sm font-medium text-gray-900">
+                <dt className="text-xs font-medium text-gray-500">Origine</dt>
+                <dd className="text-sm font-medium text-gray-900">
                   {produce.origin}
-                </p>
+                </dd>
               </div>
               <div className="flex flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3">
-                <p className="text-xs font-medium text-gray-500">
+                <dt className="text-xs font-medium text-gray-500">
                   Conservation
-                </p>
-                <p className="text-sm text-gray-900">{produce.conservation}</p>
+                </dt>
+                <dd className="text-sm text-gray-900">
+                  {produce.conservation}
+                </dd>
               </div>
               <div className="flex flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3">
-                <p className="text-xs font-medium text-gray-500">
+                <dt className="text-xs font-medium text-gray-500">
                   Bien choisir
-                </p>
-                <p className="text-sm text-gray-900">{produce.buyingTip}</p>
+                </dt>
+                <dd className="text-sm text-gray-900">{produce.buyingTip}</dd>
               </div>
               <div className="flex flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3">
-                <p className="text-xs font-medium text-gray-500">Bienfaits</p>
-                <p className="text-sm text-gray-900">
+                <dt className="text-xs font-medium text-gray-500">Bienfaits</dt>
+                <dd className="text-sm text-gray-900">
                   {produce.nutrition.benefits}
-                </p>
+                </dd>
               </div>
-            </div>
+            </dl>
           </div>
         </section>
         <SeasonCalendar produce={produce} currentMonth={currentMonth} />
@@ -210,15 +219,17 @@ export const Route = createFileRoute('/$slug')({
     return { produce }
   },
   loader: ({ context: { produce } }) => {
+    const currentMonth = getCurrentMonth()
+
     return {
       produce,
-      currentMonth: CURRENT_MONTH,
+      currentMonth,
       relatedProduce: getRelatedProduce({
         produce,
         produceList: PRODUCE_LIST,
-        month: CURRENT_MONTH
+        month: currentMonth
       }),
-      jsonLd: produceJsonLd({ produce, month: CURRENT_MONTH })
+      jsonLd: produceJsonLd({ produce, month: currentMonth })
     }
   },
   head: ({ loaderData }) => {
