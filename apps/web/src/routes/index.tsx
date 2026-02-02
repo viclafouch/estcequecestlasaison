@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { z } from 'zod'
 import { Header } from '@/components/header'
 import { MonthBar } from '@/components/month-bar'
 import { MonthDrawer } from '@/components/month-drawer'
@@ -17,6 +18,10 @@ import { useDebouncedValue } from '@tanstack/react-pacer'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 
+const homeSearchSchema = z.object({
+  q: z.string().optional()
+})
+
 const CATEGORY_SUBTITLE_LABELS = {
   all: 'Fruits et légumes',
   fruit: 'Fruits',
@@ -24,10 +29,11 @@ const CATEGORY_SUBTITLE_LABELS = {
 } as const satisfies Record<ProduceType | 'all', string>
 
 const Home = () => {
+  const { q } = Route.useSearch()
   const [activeCategory, setActiveCategory] = React.useState<
     ProduceType | 'all'
   >('all')
-  const [searchQuery, setSearchQuery] = React.useState('')
+  const [searchQuery, setSearchQuery] = React.useState(q ?? '')
   const [currentMonth] = React.useState(getCurrentMonth)
   const [selectedMonth, setSelectedMonth] = React.useState(getCurrentMonth)
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
@@ -150,13 +156,19 @@ const Home = () => {
 }
 
 export const Route = createFileRoute('/')({
-  loader: async ({ context: { queryClient } }) => {
+  validateSearch: (search) => {
+    return homeSearchSchema.parse(search)
+  },
+  loaderDeps: ({ search }) => {
+    return { q: search.q }
+  },
+  loader: async ({ context: { queryClient }, deps: { q } }) => {
     const month = getCurrentMonth()
 
     await Promise.all([
       queryClient.ensureQueryData(
         groupedProduceOptions({
-          searchQuery: '',
+          searchQuery: q ?? '',
           category: 'all',
           month
         })

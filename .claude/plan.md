@@ -246,11 +246,11 @@ estcequecestlasaison/
 - [x] Générer favicon (16x16, 32x32, 180x180, 192x192, 512x512) + manifest.webmanifest
 - [x] Créer OG images (1200x630, 1 par produit + default)
 - [x] Sitemap dynamique (générer les URLs `/$slug` pour chaque produit)
-- [ ] Supporter le query param `?q=` sur la homepage (SearchAction JSON-LD)
+- [x] Supporter le query param `?q=` sur la homepage (SearchAction JSON-LD)
 
 ### Milestone 8 : Polish & Deploy
 - [x] Animations subtiles (search drawer, header underline, month bar)
-- [ ] Tests responsive
+- [x] Tests responsive
 - [x] Configurer Railway
 - [x] Acheter domaine estcequecestlasaison.fr
 
