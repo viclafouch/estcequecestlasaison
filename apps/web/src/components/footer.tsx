@@ -87,10 +87,18 @@ export const Footer = () => {
             label="Légumes populaires"
           />
         </div>
-        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-gray-200 pt-6 md:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray-200 pt-6 md:flex-row">
           <p className="text-sm text-gray-400">
             &copy; {new Date().getFullYear()} estcequecestlasaison.fr
           </p>
+          <nav aria-label="Liens utiles" className="flex gap-4">
+            <Link
+              to="/faq"
+              className="text-sm text-gray-400 hover:text-gray-900"
+            >
+              FAQ
+            </Link>
+          </nav>
           <p className="text-sm text-gray-400">
             Bientôt disponible sur iOS et Android
           </p>

@@ -95,6 +95,7 @@ estcequecestlasaison/
 ### Routes
 - `/` - Page d'accueil (mois en cours, grille produits)
 - `/:slug` - Page produit SEO (ex: `/pomme`, `/banane`)
+- `/faq` - Questions fréquentes (sources, contact, projet)
 - `/mentions-legales` - Mentions légales (si AdSense)
 - `/politique-de-confidentialite` - Politique RGPD (si AdSense)
 
@@ -219,7 +220,7 @@ estcequecestlasaison/
 - [x] Infos produit (nutrition, conservation, origine, conseils d'achat)
 - [x] Meta tags SEO optimisés
 - [x] Structured data (Schema.org)
-- [ ] Documenter les sources des données JSON (nutrition, conservation, origine, conseils d'achat)
+- [x] Documenter les sources des données JSON (nutrition, conservation, origine, conseils d'achat)
 
 ### Milestone 4 : Recherche ✅
 - [x] Installer Fuse.js
@@ -233,25 +234,25 @@ estcequecestlasaison/
 - [ ] AppBanner component (fermeture localStorage)
 - [ ] Liens stores (placeholders)
 
-### Milestone 6 : Publicités (AdSense)
-- [ ] Page /mentions-legales (obligation légale française)
-- [ ] Page /politique-de-confidentialite (RGPD + pré-requis AdSense)
-- [ ] Bandeau de consentement cookies (RGPD)
-- [ ] Intégrer Google AdSense
-- [ ] Native ads dans la grille
-- [ ] Respecter UX (pas trop intrusif)
+### Milestone 6 : Publicités (AdSense) ✅
+- [x] Page /mentions-legales (obligation légale française)
+- [x] Page /politique-de-confidentialite (RGPD + pré-requis AdSense)
+- [x] Bandeau de consentement cookies (RGPD)
+- [x] Intégrer Google AdSense
+- [x] Native ads dans la grille
+- [x] Respecter UX (pas trop intrusif)
 
 ### Milestone 7 : SEO & Assets
-- [ ] Générer favicon (16x16, 32x32, 180x180, 192x192, 512x512) + manifest.webmanifest
-- [ ] Créer OG image (`/images/og-image.webp`, 1200x630)
+- [x] Générer favicon (16x16, 32x32, 180x180, 192x192, 512x512) + manifest.webmanifest
+- [x] Créer OG images (1200x630, 1 par produit + default)
 - [x] Sitemap dynamique (générer les URLs `/$slug` pour chaque produit)
 - [ ] Supporter le query param `?q=` sur la homepage (SearchAction JSON-LD)
 
 ### Milestone 8 : Polish & Deploy
-- [ ] Animations subtiles
+- [x] Animations subtiles (search drawer, header underline, month bar)
 - [ ] Tests responsive
-- [ ] Configurer Railway
-- [ ] Acheter domaine
+- [x] Configurer Railway
+- [x] Acheter domaine estcequecestlasaison.fr
 
 ### Phase 2 : App Mobile
 - [ ] Setup Expo

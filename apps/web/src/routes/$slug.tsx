@@ -3,8 +3,8 @@ import { ChevronDown } from 'lucide-react'
 import { NotFound } from '@/components/not-found'
 import { ProduceCarousel } from '@/components/produce-carousel'
 import { ProduceImage } from '@/components/produce-image'
-import { ProductHeader } from '@/components/product-header'
 import { SeasonCalendar } from '@/components/season-calendar'
+import { SiteHeader } from '@/components/site-header'
 import { produceSeo } from '@/lib/seo'
 import { getSlugPageData } from '@/server/produce'
 import type {
@@ -75,7 +75,7 @@ const ProductPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <ProductHeader />
+      <SiteHeader />
       {jsonLd.map((schema, index) => {
         return (
           <script

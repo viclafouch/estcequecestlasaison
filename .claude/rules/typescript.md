@@ -26,9 +26,12 @@ TypeScript's inference is extremely powerful. Let it do its job.
 ### Type Safety
 - NEVER recreate types that exist in schemas or libraries
 - Reuse existing types from libraries, React, schemas, or internal code
+- **NEVER use `string` when a stricter type exists** in a library or the codebase — always use the library's own types to constrain values (route paths, query keys, event names, etc.). Extend or intersect library types instead of rewriting them with loose primitives.
 
-### Constants Pattern
-- Arrays/Objects: use `as const satisfies Type` for literal preservation + validation
+### Constants Pattern (CRITICAL)
+- **Arrays/Objects MUST use `as const satisfies Type`** — both parts are required. `as const` alone is NOT enough because it skips type validation. Always define a dedicated type and validate with `satisfies`.
+  - WRONG: `const ITEMS = [...] as const`
+  - CORRECT: `const ITEMS = [...] as const satisfies readonly ItemType[]`
 - Primitives: simple assignment, no annotations
 
 ### Error Handling

@@ -1,4 +1,5 @@
 import { motion } from 'motion/react'
+import { HEADER_NAV_LINKS } from '@/constants/navigation'
 import { SITE_NAME_DISPLAY } from '@/constants/site'
 import type { ProduceType } from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
@@ -80,7 +81,23 @@ export const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
               })}
             </div>
           </nav>
-          <div className="hidden w-44 md:block" />
+          <nav
+            aria-label="Navigation"
+            className="hidden items-center gap-6 md:flex"
+          >
+            {HEADER_NAV_LINKS.map((link) => {
+              return (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  activeOptions={{ exact: link.exact }}
+                  className="focus-ring rounded-sm py-2 text-sm text-gray-600 transition-colors hover:text-gray-900"
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
+          </nav>
         </div>
       </div>
     </header>

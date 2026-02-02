@@ -44,9 +44,11 @@ paths: "**/*.{ts,tsx}"
 ### Accessibility (WCAG 2.1 AA)
 - Keyboard navigation support
 - Screen reader compatibility
-- Color contrast compliance
 - Focus management
 - ARIA attributes usage
+- **Color contrast**: minimum 4.5:1 for normal text, 3:1 for large text. Never use `text-gray-500` or lighter on `bg-gray-50`/`bg-white` for readable content. Use `text-gray-600` minimum for secondary text, `text-gray-700` or darker recommended
+- **Touch targets**: minimum 44x44px on interactive elements (buttons, links). Add `py-1` or `py-2` on text-only links to ensure sufficient height
+- **External links**: always use `target="_blank"` with `rel="noopener noreferrer"`. When text mentions URLs or external resources (sources, LinkedIn, GitHub), render them as clickable `<a>` links, not plain text
 
 ### UX Patterns
 - **Never disable buttons** - always allow clicks, explain constraints in dialog/feedback
@@ -117,3 +119,10 @@ paths: "**/*.{ts,tsx}"
 - **Respect `prefers-reduced-motion`** - use `useReducedMotion()` hook
 - **Standard durations**: 0.2s (fast), 0.3s (normal), 0.5s (slow)
 - **Standard easings**: `[0.4, 0, 0.2, 1]` (ease-out), `[0.4, 0, 1, 1]` (ease-in)
+- **CSS transitions exception**: when CSS transitions are used (accordion, collapse), add a named CSS class and include it in the `@media (prefers-reduced-motion: reduce)` block in `styles.css` with `transition: none`
+
+### SEO Checklist (new pages)
+- Every new route MUST be added to the sitemap (`sitemap[.]xml.ts`)
+- Every route MUST define `head()` with `seo()` (title, description, keywords, pathname)
+- Structured data (JSON-LD) for rich pages (FAQ, product, etc.)
+- When content references external URLs, render them as clickable links (benefits SEO link signals and user trust)
