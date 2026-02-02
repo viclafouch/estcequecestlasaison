@@ -95,7 +95,8 @@ estcequecestlasaison/
 ### Routes
 - `/` - Page d'accueil (mois en cours, grille produits)
 - `/:slug` - Page produit SEO (ex: `/pomme`, `/banane`)
-- `/mentions-legales` - Mentions légales (minimum requis)
+- `/mentions-legales` - Mentions légales (si AdSense)
+- `/politique-de-confidentialite` - Politique RGPD (si AdSense)
 
 ### Header
 - **Logo** : Texte simple stylé (pas d'icône)
@@ -228,12 +229,14 @@ estcequecestlasaison/
 - [x] Debounce recherche (useDebouncedValue, 200ms)
 - [x] Reset scroll carousels sur changement recherche/catégorie/mois
 
-### Milestone 5 : Bannière App + Mentions légales
+### Milestone 5 : Bannière App
 - [ ] AppBanner component (fermeture localStorage)
-- [ ] Page /mentions-legales
 - [ ] Liens stores (placeholders)
 
-### Milestone 6 : Publicités
+### Milestone 6 : Publicités (AdSense)
+- [ ] Page /mentions-legales (obligation légale française)
+- [ ] Page /politique-de-confidentialite (RGPD + pré-requis AdSense)
+- [ ] Bandeau de consentement cookies (RGPD)
 - [ ] Intégrer Google AdSense
 - [ ] Native ads dans la grille
 - [ ] Respecter UX (pas trop intrusif)
@@ -241,7 +244,7 @@ estcequecestlasaison/
 ### Milestone 7 : SEO & Assets
 - [ ] Générer favicon (16x16, 32x32, 180x180, 192x192, 512x512) + manifest.webmanifest
 - [ ] Créer OG image (`/images/og-image.webp`, 1200x630)
-- [ ] Sitemap dynamique (générer les URLs `/$slug` pour chaque produit)
+- [x] Sitemap dynamique (générer les URLs `/$slug` pour chaque produit)
 - [ ] Supporter le query param `?q=` sur la homepage (SearchAction JSON-LD)
 
 ### Milestone 8 : Polish & Deploy
