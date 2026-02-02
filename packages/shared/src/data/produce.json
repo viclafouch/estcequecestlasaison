@@ -8,7 +8,7 @@
     "seasons": {
       "1": "peak",
       "2": "peak",
-      "3": "peak",
+      "3": "partial",
       "8": "partial",
       "9": "peak",
       "10": "peak",
@@ -17,9 +17,16 @@
     },
     "nutrition": {
       "calories": 52,
-      "vitamins": ["C", "B6", "K"],
+      "vitamins": [
+        "C",
+        "B6",
+        "K"
+      ],
       "benefits": "Riche en fibres et antioxydants, favorise la digestion"
-    }
+    },
+    "conservation": "2-3 semaines au réfrigérateur, loin des autres fruits",
+    "buyingTip": "Choisir ferme, sans meurtrissure, peau lisse et brillante",
+    "origin": "Val de Loire, Normandie, Sud-Ouest"
   },
   {
     "id": "poire",
@@ -39,9 +46,15 @@
     },
     "nutrition": {
       "calories": 57,
-      "vitamins": ["C", "K"],
+      "vitamins": [
+        "C",
+        "K"
+      ],
       "benefits": "Excellente source de fibres, hydratante"
-    }
+    },
+    "conservation": "Quelques jours à température ambiante pour mûrir, puis au réfrigérateur",
+    "buyingTip": "Légèrement souple autour du pédoncule quand mûre",
+    "origin": "Provence, Val de Loire, Sud-Ouest"
   },
   {
     "id": "banane",
@@ -65,9 +78,15 @@
     },
     "nutrition": {
       "calories": 89,
-      "vitamins": ["B6", "C"],
+      "vitamins": [
+        "B6",
+        "C"
+      ],
       "benefits": "Riche en potassium, énergie rapide"
-    }
+    },
+    "conservation": "À température ambiante, ne pas réfrigérer avant maturité",
+    "buyingTip": "Jaune pour consommation immédiate, verte pour plus tard",
+    "origin": "Antilles françaises, Guadeloupe, Martinique"
   },
   {
     "id": "orange",
@@ -85,9 +104,16 @@
     },
     "nutrition": {
       "calories": 47,
-      "vitamins": ["C", "B1", "B9"],
+      "vitamins": [
+        "C",
+        "B1",
+        "B9"
+      ],
       "benefits": "Excellente source de vitamine C, renforce l'immunité"
-    }
+    },
+    "conservation": "1 semaine à température ambiante, 2 semaines au réfrigérateur",
+    "buyingTip": "Lourde par rapport à sa taille, peau ferme",
+    "origin": "Corse, bassin méditerranéen"
   },
   {
     "id": "citron",
@@ -105,9 +131,14 @@
     },
     "nutrition": {
       "calories": 29,
-      "vitamins": ["C"],
+      "vitamins": [
+        "C"
+      ],
       "benefits": "Antiseptique naturel, aide à la digestion"
-    }
+    },
+    "conservation": "1 semaine à température ambiante, 3 semaines au réfrigérateur",
+    "buyingTip": "Choisir lourd et à peau fine pour plus de jus",
+    "origin": "Menton, Corse, bassin méditerranéen"
   },
   {
     "id": "clementine",
@@ -123,9 +154,15 @@
     },
     "nutrition": {
       "calories": 47,
-      "vitamins": ["C", "B9"],
+      "vitamins": [
+        "C",
+        "B9"
+      ],
       "benefits": "Facile à peler, riche en vitamine C"
-    }
+    },
+    "conservation": "1 semaine à température ambiante, 2 semaines au réfrigérateur",
+    "buyingTip": "Lourde et ferme, avec des feuilles encore vertes si possible",
+    "origin": "Corse (IGP), bassin méditerranéen"
   },
   {
     "id": "mandarine",
@@ -135,15 +172,21 @@
     "icon": "tangerine",
     "seasons": {
       "1": "peak",
-      "2": "peak",
+      "2": "partial",
       "11": "partial",
       "12": "peak"
     },
     "nutrition": {
       "calories": 53,
-      "vitamins": ["C", "A"],
+      "vitamins": [
+        "C",
+        "A"
+      ],
       "benefits": "Parfumée, riche en antioxydants"
-    }
+    },
+    "conservation": "1 semaine à température ambiante",
+    "buyingTip": "Parfumée et lourde en main, peau souple",
+    "origin": "Corse, bassin méditerranéen"
   },
   {
     "id": "pamplemousse",
@@ -152,7 +195,7 @@
     "type": "fruit",
     "icon": "melon",
     "seasons": {
-      "1": "peak",
+      "1": "partial",
       "2": "peak",
       "3": "peak",
       "4": "peak",
@@ -160,9 +203,15 @@
     },
     "nutrition": {
       "calories": 42,
-      "vitamins": ["C", "A"],
+      "vitamins": [
+        "C",
+        "A"
+      ],
       "benefits": "Peu calorique, favorise la perte de poids"
-    }
+    },
+    "conservation": "1 semaine à température ambiante, 2 semaines au réfrigérateur",
+    "buyingTip": "Lourd et ferme, sans taches molles",
+    "origin": "Corse, bassin méditerranéen"
   },
   {
     "id": "fraise",
@@ -179,9 +228,15 @@
     },
     "nutrition": {
       "calories": 33,
-      "vitamins": ["C", "B9"],
+      "vitamins": [
+        "C",
+        "B9"
+      ],
       "benefits": "Très riche en vitamine C, antioxydante"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur, ne pas laver avant consommation",
+    "buyingTip": "Brillante, parfumée et uniformément rouge",
+    "origin": "Périgord, Lot-et-Garonne, Provence"
   },
   {
     "id": "framboise",
@@ -197,9 +252,15 @@
     },
     "nutrition": {
       "calories": 52,
-      "vitamins": ["C", "E"],
+      "vitamins": [
+        "C",
+        "E"
+      ],
       "benefits": "Riche en fibres et antioxydants"
-    }
+    },
+    "conservation": "1-2 jours au réfrigérateur, très fragile",
+    "buyingTip": "Ferme et colorée, éviter les barquettes tachées de jus",
+    "origin": "Vallée du Rhône, Limousin"
   },
   {
     "id": "myrtille",
@@ -208,15 +269,21 @@
     "type": "fruit",
     "icon": "grapes",
     "seasons": {
-      "7": "peak",
+      "7": "partial",
       "8": "peak",
       "9": "partial"
     },
     "nutrition": {
       "calories": 57,
-      "vitamins": ["C", "K"],
+      "vitamins": [
+        "C",
+        "K"
+      ],
       "benefits": "Excellente pour la vue, très antioxydante"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur",
+    "buyingTip": "Ferme avec une pellicule bleutée naturelle",
+    "origin": "Vosges, Massif central, Landes"
   },
   {
     "id": "cassis",
@@ -230,9 +297,15 @@
     },
     "nutrition": {
       "calories": 63,
-      "vitamins": ["C", "E"],
+      "vitamins": [
+        "C",
+        "E"
+      ],
       "benefits": "Champion de la vitamine C, anti-inflammatoire"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur",
+    "buyingTip": "Baies fermes et brillantes, bien noires",
+    "origin": "Bourgogne, Val de Loire"
   },
   {
     "id": "groseille",
@@ -247,9 +320,14 @@
     },
     "nutrition": {
       "calories": 56,
-      "vitamins": ["C"],
+      "vitamins": [
+        "C"
+      ],
       "benefits": "Acidulée, riche en vitamine C"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur",
+    "buyingTip": "Grappes entières, baies fermes et brillantes",
+    "origin": "Lorraine, Val de Loire, Île-de-France"
   },
   {
     "id": "mure",
@@ -258,15 +336,22 @@
     "type": "fruit",
     "icon": "grapes",
     "seasons": {
-      "8": "peak",
+      "8": "partial",
       "9": "peak",
       "10": "partial"
     },
     "nutrition": {
       "calories": 43,
-      "vitamins": ["C", "K", "E"],
+      "vitamins": [
+        "C",
+        "K",
+        "E"
+      ],
       "benefits": "Riche en antioxydants et fibres"
-    }
+    },
+    "conservation": "1-2 jours au réfrigérateur, très fragile",
+    "buyingTip": "Noire et brillante, ferme au toucher",
+    "origin": "Cueillette sauvage, Limousin, Auvergne"
   },
   {
     "id": "cerise",
@@ -277,13 +362,19 @@
     "seasons": {
       "5": "partial",
       "6": "peak",
-      "7": "peak"
+      "7": "partial"
     },
     "nutrition": {
       "calories": 63,
-      "vitamins": ["C", "A"],
+      "vitamins": [
+        "C",
+        "A"
+      ],
       "benefits": "Anti-inflammatoire, aide au sommeil"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur",
+    "buyingTip": "Ferme et brillante, queue bien verte",
+    "origin": "Provence, Vallée du Rhône, Vaucluse"
   },
   {
     "id": "abricot",
@@ -294,13 +385,19 @@
     "seasons": {
       "6": "partial",
       "7": "peak",
-      "8": "peak"
+      "8": "partial"
     },
     "nutrition": {
       "calories": 48,
-      "vitamins": ["A", "C"],
+      "vitamins": [
+        "A",
+        "C"
+      ],
       "benefits": "Excellent pour la peau, riche en bêta-carotène"
-    }
+    },
+    "conservation": "2-3 jours à température ambiante, fragile une fois mûr",
+    "buyingTip": "Souple au toucher, parfumé, sans taches vertes",
+    "origin": "Roussillon, Provence, Vallée du Rhône"
   },
   {
     "id": "peche",
@@ -316,9 +413,15 @@
     },
     "nutrition": {
       "calories": 39,
-      "vitamins": ["C", "A"],
+      "vitamins": [
+        "C",
+        "A"
+      ],
       "benefits": "Hydratante, bonne pour la peau"
-    }
+    },
+    "conservation": "2-3 jours à température ambiante pour mûrir",
+    "buyingTip": "Parfumée et légèrement souple, sans meurtrissure",
+    "origin": "Roussillon, Provence, Drôme"
   },
   {
     "id": "nectarine",
@@ -334,9 +437,15 @@
     },
     "nutrition": {
       "calories": 44,
-      "vitamins": ["C", "A"],
+      "vitamins": [
+        "C",
+        "A"
+      ],
       "benefits": "Similaire à la pêche, peau lisse"
-    }
+    },
+    "conservation": "2-3 jours à température ambiante",
+    "buyingTip": "Souple au toucher, parfumée, peau lisse et brillante",
+    "origin": "Roussillon, Provence, Drôme"
   },
   {
     "id": "prune",
@@ -352,9 +461,15 @@
     },
     "nutrition": {
       "calories": 46,
-      "vitamins": ["C", "K"],
+      "vitamins": [
+        "C",
+        "K"
+      ],
       "benefits": "Favorise le transit, riche en antioxydants"
-    }
+    },
+    "conservation": "3-5 jours au réfrigérateur",
+    "buyingTip": "Légèrement souple avec une pruine intacte",
+    "origin": "Lot-et-Garonne, Sud-Ouest, Lorraine"
   },
   {
     "id": "mirabelle",
@@ -368,9 +483,15 @@
     },
     "nutrition": {
       "calories": 67,
-      "vitamins": ["C", "A"],
+      "vitamins": [
+        "C",
+        "A"
+      ],
       "benefits": "Spécialité lorraine, très sucrée"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur",
+    "buyingTip": "Dorée avec de petites taches, souple et parfumée",
+    "origin": "Lorraine (IGP), Alsace"
   },
   {
     "id": "raisin",
@@ -386,9 +507,15 @@
     },
     "nutrition": {
       "calories": 69,
-      "vitamins": ["C", "K"],
+      "vitamins": [
+        "C",
+        "K"
+      ],
       "benefits": "Énergétique, bon pour le cœur"
-    }
+    },
+    "conservation": "3-5 jours au réfrigérateur",
+    "buyingTip": "Grains fermes bien attachés, tige verte et souple",
+    "origin": "Provence, Sud-Ouest, Val de Loire"
   },
   {
     "id": "melon",
@@ -404,9 +531,15 @@
     },
     "nutrition": {
       "calories": 34,
-      "vitamins": ["A", "C"],
+      "vitamins": [
+        "A",
+        "C"
+      ],
       "benefits": "Très hydratant, rafraîchissant"
-    }
+    },
+    "conservation": "Entier à température ambiante, coupé 2-3 jours au réfrigérateur",
+    "buyingTip": "Lourd, parfumé au pédoncule, fendillé autour de la queue",
+    "origin": "Charentes, Provence, Quercy"
   },
   {
     "id": "pasteque",
@@ -422,9 +555,15 @@
     },
     "nutrition": {
       "calories": 30,
-      "vitamins": ["A", "C"],
+      "vitamins": [
+        "A",
+        "C"
+      ],
       "benefits": "92% d'eau, très rafraîchissante"
-    }
+    },
+    "conservation": "Entière 1 semaine, coupée 3-4 jours au réfrigérateur",
+    "buyingTip": "Lourde, son creux en tapant, tache jaune au sol",
+    "origin": "Provence, Languedoc"
   },
   {
     "id": "figue",
@@ -440,9 +579,15 @@
     },
     "nutrition": {
       "calories": 74,
-      "vitamins": ["B6", "K"],
+      "vitamins": [
+        "B6",
+        "K"
+      ],
       "benefits": "Riche en fibres et minéraux"
-    }
+    },
+    "conservation": "1-2 jours au réfrigérateur, très fragile",
+    "buyingTip": "Souple sans être molle, queue ferme, peau intacte",
+    "origin": "Solliès (Var), Provence, Languedoc"
   },
   {
     "id": "kiwi",
@@ -454,15 +599,22 @@
       "1": "peak",
       "2": "peak",
       "3": "peak",
-      "4": "peak",
+      "4": "partial",
       "11": "partial",
       "12": "peak"
     },
     "nutrition": {
       "calories": 61,
-      "vitamins": ["C", "K", "E"],
+      "vitamins": [
+        "C",
+        "K",
+        "E"
+      ],
       "benefits": "Plus de vitamine C que l'orange"
-    }
+    },
+    "conservation": "Plusieurs semaines au réfrigérateur, quelques jours à température ambiante",
+    "buyingTip": "Légèrement souple au toucher quand mûr",
+    "origin": "Adour, Sud-Ouest, Corse"
   },
   {
     "id": "grenade",
@@ -471,15 +623,21 @@
     "type": "fruit",
     "icon": "grapes",
     "seasons": {
-      "10": "peak",
+      "10": "partial",
       "11": "peak",
-      "12": "peak"
+      "12": "partial"
     },
     "nutrition": {
       "calories": 83,
-      "vitamins": ["C", "K"],
+      "vitamins": [
+        "C",
+        "K"
+      ],
       "benefits": "Très antioxydante, bon pour le cœur"
-    }
+    },
+    "conservation": "2 semaines à température ambiante, 1 mois au réfrigérateur",
+    "buyingTip": "Lourde, peau ferme et lisse, couleur vive",
+    "origin": "Provence, bassin méditerranéen"
   },
   {
     "id": "chataigne",
@@ -488,15 +646,21 @@
     "type": "fruit",
     "icon": "chestnut",
     "seasons": {
-      "10": "peak",
+      "10": "partial",
       "11": "peak",
       "12": "partial"
     },
     "nutrition": {
       "calories": 131,
-      "vitamins": ["B6", "C"],
+      "vitamins": [
+        "B6",
+        "C"
+      ],
       "benefits": "Énergétique, riche en glucides complexes"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur dans un sac perforé",
+    "buyingTip": "Coque brillante, lourde, sans trou de ver",
+    "origin": "Ardèche, Corse, Dordogne"
   },
   {
     "id": "noix",
@@ -508,13 +672,19 @@
       "9": "partial",
       "10": "peak",
       "11": "peak",
-      "12": "peak"
+      "12": "partial"
     },
     "nutrition": {
       "calories": 654,
-      "vitamins": ["E", "B6"],
+      "vitamins": [
+        "E",
+        "B6"
+      ],
       "benefits": "Riche en oméga-3, bon pour le cerveau"
-    }
+    },
+    "conservation": "Plusieurs mois dans un endroit frais et sec",
+    "buyingTip": "Coque intacte et lourde, pas de son en secouant",
+    "origin": "Grenoble (AOP), Périgord (AOP)"
   },
   {
     "id": "noisette",
@@ -523,15 +693,21 @@
     "type": "fruit",
     "icon": "chestnut",
     "seasons": {
-      "9": "peak",
+      "9": "partial",
       "10": "peak",
-      "11": "peak"
+      "11": "partial"
     },
     "nutrition": {
       "calories": 628,
-      "vitamins": ["E", "B6"],
+      "vitamins": [
+        "E",
+        "B6"
+      ],
       "benefits": "Riche en vitamine E et magnésium"
-    }
+    },
+    "conservation": "Plusieurs mois en coque dans un endroit frais et sec",
+    "buyingTip": "Coque intacte, pas trop légère en main",
+    "origin": "Lot-et-Garonne, Sud-Ouest, Corse"
   },
   {
     "id": "rhubarbe",
@@ -547,9 +723,15 @@
     },
     "nutrition": {
       "calories": 21,
-      "vitamins": ["C", "K"],
+      "vitamins": [
+        "C",
+        "K"
+      ],
       "benefits": "Très peu calorique, riche en fibres"
-    }
+    },
+    "conservation": "4-5 jours au réfrigérateur dans un linge humide",
+    "buyingTip": "Tiges fermes et cassantes, couleur vive",
+    "origin": "Nord, Île-de-France, Picardie"
   },
   {
     "id": "carotte",
@@ -573,9 +755,16 @@
     },
     "nutrition": {
       "calories": 41,
-      "vitamins": ["A", "K", "B6"],
+      "vitamins": [
+        "A",
+        "K",
+        "B6"
+      ],
       "benefits": "Excellente pour la vue, riche en bêta-carotène"
-    }
+    },
+    "conservation": "2-3 semaines au réfrigérateur dans un sac perforé",
+    "buyingTip": "Ferme et lisse, fanes fraîches si présentes",
+    "origin": "Landes, Nantes, Créances (AOP)"
   },
   {
     "id": "tomate",
@@ -592,9 +781,16 @@
     },
     "nutrition": {
       "calories": 18,
-      "vitamins": ["C", "K", "A"],
+      "vitamins": [
+        "C",
+        "K",
+        "A"
+      ],
       "benefits": "Riche en lycopène, antioxydant puissant"
-    }
+    },
+    "conservation": "À température ambiante, jamais au réfrigérateur",
+    "buyingTip": "Parfumée, ferme et colorée, avec le pédoncule",
+    "origin": "Provence, Bretagne, Val de Loire"
   },
   {
     "id": "courgette",
@@ -612,9 +808,15 @@
     },
     "nutrition": {
       "calories": 17,
-      "vitamins": ["C", "B6"],
+      "vitamins": [
+        "C",
+        "B6"
+      ],
       "benefits": "Très peu calorique, hydratante"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur",
+    "buyingTip": "Petite à moyenne, peau lisse et brillante, ferme",
+    "origin": "Provence, Languedoc, Sud-Ouest"
   },
   {
     "id": "aubergine",
@@ -631,9 +833,15 @@
     },
     "nutrition": {
       "calories": 25,
-      "vitamins": ["B1", "B6"],
+      "vitamins": [
+        "B1",
+        "B6"
+      ],
       "benefits": "Riche en fibres, antioxydante"
-    }
+    },
+    "conservation": "4-5 jours au réfrigérateur",
+    "buyingTip": "Ferme, peau lisse et brillante, pédoncule vert",
+    "origin": "Provence, Languedoc, Sud-Ouest"
   },
   {
     "id": "poivron",
@@ -650,9 +858,16 @@
     },
     "nutrition": {
       "calories": 31,
-      "vitamins": ["C", "A", "B6"],
+      "vitamins": [
+        "C",
+        "A",
+        "B6"
+      ],
       "benefits": "Très riche en vitamine C (surtout rouge)"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur",
+    "buyingTip": "Ferme et lourd, peau lisse et brillante",
+    "origin": "Provence, Languedoc, Pyrénées"
   },
   {
     "id": "concombre",
@@ -670,9 +885,15 @@
     },
     "nutrition": {
       "calories": 16,
-      "vitamins": ["K", "C"],
+      "vitamins": [
+        "K",
+        "C"
+      ],
       "benefits": "96% d'eau, très rafraîchissant"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur",
+    "buyingTip": "Ferme sur toute la longueur, couleur uniforme",
+    "origin": "Val de Loire, Picardie, Provence"
   },
   {
     "id": "haricot-vert",
@@ -689,9 +910,16 @@
     },
     "nutrition": {
       "calories": 31,
-      "vitamins": ["C", "K", "A"],
+      "vitamins": [
+        "C",
+        "K",
+        "A"
+      ],
       "benefits": "Riche en fibres, peu calorique"
-    }
+    },
+    "conservation": "3-4 jours au réfrigérateur",
+    "buyingTip": "Se casse net en le pliant, couleur vive",
+    "origin": "Val de Loire, Sud-Ouest, Bretagne"
   },
   {
     "id": "petit-pois",
@@ -703,13 +931,20 @@
       "4": "partial",
       "5": "peak",
       "6": "peak",
-      "7": "peak"
+      "7": "partial"
     },
     "nutrition": {
       "calories": 81,
-      "vitamins": ["C", "K", "B1"],
+      "vitamins": [
+        "C",
+        "K",
+        "B1"
+      ],
       "benefits": "Riche en protéines végétales"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur en cosse",
+    "buyingTip": "Cosses vert vif, bien remplies et croquantes",
+    "origin": "Picardie, Bretagne, Sud-Ouest"
   },
   {
     "id": "feve",
@@ -725,9 +960,16 @@
     },
     "nutrition": {
       "calories": 88,
-      "vitamins": ["B1", "B6", "C"],
+      "vitamins": [
+        "B1",
+        "B6",
+        "C"
+      ],
       "benefits": "Riche en protéines et fibres"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur en cosse",
+    "buyingTip": "Cosses vertes et fermes, pas trop grosses",
+    "origin": "Provence, Languedoc, Sud-Ouest"
   },
   {
     "id": "epinard",
@@ -742,13 +984,20 @@
       "6": "peak",
       "9": "partial",
       "10": "peak",
-      "11": "peak"
+      "11": "partial"
     },
     "nutrition": {
       "calories": 23,
-      "vitamins": ["K", "A", "C"],
+      "vitamins": [
+        "K",
+        "A",
+        "C"
+      ],
       "benefits": "Très riche en fer et vitamines"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur, consommer rapidement",
+    "buyingTip": "Feuilles vert vif, fermes et non flétries",
+    "origin": "Picardie, Île-de-France, Provence"
   },
   {
     "id": "salade",
@@ -757,19 +1006,26 @@
     "type": "vegetable",
     "icon": "leafy-green",
     "seasons": {
-      "4": "peak",
+      "4": "partial",
       "5": "peak",
       "6": "peak",
       "7": "peak",
       "8": "peak",
       "9": "peak",
-      "10": "peak"
+      "10": "partial"
     },
     "nutrition": {
       "calories": 15,
-      "vitamins": ["K", "A", "C"],
+      "vitamins": [
+        "K",
+        "A",
+        "C"
+      ],
       "benefits": "Très peu calorique, hydratante"
-    }
+    },
+    "conservation": "3-5 jours au réfrigérateur dans un linge humide",
+    "buyingTip": "Feuilles croquantes, couleur vive, cœur ferme",
+    "origin": "Provence, Val de Loire, Île-de-France"
   },
   {
     "id": "mache",
@@ -780,16 +1036,23 @@
     "seasons": {
       "1": "peak",
       "2": "peak",
-      "3": "peak",
+      "3": "partial",
       "10": "partial",
       "11": "peak",
       "12": "peak"
     },
     "nutrition": {
       "calories": 21,
-      "vitamins": ["C", "B9", "A"],
+      "vitamins": [
+        "C",
+        "B9",
+        "A"
+      ],
       "benefits": "Riche en oméga-3 et fer"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur",
+    "buyingTip": "Rosettes intactes, feuilles vert foncé et fermes",
+    "origin": "Nantes (IGP), Loire-Atlantique"
   },
   {
     "id": "roquette",
@@ -808,9 +1071,16 @@
     },
     "nutrition": {
       "calories": 25,
-      "vitamins": ["K", "C", "A"],
+      "vitamins": [
+        "K",
+        "C",
+        "A"
+      ],
       "benefits": "Goût poivré, riche en antioxydants"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur dans un linge humide",
+    "buyingTip": "Feuilles vert foncé, fermes, sans taches jaunes",
+    "origin": "Provence, Val de Loire"
   },
   {
     "id": "cresson",
@@ -819,17 +1089,24 @@
     "type": "vegetable",
     "icon": "leafy-green",
     "seasons": {
-      "4": "peak",
+      "4": "partial",
       "5": "peak",
       "6": "peak",
       "10": "partial",
-      "11": "peak"
+      "11": "partial"
     },
     "nutrition": {
       "calories": 11,
-      "vitamins": ["K", "C", "A"],
+      "vitamins": [
+        "K",
+        "C",
+        "A"
+      ],
       "benefits": "Un des légumes les plus nutritifs"
-    }
+    },
+    "conservation": "1-2 jours au réfrigérateur, les tiges dans l'eau",
+    "buyingTip": "Feuilles vert vif, tiges croquantes",
+    "origin": "Essonne, Picardie, Île-de-France"
   },
   {
     "id": "chou-fleur",
@@ -841,7 +1118,7 @@
       "1": "peak",
       "2": "peak",
       "3": "peak",
-      "4": "peak",
+      "4": "partial",
       "9": "partial",
       "10": "peak",
       "11": "peak",
@@ -849,9 +1126,16 @@
     },
     "nutrition": {
       "calories": 25,
-      "vitamins": ["C", "K", "B6"],
+      "vitamins": [
+        "C",
+        "K",
+        "B6"
+      ],
       "benefits": "Riche en fibres, anti-cancer"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur",
+    "buyingTip": "Inflorescence blanche et compacte, sans taches brunes",
+    "origin": "Bretagne, Nord, Normandie"
   },
   {
     "id": "brocoli",
@@ -865,13 +1149,20 @@
       "8": "peak",
       "9": "peak",
       "10": "peak",
-      "11": "peak"
+      "11": "partial"
     },
     "nutrition": {
       "calories": 34,
-      "vitamins": ["C", "K", "B9"],
+      "vitamins": [
+        "C",
+        "K",
+        "B9"
+      ],
       "benefits": "Excellente source de vitamine C, anti-cancer"
-    }
+    },
+    "conservation": "4-5 jours au réfrigérateur",
+    "buyingTip": "Bouquets bien verts et serrés, tige ferme",
+    "origin": "Bretagne, Val de Loire, Picardie"
   },
   {
     "id": "chou-vert",
@@ -882,16 +1173,22 @@
     "seasons": {
       "1": "peak",
       "2": "peak",
-      "3": "peak",
+      "3": "partial",
       "10": "partial",
       "11": "peak",
       "12": "peak"
     },
     "nutrition": {
       "calories": 25,
-      "vitamins": ["C", "K"],
+      "vitamins": [
+        "C",
+        "K"
+      ],
       "benefits": "Très riche en vitamine C"
-    }
+    },
+    "conservation": "1-2 semaines au réfrigérateur",
+    "buyingTip": "Lourd pour sa taille, feuilles craquantes",
+    "origin": "Bretagne, Nord, Normandie"
   },
   {
     "id": "chou-rouge",
@@ -902,7 +1199,7 @@
     "seasons": {
       "1": "peak",
       "2": "peak",
-      "3": "peak",
+      "3": "partial",
       "9": "partial",
       "10": "peak",
       "11": "peak",
@@ -910,9 +1207,15 @@
     },
     "nutrition": {
       "calories": 31,
-      "vitamins": ["C", "K"],
+      "vitamins": [
+        "C",
+        "K"
+      ],
       "benefits": "Riche en anthocyanes antioxydants"
-    }
+    },
+    "conservation": "1-2 semaines au réfrigérateur",
+    "buyingTip": "Lourd et ferme, feuilles brillantes et serrées",
+    "origin": "Nord, Bretagne, Picardie"
   },
   {
     "id": "chou-de-bruxelles",
@@ -922,16 +1225,23 @@
     "icon": "leafy-green",
     "seasons": {
       "1": "peak",
-      "2": "peak",
+      "2": "partial",
       "10": "partial",
       "11": "peak",
       "12": "peak"
     },
     "nutrition": {
       "calories": 43,
-      "vitamins": ["C", "K", "B6"],
+      "vitamins": [
+        "C",
+        "K",
+        "B6"
+      ],
       "benefits": "Très riche en vitamines C et K"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur",
+    "buyingTip": "Petits, fermes et bien verts, serrés",
+    "origin": "Nord, Picardie, Île-de-France"
   },
   {
     "id": "chou-chinois",
@@ -941,7 +1251,7 @@
     "icon": "leafy-green",
     "seasons": {
       "1": "peak",
-      "2": "peak",
+      "2": "partial",
       "9": "partial",
       "10": "peak",
       "11": "peak",
@@ -949,9 +1259,16 @@
     },
     "nutrition": {
       "calories": 13,
-      "vitamins": ["C", "K", "A"],
+      "vitamins": [
+        "C",
+        "K",
+        "A"
+      ],
       "benefits": "Très peu calorique, croquant"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur",
+    "buyingTip": "Feuilles croquantes et bien serrées, base blanche",
+    "origin": "Val de Loire, Provence"
   },
   {
     "id": "chou-kale",
@@ -961,16 +1278,23 @@
     "icon": "leafy-green",
     "seasons": {
       "1": "peak",
-      "2": "peak",
+      "2": "partial",
       "10": "partial",
       "11": "peak",
       "12": "peak"
     },
     "nutrition": {
       "calories": 49,
-      "vitamins": ["K", "C", "A"],
+      "vitamins": [
+        "K",
+        "C",
+        "A"
+      ],
       "benefits": "Superaliment, très riche en nutriments"
-    }
+    },
+    "conservation": "4-5 jours au réfrigérateur dans un sac",
+    "buyingTip": "Feuilles frisées, vert foncé, fermes et non flétries",
+    "origin": "Bretagne, Nord, Normandie"
   },
   {
     "id": "poireau",
@@ -990,9 +1314,16 @@
     },
     "nutrition": {
       "calories": 61,
-      "vitamins": ["K", "C", "B6"],
+      "vitamins": [
+        "K",
+        "C",
+        "B6"
+      ],
       "benefits": "Diurétique, riche en fibres"
-    }
+    },
+    "conservation": "1-2 semaines au réfrigérateur",
+    "buyingTip": "Blanc bien long, feuilles vertes non flétries",
+    "origin": "Picardie, Nord, Bretagne"
   },
   {
     "id": "oignon",
@@ -1016,9 +1347,15 @@
     },
     "nutrition": {
       "calories": 40,
-      "vitamins": ["C", "B6"],
+      "vitamins": [
+        "C",
+        "B6"
+      ],
       "benefits": "Antibactérien, bon pour le cœur"
-    }
+    },
+    "conservation": "Plusieurs semaines dans un endroit frais et sec",
+    "buyingTip": "Ferme et sec, pelure bien attachée",
+    "origin": "Roscoff (AOP), Cévennes (AOP), Nord"
   },
   {
     "id": "echalote",
@@ -1029,16 +1366,22 @@
     "seasons": {
       "1": "peak",
       "2": "peak",
-      "3": "peak",
-      "10": "peak",
+      "3": "partial",
+      "10": "partial",
       "11": "peak",
       "12": "peak"
     },
     "nutrition": {
       "calories": 72,
-      "vitamins": ["B6", "C"],
+      "vitamins": [
+        "B6",
+        "C"
+      ],
       "benefits": "Saveur délicate, antioxydante"
-    }
+    },
+    "conservation": "Plusieurs semaines dans un endroit frais et sec",
+    "buyingTip": "Ferme et bien sèche, pas de germe",
+    "origin": "Bretagne, Jersey (AOP)"
   },
   {
     "id": "ail",
@@ -1062,9 +1405,15 @@
     },
     "nutrition": {
       "calories": 149,
-      "vitamins": ["B6", "C"],
+      "vitamins": [
+        "B6",
+        "C"
+      ],
       "benefits": "Antibactérien puissant, bon pour l'immunité"
-    }
+    },
+    "conservation": "Plusieurs semaines dans un endroit frais et sec",
+    "buyingTip": "Tête ferme et serrée, pas de germe",
+    "origin": "Lautrec (IGP), Drôme, Lomagne"
   },
   {
     "id": "pomme-de-terre",
@@ -1088,9 +1437,15 @@
     },
     "nutrition": {
       "calories": 77,
-      "vitamins": ["C", "B6"],
+      "vitamins": [
+        "C",
+        "B6"
+      ],
       "benefits": "Source d'énergie, riche en potassium"
-    }
+    },
+    "conservation": "Plusieurs semaines au frais et à l'abri de la lumière",
+    "buyingTip": "Ferme, sans germes ni verdissement",
+    "origin": "Nord, Picardie, Île de Ré (AOP)"
   },
   {
     "id": "patate-douce",
@@ -1102,13 +1457,20 @@
       "9": "partial",
       "10": "peak",
       "11": "peak",
-      "12": "peak"
+      "12": "partial"
     },
     "nutrition": {
       "calories": 86,
-      "vitamins": ["A", "C", "B6"],
+      "vitamins": [
+        "A",
+        "C",
+        "B6"
+      ],
       "benefits": "Index glycémique bas, riche en bêta-carotène"
-    }
+    },
+    "conservation": "1-2 semaines dans un endroit frais et sec",
+    "buyingTip": "Ferme, peau intacte sans meurtrissures",
+    "origin": "Provence, Languedoc, Antilles"
   },
   {
     "id": "topinambour",
@@ -1125,9 +1487,15 @@
     },
     "nutrition": {
       "calories": 73,
-      "vitamins": ["B1", "B3"],
+      "vitamins": [
+        "B1",
+        "B3"
+      ],
       "benefits": "Prébiotique, bon pour la flore intestinale"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur dans un sac perforé",
+    "buyingTip": "Ferme et lourd, sans taches molles",
+    "origin": "Picardie, Île-de-France, Nord"
   },
   {
     "id": "panais",
@@ -1138,16 +1506,23 @@
     "seasons": {
       "1": "peak",
       "2": "peak",
-      "3": "peak",
+      "3": "partial",
       "10": "partial",
       "11": "peak",
       "12": "peak"
     },
     "nutrition": {
       "calories": 75,
-      "vitamins": ["C", "K", "B9"],
+      "vitamins": [
+        "C",
+        "K",
+        "B9"
+      ],
       "benefits": "Saveur douce, riche en fibres"
-    }
+    },
+    "conservation": "2-3 semaines au réfrigérateur",
+    "buyingTip": "Ferme, petit à moyen pour plus de saveur",
+    "origin": "Picardie, Nord, Île-de-France"
   },
   {
     "id": "navet",
@@ -1167,9 +1542,15 @@
     },
     "nutrition": {
       "calories": 28,
-      "vitamins": ["C", "K"],
+      "vitamins": [
+        "C",
+        "K"
+      ],
       "benefits": "Peu calorique, bon pour la digestion"
-    }
+    },
+    "conservation": "1-2 semaines au réfrigérateur",
+    "buyingTip": "Petit et lourd, peau lisse sans meurtrissure",
+    "origin": "Nantes, Croissy, Picardie"
   },
   {
     "id": "radis",
@@ -1182,13 +1563,19 @@
       "4": "peak",
       "5": "peak",
       "6": "peak",
-      "7": "peak"
+      "7": "partial"
     },
     "nutrition": {
       "calories": 16,
-      "vitamins": ["C", "B6"],
+      "vitamins": [
+        "C",
+        "B6"
+      ],
       "benefits": "Croquant, aide à la digestion"
-    }
+    },
+    "conservation": "4-5 jours au réfrigérateur sans les fanes",
+    "buyingTip": "Ferme et croquant, fanes bien vertes",
+    "origin": "Val de Loire, Picardie, Provence"
   },
   {
     "id": "radis-noir",
@@ -1198,15 +1585,21 @@
     "icon": "leafy-green",
     "seasons": {
       "1": "peak",
-      "2": "peak",
+      "2": "partial",
       "11": "partial",
       "12": "peak"
     },
     "nutrition": {
       "calories": 20,
-      "vitamins": ["C", "B9"],
+      "vitamins": [
+        "C",
+        "B9"
+      ],
       "benefits": "Détoxifiant pour le foie"
-    }
+    },
+    "conservation": "1-2 semaines au réfrigérateur",
+    "buyingTip": "Ferme et lourd, peau noire intacte",
+    "origin": "Picardie, Île-de-France"
   },
   {
     "id": "betterave",
@@ -1225,9 +1618,15 @@
     },
     "nutrition": {
       "calories": 43,
-      "vitamins": ["B9", "C"],
+      "vitamins": [
+        "B9",
+        "C"
+      ],
       "benefits": "Améliore l'endurance, riche en nitrates"
-    }
+    },
+    "conservation": "2-3 semaines au réfrigérateur crue",
+    "buyingTip": "Ferme et lisse, sans flétrissure",
+    "origin": "Picardie, Nord, Île-de-France"
   },
   {
     "id": "celeri-rave",
@@ -1238,16 +1637,23 @@
     "seasons": {
       "1": "peak",
       "2": "peak",
-      "3": "peak",
+      "3": "partial",
       "10": "partial",
       "11": "peak",
       "12": "peak"
     },
     "nutrition": {
       "calories": 42,
-      "vitamins": ["K", "C", "B6"],
+      "vitamins": [
+        "K",
+        "C",
+        "B6"
+      ],
       "benefits": "Peu calorique, riche en fibres"
-    }
+    },
+    "conservation": "2-3 semaines au réfrigérateur",
+    "buyingTip": "Lourd pour sa taille, ferme au toucher",
+    "origin": "Picardie, Nord, Île-de-France"
   },
   {
     "id": "celeri-branche",
@@ -1265,9 +1671,15 @@
     },
     "nutrition": {
       "calories": 16,
-      "vitamins": ["K", "C"],
+      "vitamins": [
+        "K",
+        "C"
+      ],
       "benefits": "Très peu calorique, croquant"
-    }
+    },
+    "conservation": "1-2 semaines au réfrigérateur",
+    "buyingTip": "Branches fermes et cassantes, feuilles vert vif",
+    "origin": "Picardie, Val de Loire, Provence"
   },
   {
     "id": "fenouil",
@@ -1285,9 +1697,15 @@
     },
     "nutrition": {
       "calories": 31,
-      "vitamins": ["C", "B9"],
+      "vitamins": [
+        "C",
+        "B9"
+      ],
       "benefits": "Aide à la digestion, saveur anisée"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur",
+    "buyingTip": "Blanc et renflé, bulbe ferme sans taches brunes",
+    "origin": "Provence, Languedoc, Corse"
   },
   {
     "id": "artichaut",
@@ -1305,9 +1723,16 @@
     },
     "nutrition": {
       "calories": 47,
-      "vitamins": ["C", "K", "B9"],
+      "vitamins": [
+        "C",
+        "K",
+        "B9"
+      ],
       "benefits": "Bon pour le foie, riche en fibres"
-    }
+    },
+    "conservation": "4-5 jours au réfrigérateur",
+    "buyingTip": "Lourd, feuilles serrées et cassantes, tige ferme",
+    "origin": "Bretagne (Camus), Provence (Violet)"
   },
   {
     "id": "asperge",
@@ -1316,15 +1741,22 @@
     "type": "vegetable",
     "icon": "leafy-green",
     "seasons": {
-      "4": "peak",
+      "4": "partial",
       "5": "peak",
       "6": "partial"
     },
     "nutrition": {
       "calories": 20,
-      "vitamins": ["K", "B9", "C"],
+      "vitamins": [
+        "K",
+        "B9",
+        "C"
+      ],
       "benefits": "Diurétique, riche en acide folique"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur debout dans un verre d'eau",
+    "buyingTip": "Tige ferme et droite, bourgeon bien fermé",
+    "origin": "Landes, Val de Loire, Alsace"
   },
   {
     "id": "endive",
@@ -1343,9 +1775,15 @@
     },
     "nutrition": {
       "calories": 17,
-      "vitamins": ["K", "B9"],
+      "vitamins": [
+        "K",
+        "B9"
+      ],
       "benefits": "Croquante, favorise la digestion"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur à l'abri de la lumière",
+    "buyingTip": "Feuilles blanches et serrées, pointe jaune pâle",
+    "origin": "Nord-Pas-de-Calais, Picardie"
   },
   {
     "id": "blette",
@@ -1363,9 +1801,16 @@
     },
     "nutrition": {
       "calories": 19,
-      "vitamins": ["K", "A", "C"],
+      "vitamins": [
+        "K",
+        "A",
+        "C"
+      ],
       "benefits": "Très riche en vitamines K et A"
-    }
+    },
+    "conservation": "3-4 jours au réfrigérateur",
+    "buyingTip": "Feuilles brillantes, côtes bien blanches et fermes",
+    "origin": "Provence, Languedoc, Val de Loire"
   },
   {
     "id": "potiron",
@@ -1377,13 +1822,19 @@
       "9": "partial",
       "10": "peak",
       "11": "peak",
-      "12": "peak"
+      "12": "partial"
     },
     "nutrition": {
       "calories": 26,
-      "vitamins": ["A", "C"],
+      "vitamins": [
+        "A",
+        "C"
+      ],
       "benefits": "Riche en bêta-carotène"
-    }
+    },
+    "conservation": "Plusieurs mois entier dans un endroit frais et sec",
+    "buyingTip": "Lourd, peau dure sans fissures, pédoncule sec",
+    "origin": "Provence, Val de Loire, Sud-Ouest"
   },
   {
     "id": "potimarron",
@@ -1395,13 +1846,20 @@
       "9": "partial",
       "10": "peak",
       "11": "peak",
-      "12": "peak"
+      "12": "partial"
     },
     "nutrition": {
       "calories": 63,
-      "vitamins": ["A", "C", "E"],
+      "vitamins": [
+        "A",
+        "C",
+        "E"
+      ],
       "benefits": "Goût de châtaigne, riche en vitamines"
-    }
+    },
+    "conservation": "Plusieurs mois entier dans un endroit frais et sec",
+    "buyingTip": "Petit et lourd, peau dure et intacte",
+    "origin": "Provence, Val de Loire, Centre"
   },
   {
     "id": "butternut",
@@ -1413,13 +1871,20 @@
       "9": "partial",
       "10": "peak",
       "11": "peak",
-      "12": "peak"
+      "12": "partial"
     },
     "nutrition": {
       "calories": 45,
-      "vitamins": ["A", "C", "E"],
+      "vitamins": [
+        "A",
+        "C",
+        "E"
+      ],
       "benefits": "Texture fondante, riche en bêta-carotène"
-    }
+    },
+    "conservation": "Plusieurs mois entier dans un endroit frais et sec",
+    "buyingTip": "Peau beige uniforme, ferme et lourde",
+    "origin": "Provence, Val de Loire, Sud-Ouest"
   },
   {
     "id": "courge-spaghetti",
@@ -1431,13 +1896,19 @@
       "9": "partial",
       "10": "peak",
       "11": "peak",
-      "12": "peak"
+      "12": "partial"
     },
     "nutrition": {
       "calories": 31,
-      "vitamins": ["C", "B6"],
+      "vitamins": [
+        "C",
+        "B6"
+      ],
       "benefits": "Alternative aux pâtes, peu calorique"
-    }
+    },
+    "conservation": "Plusieurs mois entier dans un endroit frais et sec",
+    "buyingTip": "Peau jaune et dure, lourde pour sa taille",
+    "origin": "Provence, Val de Loire, Centre"
   },
   {
     "id": "champignon-de-paris",
@@ -1461,9 +1932,16 @@
     },
     "nutrition": {
       "calories": 22,
-      "vitamins": ["D", "B2", "B3"],
+      "vitamins": [
+        "D",
+        "B2",
+        "B3"
+      ],
       "benefits": "Source de vitamine D, peu calorique"
-    }
+    },
+    "conservation": "3-4 jours au réfrigérateur dans un sac en papier",
+    "buyingTip": "Chapeau ferme et blanc, pas de taches brunes",
+    "origin": "Saumur, Val de Loire, Île-de-France"
   },
   {
     "id": "mais",
@@ -1479,9 +1957,16 @@
     },
     "nutrition": {
       "calories": 86,
-      "vitamins": ["B1", "B9", "C"],
+      "vitamins": [
+        "B1",
+        "B9",
+        "C"
+      ],
       "benefits": "Énergétique, riche en fibres"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur en épi",
+    "buyingTip": "Grains jaunes et brillants, soie humide, feuilles vertes",
+    "origin": "Sud-Ouest, Aquitaine, Alsace"
   },
   {
     "id": "chou-rave",
@@ -1499,9 +1984,15 @@
     },
     "nutrition": {
       "calories": 27,
-      "vitamins": ["C", "B6"],
+      "vitamins": [
+        "C",
+        "B6"
+      ],
       "benefits": "Croquant, très riche en vitamine C"
-    }
+    },
+    "conservation": "1-2 semaines au réfrigérateur",
+    "buyingTip": "Petit et ferme, peau lisse sans fissures",
+    "origin": "Alsace, Picardie, Nord"
   },
   {
     "id": "salsifis",
@@ -1518,9 +2009,15 @@
     },
     "nutrition": {
       "calories": 82,
-      "vitamins": ["B6", "C"],
+      "vitamins": [
+        "B6",
+        "C"
+      ],
       "benefits": "Riche en inuline, bon pour les intestins"
-    }
+    },
+    "conservation": "1 semaine au réfrigérateur dans un linge humide",
+    "buyingTip": "Racine ferme et droite, pas trop grosse",
+    "origin": "Picardie, Nord, Île-de-France"
   },
   {
     "id": "rutabaga",
@@ -1538,9 +2035,15 @@
     },
     "nutrition": {
       "calories": 37,
-      "vitamins": ["C", "B6"],
+      "vitamins": [
+        "C",
+        "B6"
+      ],
       "benefits": "Ancien légume oublié, riche en vitamine C"
-    }
+    },
+    "conservation": "2-3 semaines au réfrigérateur",
+    "buyingTip": "Petit à moyen, ferme et lourd, peau lisse",
+    "origin": "Nord, Picardie, Bretagne"
   },
   {
     "id": "crosne",
@@ -1550,14 +2053,20 @@
     "icon": "potato",
     "seasons": {
       "1": "peak",
-      "2": "peak",
+      "2": "partial",
       "11": "partial",
       "12": "peak"
     },
     "nutrition": {
       "calories": 75,
-      "vitamins": ["B1", "B3"],
+      "vitamins": [
+        "B1",
+        "B3"
+      ],
       "benefits": "Saveur délicate, riche en glucides"
-    }
+    },
+    "conservation": "2-3 jours au réfrigérateur, consommer rapidement",
+    "buyingTip": "Ferme et nacré, pas trop gros",
+    "origin": "Île-de-France, Picardie"
   }
 ]

@@ -20,4 +20,7 @@ export type Produce = {
   icon: string
   seasons: Seasons
   nutrition: Nutrition
+  conservation: string
+  buyingTip: string
+  origin: string
 }

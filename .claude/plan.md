@@ -212,12 +212,13 @@ estcequecestlasaison/
 - [x] Helpers shared : `getArrivingProduce`, `getLeavingProduce`, `getMonthStats`
 - [x] Footer minimaliste
 
-### Milestone 3 : Pages produits (SEO)
-- [ ] Route dynamique `$slug.tsx`
-- [ ] SeasonCalendar (12 mois)
-- [ ] NutritionInfo
-- [ ] Meta tags SEO optimisés
-- [ ] Structured data (Schema.org)
+### Milestone 3 : Pages produits (SEO) ✅
+- [x] Route dynamique `$slug.tsx`
+- [x] SeasonCalendar (12 mois)
+- [x] Infos produit (nutrition, conservation, origine, conseils d'achat)
+- [x] Meta tags SEO optimisés
+- [x] Structured data (Schema.org)
+- [ ] Documenter les sources des données JSON (nutrition, conservation, origine, conseils d'achat)
 
 ### Milestone 4 : Recherche ✅
 - [x] Installer Fuse.js

@@ -4,22 +4,26 @@ import {
   getProduceImageSrcSet
 } from '../helpers/produce-image'
 
+const DEFAULT_SIZES = '(max-width: 640px) 144px, 170px'
+
 type ProduceImageProps = {
   produce: Produce
   loading?: 'lazy' | 'eager'
   fetchPriority?: 'high' | 'low' | 'auto'
+  sizes?: string
 }
 
 export const ProduceImage = ({
   produce,
   loading = 'lazy',
-  fetchPriority
+  fetchPriority,
+  sizes = DEFAULT_SIZES
 }: ProduceImageProps) => {
   return (
     <img
       src={getProduceImageSrc(produce.slug)}
       srcSet={getProduceImageSrcSet(produce.slug)}
-      sizes="(max-width: 640px) 144px, 170px"
+      sizes={sizes}
       alt={produce.name}
       width={256}
       height={256}

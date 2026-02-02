@@ -1,11 +1,12 @@
 import Fuse from 'fuse.js'
-import type { Month, ProduceType } from '@estcequecestlasaison/shared'
+import { PRODUCE_LIST } from '@/constants/produce'
+import type { Month, Produce, ProduceType } from '@estcequecestlasaison/shared'
 import {
   filterProduceByType,
   groupProduceBySeason,
+  matchIsInSeason,
   sortProduceBySeasonEnd
 } from '@estcequecestlasaison/shared'
-import { PRODUCE_LIST } from '../constants/produce'
 
 const fuseInstance = new Fuse(PRODUCE_LIST, {
   keys: ['name'],
@@ -58,4 +59,31 @@ export function getGroupedProduce({
     comingNextMonth: grouped.comingNextMonth,
     offSeason: grouped.offSeason
   }
+}
+
+export function findProduceBySlug(slug: string) {
+  return PRODUCE_LIST.find((produce) => {
+    return produce.slug === slug
+  })
+}
+
+type GetRelatedProduceParams = {
+  produce: Produce
+  produceList: Produce[]
+  month: Month
+}
+
+export function getRelatedProduce({
+  produce,
+  produceList,
+  month
+}: GetRelatedProduceParams) {
+  const inSeasonExcludingCurrent = produceList.filter((item) => {
+    return item.id !== produce.id && matchIsInSeason(item, month)
+  })
+
+  return sortProduceBySeasonEnd({
+    produceList: inSeasonExcludingCurrent,
+    month
+  })
 }

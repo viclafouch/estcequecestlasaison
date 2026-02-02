@@ -1,3 +1,4 @@
+import { SITE_NAME_DISPLAY } from '@/constants/site'
 import { Link } from '@tanstack/react-router'
 
 export const Footer = () => {
@@ -9,7 +10,7 @@ export const Footer = () => {
             to="/"
             className="focus-ring rounded-sm text-sm font-bold lowercase text-accent"
           >
-            estcequecestlasaison
+            {SITE_NAME_DISPLAY}
           </Link>
           <p className="text-xs text-gray-400">
             Bientôt disponible sur iOS et Android

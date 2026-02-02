@@ -1,5 +1,11 @@
+import type { FAQPage, WithContext } from 'schema-dts'
 import { clientEnv } from '@/constants/env'
 import { SITE_NAME } from '@/constants/site'
+import type { Month, Produce } from '@estcequecestlasaison/shared'
+import {
+  getSeasonRangeLabel,
+  matchIsInSeasonAllYear
+} from '@estcequecestlasaison/shared'
 
 const OG_IMAGE_WIDTH = 1200
 const OG_IMAGE_HEIGHT = 630
@@ -76,4 +82,60 @@ export function seo({
   const links = [{ rel: 'canonical', href: url }]
 
   return { meta, links }
+}
+
+function getSeasonStatusLabel(produce: Produce, month: Month) {
+  if (matchIsInSeasonAllYear(produce)) {
+    return "Disponible toute l'ann\u00E9e"
+  }
+
+  const intensity = produce.seasons[month]
+
+  if (intensity === 'peak') {
+    return 'En pleine saison'
+  }
+
+  if (intensity === 'partial') {
+    return 'D\u00E9but ou fin de saison'
+  }
+
+  return 'Hors saison'
+}
+
+type ProduceSeoParams = {
+  produce: Produce
+  month: Month
+}
+
+export function produceSeo({ produce, month }: ProduceSeoParams) {
+  const statusLabel = getSeasonStatusLabel(produce, month)
+
+  return seo({
+    title: `${produce.name} : est-ce que c'est la saison ?`,
+    description: `${produce.name} : ${statusLabel.toLowerCase()}. ${produce.nutrition.benefits}. Calendrier de saisonnalit\u00E9 complet.`,
+    keywords: `${produce.name.toLowerCase()}, saison ${produce.name.toLowerCase()}, est-ce que c'est la saison ${produce.name.toLowerCase()}, ${produce.type === 'fruit' ? 'fruit' : 'l\u00E9gume'} de saison, calendrier saisonnalit\u00E9 ${produce.name.toLowerCase()}`,
+    pathname: `/${produce.slug}`
+  })
+}
+
+export function produceJsonLd({ produce, month }: ProduceSeoParams) {
+  const statusLabel = getSeasonStatusLabel(produce, month)
+  const seasonRange = getSeasonRangeLabel(produce)
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `${produce.name} : est-ce que c'est la saison ?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `${produce.name} : ${statusLabel.toLowerCase()}. Saison : ${seasonRange}.`
+        }
+      }
+    ]
+  } as const satisfies WithContext<FAQPage>
+
+  return JSON.stringify(schema)
 }

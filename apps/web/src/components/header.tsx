@@ -1,4 +1,5 @@
 import { motion } from 'motion/react'
+import { SITE_NAME_DISPLAY } from '@/constants/site'
 import type { ProduceType } from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
 import type { AvailableIconName } from './icons'
@@ -30,7 +31,7 @@ export const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
             to="/"
             className="hidden text-xl font-bold text-accent md:block"
           >
-            estcequecestlasaison
+            {SITE_NAME_DISPLAY}
           </Link>
           <nav aria-label="Categories" className="flex-1 md:w-96 md:flex-none">
             <div role="tablist" className="grid grid-cols-3">
