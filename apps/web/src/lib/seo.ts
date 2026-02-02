@@ -128,7 +128,7 @@ export function produceSeo({ produce, month }: ProduceSeoParams) {
     `D\u00E9couvrez le calendrier de saisonnalit\u00E9 complet de ce ${typeLabel}.`
   ].filter(Boolean)
 
-  return seo({
+  const result = seo({
     title: `${produce.name} : est-ce que c'est la saison ?`,
     description: `${descriptionParts.join('. ')}.`,
     keywords: `${produce.name.toLowerCase()}, saison ${produce.name.toLowerCase()}, est-ce que c'est la saison ${produce.name.toLowerCase()}, ${typeLabel} de saison, calendrier saisonnalit\u00E9 ${produce.name.toLowerCase()}`,
@@ -136,6 +136,19 @@ export function produceSeo({ produce, month }: ProduceSeoParams) {
     image: `/images/produce/${produce.slug}-512w.webp`,
     imageAlt: `${produce.name} - ${typeLabel} de saison`
   })
+
+  return {
+    ...result,
+    links: [
+      ...result.links,
+      {
+        rel: 'preload',
+        as: 'image',
+        type: 'image/webp',
+        href: `/images/produce/${produce.slug}-512w.webp`
+      }
+    ]
+  }
 }
 
 function buildBreadcrumbList(produce: Produce) {

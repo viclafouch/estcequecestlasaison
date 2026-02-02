@@ -147,7 +147,7 @@ const Home = () => {
 
 export const Route = createFileRoute('/')({
   head: () => {
-    return seo({
+    const result = seo({
       title: 'Fruits et légumes de saison en France',
       description:
         'Découvrez quels fruits et légumes sont de saison en France. Calendrier interactif mois par mois pour manger local et de saison toute l\u2019année.',
@@ -155,6 +155,20 @@ export const Route = createFileRoute('/')({
         'fruits de saison, légumes de saison, est-ce que c\u2019est la saison, calendrier fruits et légumes, produits de saison france, manger de saison, fruits et légumes du mois, saison fruits france, saison légumes france, alimentation locale',
       pathname: '/'
     })
+
+    return {
+      ...result,
+      links: [
+        ...result.links,
+        {
+          rel: 'preload',
+          as: 'image',
+          type: 'image/webp',
+          href: '/images/background.webp',
+          media: '(min-width: 1280px)'
+        }
+      ]
+    }
   },
   component: Home
 })
