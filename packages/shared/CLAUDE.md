@@ -8,7 +8,6 @@ Package partagé entre le web et le mobile.
 
 | Lib | Usage |
 |-----|-------|
-| `date-fns` | Manipulation de dates, mois |
 | `fuse.js` | Recherche fuzzy client-side |
 | `zod` | Validation des données |
 
@@ -29,15 +28,28 @@ Package partagé entre le web et le mobile.
 
 ---
 
-## Helpers (season.ts)
+## Helpers (date.ts)
+
+Utilitaires de date purs, timezone `Europe/Paris`, utilise `Intl.DateTimeFormat` (pas de lib externe).
 
 | Fonction | Description |
 |----------|-------------|
-| `getCurrentMonth()` | Mois actuel (1-12) |
+| `getCurrentMonth()` | Mois actuel (1-12), timezone Paris |
+| `getCurrentYear()` | Année actuelle, timezone Paris |
 | `getNextMonth(month)` | Mois suivant |
 | `getPreviousMonth(month)` | Mois précédent |
-| `getMonthName(month)` | Nom du mois en français |
+| `getMonthName(month)` | Nom du mois en français (via Intl) |
 | `getShortMonthName(month)` | Nom du mois abrégé (3 caractères) |
+| `ALL_MONTHS` | Constante [1..12] |
+
+---
+
+## Helpers (season.ts)
+
+Logique business de saisonnalité, importe les utilitaires date depuis `date.ts`.
+
+| Fonction | Description |
+|----------|-------------|
 | `matchIsInSeason(produce, month)` | Boolean si en saison |
 | `matchIsInSeasonAllYear(produce)` | Boolean si en saison les 12 mois |
 | `filterProduceByType(params)` | Filtre par type (fruit/vegetable) |

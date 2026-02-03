@@ -43,11 +43,6 @@ Site web + Application mobile permettant de connaître la saisonnalité des frui
 | `motion` | Framer Motion - animations subtiles |
 | `tw-animate-css` | Classes d'animation Tailwind |
 
-### Dates (`packages/shared`)
-| Librairie | Usage |
-|-----------|-------|
-| `date-fns` | Navigation mois, formatage dates |
-
 ### SEO (`apps/web`)
 | Librairie | Usage |
 |-----------|-------|
@@ -190,7 +185,7 @@ estcequecestlasaison/
 - [x] Migrer code existant vers apps/web
 - [x] Créer packages/shared avec structure de base
 - [x] Installer dépendances web (clsx, tailwind-merge, cva, radix, vaul, motion, etc.)
-- [x] Installer dépendances shared (date-fns, zod, fuse.js)
+- [x] Installer dépendances shared (zod, fuse.js)
 - [x] Installer devDependencies root (husky, vitest)
 - [x] Créer CLAUDE.md par workspace (root, web, shared)
 
@@ -198,7 +193,7 @@ estcequecestlasaison/
 - [x] Installer @iconify/react dans apps/web
 - [x] Créer `produce.json` complet (~50-100 items)
 - [x] Définir types TypeScript dans shared
-- [x] Helpers saisonnalité dans shared (avec date-fns)
+- [x] Helpers saisonnalité dans shared (Intl.DateTimeFormat)
 - [x] Setup Tailwind palette Nature/Organique
 
 ### Milestone 2 : Page d'accueil ✅

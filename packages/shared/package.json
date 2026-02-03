@@ -22,7 +22,6 @@
     "lint:fix": "pnpm lint --fix"
   },
   "dependencies": {
-    "date-fns": "^4.1.0",
     "fuse.js": "^7.1.0",
     "zod": "^4.3.6"
   },

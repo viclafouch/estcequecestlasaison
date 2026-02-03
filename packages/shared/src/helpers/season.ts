@@ -1,6 +1,10 @@
-import { format } from 'date-fns'
-import { fr } from 'date-fns/locale'
 import type { Month, Produce, SeasonStatus } from '../types'
+import {
+  ALL_MONTHS,
+  getMonthName,
+  getNextMonth,
+  getPreviousMonth
+} from './date'
 
 function capitalize(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1)
@@ -13,37 +17,6 @@ export type BadgeVariant = 'positive' | 'warning' | 'neutral'
 export type ProduceBadge = {
   label: string
   variant: BadgeVariant
-}
-
-export const ALL_MONTHS = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
-] as const satisfies Month[]
-
-export function getCurrentMonth() {
-  const parisMonth = new Intl.DateTimeFormat('fr-FR', {
-    timeZone: 'Europe/Paris',
-    month: 'numeric'
-  }).format(new Date())
-
-  return Number(parisMonth) as Month
-}
-
-export function getPreviousMonth(month: Month) {
-  return (month === 1 ? 12 : month - 1) as Month
-}
-
-export function getNextMonth(month: Month) {
-  return (month === 12 ? 1 : month + 1) as Month
-}
-
-export function getMonthName(month: Month) {
-  const date = new Date(2024, month - 1, 1)
-
-  return format(date, 'MMMM', { locale: fr })
-}
-
-export function getShortMonthName(month: Month) {
-  return getMonthName(month).slice(0, 3)
 }
 
 export const SEASON_STATUS_LABELS = {

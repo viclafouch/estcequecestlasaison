@@ -3,6 +3,7 @@ import { SEASON_DOT_STYLES } from '@/constants/season'
 import type { Month, Produce, SeasonStatus } from '@estcequecestlasaison/shared'
 import {
   ALL_MONTHS,
+  getCurrentYear,
   getMonthName,
   getSeasonRangeLabel,
   getShortMonthName,
@@ -30,6 +31,7 @@ export const SeasonCalendar = ({
 }: SeasonCalendarProps) => {
   const isReducedMotion = useReducedMotion()
   const seasonRange = getSeasonRangeLabel(produce)
+  const currentYear = getCurrentYear()
 
   return (
     <section aria-label="Calendrier de saisonnalité">
@@ -65,12 +67,13 @@ export const SeasonCalendar = ({
               }
               className="flex flex-col items-center gap-1.5 rounded-2xl py-3 transition-colors duration-300 data-[season=peak]:bg-primary-100 data-[season=partial]:bg-warning-100 data-[season=off]:bg-gray-100 data-[season=current]:bg-active-50"
             >
-              <span
+              <time
+                dateTime={`${currentYear}-${String(month).padStart(2, '0')}`}
                 data-season={displaySeason}
                 className="text-xs font-semibold uppercase transition-colors duration-300 data-[season=peak]:text-primary-700 data-[season=partial]:text-warning-700 data-[season=off]:text-gray-400 data-[season=current]:text-active-700"
               >
                 {getShortMonthName(month)}
-              </span>
+              </time>
               <span
                 className={getGridDotClassName(seasonType)}
                 aria-hidden="true"

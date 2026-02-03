@@ -1,11 +1,7 @@
 import { ChevronUp } from 'lucide-react'
 import type { Month } from '@estcequecestlasaison/shared'
-import { getMonthName } from '@estcequecestlasaison/shared'
+import { ALL_MONTHS, getMonthName } from '@estcequecestlasaison/shared'
 import { useMonthBarScroll } from '../hooks/use-month-bar-scroll'
-
-const ALL_MONTHS = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
-] as const satisfies Month[]
 
 const MONTH_SETS = [0, 1, 2] as const
 

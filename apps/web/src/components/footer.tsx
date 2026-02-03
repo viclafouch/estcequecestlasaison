@@ -1,5 +1,6 @@
 import { seasonalFooterOptions } from '@/constants/queries'
 import { SITE_NAME_DISPLAY } from '@/constants/site'
+import { getCurrentYear } from '@estcequecestlasaison/shared'
 import { useQuery } from '@tanstack/react-query'
 import { Link } from '@tanstack/react-router'
 import { FooterSeasonal } from './footer-seasonal'
@@ -38,7 +39,7 @@ const ProduceLinkList = ({ items, label }: ProduceLinkListParams) => {
               <Link
                 to="/$slug"
                 params={{ slug: item.slug }}
-                className="text-sm text-gray-500 hover:text-gray-900"
+                className="py-0.5 text-sm text-gray-600 hover:text-gray-900"
               >
                 {item.name}
               </Link>
@@ -60,7 +61,12 @@ export const Footer = () => {
           <div className="flex flex-col gap-4">
             <Link to="/" className="focus-ring w-fit rounded-sm">
               <picture>
-                <source srcSet="/logo.webp" type="image/webp" />
+                <source
+                  srcSet="/logo.webp"
+                  type="image/webp"
+                  width={545}
+                  height={196}
+                />
                 <img
                   src="/logo.png"
                   alt={SITE_NAME_DISPLAY}
@@ -88,18 +94,18 @@ export const Footer = () => {
           />
         </div>
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray-200 pt-6 md:flex-row">
-          <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} estcequecestlasaison.fr
+          <p className="text-sm text-gray-500">
+            &copy; {getCurrentYear()} estcequecestlasaison.fr
           </p>
           <nav aria-label="Liens utiles" className="flex gap-4">
             <Link
               to="/faq"
-              className="text-sm text-gray-400 hover:text-gray-900"
+              className="py-1 text-sm text-gray-500 hover:text-gray-900"
             >
               FAQ
             </Link>
           </nav>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-500">
             Bientôt disponible sur iOS et Android
           </p>
         </div>
