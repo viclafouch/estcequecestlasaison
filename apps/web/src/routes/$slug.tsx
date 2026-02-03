@@ -1,12 +1,16 @@
 import * as React from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Share2 } from 'lucide-react'
 import { NotFound } from '@/components/not-found'
 import { ProduceCarousel } from '@/components/produce-carousel'
 import { ProduceImage } from '@/components/produce-image'
 import { SeasonAlternatives } from '@/components/season-alternatives'
 import { SeasonCalendar } from '@/components/season-calendar'
 import { SiteHeader } from '@/components/site-header'
+import { IconButton } from '@/components/ui/icon-button'
+import { clientEnv } from '@/constants/env'
 import { BADGE_VARIANT_TO_SEASON, SEASON_DOT_STYLES } from '@/constants/season'
+import { SITE_DOMAIN } from '@/constants/site'
+import { useCanShare } from '@/hooks/use-can-share'
 import { produceSeo } from '@/lib/seo'
 import { getSlugPageData } from '@/server/produce'
 import type {
@@ -18,6 +22,7 @@ import type {
 import {
   getDefaultProduceBadge,
   getPreviousMonth,
+  getShareText,
   matchIsInSeason,
   matchIsInSeasonAllYear
 } from '@estcequecestlasaison/shared'
@@ -81,14 +86,30 @@ const ProductPage = () => {
   const { produce, relatedProduce, currentMonth, jsonLd, alternatives } =
     Route.useLoaderData()
   const [isDetailsExpanded, setIsDetailsExpanded] = React.useState(false)
+  const canShare = useCanShare()
 
   const badge = getDefaultProduceBadge({ produce, month: currentMonth })
+  const isInSeason = matchIsInSeason(produce, currentMonth)
   const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'L\u00E9gume'
   const seasonDisplay = getSeasonDisplay({
     produce,
     month: currentMonth,
     badge
   })
+
+  const handleShare = () => {
+    navigator
+      .share({
+        title: produce.name,
+        text: getShareText({
+          produceName: produce.name,
+          isInSeason,
+          siteDomain: SITE_DOMAIN
+        }),
+        url: `${clientEnv.VITE_SITE_URL}/${produce.slug}`
+      })
+      .catch(() => {})
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -119,9 +140,21 @@ const ProductPage = () => {
           </div>
           <div className="flex flex-1 flex-col gap-4 text-center md:text-left">
             <div className="flex flex-col gap-1">
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
-                {produce.name}
-              </h1>
+              <div className="flex items-center justify-center gap-2 md:justify-start">
+                <h1 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
+                  {produce.name}
+                </h1>
+                {canShare ? (
+                  <IconButton
+                    variant="ghost"
+                    className="md:hidden"
+                    aria-label={`Partager ${produce.name}`}
+                    onClick={handleShare}
+                  >
+                    <Share2 className="size-5" aria-hidden="true" />
+                  </IconButton>
+                ) : null}
+              </div>
               <p className="text-sm text-gray-500">{typeLabel}</p>
             </div>
             <div className="flex flex-col items-center gap-1 md:flex-row md:items-center md:gap-2.5 md:justify-start">

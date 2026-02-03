@@ -315,7 +315,7 @@ src/constants/calendar.ts         → Config (titre, description, keywords, brea
 
 ---
 
-### Milestone 10 : Alternatives Hors Saison
+### Milestone 10 : Alternatives Hors Saison ✅
 
 **Objectif :** Quand un produit est hors saison, suggerer des alternatives de la meme categorie actuellement en saison.
 
@@ -327,22 +327,23 @@ src/constants/calendar.ts         → Config (titre, description, keywords, brea
 
 **UI :**
 - Position : inline dans la section hero, sous le badge "Hors saison"
-- Label : "Essayez plutot" suivi de chips/pills cliquables
-- Chips : icone produit (16px) + nom, fond leger, coins arrondis
+- Carte verte (bg-primary-50, border-primary-200) avec point vert + label "En saison en ce moment"
+- Chips : avatar produit (28px rounded-lg) + nom + chevron, fond blanc, bordure grise
+- Mobile : chips empiles en colonne (flex-col), chevron aligne a droite (ml-auto)
+- Desktop : chips en ligne (flex-row flex-wrap)
 - Liens vers `/$slug` de chaque alternative
-- Centrage mobile, alignement gauche desktop (coherent avec la page produit)
 
 **Implementation :**
-- Nouvelle server function ou extension de `getSlugPageData` pour retourner les alternatives
-- Helper shared : `getSeasonAlternatives({ produce, month, allProduce })` retourne `Produce[]`
-- Composant `SeasonAlternatives` avec les chips
+- Helper shared `getSeasonAlternatives` dans `packages/shared/src/helpers/season.ts`
+- Extension de `getSlugPageData` pour retourner les alternatives (shape minimal `{ slug, name }`)
+- Composant `SeasonAlternatives` dans `apps/web/src/components/season-alternatives.tsx`
 
 **Taches :**
-- [ ] Helper shared `getSeasonAlternatives` (meme categorie, en saison, tri alpha, limit 3)
-- [ ] Etendre `getSlugPageData` pour inclure les alternatives
-- [ ] Composant `SeasonAlternatives` (chips/pills avec icone + nom)
-- [ ] Integrer dans `$slug.tsx` sous le badge hors saison
-- [ ] Ne pas afficher si le produit est en saison
+- [x] Helper shared `getSeasonAlternatives` (meme categorie, en saison, tri alpha, limit 3)
+- [x] Etendre `getSlugPageData` pour inclure les alternatives
+- [x] Composant `SeasonAlternatives` (chips avec avatar + nom + chevron)
+- [x] Integrer dans `$slug.tsx` sous le badge hors saison
+- [x] Ne pas afficher si le produit est en saison
 
 ---
 
@@ -368,9 +369,9 @@ src/constants/calendar.ts         → Config (titre, description, keywords, brea
 - `url` : URL canonique de la page produit
 
 **Taches :**
-- [ ] Composant `ShareButton` (icone, mobile-only, detection Web Share API)
-- [ ] Helper `getShareText({ produce, month })` pour generer le texte conversationnel
-- [ ] Integrer dans `$slug.tsx` a cote du H1
+- [x] Composant `ShareButton` (icone, mobile-only, detection Web Share API)
+- [x] Helper `getShareText({ produce, month })` pour generer le texte conversationnel
+- [x] Integrer dans `$slug.tsx` a cote du H1
 - [ ] Tester sur mobile (iOS Safari, Chrome Android)
 
 ---
