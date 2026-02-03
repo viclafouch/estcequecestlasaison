@@ -104,7 +104,7 @@ const ProductPage = () => {
       })}
       <main
         id="main-content"
-        className="mx-auto max-w-7xl space-y-12 px-6 pt-8 pb-24 md:pt-12 md:pb-20"
+        className="mx-auto max-w-7xl space-y-12 overflow-x-clip px-6 pt-8 pb-24 md:pt-12 md:pb-20"
       >
         <section className="flex flex-col gap-6 md:grid md:grid-cols-[1fr_2fr] md:items-stretch md:gap-12">
           <div className="size-40 self-center overflow-hidden rounded-3xl bg-gray-100 md:size-auto md:self-stretch">

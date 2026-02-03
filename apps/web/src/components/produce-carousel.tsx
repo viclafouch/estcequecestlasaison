@@ -87,31 +87,33 @@ export const ProduceCarousel = ({
           </div>
         ) : null}
       </div>
-      <div
-        ref={scrollContainerRef}
-        role="region"
-        aria-label={`${title}, d\u00e9filable horizontalement`}
-        tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
-        className="focus-ring scrollbar-hide -mx-6 flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-px-6 px-6 sm:gap-3"
-      >
-        {produceList.map((produce, index) => {
-          return (
-            <div
-              key={produce.id}
-              data-muted={variant === 'muted' || undefined}
-              className="carousel-card-fade w-36 max-w-42.5 shrink-0 snap-start data-muted:opacity-50 data-muted:grayscale sm:w-40 md:w-44 lg:w-48"
-            >
-              <div className="carousel-card-reveal">
-                <ProduceCard
-                  produce={produce}
-                  month={month}
-                  section={section}
-                  priority={priority ? index < PRIORITY_COUNT : undefined}
-                />
+      <div className="-mx-6 overflow-x-clip">
+        <div
+          ref={scrollContainerRef}
+          role="region"
+          aria-label={`${title}, d\u00e9filable horizontalement`}
+          tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+          className="focus-ring scrollbar-hide flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-px-6 px-6 sm:gap-3"
+        >
+          {produceList.map((produce, index) => {
+            return (
+              <div
+                key={produce.id}
+                data-muted={variant === 'muted' || undefined}
+                className="carousel-card-fade w-36 max-w-42.5 shrink-0 snap-start data-muted:opacity-50 data-muted:grayscale sm:w-40 md:w-44 lg:w-48"
+              >
+                <div className="carousel-card-reveal">
+                  <ProduceCard
+                    produce={produce}
+                    month={month}
+                    section={section}
+                    priority={priority ? index < PRIORITY_COUNT : undefined}
+                  />
+                </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
       </div>
     </section>
   )
