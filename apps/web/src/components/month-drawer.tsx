@@ -7,8 +7,8 @@ import {
   getNextMonth,
   getPreviousMonth
 } from '@estcequecestlasaison/shared'
-import type { AvailableIconName } from './icons'
-import { matchIsAvailableIcon, ProduceIcon } from './icons'
+import { ProduceIcon } from './icons'
+import { ProduceAvatar } from './produce-avatar'
 import { CardSection } from './ui/card-section'
 import { IconButton, iconButtonVariants } from './ui/icon-button'
 import { Pill } from './ui/pill'
@@ -18,7 +18,7 @@ const MAX_VISIBLE_ICONS = 6
 type ProduceIconItem = {
   id: string
   name: string
-  icon: string
+  slug: string
 }
 
 type ProduceIconRowProps = {
@@ -32,8 +32,6 @@ const ProduceIconRow = ({ items }: ProduceIconRowProps) => {
   return (
     <div className="flex items-center gap-1">
       {visibleItems.map((item) => {
-        const hasIcon = matchIsAvailableIcon(item.icon)
-
         return (
           <div
             key={item.id}
@@ -42,14 +40,11 @@ const ProduceIconRow = ({ items }: ProduceIconRowProps) => {
             })}
             title={item.name}
           >
-            {hasIcon ? (
-              <ProduceIcon
-                name={item.icon as AvailableIconName}
-                className="size-5"
-              />
-            ) : (
-              <div className="size-5 rounded-full bg-gray-200" />
-            )}
+            <ProduceAvatar
+              slug={item.slug}
+              name={item.name}
+              className="size-5 rounded-full object-cover"
+            />
           </div>
         )
       })}

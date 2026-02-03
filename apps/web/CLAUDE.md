@@ -13,7 +13,7 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 | UI | Tailwind CSS 4, Radix UI, vaul |
 | Styling | clsx, tailwind-merge, tailwind-variants |
 | Icons | SVG inline (emojione via shadcn.io) |
-| Animation | motion (Framer), tw-animate-css |
+| Animation | motion (Framer) |
 | SEO | schema-dts (Schema.org), seo() utility |
 | Env | @t3-oss/env-core + Zod (validation env vars) |
 | Ads | Google AdSense (native ads) |
@@ -53,14 +53,11 @@ Les produits peuvent apparaître dans plusieurs sections (duplications autorisé
 
 ---
 
-## Icônes
+## Icônes & Avatars
 
-Les icônes produits sont des composants SVG inline dans `src/components/icons/`.
+Les icônes SVG inline (`src/components/icons/`) ne servent que pour le header et le search-bar (globe, red-apple, carrot, calendar).
 
-- Source : shadcn.io (emojione)
-- Un fichier par icône (`strawberry.tsx`, `carrot.tsx`, etc.)
-- Type partagé dans `icons/types.ts`
-- Composant `ProduceIcon` qui rend l'icône correspondant au nom fourni (typage strict via `AvailableIconName`)
+Les produits sont affichés via `ProduceAvatar` (`src/components/produce-avatar.tsx`) qui rend une image WebP circulaire depuis `/images/produce/{slug}-256w.webp`.
 
 ---
 
@@ -88,7 +85,7 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 | `motion` | Animations subtiles (fade, stagger) |
 | `@tanstack/react-table` | Tableau calendrier saisonnalité (colonnes, filtrage global, rendering via flexRender) |
 | `fuse.js` | Recherche fuzzy sur les produits |
-| `tw-animate-css` | Classes d'animation Tailwind |
+
 
 ---
 
@@ -132,7 +129,7 @@ Toute donnée produit transite par des server functions (TanStack Start) :
 
 Pattern : **Server Function** -> **Query Options** -> **Loader (SSR prefetch)** -> **useQuery (client)**
 
-Les server functions ne retournent que les champs nécessaires (slug, name, icon) pour minimiser le payload.
+Les server functions ne retournent que les champs nécessaires (slug, name) pour minimiser le payload.
 
 ---
 

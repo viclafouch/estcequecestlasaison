@@ -43,18 +43,17 @@ function toCalendarItem(item: Produce) {
   return {
     slug: item.slug,
     name: item.name,
-    icon: item.icon,
     type: item.type,
     seasons: item.seasons
   }
 }
 
-function toProduceIconItem(item: Pick<Produce, 'id' | 'name' | 'icon'>) {
-  return { id: item.id, name: item.name, icon: item.icon }
+function toProduceIconItem(item: Pick<Produce, 'id' | 'name' | 'slug'>) {
+  return { id: item.id, name: item.name, slug: item.slug }
 }
 
-function toProduceFooterItem(item: Pick<Produce, 'slug' | 'name' | 'icon'>) {
-  return { slug: item.slug, name: item.name, icon: item.icon }
+function toProduceFooterItem(item: Pick<Produce, 'slug' | 'name'>) {
+  return { slug: item.slug, name: item.name }
 }
 
 export const getSeasonalFooterData = createServerFn({ method: 'GET' }).handler(

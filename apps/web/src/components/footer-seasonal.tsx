@@ -1,13 +1,11 @@
 import { Link } from '@tanstack/react-router'
-import type { AvailableIconName } from './icons'
-import { matchIsAvailableIcon, ProduceIcon } from './icons'
+import { ProduceAvatar } from './produce-avatar'
 
 const MAX_SEASONAL_ITEMS = 8
 
 type SeasonalItem = {
   slug: string
   name: string
-  icon: string
 }
 
 type FooterSeasonalParams = {
@@ -19,11 +17,7 @@ export const FooterSeasonal = ({
   monthName,
   seasonalProduce
 }: FooterSeasonalParams) => {
-  const visibleProduce = seasonalProduce
-    .filter((item) => {
-      return matchIsAvailableIcon(item.icon)
-    })
-    .slice(0, MAX_SEASONAL_ITEMS)
+  const visibleProduce = seasonalProduce.slice(0, MAX_SEASONAL_ITEMS)
 
   return (
     <nav aria-label={`En saison en ${monthName}`}>
@@ -39,10 +33,10 @@ export const FooterSeasonal = ({
                 params={{ slug: item.slug }}
                 className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900"
               >
-                <ProduceIcon
-                  name={item.icon as AvailableIconName}
-                  className="size-4"
-                  aria-hidden="true"
+                <ProduceAvatar
+                  slug={item.slug}
+                  name={item.name}
+                  className="size-4 rounded-full object-cover"
                 />
                 {item.name}
               </Link>

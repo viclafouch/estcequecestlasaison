@@ -1,5 +1,6 @@
 import type { Transition } from 'motion/react'
 import { SEASON_DOT_STYLES } from '@/constants/season'
+import { getProduceImageSrc } from '@/helpers/produce-image'
 import type {
   Month,
   Produce,
@@ -10,10 +11,7 @@ import { ALL_MONTHS, getShortMonthName } from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
 import type { ColumnDef, FilterFn } from '@tanstack/react-table'
 
-export type CalendarItem = Pick<
-  Produce,
-  'slug' | 'name' | 'icon' | 'type' | 'seasons'
->
+export type CalendarItem = Pick<Produce, 'slug' | 'name' | 'type' | 'seasons'>
 
 export type SortOption = 'name' | 'season'
 
@@ -119,7 +117,7 @@ export function buildColumns(): ColumnDef<CalendarItem>[] {
           className="focus-ring inline-flex min-h-11 items-center gap-2 rounded-sm text-gray-900 hover:text-primary-600 md:gap-3"
         >
           <img
-            src={`/images/produce/${row.original.slug}-256w.webp`}
+            src={getProduceImageSrc(row.original.slug)}
             alt=""
             width={32}
             height={32}
