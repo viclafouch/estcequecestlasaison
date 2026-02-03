@@ -11,7 +11,7 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 | Framework | TanStack Start (React 19, SSR) |
 | Routing | TanStack Router (file-based) |
 | UI | Tailwind CSS 4, Radix UI, vaul |
-| Styling | clsx, tailwind-merge, cva |
+| Styling | clsx, tailwind-merge, tailwind-variants |
 | Icons | SVG inline (emojione via shadcn.io) |
 | Animation | motion (Framer), tw-animate-css |
 | SEO | schema-dts (Schema.org), seo() utility |
@@ -80,7 +80,7 @@ Les icônes produits sont des composants SVG inline dans `src/components/icons/`
 |-----|-------|
 | `clsx` | Construction de classNames conditionnels |
 | `tailwind-merge` | Merge classes Tailwind sans conflits |
-| `class-variance-authority` | Créer des variants de composants (cva) |
+| `tailwind-variants` | Variants de composants avec TV (IconButton, Pill, CardSection) |
 | `@radix-ui/react-dialog` | Modal accessible pour détails produit |
 | `vaul` | Drawer mobile-friendly |
 | `lucide-react` | Icônes UI (flèches, fermer, menu) |

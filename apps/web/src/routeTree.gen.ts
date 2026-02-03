@@ -11,12 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as CalendrierRouteImport } from './routes/calendrier'
 import { Route as SlugRouteImport } from './routes/$slug'
-import { Route as CalendrierRouteRouteImport } from './routes/calendrier/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CalendrierIndexRouteImport } from './routes/calendrier/index'
-import { Route as CalendrierLegumesRouteImport } from './routes/calendrier/legumes'
-import { Route as CalendrierFruitsRouteImport } from './routes/calendrier/fruits'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -28,14 +25,14 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CalendrierRoute = CalendrierRouteImport.update({
+  id: '/calendrier',
+  path: '/calendrier',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SlugRoute = SlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CalendrierRouteRoute = CalendrierRouteRouteImport.update({
-  id: '/calendrier',
-  path: '/calendrier',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,88 +40,41 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CalendrierIndexRoute = CalendrierIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => CalendrierRouteRoute,
-} as any)
-const CalendrierLegumesRoute = CalendrierLegumesRouteImport.update({
-  id: '/legumes',
-  path: '/legumes',
-  getParentRoute: () => CalendrierRouteRoute,
-} as any)
-const CalendrierFruitsRoute = CalendrierFruitsRouteImport.update({
-  id: '/fruits',
-  path: '/fruits',
-  getParentRoute: () => CalendrierRouteRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/calendrier': typeof CalendrierRouteRouteWithChildren
   '/$slug': typeof SlugRoute
+  '/calendrier': typeof CalendrierRoute
   '/faq': typeof FaqRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/calendrier/fruits': typeof CalendrierFruitsRoute
-  '/calendrier/legumes': typeof CalendrierLegumesRoute
-  '/calendrier/': typeof CalendrierIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
+  '/calendrier': typeof CalendrierRoute
   '/faq': typeof FaqRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/calendrier/fruits': typeof CalendrierFruitsRoute
-  '/calendrier/legumes': typeof CalendrierLegumesRoute
-  '/calendrier': typeof CalendrierIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/calendrier': typeof CalendrierRouteRouteWithChildren
   '/$slug': typeof SlugRoute
+  '/calendrier': typeof CalendrierRoute
   '/faq': typeof FaqRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/calendrier/fruits': typeof CalendrierFruitsRoute
-  '/calendrier/legumes': typeof CalendrierLegumesRoute
-  '/calendrier/': typeof CalendrierIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/calendrier'
-    | '/$slug'
-    | '/faq'
-    | '/sitemap.xml'
-    | '/calendrier/fruits'
-    | '/calendrier/legumes'
-    | '/calendrier/'
+  fullPaths: '/' | '/$slug' | '/calendrier' | '/faq' | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/$slug'
-    | '/faq'
-    | '/sitemap.xml'
-    | '/calendrier/fruits'
-    | '/calendrier/legumes'
-    | '/calendrier'
-  id:
-    | '__root__'
-    | '/'
-    | '/calendrier'
-    | '/$slug'
-    | '/faq'
-    | '/sitemap.xml'
-    | '/calendrier/fruits'
-    | '/calendrier/legumes'
-    | '/calendrier/'
+  to: '/' | '/$slug' | '/calendrier' | '/faq' | '/sitemap.xml'
+  id: '__root__' | '/' | '/$slug' | '/calendrier' | '/faq' | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CalendrierRouteRoute: typeof CalendrierRouteRouteWithChildren
   SlugRoute: typeof SlugRoute
+  CalendrierRoute: typeof CalendrierRoute
   FaqRoute: typeof FaqRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -145,18 +95,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/calendrier': {
+      id: '/calendrier'
+      path: '/calendrier'
+      fullPath: '/calendrier'
+      preLoaderRoute: typeof CalendrierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/$slug': {
       id: '/$slug'
       path: '/$slug'
       fullPath: '/$slug'
       preLoaderRoute: typeof SlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/calendrier': {
-      id: '/calendrier'
-      path: '/calendrier'
-      fullPath: '/calendrier'
-      preLoaderRoute: typeof CalendrierRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -166,50 +116,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/calendrier/': {
-      id: '/calendrier/'
-      path: '/'
-      fullPath: '/calendrier/'
-      preLoaderRoute: typeof CalendrierIndexRouteImport
-      parentRoute: typeof CalendrierRouteRoute
-    }
-    '/calendrier/legumes': {
-      id: '/calendrier/legumes'
-      path: '/legumes'
-      fullPath: '/calendrier/legumes'
-      preLoaderRoute: typeof CalendrierLegumesRouteImport
-      parentRoute: typeof CalendrierRouteRoute
-    }
-    '/calendrier/fruits': {
-      id: '/calendrier/fruits'
-      path: '/fruits'
-      fullPath: '/calendrier/fruits'
-      preLoaderRoute: typeof CalendrierFruitsRouteImport
-      parentRoute: typeof CalendrierRouteRoute
-    }
   }
 }
 
-interface CalendrierRouteRouteChildren {
-  CalendrierFruitsRoute: typeof CalendrierFruitsRoute
-  CalendrierLegumesRoute: typeof CalendrierLegumesRoute
-  CalendrierIndexRoute: typeof CalendrierIndexRoute
-}
-
-const CalendrierRouteRouteChildren: CalendrierRouteRouteChildren = {
-  CalendrierFruitsRoute: CalendrierFruitsRoute,
-  CalendrierLegumesRoute: CalendrierLegumesRoute,
-  CalendrierIndexRoute: CalendrierIndexRoute,
-}
-
-const CalendrierRouteRouteWithChildren = CalendrierRouteRoute._addFileChildren(
-  CalendrierRouteRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CalendrierRouteRoute: CalendrierRouteRouteWithChildren,
   SlugRoute: SlugRoute,
+  CalendrierRoute: CalendrierRoute,
   FaqRoute: FaqRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }

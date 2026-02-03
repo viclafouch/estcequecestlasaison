@@ -8,11 +8,10 @@ import type {
 import { useCarouselScroll } from '../hooks/use-carousel-scroll'
 import { ProduceCard } from './produce-card'
 import { CountingNumber } from './ui/counting-number'
+import { IconButton } from './ui/icon-button'
 import './produce-carousel.css'
 
 const PRIORITY_COUNT = 4
-const SCROLL_BUTTON_CLASS =
-  'btn-icon-sm focus-ring border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40'
 
 type ProduceCarouselProps = {
   title: string
@@ -63,28 +62,28 @@ export const ProduceCarousel = ({
         </div>
         {hasOverflow ? (
           <div className="hidden gap-2 md:flex">
-            <button
-              type="button"
+            <IconButton
+              size="sm"
+              variant="outline"
               onClick={() => {
                 scrollByDirection('left')
               }}
               disabled={!canScrollLeft}
               aria-label="Défiler vers la gauche"
-              className={SCROLL_BUTTON_CLASS}
             >
               <ChevronLeft aria-hidden="true" className="size-4" />
-            </button>
-            <button
-              type="button"
+            </IconButton>
+            <IconButton
+              size="sm"
+              variant="outline"
               onClick={() => {
                 scrollByDirection('right')
               }}
               disabled={!canScrollRight}
               aria-label="Défiler vers la droite"
-              className={SCROLL_BUTTON_CLASS}
             >
               <ChevronRight aria-hidden="true" className="size-4" />
-            </button>
+            </IconButton>
           </div>
         ) : null}
       </div>

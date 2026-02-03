@@ -2,6 +2,7 @@ import { X } from 'lucide-react'
 import type { Month } from '@estcequecestlasaison/shared'
 import { getMonthName } from '@estcequecestlasaison/shared'
 import { ProduceIcon } from './icons'
+import { IconButton } from './ui/icon-button'
 
 type SearchBarProps = {
   searchQuery: string
@@ -54,16 +55,16 @@ export const SearchBar = ({
           />
         </div>
         {searchQuery ? (
-          <button
-            type="button"
+          <IconButton
+            variant="ghost-muted"
             onClick={() => {
               return onSearchChange('')
             }}
-            className="btn-icon-md focus-ring m-2.5 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+            className="m-2.5"
             aria-label="Effacer la recherche"
           >
             <X className="size-5" aria-hidden="true" />
-          </button>
+          </IconButton>
         ) : null}
       </div>
     </div>

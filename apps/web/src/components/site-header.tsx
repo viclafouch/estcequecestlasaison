@@ -1,24 +1,100 @@
-import { HEADER_NAV_LINKS } from '@/constants/navigation'
+import { Search } from 'lucide-react'
+import { motion } from 'motion/react'
 import { SITE_NAME_DISPLAY } from '@/constants/site'
-import type { LinkOptions } from '@tanstack/react-router'
+import type { ProduceType } from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
+import { BurgerMenu } from './burger-menu'
+import type { AvailableIconName } from './icons'
+import { ProduceIcon } from './icons'
+import { IconButton } from './ui/icon-button'
 
-type NavLink = LinkOptions & {
+type CategoryTab = {
+  type: ProduceType | 'all'
   label: string
-  exact: boolean
+  icon: AvailableIconName
 }
 
-const SITE_HEADER_NAV_LINKS = [
-  { to: '/', label: 'Rechercher', exact: true },
-  ...HEADER_NAV_LINKS
-] as const satisfies readonly NavLink[]
+const CATEGORY_TABS = [
+  { type: 'all', label: 'Tous', icon: 'globe' },
+  { type: 'fruit', label: 'Fruits', icon: 'red-apple' },
+  { type: 'vegetable', label: 'Légumes', icon: 'carrot' }
+] as const satisfies CategoryTab[]
 
-export const SiteHeader = () => {
+type CategoryTabsConfig = {
+  activeCategory: ProduceType | 'all'
+  onCategoryChange: (category: ProduceType | 'all') => void
+}
+
+type SearchDrawerConfig = {
+  onOpen: () => void
+}
+
+type CategoryTabListProps = {
+  config: CategoryTabsConfig
+  layoutId: string
+  buttonClassName: string
+  underlineClassName: string
+}
+
+const CategoryTabList = ({
+  config,
+  layoutId,
+  buttonClassName,
+  underlineClassName
+}: CategoryTabListProps) => {
+  return (
+    <div role="tablist" className="grid grid-cols-3">
+      {CATEGORY_TABS.map((tab) => {
+        const isActive = config.activeCategory === tab.type
+
+        return (
+          <button
+            key={tab.type}
+            type="button"
+            role="tab"
+            aria-selected={isActive}
+            onClick={() => {
+              return config.onCategoryChange(tab.type)
+            }}
+            data-active={isActive || undefined}
+            className={`focus-ring relative flex flex-col items-center gap-1 text-gray-500 transition-colors hover:text-gray-900 data-active:text-gray-900 ${buttonClassName}`}
+          >
+            <ProduceIcon
+              name={tab.icon}
+              className="size-7"
+              aria-hidden="true"
+            />
+            <span className="text-xs font-medium">{tab.label}</span>
+            {isActive ? (
+              <motion.span
+                layoutId={layoutId}
+                aria-hidden="true"
+                className={`absolute rounded-full bg-gray-900 ${underlineClassName}`}
+                transition={{
+                  type: 'spring',
+                  stiffness: 500,
+                  damping: 30
+                }}
+              />
+            ) : null}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+type SiteHeaderProps = {
+  categoryTabs?: CategoryTabsConfig
+  searchDrawer?: SearchDrawerConfig
+}
+
+export const SiteHeader = ({ categoryTabs, searchDrawer }: SiteHeaderProps) => {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white shadow-sm md:shadow-none">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="flex h-16 items-center justify-between md:h-20">
-          <Link to="/" className="focus-ring rounded-sm">
+        <div className="flex h-16 items-center justify-between gap-4 md:h-20">
+          <Link to="/" className="focus-ring shrink-0 rounded-sm">
             <picture>
               <source srcSet="/logo.webp" type="image/webp" />
               <img
@@ -26,32 +102,54 @@ export const SiteHeader = () => {
                 alt={SITE_NAME_DISPLAY}
                 width={545}
                 height={196}
-                className="h-14 w-auto"
+                fetchPriority="high"
+                className="h-10 w-auto md:h-14"
               />
             </picture>
           </Link>
-          <nav aria-label="Navigation" className="flex items-center gap-6">
-            {SITE_HEADER_NAV_LINKS.map((link) => {
-              return (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  activeOptions={{ exact: link.exact }}
-                  activeProps={{
-                    className: 'font-semibold text-gray-900'
-                  }}
-                  inactiveProps={{
-                    className: 'text-gray-600 hover:text-gray-900'
-                  }}
-                  className="focus-ring rounded-sm py-2 text-sm transition-colors"
-                >
-                  {link.label}
-                </Link>
-              )
-            })}
-          </nav>
+          {categoryTabs ? (
+            <nav
+              aria-label="Categories"
+              className="hidden flex-none md:block md:w-96"
+            >
+              <CategoryTabList
+                config={categoryTabs}
+                layoutId="category-underline"
+                buttonClassName="py-4"
+                underlineClassName="bottom-1 left-4 right-4 h-0.5"
+              />
+            </nav>
+          ) : null}
+          <div className="flex items-center gap-2">
+            {searchDrawer ? (
+              <IconButton
+                variant="ghost"
+                onClick={searchDrawer.onOpen}
+                className="md:hidden"
+                aria-label="Ouvrir la recherche"
+              >
+                <Search className="size-5" aria-hidden="true" />
+              </IconButton>
+            ) : null}
+            <BurgerMenu />
+          </div>
         </div>
       </div>
+      {categoryTabs ? (
+        <nav
+          aria-label="Categories"
+          className="border-t border-gray-100 md:hidden"
+        >
+          <div className="mx-auto max-w-7xl px-6">
+            <CategoryTabList
+              config={categoryTabs}
+              layoutId="category-underline-mobile"
+              buttonClassName="py-3"
+              underlineClassName="bottom-1 left-6 right-6 h-0.75"
+            />
+          </div>
+        </nav>
+      ) : null}
     </header>
   )
 }

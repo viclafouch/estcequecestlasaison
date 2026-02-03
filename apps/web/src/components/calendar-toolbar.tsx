@@ -68,7 +68,7 @@ export const CalendarToolbar = ({
         <button
           type="button"
           onClick={onClearSelectedMonth}
-          className="focus-ring inline-flex shrink-0 items-center gap-1.5 rounded-full bg-active-100 py-2.5 pr-3 pl-4 text-sm font-medium text-active-700"
+          className="focus-ring inline-flex shrink-0 items-center justify-between rounded-full bg-active-100 py-2.5 pr-3 pl-4 text-sm font-medium text-active-700"
           aria-label={`Retirer le filtre ${getMonthName(selectedMonth)}`}
         >
           <span className="capitalize">{getMonthName(selectedMonth)}</span>

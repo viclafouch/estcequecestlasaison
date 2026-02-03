@@ -5,7 +5,8 @@ type NavLink = LinkOptions & {
   exact: boolean
 }
 
-export const HEADER_NAV_LINKS = [
-  { to: '/calendrier', label: 'Calendrier', exact: false },
+export const BURGER_NAV_LINKS = [
+  { to: '/', label: 'Rechercher', exact: true },
+  { to: '/calendrier', label: 'Calendrier', exact: true },
   { to: '/faq', label: 'FAQ', exact: true }
 ] as const satisfies readonly NavLink[]

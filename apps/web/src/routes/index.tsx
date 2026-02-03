@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { z } from 'zod'
-import { Header } from '@/components/header'
 import { MonthBar } from '@/components/month-bar'
 import { MonthDrawer } from '@/components/month-drawer'
 import { ProduceCarousel } from '@/components/produce-carousel'
 import { SearchBar } from '@/components/search-bar'
 import { SearchDrawer } from '@/components/search-drawer'
+import { SiteHeader } from '@/components/site-header'
 import { groupedProduceOptions, monthStatsOptions } from '@/constants/queries'
 import { seo } from '@/lib/seo'
 import type { ProduceType } from '@estcequecestlasaison/shared'
@@ -37,6 +37,7 @@ const Home = () => {
   const [currentMonth] = React.useState(getCurrentMonth)
   const [selectedMonth, setSelectedMonth] = React.useState(getCurrentMonth)
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false)
 
   const [debouncedSearch] = useDebouncedValue(searchQuery, { wait: 200 })
 
@@ -66,6 +67,10 @@ const Home = () => {
     setIsDrawerOpen(true)
   }
 
+  const handleOpenSearch = () => {
+    setIsSearchOpen(true)
+  }
+
   const hasInSeason = (groupedProduceQuery.data?.inSeason.length ?? 0) > 0
   const hasOffSeason = (groupedProduceQuery.data?.offSeason.length ?? 0) > 0
   const hasComingNextMonth =
@@ -76,15 +81,18 @@ const Home = () => {
 
   return (
     <div className="bg-hero min-h-screen bg-gray-50">
-      <div className="md:hidden bg-white">
-        <SearchDrawer
-          searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
-        />
-      </div>
-      <Header
-        activeCategory={activeCategory}
-        onCategoryChange={setActiveCategory}
+      <SiteHeader
+        categoryTabs={{
+          activeCategory,
+          onCategoryChange: setActiveCategory
+        }}
+        searchDrawer={{ onOpen: handleOpenSearch }}
+      />
+      <SearchDrawer
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        isOpen={isSearchOpen}
+        onOpenChange={setIsSearchOpen}
       />
       <SearchBar
         searchQuery={searchQuery}

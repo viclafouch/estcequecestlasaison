@@ -45,18 +45,6 @@ export const Route = createFileRoute('/sitemap.xml')({
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>${clientEnv.VITE_SITE_URL}/calendrier/fruits</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${clientEnv.VITE_SITE_URL}/calendrier/legumes</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 ${produceUrls}
 </urlset>`
 

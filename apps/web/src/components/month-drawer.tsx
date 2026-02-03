@@ -9,6 +9,9 @@ import {
 } from '@estcequecestlasaison/shared'
 import type { AvailableIconName } from './icons'
 import { matchIsAvailableIcon, ProduceIcon } from './icons'
+import { CardSection } from './ui/card-section'
+import { IconButton, iconButtonVariants } from './ui/icon-button'
+import { Pill } from './ui/pill'
 
 const MAX_VISIBLE_ICONS = 6
 
@@ -34,7 +37,9 @@ const ProduceIconRow = ({ items }: ProduceIconRowProps) => {
         return (
           <div
             key={item.id}
-            className="btn-icon size-9 bg-white shadow-sm"
+            className={iconButtonVariants({
+              class: 'size-9 bg-white shadow-sm'
+            })}
             title={item.name}
           >
             {hasIcon ? (
@@ -49,7 +54,12 @@ const ProduceIconRow = ({ items }: ProduceIconRowProps) => {
         )
       })}
       {remainingCount > 0 ? (
-        <div className="btn-icon size-9 bg-white text-xs font-semibold text-gray-500 shadow-sm">
+        <div
+          className={iconButtonVariants({
+            class:
+              'size-9 bg-white text-xs font-semibold text-gray-500 shadow-sm'
+          })}
+        >
           +{remainingCount}
         </div>
       ) : null}
@@ -109,15 +119,15 @@ export const MonthDrawer = ({
               Sélectionnez un mois pour voir les fruits et légumes de saison
             </Drawer.Description>
             <div className="flex items-center justify-between">
-              <button
+              <IconButton
                 ref={previousButtonRef}
-                type="button"
+                size="lg"
+                variant="elevated"
                 onClick={handlePreviousMonth}
-                className="btn-icon-lg focus-ring bg-white shadow-sm hover:bg-gray-100"
                 aria-label="Mois précédent"
               >
                 <ChevronLeft className="size-5 text-gray-600" />
-              </button>
+              </IconButton>
               <div className="text-center">
                 <Drawer.Title className="text-2xl font-bold capitalize text-gray-900">
                   {monthName}
@@ -126,35 +136,40 @@ export const MonthDrawer = ({
                   {stats ? `${stats.total} produits de saison` : '\u00A0'}
                 </p>
               </div>
-              <button
-                type="button"
+              <IconButton
+                size="lg"
+                variant="elevated"
                 onClick={handleNextMonth}
-                className="btn-icon-lg focus-ring bg-white shadow-sm hover:bg-gray-100"
                 aria-label="Mois suivant"
               >
                 <ChevronRight className="size-5 text-gray-600" />
-              </button>
+              </IconButton>
             </div>
             {stats ? (
               <>
                 <div className="mt-4 flex justify-center gap-6">
-                  <div className="pill">
+                  <Pill>
                     <ProduceIcon name="red-apple" className="size-4" />
                     <span className="text-sm font-medium text-gray-700">
                       {stats.fruits} fruits
                     </span>
-                  </div>
-                  <div className="pill">
+                  </Pill>
+                  <Pill>
                     <ProduceIcon name="carrot" className="size-4" />
                     <span className="text-sm font-medium text-gray-700">
                       {stats.vegetables} légumes
                     </span>
-                  </div>
+                  </Pill>
                 </div>
                 <div className="mt-6 space-y-3">
-                  <div className="card-section bg-emerald-50">
+                  <CardSection className="bg-emerald-50">
                     <div className="flex items-center gap-3">
-                      <div className="btn-icon size-8 bg-emerald-100">
+                      <div
+                        className={iconButtonVariants({
+                          size: 'sm',
+                          class: 'bg-emerald-100'
+                        })}
+                      >
                         <Sprout className="size-4 text-emerald-600" />
                       </div>
                       <span className="text-sm font-medium text-emerald-900">
@@ -168,10 +183,15 @@ export const MonthDrawer = ({
                         Aucune
                       </span>
                     )}
-                  </div>
-                  <div className="card-section bg-amber-50">
+                  </CardSection>
+                  <CardSection className="bg-amber-50">
                     <div className="flex items-center gap-3">
-                      <div className="btn-icon size-8 bg-amber-100">
+                      <div
+                        className={iconButtonVariants({
+                          size: 'sm',
+                          class: 'bg-amber-100'
+                        })}
+                      >
                         <Leaf className="size-4 text-amber-600" />
                       </div>
                       <span className="text-sm font-medium text-amber-900">
@@ -185,7 +205,7 @@ export const MonthDrawer = ({
                         Aucune
                       </span>
                     )}
-                  </div>
+                  </CardSection>
                 </div>
               </>
             ) : null}
