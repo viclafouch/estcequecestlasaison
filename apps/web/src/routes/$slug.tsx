@@ -107,13 +107,13 @@ const ProductPage = () => {
         className="mx-auto max-w-7xl space-y-12 overflow-x-clip px-6 pt-8 pb-24 md:pt-12 md:pb-20"
       >
         <section className="flex flex-col gap-6 md:grid md:grid-cols-[1fr_2fr] md:items-stretch md:gap-12">
-          <div className="size-40 self-center overflow-hidden rounded-3xl bg-gray-100 md:size-auto md:self-stretch">
+          <div className="aspect-square w-full max-w-125 self-center overflow-hidden rounded-3xl bg-gray-100 md:aspect-auto md:max-w-none md:w-auto md:self-stretch">
             <ProduceImage
               produce={produce}
               altSuffix={`${typeLabel} de saison`}
               loading="eager"
               fetchPriority="high"
-              sizes="(max-width: 768px) 160px, 288px"
+              sizes="(max-width: 768px) calc(100vw - 48px), 288px"
             />
           </div>
           <div className="flex flex-1 flex-col gap-4 text-center md:text-left">
@@ -123,26 +123,31 @@ const ProductPage = () => {
               </h1>
               <p className="text-sm text-gray-500">{typeLabel}</p>
             </div>
-            <div className="flex items-center justify-center gap-2.5 md:justify-start">
-              <span
-                className={`size-3 ${SEASON_DOT_STYLES[BADGE_VARIANT_TO_SEASON[seasonDisplay.variant]].className}`}
-                aria-hidden="true"
-              />
-              <span className="text-lg font-bold text-gray-900">
-                {seasonDisplay.label}
-              </span>
+            <div className="flex flex-col items-center gap-1 md:flex-row md:items-center md:gap-2.5 md:justify-start">
+              <div className="flex items-center gap-2.5">
+                <span
+                  className={`size-3 shrink-0 ${SEASON_DOT_STYLES[BADGE_VARIANT_TO_SEASON[seasonDisplay.variant]].className}`}
+                  aria-hidden="true"
+                />
+                <span className="text-lg font-bold text-gray-900">
+                  {seasonDisplay.label}
+                </span>
+              </div>
               {seasonDisplay.detail ? (
-                <>
-                  <span className="text-gray-300" aria-hidden="true">
+                <div className="flex items-center gap-2.5">
+                  <span
+                    className="hidden text-gray-300 md:inline"
+                    aria-hidden="true"
+                  >
                     &mdash;
                   </span>
                   <span
                     data-variant={seasonDisplay.variant}
-                    className="text-base font-medium data-[variant=positive]:text-primary-700 data-[variant=warning]:text-warning-600 data-[variant=neutral]:text-gray-500"
+                    className="text-sm font-medium text-gray-500 md:text-base data-[variant=positive]:text-primary-700 data-[variant=warning]:text-warning-600 data-[variant=neutral]:text-gray-500"
                   >
                     {seasonDisplay.detail}
                   </span>
-                </>
+                </div>
               ) : null}
             </div>
             <dl className="grid grid-cols-2 gap-3 text-left">
