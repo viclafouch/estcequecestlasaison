@@ -20,7 +20,7 @@ export const SeasonAlternatives = ({
           En saison en ce moment
         </p>
       </div>
-      <div className="flex flex-col gap-2 md:flex-row md:flex-wrap">
+      <div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
         {alternatives.map((item) => {
           return (
             <Link
@@ -34,7 +34,7 @@ export const SeasonAlternatives = ({
                 name={item.name}
                 className="size-7 rounded-lg"
               />
-              {item.name}
+              <span className="truncate">{item.name}</span>
               <ChevronRight
                 className="ml-auto size-3.5 shrink-0 text-gray-400"
                 aria-hidden="true"

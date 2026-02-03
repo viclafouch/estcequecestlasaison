@@ -320,7 +320,7 @@ export function getProduceBadge({
   }
 }
 
-const MAX_ALTERNATIVES = 3
+const MAX_ALTERNATIVES = 4
 
 export type GetSeasonAlternativesParams = {
   produce: Produce
