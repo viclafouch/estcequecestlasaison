@@ -41,6 +41,8 @@ const Home = () => {
 
   const [debouncedSearch] = useDebouncedValue(searchQuery, { wait: 200 })
 
+  const lastCommittedMonth = React.useRef(selectedMonth)
+
   const groupedProduceQuery = useQuery({
     ...groupedProduceOptions({
       searchQuery: debouncedSearch,
@@ -50,14 +52,22 @@ const Home = () => {
     placeholderData: keepPreviousData
   })
 
+  if (!groupedProduceQuery.isPlaceholderData) {
+    lastCommittedMonth.current = selectedMonth
+  }
+
+  const displayMonth = groupedProduceQuery.isPlaceholderData
+    ? lastCommittedMonth.current
+    : selectedMonth
+
   const monthStatsQuery = useQuery({
     ...monthStatsOptions(selectedMonth),
     placeholderData: keepPreviousData
   })
 
   const isCurrentMonth = selectedMonth === currentMonth
-  const nextMonth = getNextMonth(selectedMonth)
-  const currentMonthName = getMonthName(selectedMonth)
+  const nextMonth = getNextMonth(displayMonth)
+  const currentMonthName = getMonthName(displayMonth)
   const nextMonthName = getMonthName(nextMonth)
   const categoryLabel = CATEGORY_SUBTITLE_LABELS[activeCategory]
   const hasMonthVowelStart = /^[aeiouàâéèêëïîôùûü]/i.test(currentMonthName)
@@ -119,7 +129,7 @@ const Home = () => {
                 title={seasonTitle}
                 subtitle={`${categoryLabel} disponibles en ${currentMonthName}`}
                 produceList={groupedProduceQuery.data!.inSeason}
-                month={selectedMonth}
+                month={displayMonth}
                 section="in-season"
                 priority
               />
@@ -138,7 +148,7 @@ const Home = () => {
                 title="Hors saison"
                 subtitle="Pas disponibles en ce moment"
                 produceList={groupedProduceQuery.data!.offSeason}
-                month={selectedMonth}
+                month={displayMonth}
                 section="off-season"
               />
             ) : null}
