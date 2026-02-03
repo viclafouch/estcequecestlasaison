@@ -1,26 +1,35 @@
-import { seasonalFooterOptions } from '@/constants/queries'
 import { SITE_NAME_DISPLAY } from '@/constants/site'
 import { getCurrentYear } from '@estcequecestlasaison/shared'
-import { useQuery } from '@tanstack/react-query'
+import type { LinkOptions } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
-import { FooterSeasonal } from './footer-seasonal'
 import { FrenchFlag } from './french-flag'
+
+type ProduceLink = { slug: string; name: string }
 
 const POPULAR_FRUITS = [
   { slug: 'fraise', name: 'Fraise' },
   { slug: 'cerise', name: 'Cerise' },
   { slug: 'pomme', name: 'Pomme' },
   { slug: 'orange', name: 'Orange' }
-] as const
+] as const satisfies readonly ProduceLink[]
 
 const POPULAR_VEGETABLES = [
   { slug: 'tomate', name: 'Tomate' },
   { slug: 'carotte', name: 'Carotte' },
   { slug: 'courgette', name: 'Courgette' },
   { slug: 'poireau', name: 'Poireau' }
-] as const
+] as const satisfies readonly ProduceLink[]
 
-type ProduceLink = { slug: string; name: string }
+type FooterNavLink = {
+  to: LinkOptions['to']
+  label: string
+}
+
+const NAV_LINKS = [
+  { to: '/', label: 'Accueil' },
+  { to: '/calendrier', label: 'Calendrier' },
+  { to: '/faq', label: 'FAQ' }
+] as const satisfies readonly FooterNavLink[]
 
 type ProduceLinkListParams = {
   items: readonly ProduceLink[]
@@ -29,18 +38,16 @@ type ProduceLinkListParams = {
 
 const ProduceLinkList = ({ items, label }: ProduceLinkListParams) => {
   return (
-    <nav aria-label={label}>
-      <p className="text-sm font-semibold tracking-wide text-gray-900">
-        {label}
-      </p>
-      <ul className="mt-3 flex flex-col gap-1.5">
+    <div className="flex flex-col gap-3">
+      <p className="text-sm font-semibold text-gray-900">{label}</p>
+      <ul className="flex flex-col gap-2">
         {items.map((item) => {
           return (
             <li key={item.slug}>
               <Link
                 to="/$slug"
                 params={{ slug: item.slug }}
-                className="py-0.5 text-sm text-gray-600 hover:text-gray-900"
+                className="focus-ring rounded-sm py-1 text-sm text-gray-600 hover:text-gray-900"
               >
                 {item.name}
               </Link>
@@ -48,18 +55,16 @@ const ProduceLinkList = ({ items, label }: ProduceLinkListParams) => {
           )
         })}
       </ul>
-    </nav>
+    </div>
   )
 }
 
 export const Footer = () => {
-  const seasonalQuery = useQuery(seasonalFooterOptions())
-
   return (
     <footer className="border-t border-gray-200 bg-white print:hidden">
-      <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 md:py-12">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="flex flex-col gap-4">
+      <div className="mx-auto max-w-7xl px-6 pt-12 pb-24 md:pb-12">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+          <div className="flex flex-col gap-4 lg:col-span-1">
             <Link to="/" className="focus-ring w-fit rounded-sm">
               <picture>
                 <source
@@ -77,39 +82,49 @@ export const Footer = () => {
                 />
               </picture>
             </Link>
-            <p className="flex items-start gap-1.5 text-sm text-gray-500">
-              <FrenchFlag className="mt-1 h-3 w-auto shrink-0 ring-1 ring-gray-950/10" />
-              <span>
+            <p className="flex items-start gap-1.5 text-sm text-gray-600">
+              <FrenchFlag className="mt-0.5 h-3.5 w-auto shrink-0 rounded-xs ring-1 ring-gray-950/10" />
+              <span className="text-balance">
                 Découvrez les fruits et légumes de saison en France, mois par
                 mois.
               </span>
             </p>
           </div>
-          {seasonalQuery.data ? (
-            <FooterSeasonal
-              monthName={seasonalQuery.data.monthName}
-              seasonalProduce={seasonalQuery.data.seasonalProduce}
+          <nav
+            aria-label="Navigation"
+            className="flex flex-col gap-3 lg:col-span-1"
+          >
+            <p className="text-sm font-semibold text-gray-900">Navigation</p>
+            <ul className="flex flex-col gap-2">
+              {NAV_LINKS.map((link) => {
+                return (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      className="focus-ring rounded-sm py-1 text-sm text-gray-600 hover:text-gray-900"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
+          <nav aria-label="Fruits populaires">
+            <ProduceLinkList items={POPULAR_FRUITS} label="Fruits populaires" />
+          </nav>
+          <nav aria-label="Légumes populaires">
+            <ProduceLinkList
+              items={POPULAR_VEGETABLES}
+              label="Légumes populaires"
             />
-          ) : null}
-          <ProduceLinkList items={POPULAR_FRUITS} label="Fruits populaires" />
-          <ProduceLinkList
-            items={POPULAR_VEGETABLES}
-            label="Légumes populaires"
-          />
+          </nav>
         </div>
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray-200 pt-6 md:flex-row">
-          <p className="text-sm text-gray-500">
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-gray-200 pt-6 md:flex-row">
+          <p className="text-sm text-gray-600">
             &copy; {getCurrentYear()} estcequecestlasaison.fr
           </p>
-          <nav aria-label="Liens utiles" className="flex gap-4">
-            <Link
-              to="/faq"
-              className="py-1 text-sm text-gray-500 hover:text-gray-900"
-            >
-              FAQ
-            </Link>
-          </nav>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-600">
             Bientôt disponible sur iOS et Android
           </p>
         </div>

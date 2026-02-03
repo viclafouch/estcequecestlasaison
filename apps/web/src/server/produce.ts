@@ -4,7 +4,6 @@ import type { Month, Produce } from '@estcequecestlasaison/shared'
 import {
   filterProduceByType,
   getCurrentMonth,
-  getMonthName,
   getMonthStats,
   groupProduceBySeason,
   matchIsInSeason,
@@ -51,27 +50,6 @@ function toCalendarItem(item: Produce) {
 function toProduceIconItem(item: Pick<Produce, 'id' | 'name' | 'slug'>) {
   return { id: item.id, name: item.name, slug: item.slug }
 }
-
-function toProduceFooterItem(item: Pick<Produce, 'slug' | 'name'>) {
-  return { slug: item.slug, name: item.name }
-}
-
-export const getSeasonalFooterData = createServerFn({ method: 'GET' }).handler(
-  async () => {
-    const { PRODUCE_LIST } = await import('./produce-data')
-
-    const currentMonth = getCurrentMonth()
-
-    const seasonalProduce = PRODUCE_LIST.filter((produce) => {
-      return matchIsInSeason(produce, currentMonth)
-    }).map(toProduceFooterItem)
-
-    return {
-      seasonalProduce,
-      monthName: getMonthName(currentMonth)
-    }
-  }
-)
 
 export const getSlugPageData = createServerFn({ method: 'GET' })
   .inputValidator(slugInputSchema)
