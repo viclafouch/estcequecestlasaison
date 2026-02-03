@@ -53,7 +53,7 @@ const RootDocument = ({ children }: { children: React.ReactNode }) => {
 const RootError = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 px-6">
-      <p className="text-6xl font-bold text-gray-900">Erreur</p>
+      <h1 className="text-6xl font-bold text-gray-900">Erreur</h1>
       <p className="mt-4 text-lg text-gray-500">Une erreur est survenue.</p>
       <Link
         to="/"
@@ -82,7 +82,6 @@ export const Route = createRootRouteWithContext<{
         { name: 'theme-color', content: THEME_COLOR },
         { name: 'color-scheme', content: 'light' },
         { name: 'robots', content: 'index,follow,noai,noimageai' },
-        { httpEquiv: 'X-Robots-Tag', content: 'noai,noimageai' },
         { name: 'application-name', content: SITE_NAME },
         { name: 'apple-mobile-web-app-title', content: SITE_NAME },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },

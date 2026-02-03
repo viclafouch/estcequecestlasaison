@@ -31,7 +31,7 @@ export const FooterSeasonal = ({
               <Link
                 to="/$slug"
                 params={{ slug: item.slug }}
-                className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900"
+                className="flex items-center gap-1.5 py-0.5 text-sm text-gray-600 hover:text-gray-900"
               >
                 <ProduceAvatar
                   slug={item.slug}

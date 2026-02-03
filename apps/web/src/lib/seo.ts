@@ -67,6 +67,7 @@ export function seo({
     { property: 'og:url', content: url },
     { property: 'og:locale', content: 'fr_FR' },
     { property: 'og:image', content: ogImage },
+    { property: 'og:image:type', content: 'image/png' },
     { property: 'og:image:width', content: String(OG_IMAGE_WIDTH) },
     { property: 'og:image:height', content: String(OG_IMAGE_HEIGHT) },
     { property: 'og:image:alt', content: ogImageAlt },
@@ -87,7 +88,10 @@ export function seo({
   const keywordsMeta = keywords ? [{ name: 'keywords', content: keywords }] : []
 
   const meta = [...baseMeta, ...descriptionMeta, ...keywordsMeta]
-  const links = [{ rel: 'canonical', href: url }]
+  const links = [
+    { rel: 'canonical', href: url },
+    { rel: 'alternate', hrefLang: 'fr', href: url }
+  ]
 
   return { meta, links }
 }
@@ -142,8 +146,7 @@ export function produceSeo({ produce, month }: ProduceSeoParams) {
     keywords: `${produce.name.toLowerCase()}, saison ${produce.name.toLowerCase()}, est-ce que c'est la saison ${produce.name.toLowerCase()}, ${typeLabel} de saison, calendrier saisonnalit\u00E9 ${produce.name.toLowerCase()}`,
     pathname: `/${produce.slug}`,
     image: `/images/og/${produce.slug}.png`,
-    imageAlt: `${produce.name} - ${typeLabel} de saison`,
-    ogType: 'article'
+    imageAlt: `${produce.name} - ${typeLabel} de saison`
   })
 
   return {
@@ -184,12 +187,21 @@ function buildBreadcrumbList(produce: Produce): WithContext<BreadcrumbList> {
 function buildProductThing(produce: Produce): WithContext<Thing> {
   const seasonRange = getSeasonRangeLabel(produce)
   const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'L\u00E9gume'
+  const vitaminsLabel = getVitaminsLabel(produce.nutrition.vitamins)
+
+  const descriptionParts = [
+    `${produce.name} - ${typeLabel} de saison`,
+    `Saison : ${seasonRange}`,
+    `${produce.nutrition.calories} kcal pour 100g`,
+    vitaminsLabel,
+    produce.nutrition.benefits
+  ].filter(Boolean)
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Thing',
     name: produce.name,
-    description: `${produce.name} - ${typeLabel} de saison. Saison : ${seasonRange}. ${produce.nutrition.benefits}.`,
+    description: `${descriptionParts.join('. ')}.`,
     url: buildUrl(`/${produce.slug}`),
     image: buildUrl(`/images/produce/${produce.slug}-512w.webp`)
   }

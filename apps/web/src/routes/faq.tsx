@@ -31,39 +31,38 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
     <>
       <strong>estcequecestlasaison.fr</strong> est un outil{' '}
       <strong>gratuit</strong> que j&apos;ai cr&eacute;&eacute; pour vous aider
-      &agrave; conna&icirc;tre la <strong>saisonnalit&eacute;</strong> des
-      fruits et l&eacute;gumes en <strong>France m&eacute;tropolitaine</strong>.
-      Consultez le calendrier interactif mois par mois pour savoir quels
-      produits sont de saison et faire de meilleurs choix alimentaires.
+      &agrave; conna&icirc;tre la <strong>saisonnalité</strong> des fruits et
+      légumes en <strong>France métropolitaine</strong>. Consultez le calendrier
+      interactif mois par mois pour savoir quels produits sont de saison et
+      faire de meilleurs choix alimentaires.
     </>
   ),
   sources: (
     <>
-      Les donn&eacute;es sont issues de <strong>sources officielles</strong> et
+      Les données sont issues de <strong>sources officielles</strong> et
       reconnues&nbsp;: l&apos;
       <ExternalLink href="https://www.aprifel.com">APRIFEL</ExternalLink>{' '}
-      (Agence pour la recherche et l&apos;information en fruits et
-      l&eacute;gumes),{' '}
+      (Agence pour la recherche et l&apos;information en fruits et légumes),{' '}
       <ExternalLink href="https://www.lesfruitsetlegumesfrais.com">
         Interfel
       </ExternalLink>{' '}
-      (Interprofession des fruits et l&eacute;gumes frais), le{' '}
+      (Interprofession des fruits et légumes frais), le{' '}
       <ExternalLink href="https://agriculture.gouv.fr">
-        Minist&egrave;re de l&apos;Agriculture
+        Ministère de l&apos;Agriculture
       </ExternalLink>{' '}
       et l&apos;
       <ExternalLink href="https://ciqual.anses.fr">
         Anses via la table Ciqual
       </ExternalLink>{' '}
-      pour les donn&eacute;es nutritionnelles.
+      pour les données nutritionnelles.
     </>
   ),
   fiabilite: (
     <>
-      Oui, les donn&eacute;es sont <strong>crois&eacute;es</strong> &agrave;
-      partir de plusieurs <strong>sources officielles fran&ccedil;aises</strong>{' '}
-      pour garantir leur exactitude. Si vous constatez une erreur,
-      n&apos;h&eacute;sitez pas &agrave; me le signaler via{' '}
+      Oui, les données sont <strong>croisées</strong> à partir de plusieurs{' '}
+      <strong>sources officielles françaises</strong> pour garantir leur
+      exactitude. Si vous constatez une erreur, n&apos;hésitez pas à me le
+      signaler via{' '}
       <ExternalLink href="https://www.linkedin.com/in/victordelafouchardiere">
         LinkedIn
       </ExternalLink>{' '}
@@ -77,30 +76,28 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
   indicateurs: (
     <>
       <strong>Pleine saison</strong>&nbsp;: le produit est au{' '}
-      <strong>pic de disponibilit&eacute;</strong>, avec le meilleur go&ucirc;t
-      et le meilleur prix. <strong>D&eacute;but ou fin de saison</strong>
-      &nbsp;: le produit est disponible mais pas &agrave; son pic, la
-      qualit&eacute; et le prix peuvent varier. <strong>Hors saison</strong>
-      &nbsp;: le produit n&apos;est pas disponible localement en France.
+      <strong>pic de disponibilité</strong>, avec le meilleur goût et le
+      meilleur prix. <strong>Début ou fin de saison</strong>&nbsp;: le produit
+      est disponible mais pas à son pic, la qualité et le prix peuvent varier.{' '}
+      <strong>Hors saison</strong>&nbsp;: le produit n&apos;est pas disponible
+      localement en France.
     </>
   ),
   pourquoi: (
     <>
-      Manger de saison pr&eacute;sente de <strong>nombreux avantages</strong>
-      &nbsp;: un <strong>meilleur go&ucirc;t</strong> car les produits sont
-      r&eacute;colt&eacute;s &agrave; maturit&eacute;, une{' '}
-      <strong>valeur nutritionnelle sup&eacute;rieure</strong>, des{' '}
-      <strong>prix plus avantageux</strong> gr&acirc;ce &agrave;
-      l&apos;abondance de l&apos;offre, et un{' '}
-      <strong>impact environnemental r&eacute;duit</strong> avec moins de
-      transport et de stockage.
+      Manger de saison présente de <strong>nombreux avantages</strong>&nbsp;: un{' '}
+      <strong>meilleur goût</strong> car les produits sont récoltés à maturité,
+      une <strong>valeur nutritionnelle supérieure</strong>, des{' '}
+      <strong>prix plus avantageux</strong> grâce à l&apos;abondance de
+      l&apos;offre, et un <strong>impact environnemental réduit</strong> avec
+      moins de transport et de stockage.
     </>
   ),
   createur: (
     <>
-      <strong>estcequecestlasaison.fr</strong> est un projet cr&eacute;&eacute;
-      par <strong>Victor de la Fouchardi&egrave;re</strong>, d&eacute;veloppeur
-      web passionn&eacute; par l&apos;alimentation de saison. Retrouvez-moi sur{' '}
+      <strong>estcequecestlasaison.fr</strong> est un projet créé par{' '}
+      <strong>Victor de la Fouchardière</strong>, développeur web passionné par
+      l&apos;alimentation de saison. Retrouvez-moi sur{' '}
       <ExternalLink href="https://www.linkedin.com/in/victordelafouchardiere">
         LinkedIn
       </ExternalLink>
@@ -109,8 +106,8 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
   ),
   'open-source': (
     <>
-      Oui, le <strong>code source</strong> du site est enti&egrave;rement
-      disponible sur{' '}
+      Oui, le <strong>code source</strong> du site est entièrement disponible
+      sur{' '}
       <ExternalLink href="https://github.com/viclafouch/estcequecestlasaison">
         GitHub
       </ExternalLink>
@@ -124,8 +121,8 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
         GitHub
       </ExternalLink>{' '}
       en ouvrant des <strong>issues</strong> pour signaler des erreurs ou en
-      proposant des am&eacute;liorations via des <strong>pull requests</strong>.
-      Toute contribution est la bienvenue&nbsp;!
+      proposant des <strong>améliorations</strong> via des{' '}
+      <strong>pull requests</strong>. Toute contribution est la bienvenue&nbsp;!
     </>
   ),
   contact: (
@@ -134,7 +131,7 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
       <ExternalLink href="https://www.linkedin.com/in/victordelafouchardiere">
         LinkedIn
       </ExternalLink>
-      . Pour les questions techniques ou les suggestions, pr&eacute;f&eacute;rez{' '}
+      . Pour les questions techniques ou les suggestions, préférez{' '}
       <ExternalLink href="https://github.com/viclafouch/estcequecestlasaison">
         GitHub
       </ExternalLink>
@@ -144,11 +141,10 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
   'application-mobile': (
     <>
       Oui, une <strong>application mobile</strong> pour{' '}
-      <strong>iOS et Android</strong> est en cours de d&eacute;veloppement. Elle
-      sera <strong>100&nbsp;% gratuite</strong>, sans publicit&eacute;, et
-      fonctionnera enti&egrave;rement <strong>hors-ligne</strong> pour consulter
-      la saisonnalit&eacute; des fruits et l&eacute;gumes o&ugrave; que vous
-      soyez.
+      <strong>iOS et Android</strong> est en cours de développement. Elle sera{' '}
+      <strong>100&nbsp;% gratuite</strong>, sans publicité, et fonctionnera
+      entièrement <strong>hors-ligne</strong> pour consulter la saisonnalité des
+      fruits et légumes où que vous soyez.
     </>
   )
 }
@@ -241,11 +237,11 @@ const FaqPage = () => {
       >
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
-            Questions fr&eacute;quentes
+            Questions fréquentes
           </h1>
           <p className="text-base text-gray-600">
-            Retrouvez les r&eacute;ponses &agrave; vos questions sur le site,
-            les donn&eacute;es et le projet.
+            Retrouvez les réponses à vos questions sur le site, les données et
+            le projet.
           </p>
         </div>
         <div className="mt-8 divide-y divide-gray-200 border-t border-gray-200">

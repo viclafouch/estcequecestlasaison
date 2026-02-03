@@ -61,7 +61,7 @@ const SearchDrawerContent = ({
               Rechercher
             </Dialog.Title>
             <Dialog.Description className="sr-only">
-              Rechercher un fruit ou legume de saison
+              Rechercher un fruit ou l&eacute;gume de saison
             </Dialog.Description>
             <Dialog.Close asChild>
               <IconButton
@@ -87,8 +87,8 @@ const SearchDrawerContent = ({
                   return setDraftQuery(event.target.value)
                 }}
                 onKeyDown={handleKeyDown}
-                placeholder="Rechercher un fruit ou legume..."
-                aria-label="Rechercher un fruit ou legume"
+                placeholder="Rechercher un fruit ou l&eacute;gume..."
+                aria-label="Rechercher un fruit ou l&eacute;gume"
                 className="w-full bg-transparent text-base text-gray-900 placeholder:text-gray-400 focus-visible:outline-none"
               />
             </div>

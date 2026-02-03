@@ -114,7 +114,7 @@ const SeasonChangeCard = ({
             class: colors.iconBadge
           })}
         >
-          <Icon className={colors.icon} />
+          <Icon className={colors.icon} aria-hidden="true" />
         </div>
         <span className={colors.label}>{label}</span>
       </div>
@@ -209,13 +209,21 @@ export const MonthDrawer = ({
               <div className="flex flex-col gap-4 pt-4">
                 <div className="flex justify-center gap-3">
                   <Pill>
-                    <ProduceIcon name="red-apple" className="size-4" />
+                    <ProduceIcon
+                      name="red-apple"
+                      className="size-4"
+                      aria-hidden="true"
+                    />
                     <span className="text-sm font-medium text-gray-700">
                       {stats.fruits} fruits
                     </span>
                   </Pill>
                   <Pill>
-                    <ProduceIcon name="carrot" className="size-4" />
+                    <ProduceIcon
+                      name="carrot"
+                      className="size-4"
+                      aria-hidden="true"
+                    />
                     <span className="text-sm font-medium text-gray-700">
                       {stats.vegetables} légumes
                     </span>

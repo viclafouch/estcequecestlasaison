@@ -90,6 +90,7 @@ export const ProduceCard = ({
         <h3 className="truncate font-semibold text-gray-900">{produce.name}</h3>
         <p className="text-sm text-gray-500">
           {produce.type === 'fruit' ? 'Fruit' : 'Légume'}
+          <span className="sr-only"> &mdash; {badge.label}</span>
         </p>
       </motion.div>
     </Link>

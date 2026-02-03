@@ -89,7 +89,10 @@ export const ProduceCarousel = ({
       </div>
       <div
         ref={scrollContainerRef}
-        className="scrollbar-hide -mx-6 flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-px-6 px-6 sm:gap-3"
+        role="region"
+        aria-label={`${title}, d\u00e9filable horizontalement`}
+        tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+        className="focus-ring scrollbar-hide -mx-6 flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-px-6 px-6 sm:gap-3"
       >
         {produceList.map((produce, index) => {
           return (
