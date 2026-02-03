@@ -1,3 +1,4 @@
+import { ChevronUp } from 'lucide-react'
 import type { Month } from '@estcequecestlasaison/shared'
 import { getMonthName } from '@estcequecestlasaison/shared'
 import { useMonthBarScroll } from '../hooks/use-month-bar-scroll'
@@ -75,6 +76,10 @@ export const MonthBar = ({
                 <span className="month-bar-label capitalize">
                   {getMonthName(month)}
                 </span>
+                <ChevronUp
+                  className="month-bar-chevron text-active-500"
+                  aria-hidden="true"
+                />
               </button>
             )
           })
