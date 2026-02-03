@@ -36,9 +36,11 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 
 ## Pages
 
-2 pages au total :
-- Page d'accueil (carousels par mois, style Airbnb)
-- Page produit dynamique (SEO optimisé)
+4 pages au total :
+- `/` - Page d'accueil (carousels par mois, style Airbnb)
+- `/$slug` - Page produit dynamique (SEO optimisé)
+- `/calendrier` - Calendrier annuel des 80 produits (tableau 12 mois, tri, recherche, impression)
+- `/faq` - Questions fréquentes (accordion, sources officielles)
 
 ---
 

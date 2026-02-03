@@ -256,73 +256,67 @@ estcequecestlasaison/
 
 ---
 
-### Milestone 9 : Page Calendrier Annuel
+### Milestone 9 : Page Calendrier Annuel ✅
 
 **Objectif :** Page de reference SEO "calendrier fruits et legumes de saison" avec vue annuelle imprimable.
 
-**Routes (3 routes distinctes via route group layout) :**
-- `/calendrier` - Tous les produits (80, mixed alphabetical A-Z)
-- `/calendrier/fruits` - Fruits uniquement (30)
-- `/calendrier/legumes` - Legumes uniquement (50)
+**Route :** `/calendrier` - Tous les produits (80 items) avec filtrage/tri client-side
+
+**Approche retenue :** Une seule route avec CalendarTable interactif (recherche, tri par nom/saison, highlight mois courant) au lieu de 3 routes separees. Le filtrage fruits/legumes se fait directement dans le tableau.
 
 **Structure fichiers :**
 ```
-src/routes/calendrier/
-├── _layout.tsx          → CalendarHeader + breadcrumb + print button
-├── index.tsx            → Table "Tous" (80 items)
-├── fruits.tsx           → Table "Fruits" (30 items)
-└── legumes.tsx          → Table "Legumes" (50 items)
+src/routes/calendrier.tsx         → Route unique avec CalendarPageContent
+src/components/calendar-page.tsx  → Layout (titre, description, bouton print, JSON-LD)
+src/components/calendar-table.tsx → Tableau interactif (TanStack Table)
+src/components/calendar-toolbar.tsx → Barre recherche + tri
+src/components/calendar-legend.tsx  → Legende couleurs
+src/constants/calendar.ts         → Config (titre, description, keywords, breadcrumbs)
 ```
 
-**CalendarHeader (nouveau composant) :**
-- Logo (lien vers `/`)
-- Breadcrumb : Accueil > Calendrier > [Fruits|Legumes] (BreadcrumbList schema)
-- Onglets navigation : Tous / Fruits / Legumes (Links vers les 3 routes)
-- Bouton "Imprimer" (window.print())
-- Lien FAQ
+**CalendarPageContent :**
+- Titre + description
+- Bouton "Imprimer" (window.print(), desktop uniquement)
+- Structured data JSON-LD (BreadcrumbList + ItemList)
 
-**Table calendrier :**
+**CalendarTable (TanStack Table) :**
 - Tableau 12 colonnes (Janvier a Decembre) + colonne sticky produit
-- Ligne par produit : icone + nom (lien vers `/$slug`)
-- Toujours depart Janvier (gauche), mois courant surligne (fond distinct)
-- Cellules : dot coloree + label texte ("P" pleine, "D/F" debut/fin, vide hors saison)
-- Tri : `/calendrier` = alphabetique A-Z mixte, `/calendrier/fruits` et `/calendrier/legumes` = alphabetique
+- Ligne par produit : avatar + nom (lien vers `/$slug`)
+- Mois courant surligne (fond distinct)
+- Cellules : dot coloree (vert pleine saison, ambre debut/fin, gris hors saison)
+- Tri : par nom (A-Z) ou par nombre de mois en saison
+- Recherche globale dans le tableau
 - Mobile : scroll horizontal avec colonne produit sticky a gauche
 
 **Data loading :**
-- Full SSR dans le route loader (80 produits, payload minimal : name, slug, icon, seasons)
-- Pas de nutrition/conservation/origin dans le payload calendrier
+- Full SSR dans le route loader (80 produits, payload minimal : name, slug, seasons)
+- Server function `getCalendarData('all')`
 
-**SEO par route :**
+**SEO :**
 - `/calendrier` : "Calendrier des fruits et legumes de saison en France"
-- `/calendrier/fruits` : "Calendrier des fruits de saison en France"
-- `/calendrier/legumes` : "Calendrier des legumes de saison en France"
 - Structured data : BreadcrumbList + ItemList
-- Ajouter les 3 routes au sitemap (priority 0.8, monthly)
+- Ajoute au sitemap (priority 0.8, monthly)
 
 **Impression (@media print) :**
-- Header brande : logo + titre page + date courante
-- Legende couleurs : vert = pleine saison, ambre = debut/fin, gris = hors saison
-- Labels texte dans cellules (P, D/F) pour impression noir et blanc
-- Masquer : navigation, footer, bouton imprimer
+- Legende couleurs
+- Labels texte dans cellules pour impression noir et blanc
+- Masquer : navigation, footer, bouton imprimer, toolbar
 
 **Navigation :**
-- Ajouter lien "Calendrier" dans SiteHeader (a cote de FAQ)
+- Lien "Calendrier" dans SiteHeader
 
 **Taches :**
-- [x] Creer route group `calendrier/` avec `_layout.tsx`
-- [x] Composant `CalendarHeader` (logo, breadcrumb, onglets, print)
-- [x] Composant `CalendarTable` (tableau produits x mois)
-- [x] Server function pour charger les donnees calendrier (minimal payload)
-- [x] Route `/calendrier/index.tsx` avec loader "tous"
-- [x] Route `/calendrier/fruits.tsx` avec loader "fruits"
-- [x] Route `/calendrier/legumes.tsx` avec loader "legumes"
-- [x] SEO : head() avec seo() pour chaque route
+- [x] Route `/calendrier.tsx` avec loader
+- [x] Composant `CalendarPageContent` (titre, print, JSON-LD)
+- [x] Composant `CalendarTable` (TanStack Table, 12 colonnes, tri, recherche)
+- [x] Composant `CalendarToolbar` (recherche + tri)
+- [x] Composant `CalendarLegend` (legende couleurs)
+- [x] Server function `getCalendarData` (minimal payload)
+- [x] SEO : head() avec seo()
 - [x] Structured data : BreadcrumbList + ItemList
-- [x] Ajouter au sitemap (3 URLs)
-- [x] Stylesheet @media print (header brande + legende + labels texte)
+- [x] Ajouter au sitemap
+- [x] Stylesheet @media print
 - [x] Ajouter lien "Calendrier" dans SiteHeader
-- [ ] Tests responsive (mobile scroll horizontal, desktop full grid)
 
 ---
 
