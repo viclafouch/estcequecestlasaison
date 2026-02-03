@@ -21,6 +21,7 @@ type ProduceCarouselProps = {
   section: ProduceSection
   variant?: 'default' | 'muted'
   priority?: boolean
+  hero?: boolean
 }
 
 export const ProduceCarousel = ({
@@ -30,7 +31,8 @@ export const ProduceCarousel = ({
   month,
   section,
   variant = 'default',
-  priority
+  priority,
+  hero
 }: ProduceCarouselProps) => {
   const {
     scrollContainerRef,
@@ -51,7 +53,13 @@ export const ProduceCarousel = ({
       <div className="mb-4 flex items-center justify-between">
         <div>
           <div className="flex items-baseline gap-3">
-            <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
+            {hero ? (
+              <h1 className="text-xl font-semibold text-gray-900 md:text-2xl md:font-bold">
+                {title}
+              </h1>
+            ) : (
+              <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
+            )}
             <span className="text-sm text-gray-500">
               <CountingNumber number={produceList.length} /> {countLabel}
             </span>

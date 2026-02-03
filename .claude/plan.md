@@ -376,20 +376,21 @@ src/constants/calendar.ts         → Config (titre, description, keywords, brea
 
 ---
 
-### Milestone 12 : Tagline Homepage (Desktop)
+### Milestone 12 : Hero Titre Homepage ✅
 
-**Objectif :** Ajouter une tagline visible sur la homepage pour les visiteurs desktop, ameliorant la comprehension immediate du site.
+**Objectif :** Mettre en avant le titre du premier carousel comme H1 plus grand et bold, creant une hierarchie visuelle claire.
 
-**Specification :**
-- Texte : "Decouvrez les fruits et legumes de saison en France"
-- Position : sous la SearchBar, au-dessus du premier carousel
-- Visible uniquement sur `md:` et au-dessus (masque sur mobile)
-- Remplace le `<h1 className="sr-only">` actuel sur desktop (le sr-only reste pour mobile)
-- Style : texte gris-600, taille base, centre ou aligne selon le layout
+**Approche retenue :** Plutot qu'une tagline separee (peu impactante visuellement), le titre du premier carousel ("En pleine saison de...") devient le H1 de la page avec un style hero (text-2xl/3xl font-bold). Les autres carousels restent en H2 (text-xl font-semibold).
+
+**Implementation :**
+- Prop `hero` sur `ProduceCarousel` : rend un `h1` (text-2xl md:text-3xl font-bold) au lieu de `h2`
+- Premier carousel passe `hero` dans `index.tsx`
+- Le `<h1 className="sr-only">` est supprime (le H1 hero le remplace)
 
 **Taches :**
-- [ ] Modifier `index.tsx` : H1 visible sur md+, sr-only sur mobile
-- [ ] Style coherent avec le design existant
+- [x] Ajouter prop `hero` a `ProduceCarousel` (h1 plus grand vs h2)
+- [x] Passer `hero` au premier carousel dans `index.tsx`
+- [x] Supprimer le H1 sr-only redondant
 
 ---
 
