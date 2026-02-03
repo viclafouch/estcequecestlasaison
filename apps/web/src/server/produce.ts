@@ -4,6 +4,7 @@ import type { Month, Produce } from '@estcequecestlasaison/shared'
 import {
   filterProduceByType,
   getCurrentMonth,
+  getDefaultProduceBadge,
   getMonthStats,
   getSeasonAlternatives,
   groupProduceBySeason,
@@ -11,6 +12,10 @@ import {
   sortProduceBySeasonEnd
 } from '@estcequecestlasaison/shared'
 import { createServerFn } from '@tanstack/react-start'
+
+const searchSuggestionsInputSchema = z.object({
+  query: z.string().max(200)
+})
 
 const calendarInputSchema = z.object({
   type: z.enum(['all', 'fruit', 'vegetable'])
@@ -51,6 +56,33 @@ function toCalendarItem(item: Produce) {
 function toProduceIconItem(item: Pick<Produce, 'id' | 'name' | 'slug'>) {
   return { id: item.id, name: item.name, slug: item.slug }
 }
+
+export const getSearchSuggestions = createServerFn({ method: 'GET' })
+  .inputValidator(searchSuggestionsInputSchema)
+  .handler(async ({ data }) => {
+    const trimmedQuery = data.query.trim()
+
+    if (!trimmedQuery) {
+      return []
+    }
+
+    const { fuseInstance } = await import('./produce-data')
+    const currentMonth = getCurrentMonth()
+
+    return fuseInstance
+      .search(trimmedQuery)
+      .slice(0, 5)
+      .map((result) => {
+        return {
+          slug: result.item.slug,
+          name: result.item.name,
+          badge: getDefaultProduceBadge({
+            produce: result.item,
+            month: currentMonth
+          })
+        }
+      })
+  })
 
 export const getSlugPageData = createServerFn({ method: 'GET' })
   .inputValidator(slugInputSchema)

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { motion, useReducedMotion } from 'motion/react'
+import { INSTANT_TRANSITION } from '@/constants/animation'
 import type { Month, SeasonStatus } from '@estcequecestlasaison/shared'
 import {
   getMonthName,
@@ -17,7 +18,6 @@ import {
   type CalendarColumnMeta,
   type CalendarItem,
   globalFilterFn,
-  INSTANT_TRANSITION,
   type SortOption,
   sortProduceList,
   SPRING_TRANSITION,

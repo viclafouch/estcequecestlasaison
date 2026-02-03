@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { CalendarDays, HelpCircle, Search } from 'lucide-react'
+import { CalendarDays, HelpCircle } from 'lucide-react'
 import type { LinkOptions } from '@tanstack/react-router'
 
 type NavLink = LinkOptions & {
@@ -10,13 +10,6 @@ type NavLink = LinkOptions & {
 }
 
 export const BURGER_NAV_LINKS = [
-  {
-    to: '/',
-    label: 'Rechercher',
-    description: 'Trouver un fruit ou légume',
-    icon: Search,
-    exact: true
-  },
   {
     to: '/calendrier',
     label: 'Calendrier',

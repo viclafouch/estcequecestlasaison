@@ -70,6 +70,8 @@ Les produits sont affichés via `ProduceAvatar` (`src/components/produce-avatar.
 | `useIsomorphicLayoutEffect` | useLayoutEffect SSR-safe (useEffect côté serveur) |
 | `useCarouselScroll` | Logique scroll horizontal avec flèches + scrollToStart |
 | `useMonthBarScroll` | Scroll snap horizontal du sélecteur de mois (mobile, scroll infini) |
+| `useSearch` | Context + provider pour la recherche globale (état modale, raccourci Cmd+K, SearchCommand) |
+| `useListKeyboardNav` | Navigation clavier dans une liste (ArrowUp/Down, Enter, Escape, highlight). Générique |
 
 ---
 
@@ -87,6 +89,8 @@ Les produits sont affichés via `ProduceAvatar` (`src/components/produce-avatar.
 | `motion` | Animations subtiles (fade, stagger) |
 | `@tanstack/react-table` | Tableau calendrier saisonnalité (colonnes, filtrage global, rendering via flexRender) |
 | `fuse.js` | Recherche fuzzy sur les produits |
+| `cmdk` | Command palette accessible (recherche globale Cmd+K, modale autocomplete) |
+| `react-hotkeys-hook` | Raccourcis clavier déclaratifs (useHotkeys) |
 
 
 ---

@@ -1,7 +1,8 @@
 import {
   getCalendarData,
   getGroupedProduceData,
-  getMonthStatsData
+  getMonthStatsData,
+  getSearchSuggestions
 } from '@/server/produce'
 import type { Month, ProduceType } from '@estcequecestlasaison/shared'
 import { queryOptions } from '@tanstack/react-query'
@@ -10,6 +11,20 @@ type GroupedProduceParams = {
   searchQuery: string
   category: ProduceType | 'all'
   month: Month
+}
+
+export function searchSuggestionsOptions(query: string) {
+  return queryOptions({
+    queryKey: ['search-suggestions', query],
+    queryFn: () => {
+      return getSearchSuggestions({ data: { query } })
+    },
+    enabled: query.trim().length > 0,
+    staleTime: 60_000,
+    placeholderData: (previous) => {
+      return previous
+    }
+  })
 }
 
 export function groupedProduceOptions({

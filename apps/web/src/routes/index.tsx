@@ -4,7 +4,6 @@ import { MonthBar } from '@/components/month-bar'
 import { MonthDrawer } from '@/components/month-drawer'
 import { ProduceCarousel } from '@/components/produce-carousel'
 import { SearchBar } from '@/components/search-bar'
-import { SearchDrawer } from '@/components/search-drawer'
 import { SiteHeader } from '@/components/site-header'
 import { groupedProduceOptions, monthStatsOptions } from '@/constants/queries'
 import { seo } from '@/lib/seo'
@@ -37,7 +36,6 @@ const Home = () => {
   const [currentMonth] = React.useState(getCurrentMonth)
   const [selectedMonth, setSelectedMonth] = React.useState(getCurrentMonth)
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
-  const [isSearchOpen, setIsSearchOpen] = React.useState(false)
 
   const [debouncedSearch] = useDebouncedValue(searchQuery, { wait: 200 })
 
@@ -77,10 +75,6 @@ const Home = () => {
     setIsDrawerOpen(true)
   }
 
-  const handleOpenSearch = () => {
-    setIsSearchOpen(true)
-  }
-
   const hasInSeason = (groupedProduceQuery.data?.inSeason.length ?? 0) > 0
   const hasOffSeason = (groupedProduceQuery.data?.offSeason.length ?? 0) > 0
   const hasComingNextMonth =
@@ -96,19 +90,13 @@ const Home = () => {
           activeCategory,
           onCategoryChange: setActiveCategory
         }}
-        searchDrawer={{ onOpen: handleOpenSearch }}
-      />
-      <SearchDrawer
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-        isOpen={isSearchOpen}
-        onOpenChange={setIsSearchOpen}
       />
       <SearchBar
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         currentMonth={selectedMonth}
         onMonthClick={handleOpenDrawer}
+        debouncedQuery={debouncedSearch}
       />
       <MonthDrawer
         selectedMonth={selectedMonth}

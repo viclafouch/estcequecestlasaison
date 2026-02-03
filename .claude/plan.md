@@ -394,6 +394,40 @@ src/constants/calendar.ts         → Config (titre, description, keywords, brea
 
 ---
 
+### Milestone 13 : Recherche Globale avec Autocomplete ✅
+
+**Objectif :** Recherche globale accessible depuis toutes les pages via icone header et raccourci Cmd+K, avec modale cmdk et dropdown autocomplete sur le SearchBar homepage.
+
+**Implementation :**
+- Dependance `cmdk` pour command palette accessible
+- Server function `getSearchSuggestions` (Fuse.js, top 5 resultats)
+- `SearchCommand` : modale cmdk (Radix Dialog + Framer Motion, responsive mobile/desktop)
+- `SearchSuggestions` : dropdown autocomplete sous le SearchBar homepage (navigation clavier)
+- `useSearch` : context provider global (etat modale, raccourci Cmd+K/Ctrl+K)
+- `SearchProvider` dans `__root.tsx` (modale disponible sur toutes les pages)
+- `SiteHeader` : icone recherche toujours visible, fallback context
+- Homepage desktop : focus SearchBar, dropdown suggestions
+- Homepage mobile + autres pages : modale cmdk
+- Suppression de `SearchDrawer` (remplace par SearchCommand)
+
+**Taches :**
+- [x] Installer cmdk
+- [x] Server function `getSearchSuggestions`
+- [x] Query option `searchSuggestionsOptions`
+- [x] Composant `SearchCommand` (modale cmdk)
+- [x] Hook `useSearch` + `SearchProvider`
+- [x] Wrapper root layout avec SearchProvider
+- [x] Mise a jour SiteHeader (icone recherche toujours visible)
+- [x] Composant `SearchSuggestions` (dropdown homepage)
+- [x] Mise a jour SearchBar (dropdown + inputRef)
+- [x] Mise a jour homepage index.tsx (responsive handler)
+- [x] Supprimer search-drawer.tsx
+- [x] Styles CSS cmdk
+- [x] Lint + build verification
+- [x] Documentation (CLAUDE.md + plan.md)
+
+---
+
 ### Phase 2 : App Mobile
 - [ ] Setup Expo
 - [ ] Ecrans principaux
@@ -419,7 +453,6 @@ src/constants/calendar.ts         → Config (titre, description, keywords, brea
 
 | Feature | Raison du report |
 |---------|-----------------|
-| Search typeahead/autocomplete | La recherche filtre deja les carousels en temps reel, le typeahead n'ajoute pas assez de valeur |
 | Newsletter / email capture | Necessite un service tiers + creation de contenu mensuel, reporter apres lancement app |
 | Shopping list (liste de courses) | Nice-to-have, pas dans le scope actuel |
 | Analytics | Pas de tracking, utiliser Search Console pour les donnees de base |

@@ -55,10 +55,6 @@ export const SPRING_TRANSITION_STIFF = {
   damping: 50
 } as const satisfies Transition
 
-export const INSTANT_TRANSITION = {
-  duration: 0
-} as const satisfies Transition
-
 export function getSeasonType(seasons: Seasons, month: Month) {
   return seasons[month] ?? 'off'
 }

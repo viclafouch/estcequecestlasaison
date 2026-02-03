@@ -1,22 +1,13 @@
 import * as React from 'react'
 import { ChevronRight, Menu, X } from 'lucide-react'
-import type { Transition } from 'motion/react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { INSTANT_TRANSITION, SLIDE_TRANSITION } from '@/constants/animation'
 import { BURGER_NAV_LINKS } from '@/constants/navigation'
 import { SITE_NAME_DISPLAY } from '@/constants/site'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Link, useLocation } from '@tanstack/react-router'
 import { FrenchFlag } from './french-flag'
 import { IconButton } from './ui/icon-button'
-
-const SLIDE_TRANSITION = {
-  duration: 0.3,
-  ease: [0.4, 0, 0.2, 1]
-} as const satisfies Transition
-
-const INSTANT_TRANSITION = {
-  duration: 0
-} as const satisfies Transition
 
 const STAGGER_DELAY = 0.06
 

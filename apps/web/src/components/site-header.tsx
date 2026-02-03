@@ -1,6 +1,7 @@
 import { CalendarDays, Search } from 'lucide-react'
 import { motion } from 'motion/react'
 import { SITE_NAME_DISPLAY } from '@/constants/site'
+import { useSearch } from '@/hooks/use-search'
 import { cn } from '@/lib/cn'
 import type { ProduceType } from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
@@ -24,10 +25,6 @@ const CATEGORY_TABS = [
 type CategoryTabsConfig = {
   activeCategory: ProduceType | 'all'
   onCategoryChange: (category: ProduceType | 'all') => void
-}
-
-type SearchDrawerConfig = {
-  onOpen: () => void
 }
 
 type CategoryTabListProps = {
@@ -93,10 +90,11 @@ const CategoryTabList = ({
 
 type SiteHeaderProps = {
   categoryTabs?: CategoryTabsConfig
-  searchDrawer?: SearchDrawerConfig
 }
 
-export const SiteHeader = ({ categoryTabs, searchDrawer }: SiteHeaderProps) => {
+export const SiteHeader = ({ categoryTabs }: SiteHeaderProps) => {
+  const { openSearch } = useSearch()
+
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white shadow-sm md:shadow-none">
       <div className="mx-auto max-w-7xl px-6">
@@ -132,16 +130,14 @@ export const SiteHeader = ({ categoryTabs, searchDrawer }: SiteHeaderProps) => {
             <span />
           )}
           <div className="col-start-3 flex items-center gap-2 justify-self-end">
-            {searchDrawer ? (
-              <IconButton
-                variant="ghost"
-                onClick={searchDrawer.onOpen}
-                className="md:hidden"
-                aria-label="Ouvrir la recherche"
-              >
-                <Search className="size-5" aria-hidden="true" />
-              </IconButton>
-            ) : null}
+            <IconButton
+              variant="ghost"
+              onClick={openSearch}
+              aria-label="Rechercher (Ctrl+K)"
+              className={categoryTabs ? 'md:hidden' : undefined}
+            >
+              <Search className="size-5" aria-hidden="true" />
+            </IconButton>
             <Link
               to="/calendrier"
               className={iconButtonVariants({
@@ -158,7 +154,7 @@ export const SiteHeader = ({ categoryTabs, searchDrawer }: SiteHeaderProps) => {
       </div>
       {categoryTabs ? (
         <nav
-          aria-label="Cat\u00e9gories mobile"
+          aria-label="Catégories mobile"
           className="border-t border-gray-100 md:hidden"
         >
           <div className="mx-auto max-w-7xl px-6">

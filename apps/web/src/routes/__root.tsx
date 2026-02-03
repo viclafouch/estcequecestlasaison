@@ -3,6 +3,7 @@ import { Footer } from '@/components/footer'
 import { NotFound } from '@/components/not-found'
 import { WEBSITE_JSON_LD } from '@/constants/json-ld'
 import { SITE_DOMAIN, SITE_NAME, THEME_COLOR } from '@/constants/site'
+import { SearchProvider } from '@/hooks/use-search'
 import appCss from '@/styles.css?url'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import type { QueryClient } from '@tanstack/react-query'
@@ -32,8 +33,10 @@ const RootDocument = ({ children }: { children: React.ReactNode }) => {
         >
           Aller au contenu principal
         </a>
-        {children}
-        <Footer />
+        <SearchProvider>
+          {children}
+          <Footer />
+        </SearchProvider>
         <TanStackDevtools
           config={{ position: 'bottom-right' }}
           plugins={[
