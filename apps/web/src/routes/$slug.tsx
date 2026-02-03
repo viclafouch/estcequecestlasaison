@@ -3,6 +3,7 @@ import { ChevronDown } from 'lucide-react'
 import { NotFound } from '@/components/not-found'
 import { ProduceCarousel } from '@/components/produce-carousel'
 import { ProduceImage } from '@/components/produce-image'
+import { SeasonAlternatives } from '@/components/season-alternatives'
 import { SeasonCalendar } from '@/components/season-calendar'
 import { SiteHeader } from '@/components/site-header'
 import { BADGE_VARIANT_TO_SEASON, SEASON_DOT_STYLES } from '@/constants/season'
@@ -77,7 +78,7 @@ function getSeasonDisplay({
 }
 
 const ProductPage = () => {
-  const { produce, relatedProduce, currentMonth, jsonLd } =
+  const { produce, relatedProduce, currentMonth, jsonLd, alternatives } =
     Route.useLoaderData()
   const [isDetailsExpanded, setIsDetailsExpanded] = React.useState(false)
 
@@ -150,6 +151,9 @@ const ProductPage = () => {
                 </div>
               ) : null}
             </div>
+            {alternatives.length > 0 ? (
+              <SeasonAlternatives alternatives={alternatives} />
+            ) : null}
             <dl className="grid grid-cols-2 gap-3 text-left">
               <div className="flex flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-3">
                 <dt className="text-xs font-medium text-gray-500">Calories</dt>

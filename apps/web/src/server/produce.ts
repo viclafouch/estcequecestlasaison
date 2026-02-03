@@ -5,6 +5,7 @@ import {
   filterProduceByType,
   getCurrentMonth,
   getMonthStats,
+  getSeasonAlternatives,
   groupProduceBySeason,
   matchIsInSeason,
   sortProduceBySeasonEnd
@@ -73,10 +74,19 @@ export const getSlugPageData = createServerFn({ method: 'GET' })
       month: currentMonth
     })
 
+    const alternatives = getSeasonAlternatives({
+      produce,
+      month: currentMonth,
+      allProduce: PRODUCE_LIST
+    }).map((item) => {
+      return { slug: item.slug, name: item.name }
+    })
+
     return {
       produce,
       currentMonth,
       relatedProduce,
+      alternatives,
       jsonLd: produceJsonLd({ produce, month: currentMonth })
     }
   })

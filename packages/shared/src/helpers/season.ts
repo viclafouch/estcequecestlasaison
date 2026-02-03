@@ -320,6 +320,37 @@ export function getProduceBadge({
   }
 }
 
+const MAX_ALTERNATIVES = 3
+
+export type GetSeasonAlternativesParams = {
+  produce: Produce
+  month: Month
+  allProduce: Produce[]
+}
+
+export function getSeasonAlternatives({
+  produce,
+  month,
+  allProduce
+}: GetSeasonAlternativesParams) {
+  if (matchIsInSeason(produce, month)) {
+    return []
+  }
+
+  return allProduce
+    .filter((item) => {
+      return (
+        item.id !== produce.id &&
+        item.type === produce.type &&
+        matchIsInSeason(item, month)
+      )
+    })
+    .toSorted((left, right) => {
+      return left.name.localeCompare(right.name, 'fr')
+    })
+    .slice(0, MAX_ALTERNATIVES)
+}
+
 type GetDefaultProduceBadgeParams = {
   produce: Produce
   month: Month
