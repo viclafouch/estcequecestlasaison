@@ -1,13 +1,13 @@
-import { Search } from 'lucide-react'
+import { CalendarDays, Search } from 'lucide-react'
 import { motion } from 'motion/react'
 import { SITE_NAME_DISPLAY } from '@/constants/site'
+import { cn } from '@/lib/cn'
 import type { ProduceType } from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
 import { BurgerMenu } from './burger-menu'
-import { FrenchFlag } from './french-flag'
 import type { AvailableIconName } from './icons'
 import { ProduceIcon } from './icons'
-import { IconButton } from './ui/icon-button'
+import { IconButton, iconButtonVariants } from './ui/icon-button'
 
 type CategoryTab = {
   type: ProduceType | 'all'
@@ -58,7 +58,10 @@ const CategoryTabList = ({
               return config.onCategoryChange(tab.type)
             }}
             data-active={isActive || undefined}
-            className={`focus-ring relative flex flex-col items-center gap-1 text-gray-500 transition-colors hover:text-gray-900 data-active:text-gray-900 ${buttonClassName}`}
+            className={cn(
+              'focus-ring relative flex flex-col items-center gap-1 text-gray-500 transition-colors hover:text-gray-900 data-active:text-gray-900',
+              buttonClassName
+            )}
           >
             <ProduceIcon
               name={tab.icon}
@@ -70,7 +73,10 @@ const CategoryTabList = ({
               <motion.span
                 layoutId={layoutId}
                 aria-hidden="true"
-                className={`absolute rounded-full bg-gray-900 ${underlineClassName}`}
+                className={cn(
+                  'absolute rounded-full bg-gray-900',
+                  underlineClassName
+                )}
                 transition={{
                   type: 'spring',
                   stiffness: 500,
@@ -94,33 +100,27 @@ export const SiteHeader = ({ categoryTabs, searchDrawer }: SiteHeaderProps) => {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white shadow-sm md:shadow-none">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="flex h-16 items-center justify-between gap-4 md:h-20">
-          <div className="flex shrink-0 items-center gap-2.5">
-            <Link to="/" className="focus-ring rounded-sm">
-              <picture>
-                <source
-                  srcSet="/logo.webp"
-                  type="image/webp"
-                  width={545}
-                  height={196}
-                />
-                <img
-                  src="/logo.png"
-                  alt={SITE_NAME_DISPLAY}
-                  width={545}
-                  height={196}
-                  fetchPriority="high"
-                  className="h-10 w-auto md:h-14"
-                />
-              </picture>
-            </Link>
-            <FrenchFlag className="h-3 w-auto shrink-0 ring-1 ring-gray-950/10 md:h-4" />
-          </div>
+        <div className="grid h-16 grid-cols-[1fr_auto_1fr] items-center md:h-20">
+          <Link to="/" className="focus-ring justify-self-start rounded-sm">
+            <picture>
+              <source
+                srcSet="/logo.webp"
+                type="image/webp"
+                width={545}
+                height={196}
+              />
+              <img
+                src="/logo.png"
+                alt={SITE_NAME_DISPLAY}
+                width={545}
+                height={196}
+                fetchPriority="high"
+                className="h-10 w-auto md:h-14"
+              />
+            </picture>
+          </Link>
           {categoryTabs ? (
-            <nav
-              aria-label="Cat\u00e9gories"
-              className="hidden flex-none md:block md:w-96"
-            >
+            <nav aria-label="Catégories" className="hidden md:block md:w-96">
               <CategoryTabList
                 config={categoryTabs}
                 layoutId="category-underline"
@@ -128,8 +128,10 @@ export const SiteHeader = ({ categoryTabs, searchDrawer }: SiteHeaderProps) => {
                 underlineClassName="bottom-1 left-4 right-4 h-0.5"
               />
             </nav>
-          ) : null}
-          <div className="flex items-center gap-2">
+          ) : (
+            <span />
+          )}
+          <div className="flex items-center gap-2 justify-self-end">
             {searchDrawer ? (
               <IconButton
                 variant="ghost"
@@ -140,6 +142,16 @@ export const SiteHeader = ({ categoryTabs, searchDrawer }: SiteHeaderProps) => {
                 <Search className="size-5" aria-hidden="true" />
               </IconButton>
             ) : null}
+            <Link
+              to="/calendrier"
+              className={iconButtonVariants({
+                variant: 'ghost',
+                class: 'hidden md:flex'
+              })}
+              aria-label="Voir le calendrier"
+            >
+              <CalendarDays className="size-5" aria-hidden="true" />
+            </Link>
             <BurgerMenu />
           </div>
         </div>
