@@ -4,6 +4,7 @@ import { getCurrentYear } from '@estcequecestlasaison/shared'
 import { useQuery } from '@tanstack/react-query'
 import { Link } from '@tanstack/react-router'
 import { FooterSeasonal } from './footer-seasonal'
+import { FrenchFlag } from './french-flag'
 
 const POPULAR_FRUITS = [
   { slug: 'fraise', name: 'Fraise' },
@@ -76,9 +77,12 @@ export const Footer = () => {
                 />
               </picture>
             </Link>
-            <p className="text-sm text-gray-500">
-              Découvrez les fruits et légumes de saison en France, mois par
-              mois.
+            <p className="flex items-start gap-1.5 text-sm text-gray-500">
+              <FrenchFlag className="mt-1 h-3 w-auto shrink-0 ring-1 ring-gray-950/10" />
+              <span>
+                Découvrez les fruits et légumes de saison en France, mois par
+                mois.
+              </span>
             </p>
           </div>
           {seasonalQuery.data ? (

@@ -6,6 +6,7 @@ import { BURGER_NAV_LINKS } from '@/constants/navigation'
 import { SITE_NAME_DISPLAY } from '@/constants/site'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Link, useLocation } from '@tanstack/react-router'
+import { FrenchFlag } from './french-flag'
 import { IconButton } from './ui/icon-button'
 
 const SLIDE_TRANSITION = {
@@ -59,7 +60,12 @@ export const BurgerMenu = () => {
                     Navigation du site
                   </Dialog.Description>
                   <picture>
-                    <source srcSet="/logo.webp" type="image/webp" />
+                    <source
+                      srcSet="/logo.webp"
+                      type="image/webp"
+                      width={545}
+                      height={196}
+                    />
                     <img
                       src="/logo.png"
                       alt={SITE_NAME_DISPLAY}
@@ -78,9 +84,8 @@ export const BurgerMenu = () => {
                     </IconButton>
                   </Dialog.Close>
                 </div>
-
                 <nav aria-label="Menu principal" className="flex-1 px-4 pt-2">
-                  <p className="px-3 pb-3 text-xs font-medium tracking-wide text-gray-400 uppercase">
+                  <p className="px-3 pb-3 text-xs font-medium tracking-wide text-gray-500 uppercase">
                     Navigation
                   </p>
                   <div className="flex flex-col gap-1">
@@ -119,7 +124,7 @@ export const BurgerMenu = () => {
                               <span className="text-sm font-medium text-gray-700 group-data-active:text-primary-900">
                                 {link.label}
                               </span>
-                              <span className="text-xs text-gray-400 group-data-active:text-primary-600">
+                              <span className="text-xs text-gray-500 group-data-active:text-primary-600">
                                 {link.description}
                               </span>
                             </span>
@@ -133,7 +138,6 @@ export const BurgerMenu = () => {
                     })}
                   </div>
                 </nav>
-
                 <motion.div
                   className="border-t border-gray-100 px-6 py-5"
                   initial={isReducedMotion ? false : { opacity: 0 }}
@@ -145,8 +149,9 @@ export const BurgerMenu = () => {
                       : STAGGER_DELAY * (BURGER_NAV_LINKS.length + 2)
                   }}
                 >
-                  <p className="text-xs text-gray-400">
-                    Mangez de saison, mangez local
+                  <p className="flex items-center gap-2 text-xs text-gray-500">
+                    <FrenchFlag className="h-2.5 w-auto shrink-0 ring-1 ring-gray-950/10" />
+                    <span>Mangez de saison, mangez local</span>
                   </p>
                 </motion.div>
               </motion.div>

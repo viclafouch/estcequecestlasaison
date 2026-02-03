@@ -4,6 +4,7 @@ import { SITE_NAME_DISPLAY } from '@/constants/site'
 import type { ProduceType } from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
 import { BurgerMenu } from './burger-menu'
+import { FrenchFlag } from './french-flag'
 import type { AvailableIconName } from './icons'
 import { ProduceIcon } from './icons'
 import { IconButton } from './ui/icon-button'
@@ -94,22 +95,30 @@ export const SiteHeader = ({ categoryTabs, searchDrawer }: SiteHeaderProps) => {
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white shadow-sm md:shadow-none">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex h-16 items-center justify-between gap-4 md:h-20">
-          <Link to="/" className="focus-ring shrink-0 rounded-sm">
-            <picture>
-              <source srcSet="/logo.webp" type="image/webp" />
-              <img
-                src="/logo.png"
-                alt={SITE_NAME_DISPLAY}
-                width={545}
-                height={196}
-                fetchPriority="high"
-                className="h-10 w-auto md:h-14"
-              />
-            </picture>
-          </Link>
+          <div className="flex shrink-0 items-center gap-2.5">
+            <Link to="/" className="focus-ring rounded-sm">
+              <picture>
+                <source
+                  srcSet="/logo.webp"
+                  type="image/webp"
+                  width={545}
+                  height={196}
+                />
+                <img
+                  src="/logo.png"
+                  alt={SITE_NAME_DISPLAY}
+                  width={545}
+                  height={196}
+                  fetchPriority="high"
+                  className="h-10 w-auto md:h-14"
+                />
+              </picture>
+            </Link>
+            <FrenchFlag className="h-3 w-auto shrink-0 ring-1 ring-gray-950/10 md:h-4" />
+          </div>
           {categoryTabs ? (
             <nav
-              aria-label="Categories"
+              aria-label="Cat\u00e9gories"
               className="hidden flex-none md:block md:w-96"
             >
               <CategoryTabList
@@ -137,7 +146,7 @@ export const SiteHeader = ({ categoryTabs, searchDrawer }: SiteHeaderProps) => {
       </div>
       {categoryTabs ? (
         <nav
-          aria-label="Categories"
+          aria-label="Cat\u00e9gories mobile"
           className="border-t border-gray-100 md:hidden"
         >
           <div className="mx-auto max-w-7xl px-6">
