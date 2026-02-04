@@ -1,8 +1,9 @@
-import { readFile, writeFile, mkdir, access } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { generateImage } from '@tanstack/ai'
 import { geminiImage } from '@tanstack/ai-gemini'
 import type { Produce } from '../packages/shared/src/types'
+import { loadProduceData, matchIsExistingFile } from './utils'
 
 const OUTPUT_DIR = './generated-images'
 const DELAY_MS = 2000
@@ -13,7 +14,7 @@ const CUSTOM_PROMPTS: Partial<Record<Produce['slug'], string>> = {
   groseille:
     'A single professional food photograph of a fresh cluster of red currants (groseille, French fruit) still attached to their stem. Placed on a rustic wooden cutting board in a blurred kitchen background. One image only, no collage, no split views, no text, no labels, no watermark. Natural lighting, 8k resolution, minimalist composition.',
   poivron:
-    'A single professional food photograph of one fresh green bell pepper (poivron vert, French vegetable). Placed on a rustic wooden cutting board in a blurred kitchen background. One image only, no collage, no split views, no text, no labels, no watermark. Natural lighting, 8k resolution, minimalist composition.',
+    'A single professional food photograph of one fresh green bell pepper (poivron vert, French vegetable). Placed on a rustic wooden cutting board in a blurred kitchen background. One image only, no collage, no split views, no text, no labels, no watermark. Natural lighting, 8k resolution, minimalist composition.'
 }
 
 if (!process.env.GOOGLE_API_KEY && !process.env.GEMINI_API_KEY) {
@@ -25,24 +26,12 @@ if (!process.env.GOOGLE_API_KEY && !process.env.GEMINI_API_KEY) {
 
 const adapter = geminiImage('imagen-4.0-generate-001')
 
-function sleep(ms: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms)
-  })
-}
-
-async function matchFileExists(path: string) {
-  try {
-    await access(path)
-    return true
-  } catch {
-    return false
-  }
-}
-
 function buildPrompt(item: Produce) {
   const customPrompt = CUSTOM_PROMPTS[item.slug]
-  if (customPrompt) return customPrompt
+
+  if (customPrompt) {
+    return customPrompt
+  }
 
   const typeLabel = item.type === 'fruit' ? 'fruit' : 'vegetable'
 
@@ -52,8 +41,9 @@ function buildPrompt(item: Produce) {
 async function generateProduceImage(item: Produce) {
   const outputPath = join(OUTPUT_DIR, `${item.slug}.png`)
 
-  if (await matchFileExists(outputPath)) {
+  if (await matchIsExistingFile(outputPath)) {
     console.log(`SKIP ${item.name}`)
+
     return false
   }
 
@@ -65,6 +55,7 @@ async function generateProduceImage(item: Produce) {
   if (image?.b64Json) {
     await writeFile(outputPath, Buffer.from(image.b64Json, 'base64'))
     console.log(`OK ${item.name} -> ${outputPath}`)
+
     return true
   }
 
@@ -72,15 +63,16 @@ async function generateProduceImage(item: Produce) {
     const response = await fetch(image.url)
     await writeFile(outputPath, Buffer.from(await response.arrayBuffer()))
     console.log(`OK ${item.name} -> ${outputPath}`)
+
     return true
   }
 
   console.error(`FAIL ${item.name} - no image data returned`)
+
   return true
 }
 
-const raw = await readFile('./packages/shared/src/data/produce.json', 'utf-8')
-const produceData = JSON.parse(raw) as Produce[]
+const produceData = await loadProduceData()
 
 await mkdir(OUTPUT_DIR, { recursive: true })
 
@@ -90,14 +82,20 @@ let failCount = 0
 for (const item of produceData) {
   try {
     const hasGenerated = await generateProduceImage(item)
-    successCount++
+    successCount += 1
 
-    if (hasGenerated) await sleep(DELAY_MS)
+    if (hasGenerated) {
+      await new Promise((resolve) => {
+        setTimeout(resolve, DELAY_MS)
+      })
+    }
   } catch (error) {
-    failCount++
+    failCount += 1
     const message = error instanceof Error ? error.message : String(error)
     console.error(`FAIL ${item.name} - ${message}`)
   }
 }
 
-console.log(`\nDone: ${successCount} OK, ${failCount} failed, ${produceData.length} total`)
+console.log(
+  `\nDone: ${successCount} OK, ${failCount} failed, ${produceData.length} total`
+)

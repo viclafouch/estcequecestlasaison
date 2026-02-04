@@ -24,8 +24,8 @@
     "dev": "pnpm --filter @estcequecestlasaison/web dev",
     "build": "pnpm --filter @estcequecestlasaison/web build",
     "start": "pnpm --filter @estcequecestlasaison/web start",
-    "lint": "pnpm -r lint",
-    "lint:fix": "pnpm -r lint:fix",
+    "lint": "tsc -p tsconfig.json && eslint && pnpm -r lint",
+    "lint:fix": "tsc -p tsconfig.json && eslint --fix && pnpm -r lint:fix",
     "test": "vitest run",
     "prepare": "husky",
     "generate-images": "npx tsx --env-file=.env.local scripts/generate-images.ts",
@@ -33,11 +33,13 @@
     "generate-og": "npx tsx scripts/generate-og-images.ts"
   },
   "devDependencies": {
+    "@viclafouch/eslint-config-viclafouch": "4.22.1-beta.9",
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
     "prettier": "^3.8.1",
     "satori": "^0.19.1",
     "sharp": "^0.34.5",
+    "typescript": "^5.9.3",
     "vitest": "^4.0.18"
   },
   "packageManager": "pnpm@10.28.2",

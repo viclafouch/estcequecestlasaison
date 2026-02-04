@@ -1,16 +1,14 @@
-import { access, mkdir, readFile, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
-
-import satori from 'satori'
 import type { Font } from 'satori'
+import satori from 'satori'
 import sharp from 'sharp'
-
 import type { Month, Produce } from '../packages/shared/src/types'
+import { loadProduceData, matchIsExistingFile } from './utils'
 
 const OUTPUT_DIR = './apps/web/public/images/og'
 const PRODUCE_IMAGES_DIR = './apps/web/public/images/produce'
 const LOGO_PATH = './apps/web/public/logo.png'
-const PRODUCE_JSON_PATH = './packages/shared/src/data/produce.json'
 const OG_WIDTH = 1200
 const OG_HEIGHT = 630
 
@@ -72,27 +70,16 @@ async function loadProduceImageAsBase64(slug: string) {
   return `data:image/png;base64,${pngBuffer.toString('base64')}`
 }
 
-async function fetchFont(url: string) {
-  const response = await fetch(url)
-
-  return response.arrayBuffer()
-}
-
-async function matchIsExistingFile(path: string) {
-  try {
-    await access(path)
-    return true
-  } catch {
-    return false
-  }
-}
-
-const ALL_MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const satisfies readonly Month[]
+const ALL_MONTHS = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+] as const satisfies readonly Month[]
 
 function getSeasonMonths(produce: Produce) {
-  return new Set(ALL_MONTHS.filter((month) => {
-    return produce.seasons[month]
-  }))
+  return new Set(
+    ALL_MONTHS.filter((month) => {
+      return produce.seasons[month]
+    })
+  )
 }
 
 function buildMonthBar(seasonMonths: Set<number>) {
@@ -120,28 +107,25 @@ function buildMonthBar(seasonMonths: Set<number>) {
 }
 
 function buildImageColumn(imageBase64: string) {
-  return {
-    type: 'div',
-    props: {
-      style: {
-        display: 'flex',
+  return div(
+    {
+      display: 'flex',
+      width: 280,
+      height: 280,
+      borderRadius: 24,
+      overflow: 'hidden',
+      marginLeft: 40,
+      flexShrink: 0
+    },
+    {
+      type: 'img',
+      props: {
+        src: imageBase64,
         width: 280,
-        height: 280,
-        borderRadius: 24,
-        overflow: 'hidden',
-        marginLeft: 40,
-        flexShrink: 0
-      },
-      children: {
-        type: 'img',
-        props: {
-          src: imageBase64,
-          width: 280,
-          height: 280
-        }
+        height: 280
       }
-    }
-  }
+    } as SatoriNode
+  )
 }
 
 function buildTextColumn(produce: Produce) {
@@ -154,22 +138,25 @@ function buildTextColumn(produce: Produce) {
       flex: 1
     },
     [
-      div({ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }, [
-        div(
-          {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: EMERALD_500,
-            color: 'white',
-            borderRadius: 9999,
-            padding: '6px 20px',
-            fontSize: 20,
-            fontWeight: 600
-          },
-          typeLabel
-        )
-      ]),
+      div(
+        { display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 },
+        [
+          div(
+            {
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: EMERALD_500,
+              color: 'white',
+              borderRadius: 9999,
+              padding: '6px 20px',
+              fontSize: 20,
+              fontWeight: 600
+            },
+            typeLabel
+          )
+        ]
+      ),
       div(
         {
           display: 'flex',
@@ -248,10 +235,7 @@ async function buildProduceImage(produce: Produce) {
               'estcequecestlasaison.fr'
             )
           ]),
-          div(
-            { fontSize: 18, color: GRAY_500 },
-            'Calendrier de saisonnalité'
-          )
+          div({ fontSize: 18, color: GRAY_500 }, 'Calendrier de saisonnalité')
         ]
       )
     ]
@@ -330,9 +314,15 @@ async function generatePng(element: SatoriNode, fonts: Font[]) {
 
 async function loadFonts() {
   const [interRegular, interSemiBold, interBold] = await Promise.all([
-    fetchFont(INTER_REGULAR_URL),
-    fetchFont(INTER_SEMIBOLD_URL),
-    fetchFont(INTER_BOLD_URL)
+    fetch(INTER_REGULAR_URL).then((response) => {
+      return response.arrayBuffer()
+    }),
+    fetch(INTER_SEMIBOLD_URL).then((response) => {
+      return response.arrayBuffer()
+    }),
+    fetch(INTER_BOLD_URL).then((response) => {
+      return response.arrayBuffer()
+    })
   ])
 
   return [
@@ -349,9 +339,15 @@ type GenerateImageParams = {
   label: string
 }
 
-async function generateImageIfMissing({ outputPath, element, fonts, label }: GenerateImageParams) {
+async function generateImageIfMissing({
+  outputPath,
+  element,
+  fonts,
+  label
+}: GenerateImageParams) {
   if (await matchIsExistingFile(outputPath)) {
     console.log(`SKIP ${label}`)
+
     return 'skipped' as const
   }
 
@@ -359,10 +355,12 @@ async function generateImageIfMissing({ outputPath, element, fonts, label }: Gen
     const png = await generatePng(element, fonts)
     await writeFile(outputPath, png)
     console.log(`OK ${label}`)
+
     return 'generated' as const
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
     console.error(`FAIL ${label} - ${message}`)
+
     return 'failed' as const
   }
 }
@@ -374,8 +372,7 @@ async function run() {
 
   await mkdir(OUTPUT_DIR, { recursive: true })
 
-  const produceJson = await readFile(PRODUCE_JSON_PATH, 'utf-8')
-  const produceList = JSON.parse(produceJson) as Produce[]
+  const produceList = await loadProduceData()
 
   const defaultResult = await generateImageIfMissing({
     outputPath: join(OUTPUT_DIR, 'default.png'),
@@ -385,6 +382,7 @@ async function run() {
   })
 
   const produceResults = []
+
   for (const produce of produceList) {
     const result = await generateImageIfMissing({
       outputPath: join(OUTPUT_DIR, `${produce.slug}.png`),
@@ -396,10 +394,16 @@ async function run() {
   }
 
   const results = [defaultResult, ...produceResults]
-  const generatedCount = results.filter((result) => { return result === 'generated' }).length
-  const skippedCount = results.filter((result) => { return result === 'skipped' }).length
+  const generatedCount = results.filter((result) => {
+    return result === 'generated'
+  }).length
+  const skippedCount = results.filter((result) => {
+    return result === 'skipped'
+  }).length
 
-  console.log(`\nDone: ${generatedCount} generated, ${skippedCount} skipped, ${results.length} total`)
+  console.log(
+    `\nDone: ${generatedCount} generated, ${skippedCount} skipped, ${results.length} total`
+  )
 }
 
 run().catch(console.error)
