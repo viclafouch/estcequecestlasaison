@@ -24,6 +24,7 @@ estcequecestlasaison/
 │   └── mobile/               → React Native / Expo (Phase 2)
 ├── packages/
 │   └── shared/               → Données + Types + Helpers
+├── scripts/                  → Génération/optimisation images
 ├── package.json
 └── pnpm-workspace.yaml
 ```
@@ -104,6 +105,9 @@ TOUJOURS lire et respecter ces règles.
 | `pnpm lint` | TS + ESLint |
 | `pnpm lint:fix` | Lint + fix |
 | `pnpm test` | Tests Vitest |
+| `pnpm generate-images` | Génère images produits (Google AI) |
+| `pnpm optimize-images` | Optimise images (sharp, WebP) |
+| `pnpm generate-og` | Génère images Open Graph (satori) |
 
 ---
 

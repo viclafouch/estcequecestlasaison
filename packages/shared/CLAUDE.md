@@ -24,7 +24,9 @@ Package partagé entre le web et le mobile.
 | `BadgeVariant` | 'positive', 'warning', 'neutral' (style du badge) |
 | `ProduceBadge` | Objet { label, variant } pour l'affichage contextuel |
 | `Month` | 1 à 12 |
-| `Produce` | Objet produit complet (id, slug, name, type, icon, seasons, nutrition) |
+| `Produce` | Objet produit complet (id, slug, name, type, icon, seasons, nutrition, conservation, buyingTip, origin) |
+| `GroupedProduce` | Objet { inSeason, comingNextMonth, offSeason } |
+| `MonthStats` | Objet { fruits, vegetables, total, arriving, leaving } |
 
 ---
 
@@ -62,7 +64,18 @@ Logique business de saisonnalité, importe les utilitaires date depuis `date.ts`
 | `getSeasonRangeLabel(produce)` | Label des plages de saison ("Juin à Août", "Mars") |
 | `getProduceBadge(params)` | Badge contextuel { label, variant } selon la section |
 | `getDefaultProduceBadge(params)` | Badge par défaut (fallback sans section) |
+| `getSeasonAlternatives(params)` | Alternatives en saison de la même catégorie (max 4, tri alpha) |
 | `SEASON_STATUS_LABELS` | Labels humains par statut de saison (peak, partial, off) |
+
+---
+
+## Helpers (share.ts)
+
+Génération de texte de partage pour les réseaux sociaux.
+
+| Fonction | Description |
+|----------|-------------|
+| `getShareText(params)` | Texte conversationnel selon le statut saison (produceName, isInSeason, siteDomain) |
 
 ---
 

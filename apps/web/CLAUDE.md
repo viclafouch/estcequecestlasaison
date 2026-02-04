@@ -25,11 +25,14 @@ Application web TanStack Start pour afficher la saisonnalité des fruits et lég
 | Dossier | Contenu |
 |---------|---------|
 | `src/components/` | Composants UI |
+| `src/components/ui/` | Primitives réutilisables (IconButton, Pill, CardSection, CountingNumber) |
+| `src/components/icons/` | Icônes SVG inline emojione (header, search-bar) |
 | `src/hooks/` | Custom hooks (use-*.ts) |
-| `src/helpers/` | Fonctions utilitaires |
+| `src/helpers/` | Fonctions utilitaires (platform, produce-image) |
 | `src/routes/` | Pages (file-based routing) |
-| `src/constants/env.ts` | Variables d'environnement (validées via @t3-oss/env-core) |
-| `src/lib/seo.ts` | Utilitaire SEO (meta tags, OG, canonical) |
+| `src/server/` | Server functions (produce-data, produce) |
+| `src/constants/` | Constantes par domaine (env, site, season, calendar, faq, queries, navigation, animation, time, json-ld) |
+| `src/lib/` | Utilitaires génériques (cn, seo) |
 | `src/styles.css` | Styles globaux + Tailwind |
 
 ---
@@ -72,6 +75,7 @@ Les produits sont affichés via `ProduceAvatar` (`src/components/produce-avatar.
 | `useMonthBarScroll` | Scroll snap horizontal du sélecteur de mois (mobile, scroll infini) |
 | `useSearch` | Context + provider pour la recherche globale (état modale, raccourci Cmd+K, SearchCommand) |
 | `useListKeyboardNav` | Navigation clavier dans une liste (ArrowUp/Down, Enter, Escape, highlight). Générique |
+| `useCanShare` | Détection Web Share API disponible (retourne boolean) |
 
 ---
 
@@ -84,7 +88,7 @@ Les produits sont affichés via `ProduceAvatar` (`src/components/produce-avatar.
 | `tailwind-variants` | Variants de composants avec TV (IconButton, Pill, CardSection) |
 | `@radix-ui/react-dialog` | Modal accessible pour détails produit |
 | `vaul` | Drawer mobile-friendly |
-| `lucide-react` | Icônes UI (flèches, fermer, menu) |
+| `lucide-react` | Icônes UI (flèches, fermer, menu, recherche, partage, calendrier) |
 | `@tanstack/react-pacer` | Debounce (useDebouncedValue) |
 | `motion` | Animations subtiles (fade, stagger) |
 | `@tanstack/react-table` | Tableau calendrier saisonnalité (colonnes, filtrage global, rendering via flexRender) |
@@ -102,15 +106,14 @@ Les produits sont affichés via `ProduceAvatar` (`src/components/produce-avatar.
 | Style | Clean, inspiré Airbnb |
 | Palette | Blanc, gris, accent vert émeraude |
 | Theme | Light uniquement |
-| Logo | Texte stylé (pas d'icône) |
+| Logo | Image PNG/WebP (pas une icône) |
 | Responsive | Mobile-first |
 
 ---
 
 ## Monétisation
 
-- Google AdSense avec native ads dans la grille
-- Bannière promo app mobile (fermeture mémorisée localStorage)
+- Google AdSense avec native ads (à intégrer, Milestone 6)
 
 ---
 
