@@ -1,5 +1,5 @@
 ---
-paths: "**/*.{ts,tsx}"
+paths: "apps/web/**/*.{ts,tsx}"
 ---
 
 ## Frontend design
@@ -46,6 +46,11 @@ paths: "**/*.{ts,tsx}"
 - Screen reader compatibility
 - Focus management
 - ARIA attributes usage
+- Labels with `htmlFor`/`id` matching
+- `aria-invalid`, `aria-describedby` on inputs
+- `role="alert"` on error messages
+- `aria-busy` on loading buttons
+- `aria-hidden` on decorative icons
 - **Color contrast**: minimum 4.5:1 for normal text, 3:1 for large text. Never use `text-gray-500` or lighter on `bg-gray-50`/`bg-white` for readable content. Use `text-gray-600` minimum for secondary text, `text-gray-700` or darker recommended
 - **Touch targets**: minimum 44x44px on interactive elements (buttons, links). Add `py-1` or `py-2` on text-only links to ensure sufficient height
 - **External links**: always use `target="_blank"` with `rel="noopener noreferrer"`. When text mentions URLs or external resources (sources, LinkedIn, GitHub), render them as clickable `<a>` links, not plain text

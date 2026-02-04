@@ -77,13 +77,6 @@ Avoid over-simplification that could:
 - Early returns over nested conditions
 - Group related code together
 
-### Accessibility (Forms & Interactive Elements)
-- Labels with `htmlFor`/`id` matching
-- `aria-invalid`, `aria-describedby` on inputs
-- `role="alert"` on error messages
-- `aria-busy` on loading buttons
-- `aria-hidden` on decorative icons
-
 ### No Mutations
 
 Never mutate objects or arrays. Always return new instances.
@@ -110,15 +103,12 @@ Before creating a constant or helper, search if it already exists.
 
 ### Helpers vs Utils
 
-All utilities live in `src/` (shared by frontend and backend):
+All utilities live in `src/`:
 
 - `src/lib/` - Generic utilities (cn, etc.)
 - `src/helpers/` - Generic pure functions (date formatting, string manipulation)
-- `src/utils/` - Business utilities (booking logic, user logic, etc.)
+- `src/utils/` - Business utilities
 - `src/constants/` - All constants, grouped by domain
-
-`src/db/` contains Drizzle schema and database client.
-`src/server/` contains server functions (TanStack Start).
 
 **Rules:**
 - Pure functions, no side effects

@@ -1,17 +1,34 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Instructions pour Claude Code dans ce monorepo.
 
 ---
 
-## Projet
+## Produit
 
-**estcequecestlasaison.fr** - Site web + App mobile de saisonnalité des fruits/légumes en France.
+**estcequecestlasaison.fr** — Savoir instantanément si un fruit ou un légume est de saison en France métropolitaine.
 
-- **Web (Phase 1)** : SEO "est-ce que c'est la saison de X", monétisé AdSense
-- **Mobile (Phase 2)** : React Native/Expo, 100% offline, notifications saison, gratuit
+### Pourquoi
 
-**Pas de :** base de données serveur, authentification, backend API.
+Les consommateurs français n'ont aucune source simple et fiable pour vérifier la saisonnalité d'un produit. Les informations sont éparpillées, souvent contradictoires, et rarement adaptées à la France métropolitaine. Ce projet répond à une question directe : "est-ce que c'est la saison de [produit] ?".
+
+### Cible
+
+Consommateurs français soucieux de manger local et de saison : familles, cuisiniers amateurs, personnes faisant leurs courses au marché ou en supermarché.
+
+### Plateformes
+
+| Plateforme | Objectif | Monétisation |
+|------------|----------|--------------|
+| **Web** | Capter le trafic SEO sur "est-ce que c'est la saison de X", devenir la référence saisonnalité en France | Google AdSense (native ads) |
+| **Mobile** | Compagnon offline au quotidien, notifications quand un produit entre en saison | Gratuit, sans publicité |
+
+### Contraintes
+
+- **Pas de** : base de données serveur, authentification, backend API
+- **Données** : 80 produits (fruits et légumes), JSON statique, validées par sources officielles
+- **Langue** : Français uniquement, France métropolitaine
+- **Domaine** : estcequecestlasaison.fr
 
 ---
 
@@ -21,7 +38,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 estcequecestlasaison/
 ├── apps/
 │   ├── web/                  → TanStack Start (SSR)
-│   └── mobile/               → React Native / Expo (Phase 2)
+│   └── mobile/               → React Native / Expo
 ├── packages/
 │   └── shared/               → Données + Types + Helpers
 ├── scripts/                  → Génération/optimisation images
@@ -29,7 +46,18 @@ estcequecestlasaison/
 └── pnpm-workspace.yaml
 ```
 
-Voir les `CLAUDE.md` dans chaque workspace pour les détails spécifiques.
+Chaque workspace a son propre `CLAUDE.md` avec les détails spécifiques (tech stack, structure, conventions).
+
+---
+
+## Plans
+
+| Plateforme | Fichier | Statut |
+|------------|---------|--------|
+| Web | `.claude/plan-web.md` | En cours |
+| Mobile | `.claude/plan-mobile.md` | À venir |
+
+**Avant chaque tâche** : vérifier le plan correspondant à la plateforme concernée.
 
 ---
 
@@ -37,15 +65,15 @@ Voir les `CLAUDE.md` dans chaque workspace pour les détails spécifiques.
 
 TOUJOURS lire et respecter ces règles.
 
-| Fichier | Domaine |
-|---------|---------|
-| `typescript.md` | Règles TypeScript |
-| `code-style.md` | Style de code |
-| `frontend.md` | React, TanStack, UI/UX |
-| `comments.md` | Commentaires |
-| `testing.md` | Tests |
-| `git.md` | Git workflow |
-| `documentation.md` | CLAUDE.md + dépendances |
+| Fichier | Domaine | Scope |
+|---------|---------|-------|
+| `typescript.md` | Règles TypeScript | Universel |
+| `code-style.md` | Style de code | Universel |
+| `comments.md` | Commentaires | Universel |
+| `testing.md` | Tests | Universel |
+| `git.md` | Git workflow | Universel |
+| `documentation.md` | CLAUDE.md + dépendances | Universel |
+| `frontend.md` | React, TanStack, Tailwind, UI/UX | Web uniquement |
 
 ---
 
@@ -59,41 +87,54 @@ TOUJOURS lire et respecter ces règles.
 
 ---
 
-## Skills
-
-| Skill | Usage |
-|-------|-------|
-| `/frontend-design` | Interfaces haute qualité |
-| `/react-useeffect` | Audit useEffect |
-| `/vercel-react-best-practices` | Performance React/Next.js |
-
----
-
 ## MCP Servers
 
 | MCP | Usage |
 |-----|-------|
-| **Context7** | Docs libs (TanStack, Fuse.js, Expo) |
+| **Context7** | Docs libs (TanStack, Fuse.js, Expo, React Native) |
 | **shadcn** | Composants + icons |
+
+---
+
+## Skills
+
+| Skill | Usage | Scope |
+|-------|-------|-------|
+| `/frontend-design` | Interfaces haute qualité | Web |
+| `/react-useeffect` | Audit useEffect | Universel |
+| `/vercel-react-best-practices` | Performance React | Web |
 
 ---
 
 ## Workflow
 
-**Avant chaque tâche :**
-1. Vérifier `.claude/plan.md`
-2. Lire `.claude/rules/*.md`
-3. Consulter Context7
+### Avant chaque tâche
 
-**Après chaque tâche :**
+1. Identifier la plateforme (web ou mobile)
+2. Vérifier le plan correspondant
+3. Lire `.claude/rules/*.md`
+4. Consulter Context7 si une lib est concernée
+
+### Après chaque tâche
+
 1. `code-refactoring` (obligatoire)
 2. Relire les règles
-3. `pnpm run lint:fix`
-4. Cocher `[x]` dans le plan
+3. `pnpm lint:fix`
+4. Cocher `[x]` dans le plan correspondant
 
 ---
 
-## Commands
+## Commandes
+
+### Universelles
+
+| Commande | Description |
+|----------|-------------|
+| `pnpm lint` | TypeScript + ESLint (tout le monorepo) |
+| `pnpm lint:fix` | Lint + auto-fix |
+| `pnpm test` | Tests Vitest |
+
+### Web
 
 > **IMPORTANT** : Ne JAMAIS lancer `pnpm dev` — déjà lancé par l'utilisateur.
 
@@ -102,15 +143,15 @@ TOUJOURS lire et respecter ces règles.
 | `pnpm dev` | Dev server :3000 |
 | `pnpm build` | Build prod |
 | `pnpm start` | Start prod |
-| `pnpm lint` | TS + ESLint |
-| `pnpm lint:fix` | Lint + fix |
-| `pnpm test` | Tests Vitest |
+
+### Scripts (génération assets)
+
+| Commande | Description |
+|----------|-------------|
 | `pnpm generate-images` | Génère images produits (Google AI) |
 | `pnpm optimize-images` | Optimise images (sharp, WebP) |
 | `pnpm generate-og` | Génère images Open Graph (satori) |
 
----
+### Mobile
 
-## Plan Status
-
-Voir `.claude/plan.md` pour les milestones.
+À définir lors du setup Expo.

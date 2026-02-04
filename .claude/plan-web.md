@@ -1,11 +1,10 @@
-# Plan - estcequecestlasaison.fr
+# Plan Web - estcequecestlasaison.fr
 
 ## Vision
 
-Site web + Application mobile permettant de connaitre la saisonnalite des fruits et legumes en France metropolitaine.
+Site web permettant de connaitre la saisonnalite des fruits et legumes en France metropolitaine.
 
-- **Web** : SEO optimise pour "est-ce que c'est la saison de X", monetise via AdSense
-- **Mobile** : 100% offline, gratuit sans pub, notifications saison
+- SEO optimise pour "est-ce que c'est la saison de X", monetise via AdSense
 
 **Domaine :** estcequecestlasaison.fr
 
@@ -17,7 +16,6 @@ Site web + Application mobile permettant de connaitre la saisonnalite des fruits
 |--------|-------|
 | Monorepo | pnpm workspaces (pnpm 10.28.2) |
 | Hosting Web | Railway (auto-deploy depuis main) |
-| Mobile | React Native + Expo (iOS + Android) |
 | Icones UI | lucide-react (fleches, menu, recherche, partage) |
 | Icones produits | SVG inline emojione (shadcn.io) pour header, images WebP pour produits |
 | Recherche | Fuse.js (fuzzy search server-side) |
@@ -33,7 +31,6 @@ Site web + Application mobile permettant de connaitre la saisonnalite des fruits
 estcequecestlasaison/
 ├── apps/
 │   ├── web/                  → Site TanStack Start (SSR)
-│   └── mobile/               → App React Native / Expo (Phase 2)
 ├── packages/
 │   └── shared/               → Donnees + Types + Helpers
 ├── scripts/                  → Generation/optimisation images
@@ -45,7 +42,7 @@ estcequecestlasaison/
 
 ## Donnees Partagees (`packages/shared`)
 
-Coeur du projet, reutilise par le web et le mobile.
+Coeur du projet, donnees et helpers partages.
 
 ### Types
 
@@ -193,11 +190,10 @@ Coeur du projet, reutilise par le web et le mobile.
 | Plateforme | Modele |
 |------------|--------|
 | Web | Google AdSense (native ads) - a integrer |
-| Mobile | 100% gratuit, sans publicite |
 
 ---
 
-## Phase 1 : Site Web
+## Site Web
 
 ### Routes
 
@@ -435,42 +431,11 @@ Validation via `@t3-oss/env-core` + Zod dans `src/constants/env.ts`.
 
 ---
 
-## Phase 2 : Application Mobile
-
-### Stack
-
-| Couche | Technologie |
-|--------|-------------|
-| Framework | React Native + Expo |
-| Navigation | Expo Router |
-| Offline | Donnees embarquees + AsyncStorage |
-| Notifications | Expo Notifications |
-
-### Plateformes
-
-- iOS (App Store)
-- Android (Google Play)
-
-### Fonctionnalites
-
-- Consultation offline (donnees embarquees depuis `packages/shared`)
-- Recherche locale (Fuse.js, memes helpers que le web)
-- **Notifications saison** : alertes quand un produit entre en saison
-
-### Monetisation
-
-- 100% gratuit
-- Aucune publicite
-
----
-
 ## Infrastructure
 
 | Service | Usage |
 |---------|-------|
 | Railway | Hebergement web (auto-deploy main) |
-| App Store | Distribution iOS |
-| Google Play | Distribution Android |
 | Google AdSense | Monetisation web (a integrer) |
 
 ### CI/CD
@@ -524,21 +489,12 @@ Premier carousel "En pleine saison de..." rendu en H1 hero (text-2xl/3xl bold). 
 
 Modale cmdk (Cmd+K), SearchCommand, SearchSuggestions (dropdown homepage), useSearch context provider, SearchProvider dans __root.tsx. Suppression de l'ancien SearchDrawer.
 
-### Phase 2 : App Mobile
-
-- [ ] Setup Expo
-- [ ] Ecrans principaux
-- [ ] Offline avec donnees embarquees
-- [ ] Systeme de notifications saison
-- [ ] Publication App Store
-- [ ] Publication Google Play
-
 ---
 
 ## Ordre de priorite
 
 1. **Milestone 6** : AdSense + pages legales (monetisation)
-2. **Milestone 5** : Banniere App (quand l'app mobile approche)
+2. **Milestone 5** : Banniere App (quand l'app mobile sera prete)
 
 ---
 
@@ -551,7 +507,7 @@ Modale cmdk (Cmd+K), SearchCommand, SearchSuggestions (dropdown homepage), useSe
 | Analytics | Pas de tracking, utiliser Search Console pour les donnees de base |
 | Dark mode | Pas prioritaire, le theme light est coherent |
 | Filtres avances (vitamines, calories) | Le dataset ne le justifie pas encore |
-| PWA / service worker | Pont vers l'app mobile, a faire quand Phase 2 approche |
+| PWA / service worker | Pas prioritaire pour le moment |
 
 ---
 
