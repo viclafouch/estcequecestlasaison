@@ -80,7 +80,7 @@ export const ProduceCard = ({
           </motion.div>
           <motion.span
             data-variant={badge.variant}
-            className="absolute left-3 top-3 rounded-full bg-white/80 px-2.5 py-1 text-xs font-medium backdrop-blur-sm data-[variant=positive]:text-badge-positive data-[variant=warning]:text-badge-warning data-[variant=neutral]:text-badge-neutral"
+            className="card-badge absolute left-2 top-2 truncate rounded-full bg-white/80 px-2.5 py-1 text-xs font-medium backdrop-blur-sm data-[variant=positive]:text-badge-positive data-[variant=warning]:text-badge-warning data-[variant=neutral]:text-badge-neutral"
             variants={BADGE_SHADOW_VARIANTS}
             transition={HOVER_TRANSITION}
           >

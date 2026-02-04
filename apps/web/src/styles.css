@@ -68,6 +68,10 @@ input[type='search']::-webkit-search-cancel-button {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2;
 }
 
+.card-badge {
+  max-width: calc(100% - 1rem);
+}
+
 .focus-ring-inset {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900;
 }
