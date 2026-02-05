@@ -17,7 +17,8 @@ export default [
       '**/.expo/**',
       '**/ios/**',
       '**/android/**',
-      '**/dist/**'
+      '**/dist/**',
+      'metro.config.js'
     ]
   },
   ...typescriptConfig,

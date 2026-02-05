@@ -573,9 +573,9 @@ L'app de consultation complete, miroir du site web.
 - [x] Configurer pnpm workspace pour inclure `apps/mobile`
 - [x] Configurer ESLint (reactConfig + hooksConfig + reactNativeConfig)
 - [x] Configurer Expo Router v5 (file-based routing, structure 3 onglets)
-- [ ] Installer les dependances (HeroUI, Uniwind, FlashList)
-- [ ] Configurer Uniwind (Tailwind v4 RN)
-- [ ] Setup dev build local iOS (simulateur Xcode)
+- [x] Installer les dependances (HeroUI, Uniwind, FlashList)
+- [x] Configurer Uniwind (Tailwind v4 RN)
+- [x] Setup dev build local iOS (simulateur Xcode)
 - [ ] Setup dev build local Android (Android Studio + Pixel 9)
 - [ ] Configurer Sentry
 - [ ] Splash screen (logo centre, fond blanc)

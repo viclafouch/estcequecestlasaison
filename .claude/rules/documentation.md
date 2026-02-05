@@ -1,33 +1,36 @@
-## Documentation & Dependencies
+## Documentation & Sync
 
-### CLAUDE.md Updates
+### Principle
 
-After modifying a workspace, **always check** if `CLAUDE.md` needs updates:
+- **CLAUDE.md** = Operational instructions (stack without versions, commands, tools)
+- **Plans** = Detailed specs, milestones, exact versions
+- **package.json** = Source of truth for versions
 
-- Adding/removing a library → Update Tech Stack or Libraries section
-- Changing architecture (icons, routing, state) → Update relevant section
-- Adding new patterns or conventions → Document them
+Never put version numbers in CLAUDE.md (sync risk).
 
-**NEVER put code examples in CLAUDE.md files.** Describe concepts, list functions, explain logic - but no code blocks. Code changes too often and documentation becomes stale.
+### After Code Changes
 
-### Dependency Hygiene
+1. Update plan if applicable (check milestones, add libs)
+2. Verify CLAUDE.md remains valid (stack, patterns)
+3. `pnpm lint:fix`
 
-When removing or replacing a library:
+### Adding a Dependency
 
-1. **Remove from `package.json`** - both `dependencies` and `devDependencies`
-2. **Run `pnpm install`** - update lockfile
-3. **Search for imports** - ensure no remaining references
-4. **Update CLAUDE.md** - remove mentions of old library
+1. Check if already installed
+2. Consult official docs for peer dependencies
+3. Install with exact required versions
+4. Document in the plan
 
-When adding a library:
+### Removing a Dependency
 
-1. **Check if already installed** - avoid duplicates
-2. **Add to correct section** - `dependencies` vs `devDependencies`
-3. **Update CLAUDE.md** - document purpose and usage
+1. Remove from `package.json`
+2. `pnpm install`
+3. Search and remove orphan imports
+4. Remove from plan
 
-### Checklist After Major Changes
+### Checklist
 
-- [ ] `CLAUDE.md` reflects current tech stack
-- [ ] No unused dependencies in `package.json`
-- [ ] No orphan imports in codebase
+- [ ] Plan up to date (milestones, libs)
+- [ ] CLAUDE.md consistent
+- [ ] No orphan imports
 - [ ] `pnpm lint:fix` passes

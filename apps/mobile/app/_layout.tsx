@@ -1,9 +1,18 @@
 import React from 'react'
+import { StyleSheet } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
-import { DefaultTheme, ThemeProvider } from '@react-navigation/native'
+import { HeroUINativeProvider } from 'heroui-native'
 import 'react-native-reanimated'
+import '../global.css'
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+})
 
 export { ErrorBoundary } from 'expo-router'
 
@@ -34,11 +43,13 @@ const RootLayout = () => {
   }
 
   return (
-    <ThemeProvider value={DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
-    </ThemeProvider>
+    <GestureHandlerRootView style={styles.container}>
+      <HeroUINativeProvider>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
+      </HeroUINativeProvider>
+    </GestureHandlerRootView>
   )
 }
 
