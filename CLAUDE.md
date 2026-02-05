@@ -85,9 +85,11 @@ pnpm test        # Vitest
 
 ## Workflow
 
+**Avant** :
 1. Identifier la plateforme (web/mobile)
 2. Lire le plan correspondant
-3. Exécuter la tâche
-4. Lancer `code-refactoring`
-5. `pnpm lint:fix`
-6. Cocher `[x]` dans le plan
+
+**Après chaque tâche (automatique, sans attendre qu'on demande)** :
+1. `pnpm lint:fix`
+2. Mettre à jour le plan : cocher `[x]` les items terminés
+3. Lancer `code-refactoring` si code significatif
