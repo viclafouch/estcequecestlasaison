@@ -1,8 +1,9 @@
 import {
+  hooksConfig,
   importsConfig,
-  jsxA11yConfig,
   prettierConfig,
   reactConfig,
+  reactNativeConfig,
   typescriptConfig
 } from '@viclafouch/eslint-config-viclafouch'
 
@@ -13,14 +14,16 @@ export default [
   {
     ignores: [
       '**/node_modules/**',
-      '**/.output/**',
-      '**/.tanstack/**',
+      '**/.expo/**',
+      '**/ios/**',
+      '**/android/**',
       '**/dist/**'
     ]
   },
   ...typescriptConfig,
   ...reactConfig,
-  ...jsxA11yConfig,
+  ...hooksConfig,
+  ...reactNativeConfig,
   ...importsConfig,
   ...prettierConfig
 ]

@@ -12,6 +12,8 @@
 
 > Adapter toute la documentation et les instructions au niveau debutant mobile. Ne jamais supposer que les outils natifs sont deja installes ou connus.
 
+> **Preference utilisateur** : toutes les commandes d'installation d'outils (brew, npm global, Android Studio, etc.) doivent etre fournies a l'utilisateur pour execution manuelle. Ne jamais executer automatiquement les installations systeme.
+
 ## Strategie plateforme
 
 **iOS-first** pour le developpement et les features, validation Android en parallele.
@@ -39,13 +41,13 @@
 
 | Technologie | Version | Notes |
 |-------------|---------|-------|
-| React Native | 0.82+ | New Architecture uniquement (legacy supprimee en 0.82) |
-| Expo SDK | 55 (beta) | New Architecture par defaut, RN 0.82, Hermes v1 |
-| React | 19 | React Compiler inclus (plus besoin de useMemo/useCallback manuels) |
-| Hermes | v1 | Nouveau compilateur + VM, gains de performance significatifs |
-| Expo Router | v5 | File-based routing, Tab Bar natif, deep linking |
+| React Native | 0.83.1 | New Architecture obligatoire (legacy supprimee) |
+| Expo SDK | 55 (preview) | New Architecture par defaut, `newArchEnabled` supprime |
+| React | 19.2.0 | React Compiler inclus (plus besoin de useMemo/useCallback manuels) |
+| Hermes | v1 | Opt-in, nouveau compilateur + VM, gains de performance significatifs |
+| Expo Router | v5 (55.0.0-preview) | File-based routing, Native Tabs API, deep linking |
 
-Statut : **non commence**
+Statut : **en cours (M0)**
 
 ---
 
@@ -87,14 +89,14 @@ Statut : **non commence**
 |-----------|---------|-------|
 | @heroui/react-native | 1.0.0-beta.13+ | UI library all-in : Button, Input, Dialog, BottomSheet, Toast, Tabs, Accordion, Card, Avatar, Chip, etc. |
 | uniwind | 1.2.2+ | Tailwind v4 bindings pour React Native, build-time, dark mode, pseudo-classes |
-| react-native-reanimated | 4.2.1+ | CSS animations/transitions, layout animations. Worklets dans react-native-worklets |
+| react-native-reanimated | ~4.2.1 | CSS animations/transitions, layout animations. Worklets dans react-native-worklets 0.7.2 |
 
 ### Navigation & Ecrans
 
 | Librairie | Version | Usage |
 |-----------|---------|-------|
-| expo-router | v5 | File-based routing, Tab Bar natif, deep linking, typed routes |
-| react-native-screens | 4.19.0+ | Primitives de navigation natives, dependance Expo Router |
+| expo-router | v5 (55.0.0-preview) | File-based routing, Native Tabs API, deep linking, typed routes |
+| react-native-screens | ~4.22.0 | Primitives de navigation natives, dependance Expo Router |
 
 ### Listes & Performance
 
@@ -567,11 +569,12 @@ L'app de consultation complete, miroir du site web.
 
 #### Milestone M0 : Setup projet
 
-- [ ] Creer le projet Expo dans `apps/mobile/` (SDK 55, TypeScript)
-- [ ] Configurer pnpm workspace pour inclure `apps/mobile`
-- [ ] Installer les dependances (HeroUI, Uniwind, Reanimated, FlashList)
+- [x] Creer le projet Expo dans `apps/mobile/` (SDK 55, TypeScript)
+- [x] Configurer pnpm workspace pour inclure `apps/mobile`
+- [x] Configurer ESLint (reactConfig + desactiver jsx-a11y)
+- [x] Configurer Expo Router v5 (file-based routing, structure 3 onglets)
+- [ ] Installer les dependances (HeroUI, Uniwind, FlashList)
 - [ ] Configurer Uniwind (Tailwind v4 RN)
-- [ ] Configurer Expo Router v5 (file-based routing)
 - [ ] Setup dev build local iOS (simulateur Xcode)
 - [ ] Setup dev build local Android (Android Studio + Pixel 9)
 - [ ] Configurer Sentry
@@ -581,8 +584,8 @@ L'app de consultation complete, miroir du site web.
 
 #### Milestone M1 : Navigation et layout
 
-- [ ] Tab Bar (3 onglets : Accueil, Recherche, Calendrier)
-- [ ] Root layout avec providers
+- [x] Tab Bar (3 onglets : Accueil, Recherche, Calendrier)
+- [x] Root layout avec providers (ThemeProvider light only)
 - [ ] Header commun (titre + actions)
 - [ ] SafeAreaView et status bar
 - [ ] Transitions de navigation animees
