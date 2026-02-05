@@ -571,7 +571,7 @@ L'app de consultation complete, miroir du site web.
 
 - [x] Creer le projet Expo dans `apps/mobile/` (SDK 55, TypeScript)
 - [x] Configurer pnpm workspace pour inclure `apps/mobile`
-- [x] Configurer ESLint (reactConfig + desactiver jsx-a11y)
+- [x] Configurer ESLint (reactConfig + hooksConfig + reactNativeConfig)
 - [x] Configurer Expo Router v5 (file-based routing, structure 3 onglets)
 - [ ] Installer les dependances (HeroUI, Uniwind, FlashList)
 - [ ] Configurer Uniwind (Tailwind v4 RN)
