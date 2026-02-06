@@ -43,7 +43,7 @@
 |-------------|---------|-------|
 | React Native | 0.83.1 | New Architecture obligatoire (legacy supprimee) |
 | Expo SDK | 55 (preview) | New Architecture par defaut, `newArchEnabled` supprime |
-| React | 19.2.0 | React Compiler inclus (plus besoin de useMemo/useCallback manuels) |
+| React | 19.2.0 | React Compiler non activé (à évaluer Phase 2 si besoin perf) |
 | Hermes | v1 | Opt-in, nouveau compilateur + VM, gains de performance significatifs |
 | Expo Router | v5 (55.0.0-preview) | File-based routing, Native Tabs API, deep linking |
 
@@ -576,8 +576,8 @@ L'app de consultation complete, miroir du site web.
 - [x] Installer les dependances (HeroUI, Uniwind, FlashList)
 - [x] Configurer Uniwind (Tailwind v4 RN)
 - [x] Setup dev build local iOS (simulateur Xcode)
-- [ ] Setup dev build local Android (Android Studio + Pixel 9)
-- [ ] Configurer Sentry
+- [ ] Setup dev build local Android (Android Studio + Pixel 9) — reporte, validation Android plus tard
+- [ ] Configurer Sentry — reporte avant soumission stores (M10)
 - [x] Splash screen (logo centre, fond blanc)
 - [x] App icon
 - [x] Verrouiller orientation portrait
@@ -586,9 +586,9 @@ L'app de consultation complete, miroir du site web.
 
 - [x] Tab Bar (3 onglets : Accueil, Recherche, Calendrier)
 - [x] Root layout avec providers (ThemeProvider light only)
-- [ ] Header commun (titre + actions)
-- [ ] SafeAreaView et status bar
-- [ ] Transitions de navigation animees
+- [x] Header commun (titre + actions)
+- [x] SafeAreaView et status bar
+- [x] Transitions de navigation animees
 
 #### Milestone M2 : Couche service
 

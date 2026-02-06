@@ -1,9 +1,11 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
+import { StatusBar } from 'expo-status-bar'
 import { HeroUINativeProvider } from 'heroui-native'
 import 'react-native-reanimated'
 import '../global.css'
@@ -43,13 +45,21 @@ const RootLayout = () => {
   }
 
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <HeroUINativeProvider>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        </Stack>
-      </HeroUINativeProvider>
-    </GestureHandlerRootView>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={styles.container}>
+        <HeroUINativeProvider>
+          <Stack
+            screenOptions={{
+              animation: 'slide_from_right'
+            }}
+          >
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          </Stack>
+          {/* eslint-disable-next-line react/style-prop-object */}
+          <StatusBar style="dark" />
+        </HeroUINativeProvider>
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   )
 }
 
