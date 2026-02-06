@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from 'react-native'
+import { Image } from 'expo-image'
 import {
   getProduceImage,
   type ProduceImageSlug

@@ -1,7 +1,6 @@
 import React from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
@@ -20,23 +19,9 @@ export const unstable_settings = {
 void SplashScreen.preventAutoHideAsync()
 
 const RootLayout = () => {
-  const [loaded, error] = useFonts({})
-
   React.useEffect(() => {
-    if (error) {
-      throw error
-    }
-  }, [error])
-
-  React.useEffect(() => {
-    if (loaded) {
-      void SplashScreen.hideAsync()
-    }
-  }, [loaded])
-
-  if (!loaded) {
-    return null
-  }
+    void SplashScreen.hideAsync()
+  }, [])
 
   return (
     <SafeAreaProvider>

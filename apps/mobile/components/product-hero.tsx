@@ -1,5 +1,6 @@
 import React from 'react'
-import { Image, Pressable, Share, Text, View } from 'react-native'
+import { Pressable, Share, Text, View } from 'react-native'
+import { Image } from 'expo-image'
 import {
   getProduceImage,
   type ProduceImageSlug

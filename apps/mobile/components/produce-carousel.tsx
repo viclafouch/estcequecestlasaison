@@ -26,6 +26,10 @@ const ItemSeparator = () => {
   return <View className="w-1" />
 }
 
+const keyExtractor = (item: Produce) => {
+  return item.id
+}
+
 export const ProduceCarousel = ({
   title,
   subtitle,
@@ -58,9 +62,7 @@ export const ProduceCarousel = ({
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={ItemSeparator}
         contentContainerStyle={styles.listContent}
-        keyExtractor={(item) => {
-          return item.id
-        }}
+        keyExtractor={keyExtractor}
       />
     </View>
   )
