@@ -16,7 +16,8 @@ export const Route = createFileRoute('/sitemap.xml')({
   server: {
     handlers: {
       GET: async () => {
-        const { PRODUCE_LIST } = await import('@estcequecestlasaison/shared')
+        const { PRODUCE_LIST } =
+          await import('@estcequecestlasaison/shared/services')
 
         const today = new Date().toISOString().slice(0, 10)
 

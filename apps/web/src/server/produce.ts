@@ -38,7 +38,7 @@ export const getSearchSuggestions = createServerFn({ method: 'GET' })
   .inputValidator(searchSuggestionsInputSchema)
   .handler(async ({ data }) => {
     const { getSearchSuggestions: getSearchSuggestionsShared } =
-      await import('@estcequecestlasaison/shared')
+      await import('@estcequecestlasaison/shared/services')
 
     return getSearchSuggestionsShared({ query: data.query })
   })
@@ -46,7 +46,8 @@ export const getSearchSuggestions = createServerFn({ method: 'GET' })
 export const getSlugPageData = createServerFn({ method: 'GET' })
   .inputValidator(slugInputSchema)
   .handler(async ({ data }) => {
-    const { getProductBySlug } = await import('@estcequecestlasaison/shared')
+    const { getProductBySlug } =
+      await import('@estcequecestlasaison/shared/services')
     const result = getProductBySlug({ slug: data.slug })
 
     if (!result) {
@@ -65,7 +66,8 @@ export const getSlugPageData = createServerFn({ method: 'GET' })
 export const getGroupedProduceData = createServerFn({ method: 'GET' })
   .inputValidator(groupedProduceInputSchema)
   .handler(async ({ data }) => {
-    const { getGroupedProduce } = await import('@estcequecestlasaison/shared')
+    const { getGroupedProduce } =
+      await import('@estcequecestlasaison/shared/services')
 
     return getGroupedProduce({
       searchQuery: data.searchQuery,
@@ -78,7 +80,7 @@ export const getMonthStatsData = createServerFn({ method: 'GET' })
   .inputValidator(monthStatsInputSchema)
   .handler(async ({ data }) => {
     const { getMonthStatsData: getMonthStatsDataShared } =
-      await import('@estcequecestlasaison/shared')
+      await import('@estcequecestlasaison/shared/services')
 
     return getMonthStatsDataShared({ month: data.month })
   })
@@ -87,7 +89,7 @@ export const getCalendarData = createServerFn({ method: 'GET' })
   .inputValidator(calendarInputSchema)
   .handler(async ({ data }) => {
     const { getCalendarData: getCalendarDataShared } =
-      await import('@estcequecestlasaison/shared')
+      await import('@estcequecestlasaison/shared/services')
 
     return getCalendarDataShared({ type: data.type })
   })

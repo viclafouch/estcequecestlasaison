@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js'
-import produceJson from '../data/produce.json'
+import produceJson from '../data/produce.json' with { type: 'json' }
 import type { Produce } from '../types'
 
 export const PRODUCE_LIST = produceJson as Produce[]
