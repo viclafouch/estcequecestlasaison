@@ -133,7 +133,7 @@ Coeur du projet, donnees et helpers partages.
 | `@tanstack/react-query` | Gestion cache et fetching (useQuery, queryOptions) |
 | `@tanstack/react-table` | Tableau calendrier (colonnes, tri, filtrage) |
 | `@tanstack/react-pacer` | Debounce recherche (useDebouncedValue, 200ms) |
-| `fuse.js` | Recherche fuzzy sur les produits (server-side) |
+| `fuse.js` | Recherche fuzzy sur les produits (via packages/shared, server-side) |
 
 ### Animation (`apps/web`)
 
@@ -212,13 +212,13 @@ Coeur du projet, donnees et helpers partages.
 
 Pattern : **Server Function** → **Query Options** → **Loader (SSR prefetch)** → **useQuery (client)**
 
-- `src/server/produce-data.ts` : importe le JSON (server-only), cree `PRODUCE_LIST`
-- `src/server/produce.ts` : expose les donnees via `createServerFn` (RPC)
+- `packages/shared/src/services/` : logique metier pure (PRODUCE_LIST, Fuse.js, 5 fonctions service)
+- `src/server/produce.ts` : thin wrappers `createServerFn` avec Zod validation, dynamic import de shared
 - `src/constants/queries.ts` : wraps les server functions en `queryOptions` (TanStack Query)
 - Les routes utilisent `loader` pour precharger via `queryClient.ensureQueryData()`
 - Les composants consomment via `useQuery()` / `Route.useLoaderData()`
 
-Le JSON n'est JAMAIS importe cote client (resterait dans le bundle).
+Shared n'est JAMAIS importe statiquement dans les server functions (dynamic import pour le bundle client).
 
 **Server Functions :**
 

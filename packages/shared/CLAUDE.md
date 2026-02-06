@@ -8,7 +8,7 @@ Package partagé entre le web et le mobile.
 
 | Lib | Usage |
 |-----|-------|
-| `fuse.js` | Recherche fuzzy client-side |
+| `fuse.js` | Recherche fuzzy (utilisé dans la couche service) |
 | `zod` | Validation des données |
 
 ---
@@ -76,6 +76,31 @@ Génération de texte de partage pour les réseaux sociaux.
 | Fonction | Description |
 |----------|-------------|
 | `getShareText(params)` | Texte conversationnel selon le statut saison (produceName, isInSeason, siteDomain) |
+
+---
+
+## Services (produce-data.ts)
+
+Couche données : instance Fuse.js + liste typée des produits.
+
+| Export | Description |
+|--------|-------------|
+| `PRODUCE_LIST` | Tableau typé `Produce[]` (80 produits, importé depuis le JSON) |
+| `searchProduce(query)` | Recherche fuzzy via Fuse.js, retourne les `Produce` correspondants |
+
+---
+
+## Services (produce.ts)
+
+Couche service pure, consommée directement par le mobile et wrappée dans `createServerFn` par le web.
+
+| Fonction | Description |
+|----------|-------------|
+| `getSearchSuggestions({ query })` | Top 5 résultats fuzzy avec badges contextuels |
+| `getGroupedProduce({ searchQuery, category, month })` | Produits groupés par saison (inSeason, comingNextMonth, offSeason) |
+| `getProductBySlug({ slug })` | Produit + related + alternatives (ou null) |
+| `getMonthStatsData({ month })` | Stats du mois (fruits, vegetables, total, arriving, leaving) |
+| `getCalendarData({ type })` | Produits triés alphabétiquement pour le calendrier |
 
 ---
 

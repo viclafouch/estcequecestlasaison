@@ -1,16 +1,6 @@
 import { z } from 'zod'
 import { produceJsonLd } from '@/lib/seo'
-import type { Month, Produce } from '@estcequecestlasaison/shared'
-import {
-  filterProduceByType,
-  getCurrentMonth,
-  getDefaultProduceBadge,
-  getMonthStats,
-  getSeasonAlternatives,
-  groupProduceBySeason,
-  matchIsInSeason,
-  sortProduceBySeasonEnd
-} from '@estcequecestlasaison/shared'
+import type { Month } from '@estcequecestlasaison/shared'
 import { createServerFn } from '@tanstack/react-start'
 
 const searchSuggestionsInputSchema = z.object({
@@ -44,155 +34,60 @@ const monthStatsInputSchema = z.object({
   month: monthSchema
 })
 
-function toCalendarItem(item: Produce) {
-  return {
-    slug: item.slug,
-    name: item.name,
-    type: item.type,
-    seasons: item.seasons
-  }
-}
-
-function toProduceIconItem(item: Pick<Produce, 'id' | 'name' | 'slug'>) {
-  return { id: item.id, name: item.name, slug: item.slug }
-}
-
 export const getSearchSuggestions = createServerFn({ method: 'GET' })
   .inputValidator(searchSuggestionsInputSchema)
   .handler(async ({ data }) => {
-    const trimmedQuery = data.query.trim()
+    const { getSearchSuggestions: getSearchSuggestionsShared } =
+      await import('@estcequecestlasaison/shared')
 
-    if (!trimmedQuery) {
-      return []
-    }
-
-    const { fuseInstance } = await import('./produce-data')
-    const currentMonth = getCurrentMonth()
-
-    return fuseInstance
-      .search(trimmedQuery)
-      .slice(0, 5)
-      .map((result) => {
-        return {
-          slug: result.item.slug,
-          name: result.item.name,
-          badge: getDefaultProduceBadge({
-            produce: result.item,
-            month: currentMonth
-          })
-        }
-      })
+    return getSearchSuggestionsShared({ query: data.query })
   })
 
 export const getSlugPageData = createServerFn({ method: 'GET' })
   .inputValidator(slugInputSchema)
   .handler(async ({ data }) => {
-    const { PRODUCE_LIST } = await import('./produce-data')
+    const { getProductBySlug } = await import('@estcequecestlasaison/shared')
+    const result = getProductBySlug({ slug: data.slug })
 
-    const produce = PRODUCE_LIST.find((item) => {
-      return item.slug === data.slug
-    })
-
-    if (!produce) {
+    if (!result) {
       return null
     }
 
-    const currentMonth = getCurrentMonth()
-
-    const relatedProduce = sortProduceBySeasonEnd({
-      produceList: PRODUCE_LIST.filter((item) => {
-        return item.id !== produce.id && matchIsInSeason(item, currentMonth)
-      }),
-      month: currentMonth
-    })
-
-    const alternatives = getSeasonAlternatives({
-      produce,
-      month: currentMonth,
-      allProduce: PRODUCE_LIST
-    }).map((item) => {
-      return { slug: item.slug, name: item.name }
-    })
-
     return {
-      produce,
-      currentMonth,
-      relatedProduce,
-      alternatives,
-      jsonLd: produceJsonLd({ produce, month: currentMonth })
+      ...result,
+      jsonLd: produceJsonLd({
+        produce: result.produce,
+        month: result.currentMonth
+      })
     }
   })
 
 export const getGroupedProduceData = createServerFn({ method: 'GET' })
   .inputValidator(groupedProduceInputSchema)
   .handler(async ({ data }) => {
-    const { PRODUCE_LIST, fuseInstance } = await import('./produce-data')
+    const { getGroupedProduce } = await import('@estcequecestlasaison/shared')
 
-    const trimmedQuery = data.searchQuery.trim()
-
-    const searchedProduce = trimmedQuery
-      ? fuseInstance.search(trimmedQuery).map((result) => {
-          return result.item
-        })
-      : PRODUCE_LIST
-
-    const filteredByType = filterProduceByType({
-      produceList: searchedProduce,
-      type: data.category
+    return getGroupedProduce({
+      searchQuery: data.searchQuery,
+      category: data.category,
+      month: data.month
     })
-
-    const grouped = groupProduceBySeason({
-      produceList: filteredByType,
-      currentMonth: data.month
-    })
-
-    return {
-      inSeason: sortProduceBySeasonEnd({
-        produceList: grouped.inSeason,
-        month: data.month
-      }),
-      comingNextMonth: grouped.comingNextMonth,
-      offSeason: grouped.offSeason
-    }
   })
 
 export const getMonthStatsData = createServerFn({ method: 'GET' })
   .inputValidator(monthStatsInputSchema)
   .handler(async ({ data }) => {
-    const { PRODUCE_LIST } = await import('./produce-data')
+    const { getMonthStatsData: getMonthStatsDataShared } =
+      await import('@estcequecestlasaison/shared')
 
-    const stats = getMonthStats({
-      produceList: PRODUCE_LIST,
-      month: data.month
-    })
-
-    return {
-      fruits: stats.fruits,
-      vegetables: stats.vegetables,
-      total: stats.total,
-      arriving: stats.arriving.map(toProduceIconItem),
-      leaving: stats.leaving.map(toProduceIconItem)
-    }
+    return getMonthStatsDataShared({ month: data.month })
   })
 
 export const getCalendarData = createServerFn({ method: 'GET' })
   .inputValidator(calendarInputSchema)
   .handler(async ({ data }) => {
-    const { PRODUCE_LIST } = await import('./produce-data')
+    const { getCalendarData: getCalendarDataShared } =
+      await import('@estcequecestlasaison/shared')
 
-    const filtered = filterProduceByType({
-      produceList: PRODUCE_LIST,
-      type: data.type
-    })
-
-    const produceList = filtered
-      .toSorted((left, right) => {
-        return left.name.localeCompare(right.name, 'fr')
-      })
-      .map(toCalendarItem)
-
-    return {
-      produceList,
-      currentMonth: getCurrentMonth()
-    }
+    return getCalendarDataShared({ type: data.type })
   })

@@ -173,9 +173,7 @@ apps/mobile/
 │   ├── filter-chips.tsx       → Chips Tous/Fruits/Legumes
 │   ├── faq-section.tsx        → Section FAQ en bas de homepage
 │   └── season-alternatives.tsx→ Alternatives en saison (hors saison)
-├── services/                  → Couche service (donnees locales)
-│   ├── produce.ts             → Fonctions equivalentes aux server functions web
-│   └── search.ts              → Instance Fuse.js + recherche
+├── (pas de services/ local — tout dans packages/shared)
 ├── constants/                 → Constantes app
 │   ├── theme.ts               → Couleurs, tailles (emerald #10b981)
 │   └── navigation.ts          → Config Tab Bar
@@ -188,28 +186,27 @@ apps/mobile/
 
 ### Data Flow mobile
 
-Pattern : **JSON (shared)** → **Service Layer** → **Composants (import direct)**
+Pattern : **JSON (shared)** → **Service Layer (shared)** → **Composants (import direct)**
 
-A la difference du web (server functions + TanStack Query), le mobile importe les donnees localement :
+La couche service est mutualisee dans `packages/shared/src/services/` :
 
-1. `packages/shared` exporte `produceData`, types et helpers
-2. `apps/mobile/services/produce.ts` expose des fonctions equivalentes aux server functions web :
+1. `packages/shared` exporte `PRODUCE_LIST`, `searchProduce`, et 5 fonctions service :
    - `getGroupedProduce({ searchQuery, category, month })` → produits groupes par saison
-   - `getSearchSuggestions(query)` → top 5 resultats fuzzy
-   - `getProductBySlug(slug)` → donnees produit + related + alternatives
-   - `getMonthStats(month)` → stats du mois (arrivants, partants)
-   - `getCalendarData(type)` → produits tries pour le calendrier
-3. `apps/mobile/services/search.ts` cree l'instance Fuse.js une fois, reutilisee partout
-4. Les composants appellent directement les services (pas de cache layer, donnees statiques)
+   - `getSearchSuggestions({ query })` → top 5 resultats fuzzy avec badges
+   - `getProductBySlug({ slug })` → donnees produit + related + alternatives
+   - `getMonthStatsData({ month })` → stats du mois (arrivants, partants)
+   - `getCalendarData({ type })` → produits tries pour le calendrier
+2. Le mobile importe directement depuis `@estcequecestlasaison/shared` (pas de couche service locale)
+3. Le web wrappe ces memes fonctions dans `createServerFn` (Zod validation + dynamic import pour le bundle client)
 
 > Le JSON est dans le binary de l'app. Zero reseau, zero latence, 100% offline.
 
-### Package shared — enrichissement
+### Package shared — services
 
-Ajouter dans `packages/shared` les helpers qui servent au mobile ET au web :
+La logique metier est centralisee dans `packages/shared/src/services/` :
 
-- Les services mobile reutilisent les memes helpers que les server functions web
-- Si un helper est utile aux deux plateformes, il va dans shared
+- `produce-data.ts` — `PRODUCE_LIST` (typed), instance Fuse.js, `searchProduce()`
+- `produce.ts` — 5 fonctions service pures (identiques web et mobile)
 - La logique specifique mobile (navigation, animations, platform detection) reste dans `apps/mobile`
 
 ---
@@ -592,10 +589,10 @@ L'app de consultation complete, miroir du site web.
 
 #### Milestone M2 : Couche service
 
-- [ ] `services/produce.ts` — fonctions equivalentes server functions web
-- [ ] `services/search.ts` — instance Fuse.js + recherche fuzzy
-- [ ] Enrichir `packages/shared` si helpers manquants
-- [ ] Bundler les images produits dans `assets/produce/`
+- [x] Couche service mutualisee dans `packages/shared/src/services/` (PRODUCE_LIST, searchProduce, 5 fonctions service)
+- [x] Web simplifie en thin wrappers `createServerFn` → appel shared (dynamic import pour bundle client)
+- [x] `fuse.js` retire du mobile (reste dans shared uniquement)
+- [x] Bundler les images produits dans `assets/produce/`
 
 #### Milestone M3 : Ecran Accueil
 
@@ -808,7 +805,7 @@ Email support : `contact@estcequecestlasaison.fr` — doit etre fonctionnel et r
 
 | Web | Mobile |
 |-----|--------|
-| Server Function (createServerFn) | Service local (import direct) |
+| Server Function (createServerFn + Zod) | Import direct depuis shared |
 | TanStack Query (useQuery, cache) | Import direct (pas de cache, donnees statiques) |
 | Query Options (queryOptions) | Non necessaire |
 | Loader (SSR prefetch) | Non necessaire (pas de SSR) |

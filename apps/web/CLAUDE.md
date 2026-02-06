@@ -28,7 +28,7 @@ pnpm start   # Start prod
 
 **Server Function → Query Options → Loader → useQuery**
 
-JAMAIS importer `produceData` côté client (reste dans le bundle).
+JAMAIS importer `@estcequecestlasaison/shared` statiquement dans les server functions (dynamic import obligatoire pour le bundle client).
 
 ---
 
