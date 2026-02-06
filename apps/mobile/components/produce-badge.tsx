@@ -9,8 +9,8 @@ type ProduceBadgeProps = {
 }
 
 const VARIANT_CLASSES = {
-  positive: { container: 'bg-emerald-200', label: 'text-emerald-900' },
-  warning: { container: 'bg-amber-200', label: 'text-amber-900' },
+  positive: { container: 'bg-primary-200', label: 'text-primary-900' },
+  warning: { container: 'bg-warning-200', label: 'text-warning-900' },
   neutral: { container: 'bg-gray-200', label: 'text-gray-700' }
 } as const satisfies Record<BadgeVariant, { container: string; label: string }>
 

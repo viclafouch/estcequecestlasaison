@@ -117,7 +117,7 @@ export const MonthBottomSheet = ({
             {statItems.map((stat) => {
               return (
                 <View key={stat.label} className="items-center gap-1">
-                  <Text className="text-3xl font-bold text-emerald-500">
+                  <Text className="text-3xl font-bold text-primary-500">
                     {stat.value}
                   </Text>
                   <Text className="text-xs text-gray-500 font-medium">

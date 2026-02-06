@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Text, View } from 'react-native'
+import { Image } from 'react-native'
 import {
   getProduceImage,
   type ProduceImageSlug
@@ -8,7 +8,6 @@ import {
 type ProduceAvatarProps = {
   slug: ProduceImageSlug
   name: string
-  icon: string
   size?: 'sm' | 'md' | 'lg'
 }
 
@@ -21,32 +20,21 @@ const SIZE_MAP = {
 export const ProduceAvatar = ({
   slug,
   name,
-  icon,
   size = 'md'
 }: ProduceAvatarProps) => {
   const imageSource = getProduceImage(slug)
   const dimension = SIZE_MAP[size]
 
-  const sizeStyle = {
-    width: dimension,
-    height: dimension,
-    borderRadius: dimension / 2
-  }
-
-  return imageSource ? (
+  return (
     <Image
       source={imageSource}
       className="bg-gray-200"
-      style={sizeStyle}
+      style={{
+        width: dimension,
+        height: dimension,
+        borderRadius: dimension / 2
+      }}
       accessibilityLabel={name}
     />
-  ) : (
-    <View
-      className="items-center justify-center bg-gray-200"
-      style={sizeStyle}
-      accessibilityLabel={name}
-    >
-      <Text className="text-xl">{icon}</Text>
-    </View>
   )
 }

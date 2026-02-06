@@ -46,7 +46,7 @@ export const FilterChips = ({
               className={cn(
                 'px-3.5 py-1.5 rounded-2xl border',
                 isActive
-                  ? 'bg-emerald-500 border-emerald-500'
+                  ? 'bg-primary-500 border-primary-500'
                   : 'bg-white border-gray-200'
               )}
               accessibilityRole="button"
@@ -68,7 +68,7 @@ export const FilterChips = ({
       </View>
       <Pressable
         onPress={onMonthPress}
-        className="flex-row items-center gap-1 bg-emerald-500 px-3 py-1.5 rounded-2xl"
+        className="flex-row items-center gap-1 bg-primary-500 px-3 py-1.5 rounded-2xl"
         accessibilityRole="button"
         accessibilityLabel={`Statistiques de ${monthLabel}`}
         accessibilityHint="Ouvre les statistiques du mois"

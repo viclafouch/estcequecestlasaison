@@ -143,9 +143,7 @@ Statut : **en cours (M0)**
 
 ### Partage
 
-| Librairie | Version | Usage |
-|-----------|---------|-------|
-| expo-sharing | latest | Partage texte + image produit via share sheet natif |
+Utilise `Share` de `react-native` (API native, pas de dependance supplementaire). Partage texte + URL via share sheet natif.
 
 ---
 
@@ -189,11 +187,13 @@ apps/mobile/
 │   ├── season-calendar.tsx    → Grille 12 mois avec dots
 │   ├── month-bottom-sheet.tsx → BottomSheet selection mois + stats
 │   ├── filter-chips.tsx       → Chips Tous/Fruits/Legumes
+│   ├── product-hero.tsx        → Hero produit (image, nom, statut, partage)
 │   ├── faq-section.tsx        → Section FAQ en bas de homepage
 │   └── season-alternatives.tsx→ Alternatives en saison (hors saison)
 ├── (pas de services/ local — tout dans packages/shared)
 ├── constants/                 → Constantes app
 │   ├── theme.ts               → Couleurs, tailles (emerald #10b981)
+│   ├── season.ts              → Styles dots saison + mapping badge→season
 │   └── navigation.ts          → Config Tab Bar
 ├── assets/                    → Images bundlees
 │   └── produce/               → 80 images produits (WebP ou PNG)
@@ -345,8 +345,8 @@ Page detail produit, push navigation depuis n'importe quel ecran.
 
 ### Partage
 
-- Texte conversationnel (via `getShareText` de shared) + image du produit
-- Share sheet natif via expo-sharing
+- Texte conversationnel (via `getShareText` de shared) + URL du produit
+- Share sheet natif via `Share` de react-native (texte + URL, pas d'image)
 - Toujours visible (pas de detection comme le web)
 
 ---
@@ -625,14 +625,14 @@ L'app de consultation complete, miroir du site web.
 
 #### Milestone M4 : Ecran Produit
 
-- [ ] Route `product/[slug]` (push navigation)
-- [ ] Section hero (image, nom, type, statut saison)
-- [ ] Bouton partage avec format viral (texte emoji + image produit avec badge)
-- [ ] Alternatives en saison (hors saison uniquement)
-- [ ] Infos nutritionnelles (calories, vitamines)
-- [ ] Details affichees directement (origine, conservation, conseils, bienfaits)
-- [ ] Calendrier 12 mois (grille dots)
-- [ ] Carousel produits lies
+- [x] Route `product/[slug]` (push navigation)
+- [x] Section hero (image, nom, type, statut saison)
+- [x] Bouton partage (texte via `Share` de react-native + URL)
+- [x] Alternatives en saison (hors saison uniquement)
+- [x] Infos nutritionnelles (calories, vitamines)
+- [x] Details affichees directement (origine, conservation, conseils, bienfaits)
+- [x] Calendrier 12 mois (grille dots)
+- [x] Carousel produits lies
 
 #### Milestone M5 : Ecran Recherche
 

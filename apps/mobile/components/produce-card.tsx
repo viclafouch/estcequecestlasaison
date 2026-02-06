@@ -33,7 +33,6 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
         <ProduceAvatar
           slug={produce.slug as ProduceImageSlug}
           name={produce.name}
-          icon={produce.icon}
           size="lg"
         />
         <Text
