@@ -578,9 +578,9 @@ L'app de consultation complete, miroir du site web.
 - [x] Setup dev build local iOS (simulateur Xcode)
 - [ ] Setup dev build local Android (Android Studio + Pixel 9)
 - [ ] Configurer Sentry
-- [ ] Splash screen (logo centre, fond blanc)
-- [ ] App icon
-- [ ] Verrouiller orientation portrait
+- [x] Splash screen (logo centre, fond blanc)
+- [x] App icon
+- [x] Verrouiller orientation portrait
 
 #### Milestone M1 : Navigation et layout
 
