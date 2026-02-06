@@ -86,6 +86,6 @@ const PRODUCE_IMAGE_MAP = {
 
 export type ProduceImageSlug = keyof typeof PRODUCE_IMAGE_MAP
 
-export function getProduceImage(slug: ProduceImageSlug) {
+export function getProduceImage(slug: ProduceImageSlug): ImageSourcePropType {
   return PRODUCE_IMAGE_MAP[slug]
 }

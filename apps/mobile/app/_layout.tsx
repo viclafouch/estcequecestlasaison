@@ -1,5 +1,4 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { useFonts } from 'expo-font'
@@ -8,13 +7,8 @@ import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
 import { HeroUINativeProvider } from 'heroui-native'
 import 'react-native-reanimated'
+import '../polyfills'
 import '../global.css'
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
 
 export { ErrorBoundary } from 'expo-router'
 
@@ -46,7 +40,7 @@ const RootLayout = () => {
 
   return (
     <SafeAreaProvider>
-      <GestureHandlerRootView style={styles.container}>
+      <GestureHandlerRootView className="flex-1">
         <HeroUINativeProvider>
           <Stack
             screenOptions={{
@@ -54,6 +48,7 @@ const RootLayout = () => {
             }}
           >
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="product/[slug]" options={{ title: '' }} />
           </Stack>
           {/* eslint-disable-next-line react/style-prop-object */}
           <StatusBar style="dark" />

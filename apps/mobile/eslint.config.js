@@ -18,7 +18,7 @@ export default [
       '**/ios/**',
       '**/android/**',
       '**/dist/**',
-      'metro.config.js'
+      'metro.config.cjs'
     ]
   },
   ...typescriptConfig,
@@ -26,5 +26,17 @@ export default [
   ...hooksConfig,
   ...reactNativeConfig,
   ...importsConfig,
-  ...prettierConfig
+  ...prettierConfig,
+  {
+    files: ['**/*.tsx'],
+    rules: {
+      'import/no-default-export': 'error'
+    }
+  },
+  {
+    files: ['app/**/*.tsx'],
+    rules: {
+      'import/no-default-export': 'off'
+    }
+  }
 ]

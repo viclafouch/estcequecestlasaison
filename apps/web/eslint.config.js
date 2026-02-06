@@ -22,5 +22,11 @@ export default [
   ...reactConfig,
   ...jsxA11yConfig,
   ...importsConfig,
-  ...prettierConfig
+  ...prettierConfig,
+  {
+    files: ['**/*.tsx'],
+    rules: {
+      'import/no-default-export': 'error'
+    }
+  }
 ]

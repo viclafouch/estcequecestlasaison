@@ -87,9 +87,27 @@ Statut : **en cours (M0)**
 
 | Librairie | Version | Usage |
 |-----------|---------|-------|
-| @heroui/react-native | 1.0.0-beta.13+ | UI library all-in : Button, Input, Dialog, BottomSheet, Toast, Tabs, Accordion, Card, Avatar, Chip, etc. |
+| @heroui/react-native | 1.0.0-beta.13+ | UI library — voir bugs connus ci-dessous |
 | uniwind | 1.2.2+ | Tailwind v4 bindings pour React Native, build-time, dark mode, pseudo-classes |
 | react-native-reanimated | ~4.2.1 | CSS animations/transitions, layout animations. Worklets dans react-native-worklets 0.7.2 |
+
+### HeroUI Native — bugs connus (beta.13)
+
+**Composants a eviter** (utiliser du RN natif a la place) :
+- `Avatar` / `Avatar.Image` → crash Reanimated (animated style sur non-animated component)
+- `Chip` → warnings SVG "invalid" color (theme non resolu)
+- Composants dans des FlashList → lag + ecrans blancs
+
+**Composants OK** : `BottomSheet`, `Accordion`, `Dialog`, `Toast`
+
+**Issues GitHub a surveiller** (si fixees → re-tester) :
+
+| Issue | Statut | Description |
+|-------|--------|-------------|
+| [#253](https://github.com/heroui-inc/heroui-native/issues/253) | OPEN | Lag + blank screens dans FlashList |
+| [#262](https://github.com/heroui-inc/heroui-native/issues/262) | OPEN | Button Ghost `colorKit.RGB` error (meme cause que Chip "invalid") |
+| [#270](https://github.com/heroui-inc/heroui-native/issues/270) | OPEN | Beta 13 + Uniwind error |
+| [#33](https://github.com/heroui-inc/heroui-native/issues/33) | CLOSED | Reanimated crash (Avatar, pas vraiment resolu) |
 
 ### Navigation & Ecrans
 
@@ -596,14 +614,14 @@ L'app de consultation complete, miroir du site web.
 
 #### Milestone M3 : Ecran Accueil
 
-- [ ] Chips filtres (Tous/Fruits/Legumes) sticky
-- [ ] 3 carousels horizontaux (FlashList)
-- [ ] ProduceCard (avatar, nom, badge)
-- [ ] ProduceBadge (logique partagee depuis shared)
-- [ ] Badge mois cliquable
-- [ ] BottomSheet mois (stats, arrivants/partants, compteurs animes)
-- [ ] Section FAQ en bas du scroll
-- [ ] Etat vide (aucun produit trouve)
+- [x] Chips filtres (Tous/Fruits/Legumes) sticky
+- [x] 3 carousels horizontaux (FlashList)
+- [x] ProduceCard (avatar, nom, badge)
+- [x] ProduceBadge (logique partagee depuis shared)
+- [x] Badge mois cliquable
+- [x] BottomSheet mois (stats, arrivants/partants, compteurs animes)
+- [x] Section FAQ en bas du scroll
+- [x] Etat vide (aucun produit trouve)
 
 #### Milestone M4 : Ecran Produit
 
@@ -705,6 +723,13 @@ L'app de consultation complete, miroir du site web.
 - [ ] Soumission App Store (review 24-48h)
 - [ ] Soumission Google Play
 - [ ] Version 1.0.0
+
+### Dette technique
+
+| Fichier | Quoi | Quand supprimer |
+|---------|------|-----------------|
+| `apps/mobile/polyfills.ts` | Polyfill `Array.prototype.toSorted` (ES2023) — Hermes ne le supporte pas | Quand Hermes ajoute le support natif de `toSorted`. Verifier a chaque upgrade Expo/Hermes. [Tracker Hermes](https://github.com/facebook/hermes/issues?q=toSorted) |
+| `apps/mobile/app/_layout.tsx` | `import '../polyfills'` en premiere ligne | Supprimer en meme temps que le polyfill |
 
 ### Phase 2 — Post-MVP
 
