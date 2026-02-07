@@ -636,11 +636,11 @@ L'app de consultation complete, miroir du site web.
 
 #### Milestone M5 : Ecran Recherche
 
-- [ ] Ecran plein avec champ auto-focus
-- [ ] Resultats live (FlashList + debounce)
-- [ ] Fuse.js fuzzy search
-- [ ] Etat initial (produits en saison)
-- [ ] Etat vide
+- [x] Ecran plein avec champ auto-focus
+- [x] Resultats live (FlashList + debounce)
+- [x] Fuse.js fuzzy search
+- [x] Etat initial (produits en saison)
+- [x] Etat vide
 
 #### Milestone M6 : Ecran Calendrier
 
