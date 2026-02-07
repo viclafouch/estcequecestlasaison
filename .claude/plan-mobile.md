@@ -20,7 +20,7 @@
 
 - **Dev principal** : simulateur iOS (Xcode deja installe)
 - **Validation Android** : Pixel 9 via dev build local
-- **Features iOS-only** (Voltra widgets) : prioritaires
+- **Features iOS-only** (expo-widgets, quand stable) : prioritaires
 - **Features cross-platform** : testees sur les deux via dev builds locaux
 - **Orientation** : portrait only (verrouille)
 
@@ -124,9 +124,7 @@ Statut : **en cours (M0)**
 
 ### Widgets & Features natives
 
-| Librairie | Version | Usage |
-|-----------|---------|-------|
-| voltra | 1.0.0+ | Widgets iOS (home screen, lock screen) + Dynamic Island en JSX. Necessite dev build |
+> **Differe.** `expo-widgets` est en alpha. A installer quand le package sera stable. Voir M7.
 
 ### Monitoring
 
@@ -156,7 +154,7 @@ Utilise `Share` de `react-native` (API native, pas de dependance supplementaire)
 | @legendapp/list | FlashList retenu a la place (mainstream, mieux documente) |
 | react-native-unistyles | Uniwind retenu (plus proche de l'experience web Tailwind) |
 | react-native-nitro-modules | Pas de besoin de modules natifs custom |
-| expo-live-activity | Voltra couvre le besoin (widgets + Live Activities) |
+| expo-live-activity | expo-widgets couvrira le besoin (widgets iOS). Live Activities a evaluer Phase 2 |
 | lucide-react-native | Icones HeroUI utilisees a la place |
 | Maestro | Vitest uniquement pour le MVP, tests manuels sur device |
 | Radon | Extension VSCode — outil DX, pas une lib. A evaluer separement |
@@ -351,34 +349,9 @@ Page detail produit, push navigation depuis n'importe quel ecran.
 
 ---
 
-## Widgets iOS (Voltra)
+## Widgets iOS — DIFFERE
 
-Integres des le MVP. Necessite un dev build (pas Expo Go).
-
-### Widget "Produits de saison"
-
-- **Home screen widget** (small + medium) :
-  - Nombre de produits en saison ce mois
-  - 2-3 produits en vedette avec avatars
-  - Tap → ouvre l'app sur la homepage
-
-- **Lock screen widget** (small) :
-  - "[X] produits de saison en [mois]"
-  - Tap → ouvre l'app
-
-### Widget "Produit du jour" (optionnel)
-
-- Un produit aleatoire en saison, change chaque jour
-- Avatar + nom + statut
-- Tap → ouvre la page produit dans l'app
-
-### Contraintes techniques
-
-- Voltra genere du SwiftUI (iOS) et Jetpack Compose Glance (Android)
-- Hot reload en dev
-- Necessite Expo Dev Client (pas Expo Go)
-- iOS 16.2+ pour lock screen widgets
-- Dynamic Island / Live Activities : evaluer si pertinent pour le use case
+> **`expo-widgets` est en alpha.** Quand le package sera stable, implementer des widgets iOS (home screen + lock screen) affichant les produits de saison du mois. Consulter la doc Expo a ce moment-la pour l'API a jour.
 
 ---
 
@@ -651,12 +624,11 @@ L'app de consultation complete, miroir du site web.
 - [x] Legende couleurs
 - [x] Navigation vers page produit
 
-#### Milestone M7 : Widgets iOS (Voltra)
+#### Milestone M7 : Widgets iOS — DIFFERE
 
-- [ ] Widget home screen (small) : nombre produits en saison
-- [ ] Widget home screen (medium) : produits en vedette
-- [ ] Widget lock screen : "[X] produits de saison en [mois]"
-- [ ] Widget Android (Jetpack Compose Glance via Voltra)
+> **Bloque par** : `expo-widgets` en alpha. A reprendre quand le package sera stable.
+
+- [ ] Implementer les widgets iOS (home screen + lock screen) avec `expo-widgets`
 
 #### Milestone M8 : Deep Linking
 

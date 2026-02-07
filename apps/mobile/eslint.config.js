@@ -18,7 +18,8 @@ export default [
       '**/ios/**',
       '**/android/**',
       '**/dist/**',
-      'metro.config.cjs'
+      'metro.config.cjs',
+      'uniwind-types.d.ts'
     ]
   },
   ...typescriptConfig,
