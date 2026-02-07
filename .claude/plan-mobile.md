@@ -644,12 +644,12 @@ L'app de consultation complete, miroir du site web.
 
 #### Milestone M6 : Ecran Calendrier
 
-- [ ] Toolbar (recherche + filtre type + tri)
-- [ ] FlashList verticale (80 rows)
-- [ ] Row : avatar + nom + 12 dots colores
-- [ ] Mois courant surligne
-- [ ] Legende couleurs
-- [ ] Navigation vers page produit
+- [x] Toolbar (recherche + filtre type + tri)
+- [x] FlashList verticale (80 rows)
+- [x] Row : avatar + nom + 12 dots colores
+- [x] Mois courant surligne
+- [x] Legende couleurs
+- [x] Navigation vers page produit
 
 #### Milestone M7 : Widgets iOS (Voltra)
 

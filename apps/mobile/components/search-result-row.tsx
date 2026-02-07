@@ -16,29 +16,31 @@ type SearchResultRowProps = {
 
 const month = getCurrentMonth()
 
-export const SearchResultRow = ({ produce }: SearchResultRowProps) => {
-  const badge = getDefaultProduceBadge({ produce, month })
+export const SearchResultRow = React.memo(
+  ({ produce }: SearchResultRowProps) => {
+    const badge = getDefaultProduceBadge({ produce, month })
 
-  return (
-    <Link
-      href={`/product/${produce.slug}`}
-      accessibilityRole="link"
-      accessibilityLabel={produce.name}
-    >
-      <View className="flex-row items-center px-4 py-3 gap-3">
-        <ProduceAvatar
-          slug={produce.slug as ProduceImageSlug}
-          name={produce.name}
-          size="md"
-        />
-        <Text
-          className="flex-1 text-base font-medium text-black"
-          numberOfLines={1}
-        >
-          {produce.name}
-        </Text>
-        <ProduceBadge label={badge.label} variant={badge.variant} />
-      </View>
-    </Link>
-  )
-}
+    return (
+      <Link
+        href={`/product/${produce.slug}`}
+        accessibilityRole="link"
+        accessibilityLabel={produce.name}
+      >
+        <View className="flex-row items-center px-4 py-3 gap-3">
+          <ProduceAvatar
+            slug={produce.slug as ProduceImageSlug}
+            name={produce.name}
+            size="md"
+          />
+          <Text
+            className="flex-1 text-base font-medium text-black"
+            numberOfLines={1}
+          >
+            {produce.name}
+          </Text>
+          <ProduceBadge label={badge.label} variant={badge.variant} />
+        </View>
+      </Link>
+    )
+  }
+)
