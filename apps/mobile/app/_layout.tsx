@@ -33,6 +33,7 @@ const RootLayout = () => {
             }}
           >
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="[slug]" options={{ headerShown: false }} />
             <Stack.Screen name="product/[slug]" options={{ title: '' }} />
           </Stack>
           {/* eslint-disable-next-line react/style-prop-object */}

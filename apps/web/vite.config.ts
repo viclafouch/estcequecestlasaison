@@ -29,7 +29,13 @@ export default defineConfig({
       routeRules: {
         '/**': { headers: SECURITY_HEADERS },
         '/images/**': { headers: { ...SECURITY_HEADERS, ...IMMUTABLE_CACHE } },
-        '/fonts/**': { headers: { ...SECURITY_HEADERS, ...IMMUTABLE_CACHE } }
+        '/fonts/**': { headers: { ...SECURITY_HEADERS, ...IMMUTABLE_CACHE } },
+        '/.well-known/apple-app-site-association': {
+          headers: { ...SECURITY_HEADERS, 'Content-Type': 'application/json' }
+        },
+        '/.well-known/assetlinks.json': {
+          headers: { ...SECURITY_HEADERS, 'Content-Type': 'application/json' }
+        }
       },
       rollupConfig: {
         external: ['ws']

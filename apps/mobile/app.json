@@ -15,7 +15,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "fr.estcequecestlasaison.app"
+      "bundleIdentifier": "fr.estcequecestlasaison.app",
+      "associatedDomains": ["applinks:estcequecestlasaison.fr"]
     },
     "android": {
       "adaptiveIcon": {
@@ -24,7 +25,20 @@
       },
       "package": "fr.estcequecestlasaison.app",
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "estcequecestlasaison.fr"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
     },
     "web": {
       "bundler": "metro",

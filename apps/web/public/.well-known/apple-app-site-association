@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["XXXXXXXXXX.fr.estcequecestlasaison.app"],
+        "components": [
+          { "/": "/faq", "exclude": true },
+          { "/": "/mentions-legales", "exclude": true },
+          { "/": "/confidentialite", "exclude": true },
+          { "/": "/cgu", "exclude": true },
+          { "/": "/sitemap.xml", "exclude": true },
+          { "/": "/" },
+          { "/": "/calendrier" },
+          { "/": "/*" }
+        ]
+      }
+    ]
+  }
+}

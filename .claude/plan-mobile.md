@@ -632,11 +632,11 @@ L'app de consultation complete, miroir du site web.
 
 #### Milestone M8 : Deep Linking
 
-- [ ] Configurer le scheme URL dans app.json
-- [ ] Universal links iOS (apple-app-site-association sur le site web)
-- [ ] App links Android (assetlinks.json sur le site web)
-- [ ] Routing : `/{slug}` → `product/[slug]`, `/calendrier` → `(tabs)/calendar`
-- [ ] Fallback navigateur si app non installee
+- [x] Configurer le scheme URL dans app.json
+- [x] Universal links iOS (apple-app-site-association sur le site web)
+- [x] App links Android (assetlinks.json sur le site web)
+- [x] Routing : `/{slug}` → `product/[slug]`, `/calendrier` → `(tabs)/calendar`
+- [x] Fallback navigateur si app non installee
 
 #### Milestone M9 : Accessibilite, polish et retention
 
@@ -648,6 +648,7 @@ L'app de consultation complete, miroir du site web.
 - [ ] Animations respectent prefers-reduced-motion
 - [ ] Demande de rating (expo-store-review) apres 5 produits consultes ou 3 jours d'usage
 - [ ] Tracker les demandes de rating (max 3/an, eviter le spam)
+- [ ] Bouton info header accueil : naviguer vers un ecran FAQ (actuellement no-op, TODO depuis M3)
 
 #### Milestone M10 : Publication stores et ASO
 
@@ -658,6 +659,8 @@ L'app de consultation complete, miroir du site web.
 - [ ] Bundle ID coherent partout : `fr.estcequecestlasaison.app`
 - [ ] Certificats iOS valides (non expires)
 - [ ] Keystore Android sauvegarde securisee
+- [ ] Remplacer le placeholder Team ID dans `apps/web/public/.well-known/apple-app-site-association` (`XXXXXXXXXX` → vrai Team ID Apple)
+- [ ] Remplacer le placeholder SHA-256 dans `apps/web/public/.well-known/assetlinks.json` (→ vrai fingerprint du keystore Android)
 
 **Pages legales (sur estcequecestlasaison.fr — voir plan-web.md Milestone 6)**
 
