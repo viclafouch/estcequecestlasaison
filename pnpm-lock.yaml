@@ -87,9 +87,15 @@ importers:
       expo-splash-screen:
         specifier: ~55.0.4
         version: 55.0.4(expo@55.0.0-preview.9)
+      expo-sqlite:
+        specifier: ~55.0.4
+        version: 55.0.4(expo@55.0.0-preview.9)(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0)
       expo-status-bar:
         specifier: ~55.0.2
         version: 55.0.2(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0)
+      expo-store-review:
+        specifier: ~55.0.4
+        version: 55.0.4(expo@55.0.0-preview.9)(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))
       expo-web-browser:
         specifier: ~55.0.4
         version: 55.0.4(expo@55.0.0-preview.9)(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))
@@ -3193,6 +3199,9 @@ packages:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
 
+  await-lock@2.2.2:
+    resolution: {integrity: sha512-aDczADvlvTGajTDjcjpJMqRkOF6Qdz3YbPZm/PyW6tKPkx2hlYBzxMhEywM/tU72HrVZjgl5VCdRuMlA7pZ8Gw==}
+
   axe-core@4.11.1:
     resolution: {integrity: sha512-BASOg+YwO2C+346x3LZOeoovTIoTrRqEsqMa6fmfAV0P+U9mFr9NsyOEpiYvFjbc64NMrSswhV50WdXzdb/Z5A==}
     engines: {node: '>=4'}
@@ -4151,10 +4160,23 @@ packages:
     peerDependencies:
       expo: '*'
 
+  expo-sqlite@55.0.4:
+    resolution: {integrity: sha512-OsWPMPlcsChuEuiEOcEbqjXGcdpY2waLXdHXD5EwJJN592YE5o6idWRoB4VTT85TV5niB2yFSo00X7osjesXEw==}
+    peerDependencies:
+      expo: '*'
+      react: '*'
+      react-native: '*'
+
   expo-status-bar@55.0.2:
     resolution: {integrity: sha512-iV/Az9SqwY2j5e/tZ7Fz7vwolfXp0xFTScET4lnS615oLQfdhyI2HOTg4CL4q7UVlSDW3HN4rCkDK2oASNVO7g==}
     peerDependencies:
       react: '*'
+      react-native: '*'
+
+  expo-store-review@55.0.4:
+    resolution: {integrity: sha512-L2IS2V4k3bVLlmhNaL50ljSVrR0Dv2SV6Mh8+BSRrAkwW9nwePOP3kGPxIPXo1FqAStCm/SzTXPKif/TPBqQ3g==}
+    peerDependencies:
+      expo: '*'
       react-native: '*'
 
   expo-symbols@55.0.3:
@@ -10167,6 +10189,8 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.1.0
 
+  await-lock@2.2.2: {}
+
   axe-core@4.11.1: {}
 
   axobject-query@4.1.0: {}
@@ -11338,11 +11362,23 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  expo-sqlite@55.0.4(expo@55.0.0-preview.9)(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0):
+    dependencies:
+      await-lock: 2.2.2
+      expo: 55.0.0-preview.9(@babel/core@7.29.0)(@expo/dom-webview@55.0.2)(@expo/metro-runtime@55.0.4)(expo-router@55.0.0-preview.6)(react-dom@19.2.0(react@19.2.0))(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0)
+      react: 19.2.0
+      react-native: 0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0)
+
   expo-status-bar@55.0.2(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0):
     dependencies:
       react: 19.2.0
       react-native: 0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0)
       react-native-is-edge-to-edge: 1.2.1(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0)
+
+  expo-store-review@55.0.4(expo@55.0.0-preview.9)(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0)):
+    dependencies:
+      expo: 55.0.0-preview.9(@babel/core@7.29.0)(@expo/dom-webview@55.0.2)(@expo/metro-runtime@55.0.4)(expo-router@55.0.0-preview.6)(react-dom@19.2.0(react@19.2.0))(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0)
+      react-native: 0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0)
 
   expo-symbols@55.0.3(expo-font@55.0.3)(expo@55.0.0-preview.9)(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0):
     dependencies:

@@ -1,10 +1,16 @@
 import React from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { Stack, useLocalSearchParams } from 'expo-router'
+import * as StoreReview from 'expo-store-review'
 import { ProduceCarousel } from '@/components/produce-carousel'
 import { ProductHero } from '@/components/product-hero'
 import { SeasonAlternatives } from '@/components/season-alternatives'
 import { SeasonCalendar } from '@/components/season-calendar'
+import {
+  recordReviewRequest,
+  shouldRequestReview,
+  trackProductView
+} from '@/utils/review-tracker'
 import { getProductBySlug } from '@estcequecestlasaison/shared/services'
 
 const NotFoundScreen = () => {
@@ -21,6 +27,19 @@ const NotFoundScreen = () => {
 const ProductScreen = () => {
   const { slug } = useLocalSearchParams<{ slug: string }>()
   const data = getProductBySlug({ slug })
+
+  React.useEffect(() => {
+    trackProductView(slug)
+
+    if (shouldRequestReview()) {
+      void StoreReview.isAvailableAsync().then((isAvailable) => {
+        if (isAvailable) {
+          void StoreReview.requestReview()
+          recordReviewRequest()
+        }
+      })
+    }
+  }, [slug])
 
   if (!data) {
     return <NotFoundScreen />

@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 })
 
 const ItemSeparator = () => {
-  return <View className="w-1" />
+  return <View className="w-1" importantForAccessibility="no" />
 }
 
 const keyExtractor = (item: Produce) => {
@@ -48,7 +48,10 @@ export const ProduceCarousel = ({
   return (
     <View className="gap-3">
       <View className="px-4">
-        <Text className="text-lg font-bold text-black">
+        <Text
+          className="text-lg font-bold text-black"
+          accessibilityRole="header"
+        >
           {title} ({produceList.length})
         </Text>
         {subtitle ? (
@@ -63,6 +66,7 @@ export const ProduceCarousel = ({
         ItemSeparatorComponent={ItemSeparator}
         contentContainerStyle={styles.listContent}
         keyExtractor={keyExtractor}
+        accessibilityRole="list"
       />
     </View>
   )

@@ -1,11 +1,12 @@
 import React from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { ReducedMotionConfig, ReduceMotion } from 'react-native-reanimated'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
 import { HeroUINativeProvider } from 'heroui-native'
-import 'react-native-reanimated'
+import { initializeReviewTracking } from '@/utils/review-tracker'
 import '../polyfills'
 import '../global.css'
 
@@ -20,6 +21,7 @@ void SplashScreen.preventAutoHideAsync()
 
 const RootLayout = () => {
   React.useEffect(() => {
+    initializeReviewTracking()
     void SplashScreen.hideAsync()
   }, [])
 
@@ -27,6 +29,7 @@ const RootLayout = () => {
     <SafeAreaProvider>
       <GestureHandlerRootView className="flex-1">
         <HeroUINativeProvider>
+          <ReducedMotionConfig mode={ReduceMotion.System} />
           <Stack
             screenOptions={{
               animation: 'slide_from_right'
@@ -35,6 +38,7 @@ const RootLayout = () => {
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="[slug]" options={{ headerShown: false }} />
             <Stack.Screen name="product/[slug]" options={{ title: '' }} />
+            <Stack.Screen name="faq" options={{ title: 'FAQ' }} />
           </Stack>
           {/* eslint-disable-next-line react/style-prop-object */}
           <StatusBar style="dark" />

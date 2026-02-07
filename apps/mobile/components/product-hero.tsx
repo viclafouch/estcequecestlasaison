@@ -130,7 +130,10 @@ export const ProductHero = ({ produce, currentMonth }: ProductHeroProps) => {
         className="bg-gray-100"
         accessibilityLabel={`${produce.name}, ${typeLabel}`}
       />
-      <Text className="text-2xl font-bold text-black text-center">
+      <Text
+        className="text-2xl font-bold text-black text-center"
+        accessibilityRole="header"
+      >
         {produce.name}
       </Text>
       <Text className="text-sm text-gray-500 text-center -mt-2">

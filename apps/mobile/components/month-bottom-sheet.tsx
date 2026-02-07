@@ -35,7 +35,10 @@ const ProduceListSection = ({
 }: ProduceListSectionProps) => {
   return (
     <View className="px-4 py-2">
-      <Text className="text-base font-semibold text-black mb-2">
+      <Text
+        className="text-base font-semibold text-black mb-2"
+        accessibilityRole="header"
+      >
         {title} ({items.length})
       </Text>
       {items.length > 0 ? (
@@ -46,6 +49,7 @@ const ProduceListSection = ({
               href={`/product/${item.slug}`}
               className="py-2 px-1"
               accessibilityRole="link"
+              accessibilityLabel={item.name}
             >
               <Text className="text-[15px] text-black">{item.name}</Text>
             </Link>
@@ -96,11 +100,16 @@ export const MonthBottomSheet = ({
               className="p-2 rounded-full bg-gray-200"
               accessibilityRole="button"
               accessibilityLabel={`Mois précédent : ${previousMonthName}`}
+              accessibilityHint="Naviguer vers le mois précédent"
               hitSlop={8}
             >
               <Ionicons name="chevron-back" size={20} color={colors.text} />
             </Pressable>
-            <Text className="text-xl font-bold text-black capitalize min-w-30 text-center">
+            <Text
+              className="text-xl font-bold text-black capitalize min-w-30 text-center"
+              accessibilityRole="header"
+              accessibilityLiveRegion="polite"
+            >
               {monthName}
             </Text>
             <Pressable
@@ -108,6 +117,7 @@ export const MonthBottomSheet = ({
               className="p-2 rounded-full bg-gray-200"
               accessibilityRole="button"
               accessibilityLabel={`Mois suivant : ${nextMonthName}`}
+              accessibilityHint="Naviguer vers le mois suivant"
               hitSlop={8}
             >
               <Ionicons name="chevron-forward" size={20} color={colors.text} />

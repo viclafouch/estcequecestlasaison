@@ -1,6 +1,6 @@
 import React from 'react'
 import { Pressable } from 'react-native'
-import { Tabs } from 'expo-router'
+import { Tabs, useRouter } from 'expo-router'
 import { colors } from '@/constants/theme'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
@@ -26,12 +26,20 @@ const createTabBarIcon = ({ filled, outline }: TabBarIconNames) => {
 }
 
 const HeaderInfoButton = () => {
+  const router = useRouter()
+
   const handlePress = () => {
-    // TODO(M3): Navigate to FAQ screen
+    router.push('/faq')
   }
 
   return (
-    <Pressable onPress={handlePress} hitSlop={8}>
+    <Pressable
+      onPress={handlePress}
+      hitSlop={8}
+      accessibilityRole="button"
+      accessibilityLabel="Questions fréquentes"
+      accessibilityHint="Ouvre la page des questions fréquentes"
+    >
       <Ionicons
         name="information-circle-outline"
         size={24}
@@ -66,6 +74,7 @@ const TabLayout = () => {
             filled: 'home',
             outline: 'home-outline'
           }),
+          tabBarAccessibilityLabel: 'Accueil, carousels des produits de saison',
           headerRight: () => {
             return <HeaderInfoButton />
           },
@@ -80,7 +89,8 @@ const TabLayout = () => {
           tabBarIcon: createTabBarIcon({
             filled: 'search',
             outline: 'search-outline'
-          })
+          }),
+          tabBarAccessibilityLabel: 'Recherche, rechercher un fruit ou légume'
         }}
       />
       <Tabs.Screen
@@ -91,7 +101,8 @@ const TabLayout = () => {
           tabBarIcon: createTabBarIcon({
             filled: 'calendar',
             outline: 'calendar-outline'
-          })
+          }),
+          tabBarAccessibilityLabel: 'Calendrier, saisonnalité des 80 produits'
         }}
       />
     </Tabs>

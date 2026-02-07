@@ -50,7 +50,10 @@ export const SeasonCalendar = ({
   return (
     <View className="px-4 gap-4">
       <View>
-        <Text className="text-xl font-semibold text-black">
+        <Text
+          className="text-xl font-semibold text-black"
+          accessibilityRole="header"
+        >
           Calendrier de saisonnalité
         </Text>
         <Text className="text-sm text-gray-500 mt-1">{seasonRange}</Text>

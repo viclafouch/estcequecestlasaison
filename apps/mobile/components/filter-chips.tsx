@@ -51,6 +51,7 @@ export const FilterChips = ({
               )}
               accessibilityRole="button"
               accessibilityState={{ selected: isActive }}
+              accessibilityLabel={category.label}
             >
               <Text
                 className={cn(

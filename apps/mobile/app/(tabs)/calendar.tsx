@@ -30,7 +30,9 @@ const CATEGORIES = [
 ] as const satisfies readonly CategoryOption[]
 
 const ItemSeparator = () => {
-  return <View className="h-px bg-gray-100 mx-4" />
+  return (
+    <View className="h-px bg-gray-100 mx-4" importantForAccessibility="no" />
+  )
 }
 
 const renderItem = ({ item }: { item: CalendarProduce }) => {
@@ -147,7 +149,10 @@ const CalendarScreen = () => {
 
   return (
     <View className="flex-1 bg-white">
-      <View className="flex-row items-center mx-4 mt-2 px-3 py-2 rounded-xl bg-gray-100 gap-2">
+      <View
+        className="flex-row items-center mx-4 mt-2 px-3 py-2 rounded-xl bg-gray-100 gap-2"
+        accessibilityRole="search"
+      >
         <Ionicons name="search" size={18} color={colors.textMuted} />
         <TextInput
           className="flex-1 text-sm text-black py-0"
@@ -158,9 +163,16 @@ const CalendarScreen = () => {
           returnKeyType="search"
           autoCorrect={false}
           autoCapitalize="none"
+          accessibilityLabel="Rechercher un produit"
+          accessibilityHint="Filtrer la liste par nom"
         />
         {hasSearchInput ? (
-          <Pressable onPress={handleClear} hitSlop={8}>
+          <Pressable
+            onPress={handleClear}
+            hitSlop={8}
+            accessibilityRole="button"
+            accessibilityLabel="Effacer la recherche"
+          >
             <Ionicons name="close-circle" size={18} color={colors.textMuted} />
           </Pressable>
         ) : null}
@@ -187,6 +199,7 @@ const CalendarScreen = () => {
                 )}
                 accessibilityRole="button"
                 accessibilityState={{ selected: isActive }}
+                accessibilityLabel={cat.label}
               >
                 <Text
                   className={cn(
@@ -209,6 +222,7 @@ const CalendarScreen = () => {
           accessibilityLabel={
             sortBy === 'alpha' ? 'Tri alphabétique' : 'Tri par mois de saison'
           }
+          accessibilityHint="Basculer entre tri alphabétique et tri par nombre de mois"
         >
           <Ionicons
             name={sortBy === 'alpha' ? 'text-outline' : 'leaf-outline'}
@@ -221,7 +235,10 @@ const CalendarScreen = () => {
         </Pressable>
       </View>
       {hasNoResults ? (
-        <View className="flex-1 items-center justify-center px-8">
+        <View
+          className="flex-1 items-center justify-center px-8"
+          accessibilityLiveRegion="assertive"
+        >
           <Text className="text-base text-gray-500 text-center">
             {`Aucun résultat pour « ${debouncedQuery.trim()} »`}
           </Text>
@@ -237,6 +254,7 @@ const CalendarScreen = () => {
           ListFooterComponent={Legend}
           keyboardShouldPersistTaps="handled"
           maintainVisibleContentPosition={DISABLE_MAINTAIN_POSITION}
+          accessibilityRole="list"
         />
       )}
     </View>

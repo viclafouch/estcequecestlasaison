@@ -139,6 +139,13 @@ Statut : **en cours (M0)**
 | fuse.js | existant | Recherche fuzzy (partage avec le web) |
 | zod | existant | Validation des donnees (partage avec le web) |
 
+### Retention & Storage
+
+| Librairie | Version | Usage |
+|-----------|---------|-------|
+| expo-store-review | ~55.0.4 | Demande de rating natif (SKStoreReviewController iOS / ReviewManager Android) |
+| expo-sqlite | ~55.0.4 | KV store synchrone (`expo-sqlite/kv-store`) pour tracker les vues produit et demandes de rating |
+
 ### Partage
 
 Utilise `Share` de `react-native` (API native, pas de dependance supplementaire). Partage texte + URL via share sheet natif.
@@ -640,15 +647,16 @@ L'app de consultation complete, miroir du site web.
 
 #### Milestone M9 : Accessibilite, polish et retention
 
-- [ ] Audit VoiceOver (iOS simulateur)
-- [ ] Audit TalkBack (Pixel 9)
-- [ ] accessibilityLabel, accessibilityRole, accessibilityHint
-- [ ] Ordre de focus logique
-- [ ] Dynamic Type / font scaling
-- [ ] Animations respectent prefers-reduced-motion
-- [ ] Demande de rating (expo-store-review) apres 5 produits consultes ou 3 jours d'usage
-- [ ] Tracker les demandes de rating (max 3/an, eviter le spam)
-- [ ] Bouton info header accueil : naviguer vers un ecran FAQ (actuellement no-op, TODO depuis M3)
+- [ ] Audit VoiceOver (iOS simulateur) — a faire manuellement
+- [ ] Audit TalkBack (Pixel 9) — a faire manuellement
+- [x] accessibilityLabel, accessibilityRole, accessibilityHint
+- [x] Ordre de focus logique
+- [x] Dynamic Type / font scaling
+- [x] Animations respectent prefers-reduced-motion (ReducedMotionConfig)
+- [x] Demande de rating (expo-store-review) apres 5 produits consultes + 3 jours usage + 4 mois entre demandes
+- [x] Tracker les demandes de rating (expo-sqlite KV store, max 3/an)
+- [x] Bouton info header accueil : navigation vers ecran FAQ
+- [x] Ecran FAQ dedié (route `/faq`) avec Accordion
 
 #### Milestone M10 : Publication stores et ASO
 

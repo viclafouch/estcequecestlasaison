@@ -16,7 +16,9 @@ import { useDebouncedValue } from '@tanstack/react-pacer'
 const DEBOUNCE_WAIT = 150
 
 const ItemSeparator = () => {
-  return <View className="h-px bg-gray-100 mx-4" />
+  return (
+    <View className="h-px bg-gray-100 mx-4" importantForAccessibility="no" />
+  )
 }
 
 const renderItem = ({ item }: { item: Produce }) => {
@@ -64,7 +66,10 @@ const SearchScreen = () => {
 
   return (
     <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
-      <View className="flex-row items-center mx-4 mt-2 mb-3 px-3 py-2 rounded-xl bg-gray-100 gap-2">
+      <View
+        className="flex-row items-center mx-4 mt-2 mb-3 px-3 py-2 rounded-xl bg-gray-100 gap-2"
+        accessibilityRole="search"
+      >
         <Ionicons name="search" size={20} color={colors.textMuted} />
         <TextInput
           ref={inputRef}
@@ -76,22 +81,35 @@ const SearchScreen = () => {
           returnKeyType="search"
           autoCorrect={false}
           autoCapitalize="none"
+          accessibilityLabel="Rechercher un fruit ou légume"
+          accessibilityHint="Saisissez le nom d'un fruit ou légume"
         />
         {hasSearchInput ? (
-          <Pressable onPress={handleClear} hitSlop={8}>
+          <Pressable
+            onPress={handleClear}
+            hitSlop={8}
+            accessibilityRole="button"
+            accessibilityLabel="Effacer la recherche"
+          >
             <Ionicons name="close-circle" size={20} color={colors.textMuted} />
           </Pressable>
         ) : null}
       </View>
       {hasNoResults ? (
-        <View className="flex-1 items-center justify-center px-8">
+        <View
+          className="flex-1 items-center justify-center px-8"
+          accessibilityLiveRegion="assertive"
+        >
           <Text className="text-base text-gray-500 text-center">
             {`Aucun résultat pour « ${debouncedQuery.trim()} »`}
           </Text>
         </View>
       ) : (
         <>
-          <Text className="text-sm font-semibold text-gray-500 px-4 mb-2">
+          <Text
+            className="text-sm font-semibold text-gray-500 px-4 mb-2"
+            accessibilityLiveRegion="polite"
+          >
             {headerText}
           </Text>
           <FlashList
@@ -100,6 +118,7 @@ const SearchScreen = () => {
             keyExtractor={keyExtractor}
             ItemSeparatorComponent={ItemSeparator}
             keyboardShouldPersistTaps="handled"
+            accessibilityRole="list"
           />
         </>
       )}
