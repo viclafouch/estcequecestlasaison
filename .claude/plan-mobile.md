@@ -678,6 +678,13 @@ L'app de consultation complete, miroir du site web.
 - [x] Remplir les `[A COMPLETER]` dans les pages legales (nom, SIRET, adresse, TVA)
 - [ ] Email support fonctionnel : `contact@estcequecestlasaison.fr`
 
+**Cleanup deps et config (audit Expo Skills fevrier 2026)**
+
+- [ ] Retirer `react-dom` et `react-native-web` de package.json (app mobile-only, inutile)
+- [ ] Retirer `@expo/vector-icons` de package.json (fourni implicitement par Expo SDK)
+- [ ] Ajouter `borderCurve: 'continuous'` sur les coins arrondis (squircle iOS natif)
+- [ ] Configurer `eas.json` (profils development + production, dev client TestFlight)
+
 **Pre-soumission iOS (audit fevrier 2026)**
 
 - [ ] `npx expo prebuild --platform ios --clean` (corrige bundle ID `com.anonymous.mobile` → `fr.estcequecestlasaison.app` + CFBundleDisplayName "mobile" → nom reel de l'app)
@@ -745,6 +752,13 @@ Test credentials: Not applicable (no login).
 | `apps/mobile/app/_layout.tsx` | `import '../polyfills'` en premiere ligne | Supprimer en meme temps que le polyfill |
 
 ### Phase 2 — Post-MVP
+
+#### UX natif (identifie par audit Expo Skills)
+
+| Feature | Description | Impact |
+|---------|-------------|--------|
+| NativeTabs | Migrer `<Tabs>` JS vers `NativeTabs` (`expo-router/unstable-native-tabs`) | Tabs natifs (blur, liquid glass iOS 26) |
+| Link.Preview | Long press sur les liens produit → apercu de la page (convention iOS) | Feel natif, navigation enrichie |
 
 #### Retention & Engagement
 

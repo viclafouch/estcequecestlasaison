@@ -5,14 +5,11 @@ import { FAQ_ITEMS } from '@/constants/faq'
 
 const FaqScreen = () => {
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView
+      className="flex-1 bg-white"
+      contentInsetAdjustmentBehavior="automatic"
+    >
       <View className="px-4 py-6">
-        <Text
-          className="text-2xl font-bold text-black mb-4"
-          accessibilityRole="header"
-        >
-          Questions fréquentes
-        </Text>
         <Accordion selectionMode="multiple">
           {FAQ_ITEMS.map((item) => {
             return (

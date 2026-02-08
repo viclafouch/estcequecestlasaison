@@ -49,7 +49,10 @@ const ProductScreen = () => {
   const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'Légume'
 
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView
+      className="flex-1 bg-white"
+      contentInsetAdjustmentBehavior="automatic"
+    >
       <Stack.Screen options={{ title: produce.name }} />
       <ProductHero produce={produce} currentMonth={currentMonth} />
       <View className="gap-6 mt-6">

@@ -46,7 +46,10 @@ const HomeScreen = () => {
         monthLabel={monthName}
         onMonthPress={handleOpenBottomSheet}
       />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        contentInsetAdjustmentBehavior="automatic"
+      >
         {hasNoResults ? (
           <View className="flex-1 items-center justify-center px-8 py-16">
             <Text className="text-base text-gray-500 text-center">
