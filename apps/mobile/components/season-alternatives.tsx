@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { Link } from 'expo-router'
 import { ProduceAvatar } from '@/components/produce-avatar'
 import type { ProduceImageSlug } from '@/constants/produce-images'
-import { colors } from '@/constants/theme'
+import { colors, squircle } from '@/constants/theme'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
 type SeasonAlternativesProps = {
@@ -14,7 +14,10 @@ export const SeasonAlternatives = ({
   alternatives
 }: SeasonAlternativesProps) => {
   return (
-    <View className="rounded-2xl border border-primary-200 bg-primary-50 p-3">
+    <View
+      className="rounded-2xl border border-primary-200 bg-primary-50 p-3"
+      style={squircle}
+    >
       <View className="flex-row items-center gap-2 mb-2.5">
         <View className="w-2 h-2 rounded-full bg-primary-500" />
         <Text className="text-xs font-medium text-primary-700">
@@ -32,7 +35,10 @@ export const SeasonAlternatives = ({
               style={styles.alternativeItem}
               asChild
             >
-              <Pressable className="flex-row items-center gap-2 rounded-xl border border-gray-200 bg-white py-1.5 pr-2.5 pl-1.5">
+              <Pressable
+                className="flex-row items-center gap-2 rounded-xl border border-gray-200 bg-white py-1.5 pr-2.5 pl-1.5"
+                style={squircle}
+              >
                 <ProduceAvatar
                   slug={item.slug as ProduceImageSlug}
                   name={item.name}

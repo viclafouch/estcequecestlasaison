@@ -6,6 +6,7 @@ import { ProduceCarousel } from '@/components/produce-carousel'
 import { ProductHero } from '@/components/product-hero'
 import { SeasonAlternatives } from '@/components/season-alternatives'
 import { SeasonCalendar } from '@/components/season-calendar'
+import { squircle } from '@/constants/theme'
 import {
   recordReviewRequest,
   shouldRequestReview,
@@ -63,7 +64,10 @@ const ProductScreen = () => {
         ) : null}
         <View className="px-4 gap-3">
           <View className="flex-row gap-3">
-            <View className="flex-1 rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1">
+            <View
+              className="flex-1 rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1"
+              style={squircle}
+            >
               <Text className="text-xs font-medium text-gray-500">
                 Calories
               </Text>
@@ -72,7 +76,10 @@ const ProductScreen = () => {
                 <Text className="text-xs font-normal text-gray-500">kcal</Text>
               </Text>
             </View>
-            <View className="flex-1 rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1">
+            <View
+              className="flex-1 rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1"
+              style={squircle}
+            >
               <Text className="text-xs font-medium text-gray-500">
                 Vitamines
               </Text>
@@ -92,25 +99,37 @@ const ProductScreen = () => {
               </View>
             </View>
           </View>
-          <View className="rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1">
+          <View
+            className="rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1"
+            style={squircle}
+          >
             <Text className="text-xs font-medium text-gray-500">Origine</Text>
             <Text className="text-sm font-medium text-black">
               {produce.origin}
             </Text>
           </View>
-          <View className="rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1">
+          <View
+            className="rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1"
+            style={squircle}
+          >
             <Text className="text-xs font-medium text-gray-500">
               Conservation
             </Text>
             <Text className="text-sm text-black">{produce.conservation}</Text>
           </View>
-          <View className="rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1">
+          <View
+            className="rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1"
+            style={squircle}
+          >
             <Text className="text-xs font-medium text-gray-500">
               Bien choisir
             </Text>
             <Text className="text-sm text-black">{produce.buyingTip}</Text>
           </View>
-          <View className="rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1">
+          <View
+            className="rounded-2xl border border-gray-200 bg-gray-50 p-3 gap-1"
+            style={squircle}
+          >
             <Text className="text-xs font-medium text-gray-500">Bienfaits</Text>
             <Text className="text-sm text-black">
               {produce.nutrition.benefits}

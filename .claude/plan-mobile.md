@@ -143,8 +143,8 @@ Statut : **en cours (M0)**
 
 | Librairie | Version | Usage |
 |-----------|---------|-------|
-| expo-store-review | ~55.0.4 | Demande de rating natif (SKStoreReviewController iOS / ReviewManager Android) |
-| expo-sqlite | ~55.0.4 | KV store synchrone (`expo-sqlite/kv-store`) pour tracker les vues produit et demandes de rating |
+| expo-store-review | ~55.0.5 | Demande de rating natif (SKStoreReviewController iOS / ReviewManager Android) |
+| expo-sqlite | ~55.0.5 | KV store synchrone (`expo-sqlite/kv-store`) pour tracker les vues produit et demandes de rating |
 
 ### Partage
 
@@ -680,9 +680,9 @@ L'app de consultation complete, miroir du site web.
 
 **Cleanup deps et config (audit Expo Skills fevrier 2026)**
 
-- [ ] Retirer `react-dom` et `react-native-web` de package.json (app mobile-only, inutile)
-- [ ] Retirer `@expo/vector-icons` de package.json (fourni implicitement par Expo SDK)
-- [ ] Ajouter `borderCurve: 'continuous'` sur les coins arrondis (squircle iOS natif)
+- [x] Retirer `react-dom` et `react-native-web` de package.json (app mobile-only, inutile)
+- [x] Deplacer `@expo/vector-icons` en devDependencies (runtime fourni par Expo, types necessaires pour tsc)
+- [x] Ajouter `borderCurve: 'continuous'` sur les coins arrondis (squircle iOS natif) — constante `squircle` dans `constants/theme.ts`
 - [ ] Configurer `eas.json` (profils development + production, dev client TestFlight)
 
 **Pre-soumission iOS (audit fevrier 2026)**
@@ -750,6 +750,7 @@ Test credentials: Not applicable (no login).
 |---------|------|-----------------|
 | `apps/mobile/polyfills.ts` | Polyfill `Array.prototype.toSorted` (ES2023) — Hermes ne le supporte pas | Quand Hermes ajoute le support natif de `toSorted`. Verifier a chaque upgrade Expo/Hermes. [Tracker Hermes](https://github.com/facebook/hermes/issues?q=toSorted) |
 | `apps/mobile/app/_layout.tsx` | `import '../polyfills'` en premiere ligne | Supprimer en meme temps que le polyfill |
+| `package.json` (racine) | Override pnpm `dnssd-advertise: 1.1.3` — bug de transpilation `const enum` dans v1.1.2 ([issue #25](https://github.com/kitten/dnssd-advertise/issues/25), [fix PR #23](https://github.com/kitten/dnssd-advertise/pull/23)) | Quand `@expo/cli` bump sa dep `dnssd-advertise` a `>=1.1.3`. Verifier dans le lockfile apres chaque upgrade Expo. |
 
 ### Phase 2 — Post-MVP
 

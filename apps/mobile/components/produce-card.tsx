@@ -4,6 +4,7 @@ import { Link } from 'expo-router'
 import { ProduceAvatar } from '@/components/produce-avatar'
 import { ProduceBadge } from '@/components/produce-badge'
 import type { ProduceImageSlug } from '@/constants/produce-images'
+import { squircle } from '@/constants/theme'
 import {
   getProduceBadge,
   type Month,
@@ -29,7 +30,10 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
       accessibilityRole="link"
       accessibilityLabel={produce.name}
     >
-      <View className="items-center gap-2 py-3 px-2 rounded-xl bg-gray-50 border border-gray-100">
+      <View
+        className="items-center gap-2 py-3 px-2 rounded-xl bg-gray-50 border border-gray-100"
+        style={squircle}
+      >
         <ProduceAvatar
           slug={produce.slug as ProduceImageSlug}
           name={produce.name}

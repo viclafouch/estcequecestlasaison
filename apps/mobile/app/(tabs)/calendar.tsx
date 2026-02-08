@@ -3,7 +3,7 @@ import { Pressable, Text, TextInput, View } from 'react-native'
 import { cn } from 'heroui-native'
 import { CalendarRow } from '@/components/calendar-row'
 import { SEASON_DOT_STYLES } from '@/constants/season'
-import { colors } from '@/constants/theme'
+import { colors, squircle } from '@/constants/theme'
 import {
   getCurrentMonth,
   type ProduceType,
@@ -182,6 +182,7 @@ const CalendarScreen = () => {
     <View className="flex-1 bg-white">
       <View
         className="flex-row items-center mx-4 mt-2 px-3 py-2 rounded-xl bg-gray-100 gap-2"
+        style={squircle}
         accessibilityRole="search"
       >
         <Ionicons name="search" size={18} color={colors.textMuted} />
@@ -228,6 +229,7 @@ const CalendarScreen = () => {
                     ? 'bg-primary-500 border-primary-500'
                     : 'bg-white border-gray-200'
                 )}
+                style={squircle}
                 accessibilityRole="button"
                 accessibilityState={{ selected: isActive }}
                 accessibilityLabel={categoryOption.label}
@@ -249,6 +251,7 @@ const CalendarScreen = () => {
         <Pressable
           onPress={handleToggleSort}
           className="flex-row items-center gap-1 px-3 py-1.5 rounded-2xl border border-gray-200"
+          style={squircle}
           accessibilityRole="button"
           accessibilityLabel={
             sortBy === 'alpha' ? 'Tri alphabétique' : 'Tri par mois de saison'

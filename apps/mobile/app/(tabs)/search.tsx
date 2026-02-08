@@ -3,7 +3,7 @@ import { Pressable, Text, TextInput, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useFocusEffect } from 'expo-router'
 import { SearchResultRow } from '@/components/search-result-row'
-import { colors } from '@/constants/theme'
+import { colors, squircle } from '@/constants/theme'
 import { getCurrentMonth, type Produce } from '@estcequecestlasaison/shared'
 import {
   getGroupedProduce,
@@ -72,6 +72,7 @@ const SearchScreen = () => {
     <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
       <View
         className="flex-row items-center mx-4 mt-2 mb-3 px-3 py-2 rounded-xl bg-gray-100 gap-2"
+        style={squircle}
         accessibilityRole="search"
       >
         <Ionicons name="search" size={20} color={colors.textMuted} />

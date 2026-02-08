@@ -8,3 +8,5 @@ export const colors = {
   warning: '#f59e0b',
   muted: '#d1d5db'
 } as const
+
+export const squircle = { borderCurve: 'continuous' } as const

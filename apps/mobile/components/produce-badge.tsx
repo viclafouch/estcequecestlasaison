@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import { cn } from 'heroui-native'
+import { squircle } from '@/constants/theme'
 import type { BadgeVariant } from '@estcequecestlasaison/shared'
 
 type ProduceBadgeProps = {
@@ -19,7 +20,10 @@ export const ProduceBadge = React.memo(
     const variantClasses = VARIANT_CLASSES[variant]
 
     return (
-      <View className={cn('px-2 py-0.5 rounded-xl', variantClasses.container)}>
+      <View
+        className={cn('px-2 py-0.5 rounded-xl', variantClasses.container)}
+        style={squircle}
+      >
         <Text
           className={cn('text-xs font-semibold', variantClasses.label)}
           numberOfLines={1}

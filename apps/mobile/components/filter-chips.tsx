@@ -1,7 +1,7 @@
 import React from 'react'
 import { Pressable, Text, View } from 'react-native'
 import { cn } from 'heroui-native'
-import { colors } from '@/constants/theme'
+import { colors, squircle } from '@/constants/theme'
 import type { ProduceType } from '@estcequecestlasaison/shared'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
@@ -49,6 +49,7 @@ export const FilterChips = ({
                   ? 'bg-primary-500 border-primary-500'
                   : 'bg-white border-gray-200'
               )}
+              style={squircle}
               accessibilityRole="button"
               accessibilityState={{ selected: isActive }}
               accessibilityLabel={category.label}
@@ -70,6 +71,7 @@ export const FilterChips = ({
       <Pressable
         onPress={onMonthPress}
         className="flex-row items-center gap-1 bg-primary-500 px-3 py-1.5 rounded-2xl"
+        style={squircle}
         accessibilityRole="button"
         accessibilityLabel={`Statistiques de ${monthLabel}`}
         accessibilityHint="Ouvre les statistiques du mois"
