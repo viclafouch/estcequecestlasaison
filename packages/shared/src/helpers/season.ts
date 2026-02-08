@@ -21,7 +21,7 @@ export type ProduceBadge = {
 
 export const SEASON_STATUS_LABELS = {
   peak: 'Pleine saison',
-  partial: 'D\u00E9but ou fin de saison',
+  partial: 'Début ou fin de saison',
   off: 'Hors saison'
 } as const satisfies Record<SeasonStatus, string>
 

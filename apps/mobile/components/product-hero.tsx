@@ -45,7 +45,7 @@ function getSeasonDisplay({
 }: GetSeasonDisplayParams): SeasonDisplay {
   if (matchIsInSeasonAllYear(produce)) {
     return {
-      label: "Disponible toute l'ann\u00e9e",
+      label: "Disponible toute l'année",
       detail: null,
       variant: 'positive'
     }
@@ -64,9 +64,7 @@ function getSeasonDisplay({
   if (intensity === 'partial') {
     const previousMonth = getPreviousMonth(month)
     const wasInSeasonLastMonth = matchIsInSeason(produce, previousMonth)
-    const label = wasInSeasonLastMonth
-      ? 'Fin de saison'
-      : 'D\u00e9but de saison'
+    const label = wasInSeasonLastMonth ? 'Fin de saison' : 'Début de saison'
 
     return {
       label,
@@ -96,7 +94,7 @@ type ProductHeroProps = {
 export const ProductHero = ({ produce, currentMonth }: ProductHeroProps) => {
   const badge = getDefaultProduceBadge({ produce, month: currentMonth })
   const isInSeason = matchIsInSeason(produce, currentMonth)
-  const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'L\u00e9gume'
+  const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'Légume'
   const seasonDisplay = getSeasonDisplay({
     produce,
     month: currentMonth,

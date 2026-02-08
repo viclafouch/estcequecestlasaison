@@ -9,17 +9,17 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
   presentation: (
     <>
       <strong>estcequecestlasaison.fr</strong> est un outil{' '}
-      <strong>gratuit</strong> que j&apos;ai cr&eacute;&eacute; pour vous aider
-      &agrave; conna&icirc;tre la <strong>saisonnalité</strong> des fruits et
-      légumes en <strong>France métropolitaine</strong>. Consultez le calendrier
-      interactif mois par mois pour savoir quels produits sont de saison et
-      faire de meilleurs choix alimentaires.
+      <strong>gratuit</strong> que j'ai créé pour vous aider à connaître la{' '}
+      <strong>saisonnalité</strong> des fruits et légumes en{' '}
+      <strong>France métropolitaine</strong>. Consultez le calendrier interactif
+      mois par mois pour savoir quels produits sont de saison et faire de
+      meilleurs choix alimentaires.
     </>
   ),
   sources: (
     <>
       Les données sont issues de <strong>sources officielles</strong> et
-      reconnues&nbsp;: l&apos;
+      reconnues&nbsp;: l'
       <a
         href="https://www.aprifel.com"
         target="_blank"
@@ -28,7 +28,7 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
       >
         APRIFEL
       </a>{' '}
-      (Agence pour la recherche et l&apos;information en fruits et légumes),{' '}
+      (Agence pour la recherche et l'information en fruits et légumes),{' '}
       <a
         href="https://www.lesfruitsetlegumesfrais.com"
         target="_blank"
@@ -44,9 +44,9 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
         rel="noopener noreferrer"
         className="text-link"
       >
-        Ministère de l&apos;Agriculture
+        Ministère de l'Agriculture
       </a>{' '}
-      et l&apos;
+      et l'
       <a
         href="https://ciqual.anses.fr"
         target="_blank"
@@ -62,8 +62,8 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
     <>
       Oui, les données sont <strong>croisées</strong> à partir de plusieurs{' '}
       <strong>sources officielles françaises</strong> pour garantir leur
-      exactitude. Si vous constatez une erreur, n&apos;hésitez pas à me le
-      signaler via{' '}
+      exactitude. Si vous constatez une erreur, n'hésitez pas à me le signaler
+      via{' '}
       <a
         href="https://www.linkedin.com/in/victordelafouchardiere"
         target="_blank"
@@ -90,7 +90,7 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
       <strong>pic de disponibilité</strong>, avec le meilleur goût et le
       meilleur prix. <strong>Début ou fin de saison</strong>&nbsp;: le produit
       est disponible mais pas à son pic, la qualité et le prix peuvent varier.{' '}
-      <strong>Hors saison</strong>&nbsp;: le produit n&apos;est pas disponible
+      <strong>Hors saison</strong>&nbsp;: le produit n'est pas disponible
       localement en France.
     </>
   ),
@@ -99,16 +99,16 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
       Manger de saison présente de <strong>nombreux avantages</strong>&nbsp;: un{' '}
       <strong>meilleur goût</strong> car les produits sont récoltés à maturité,
       une <strong>valeur nutritionnelle supérieure</strong>, des{' '}
-      <strong>prix plus avantageux</strong> grâce à l&apos;abondance de
-      l&apos;offre, et un <strong>impact environnemental réduit</strong> avec
-      moins de transport et de stockage.
+      <strong>prix plus avantageux</strong> grâce à l'abondance de l'offre, et
+      un <strong>impact environnemental réduit</strong> avec moins de transport
+      et de stockage.
     </>
   ),
   createur: (
     <>
       <strong>estcequecestlasaison.fr</strong> est un projet créé par{' '}
       <strong>Victor de la Fouchardière</strong>, développeur web passionné par
-      l&apos;alimentation de saison. Retrouvez-moi sur{' '}
+      l'alimentation de saison. Retrouvez-moi sur{' '}
       <a
         href="https://www.linkedin.com/in/victordelafouchardiere"
         target="_blank"
@@ -305,11 +305,11 @@ const FaqPage = () => {
 export const Route = createFileRoute('/faq')({
   head: () => {
     return seo({
-      title: 'Questions fr\u00e9quentes',
+      title: 'Questions fréquentes',
       description:
-        'Retrouvez les r\u00e9ponses \u00e0 vos questions sur estcequecestlasaison.fr\u00a0: sources des donn\u00e9es, saisonnalit\u00e9, contact et plus encore.',
+        'Retrouvez les réponses à vos questions sur estcequecestlasaison.fr\u00a0: sources des données, saisonnalité, contact et plus encore.',
       keywords:
-        'faq, questions fr\u00e9quentes, saisonnalit\u00e9, fruits et l\u00e9gumes de saison, sources donn\u00e9es',
+        'faq, questions fréquentes, saisonnalité, fruits et légumes de saison, sources données',
       pathname: '/faq'
     })
   },

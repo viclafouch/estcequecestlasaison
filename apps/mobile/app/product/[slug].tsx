@@ -18,7 +18,7 @@ const NotFoundScreen = () => {
     <View className="flex-1 items-center justify-center bg-white px-4">
       <Stack.Screen options={{ title: 'Produit introuvable' }} />
       <Text className="text-lg font-semibold text-black text-center">
-        Ce produit n&apos;existe pas.
+        Ce produit n'existe pas.
       </Text>
     </View>
   )
@@ -46,7 +46,7 @@ const ProductScreen = () => {
   }
 
   const { produce, currentMonth, relatedProduce, alternatives } = data
-  const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'L\u00e9gume'
+  const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'Légume'
 
   return (
     <ScrollView className="flex-1 bg-white">
@@ -118,7 +118,7 @@ const ProductScreen = () => {
         {relatedProduce.length > 0 ? (
           <ProduceCarousel
             title="Aussi de saison"
-            subtitle={`Autres ${typeLabel === 'Fruit' ? 'fruits et l\u00e9gumes' : 'produits'} disponibles ce mois-ci`}
+            subtitle={`Autres ${typeLabel === 'Fruit' ? 'fruits et légumes' : 'produits'} disponibles ce mois-ci`}
             produceList={relatedProduce}
             month={currentMonth}
             section="in-season"

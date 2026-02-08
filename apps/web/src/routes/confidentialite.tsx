@@ -12,10 +12,10 @@ const ConfidentialitePage = () => {
       >
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
-            Politique de confidentialit&eacute;
+            Politique de confidentialité
           </h1>
           <p className="text-base text-gray-600">
-            Derni&egrave;re mise &agrave; jour : f&eacute;vrier 2026
+            Dernière mise à jour : février 2026
           </p>
         </div>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
@@ -23,7 +23,7 @@ const ConfidentialitePage = () => {
         </h2>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-gray-700">
           <li>
-            Nom : <strong>Victor de la Fouchardi&egrave;re</strong>
+            Nom : <strong>Victor de la Fouchardière</strong>
           </li>
           <li>
             Email :{' '}
@@ -36,71 +36,66 @@ const ConfidentialitePage = () => {
           </li>
         </ul>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
-          Donn&eacute;es collect&eacute;es
+          Données collectées
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
           Le site <strong>estcequecestlasaison.fr</strong> ne collecte
-          actuellement <strong>aucune donn&eacute;e personnelle</strong>. Aucun
-          formulaire d&rsquo;inscription, aucun compte utilisateur, aucun
-          tracking analytique n&rsquo;est mis en place.
+          actuellement <strong>aucune donnée personnelle</strong>. Aucun
+          formulaire d'inscription, aucun compte utilisateur, aucun tracking
+          analytique n'est mis en place.
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">Cookies</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Ce site n&rsquo;utilise actuellement <strong>aucun cookie</strong>, ni
+          Ce site n'utilise actuellement <strong>aucun cookie</strong>, ni
           cookie de suivi, ni cookie publicitaire, ni cookie analytique. Cette
-          politique sera mise &agrave; jour si des cookies sont introduits
-          &agrave; l&rsquo;avenir (par exemple lors de
-          l&rsquo;int&eacute;gration de Google AdSense).
+          politique sera mise à jour si des cookies sont introduits à l'avenir
+          (par exemple lors de l'intégration de Google AdSense).
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
-          Base l&eacute;gale du traitement
+          Base légale du traitement
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          En l&rsquo;absence de collecte de donn&eacute;es personnelles, aucune
-          base l&eacute;gale sp&eacute;cifique n&rsquo;est requise. Si des
-          donn&eacute;es venaient &agrave; &ecirc;tre collect&eacute;es &agrave;
-          l&rsquo;avenir (cookies publicitaires, analytics), la base
-          l&eacute;gale serait le <strong>consentement</strong> de
-          l&rsquo;utilisateur, recueilli via un bandeau de consentement conforme
-          au RGPD.
+          En l'absence de collecte de données personnelles, aucune base légale
+          spécifique n'est requise. Si des données venaient à être collectées à
+          l'avenir (cookies publicitaires, analytics), la base légale serait le{' '}
+          <strong>consentement</strong> de l'utilisateur, recueilli via un
+          bandeau de consentement conforme au RGPD.
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
           Droits des utilisateurs
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Conform&eacute;ment au R&egrave;glement G&eacute;n&eacute;ral sur la
-          Protection des Donn&eacute;es (RGPD), vous disposez des droits
-          suivants&nbsp;:
+          Conformément au Règlement Général sur la Protection des Données
+          (RGPD), vous disposez des droits suivants&nbsp;:
         </p>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-gray-700">
           <li>
-            <strong>Droit d&rsquo;acc&egrave;s</strong> : obtenir la
-            confirmation que vos donn&eacute;es sont ou ne sont pas
-            trait&eacute;es
+            <strong>Droit d'accès</strong> : obtenir la confirmation que vos
+            données sont ou ne sont pas traitées
           </li>
           <li>
             <strong>Droit de rectification</strong> : demander la correction de
-            donn&eacute;es inexactes
+            données inexactes
           </li>
           <li>
-            <strong>Droit &agrave; l&rsquo;effacement</strong> : demander la
-            suppression de vos donn&eacute;es
+            <strong>Droit à l'effacement</strong> : demander la suppression de
+            vos données
           </li>
           <li>
-            <strong>Droit &agrave; la portabilit&eacute;</strong> : recevoir vos
-            donn&eacute;es dans un format structur&eacute; et lisible
+            <strong>Droit à la portabilité</strong> : recevoir vos données dans
+            un format structuré et lisible
           </li>
           <li>
-            <strong>Droit d&rsquo;opposition</strong> : vous opposer au
-            traitement de vos donn&eacute;es
+            <strong>Droit d'opposition</strong> : vous opposer au traitement de
+            vos données
           </li>
           <li>
-            <strong>Droit &agrave; la limitation</strong> : demander la
-            limitation du traitement
+            <strong>Droit à la limitation</strong> : demander la limitation du
+            traitement
           </li>
         </ul>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Pour exercer ces droits, contactez-nous &agrave; l&rsquo;adresse :{' '}
+          Pour exercer ces droits, contactez-nous à l'adresse :{' '}
           <a
             href="mailto:contact@estcequecestlasaison.fr"
             className="text-link"
@@ -109,10 +104,10 @@ const ConfidentialitePage = () => {
           </a>
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
-          Transferts hors Union europ&eacute;enne
+          Transferts hors Union européenne
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Le site est h&eacute;berg&eacute; par{' '}
+          Le site est hébergé par{' '}
           <a
             href="https://railway.app"
             target="_blank"
@@ -121,28 +116,26 @@ const ConfidentialitePage = () => {
           >
             Railway
           </a>{' '}
-          (San Francisco, &Eacute;tats-Unis). Bien qu&rsquo;aucune donn&eacute;e
-          personnelle ne soit actuellement collect&eacute;e, les requ&ecirc;tes
-          HTTP transitent par les serveurs de l&rsquo;h&eacute;bergeur. Railway
-          s&rsquo;engage &agrave; respecter des garanties ad&eacute;quates en
-          mati&egrave;re de protection des donn&eacute;es.
+          (San Francisco, États-Unis). Bien qu'aucune donnée personnelle ne soit
+          actuellement collectée, les requêtes HTTP transitent par les serveurs
+          de l'hébergeur. Railway s'engage à respecter des garanties adéquates
+          en matière de protection des données.
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
           Application mobile
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          L&rsquo;application mobile estcequecestlasaison fonctionne{' '}
+          L'application mobile estcequecestlasaison fonctionne{' '}
           <strong>100&nbsp;% hors-ligne</strong>. Elle ne collecte{' '}
-          <strong>aucune donn&eacute;e personnelle</strong>, n&rsquo;utilise
-          aucun cookie et ne communique avec aucun serveur. Toutes les
-          donn&eacute;es sont incluses dans l&rsquo;application et
-          stock&eacute;es localement sur votre appareil.
+          <strong>aucune donnée personnelle</strong>, n'utilise aucun cookie et
+          ne communique avec aucun serveur. Toutes les données sont incluses
+          dans l'application et stockées localement sur votre appareil.
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
           Crash reports (futur)
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Une int&eacute;gration de{' '}
+          Une intégration de{' '}
           <a
             href="https://sentry.io"
             target="_blank"
@@ -151,20 +144,18 @@ const ConfidentialitePage = () => {
           >
             Sentry
           </a>{' '}
-          est pr&eacute;vue pour le suivi des erreurs techniques. Les
-          donn&eacute;es collect&eacute;es seront strictement anonymis&eacute;es
-          (traces d&rsquo;erreur, type d&rsquo;appareil, version de
-          l&rsquo;application) et ne permettront pas d&rsquo;identifier un
-          utilisateur. Cette section sera mise &agrave; jour lors de
-          l&rsquo;activation de Sentry.
+          est prévue pour le suivi des erreurs techniques. Les données
+          collectées seront strictement anonymisées (traces d'erreur, type
+          d'appareil, version de l'application) et ne permettront pas
+          d'identifier un utilisateur. Cette section sera mise à jour lors de
+          l'activation de Sentry.
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
           Contact CNIL
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Si vous estimez que le traitement de vos donn&eacute;es ne respecte
-          pas la r&eacute;glementation, vous pouvez adresser une
-          r&eacute;clamation &agrave; la{' '}
+          Si vous estimez que le traitement de vos données ne respecte pas la
+          réglementation, vous pouvez adresser une réclamation à la{' '}
           <a
             href="https://www.cnil.fr"
             target="_blank"
@@ -173,17 +164,16 @@ const ConfidentialitePage = () => {
           >
             CNIL
           </a>{' '}
-          (Commission Nationale de l&rsquo;Informatique et des Libert&eacute;s),
-          3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07.
+          (Commission Nationale de l'Informatique et des Libertés), 3 Place de
+          Fontenoy, TSA 80715, 75334 Paris Cedex 07.
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
           Modifications de cette politique
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Cette politique de confidentialit&eacute; peut &ecirc;tre mise
-          &agrave; jour &agrave; tout moment. La date de derni&egrave;re mise
-          &agrave; jour est indiqu&eacute;e en haut de cette page. Nous vous
-          invitons &agrave; la consulter r&eacute;guli&egrave;rement.
+          Cette politique de confidentialité peut être mise à jour à tout
+          moment. La date de dernière mise à jour est indiquée en haut de cette
+          page. Nous vous invitons à la consulter régulièrement.
         </p>
       </main>
     </div>
@@ -193,11 +183,10 @@ const ConfidentialitePage = () => {
 export const Route = createFileRoute('/confidentialite')({
   head: () => {
     return seo({
-      title: 'Politique de confidentialit\u00e9',
+      title: 'Politique de confidentialité',
       description:
-        'Politique de confidentialit\u00e9 RGPD du site estcequecestlasaison.fr\u00a0: donn\u00e9es collect\u00e9es, cookies, droits des utilisateurs et contact.',
-      keywords:
-        'politique confidentialit\u00e9, rgpd, donn\u00e9es personnelles',
+        'Politique de confidentialité RGPD du site estcequecestlasaison.fr\u00a0: données collectées, cookies, droits des utilisateurs et contact.',
+      keywords: 'politique confidentialité, rgpd, données personnelles',
       pathname: '/confidentialite'
     })
   },

@@ -98,7 +98,7 @@ export function seo({
 
 function getSeasonStatusLabel(produce: Produce, month: Month) {
   if (matchIsInSeasonAllYear(produce)) {
-    return "Disponible toute l'ann\u00E9e"
+    return "Disponible toute l'année"
   }
 
   const intensity = produce.seasons[month]
@@ -108,7 +108,7 @@ function getSeasonStatusLabel(produce: Produce, month: Month) {
   }
 
   if (intensity === 'partial') {
-    return 'D\u00E9but ou fin de saison'
+    return 'Début ou fin de saison'
   }
 
   return 'Hors saison'
@@ -131,19 +131,19 @@ export function produceSeo({ produce, month }: ProduceSeoParams) {
   const statusLabel = getSeasonStatusLabel(produce, month)
   const seasonRange = getSeasonRangeLabel(produce)
   const vitaminsLabel = getVitaminsLabel(produce.nutrition.vitamins)
-  const typeLabel = produce.type === 'fruit' ? 'fruit' : 'l\u00E9gume'
+  const typeLabel = produce.type === 'fruit' ? 'fruit' : 'légume'
 
   const descriptionParts = [
     `${produce.name} : ${statusLabel.toLowerCase()}`,
     matchIsInSeasonAllYear(produce) ? null : `Saison : ${seasonRange}`,
     vitaminsLabel,
-    `D\u00E9couvrez le calendrier de saisonnalit\u00E9 complet de ce ${typeLabel}.`
+    `Découvrez le calendrier de saisonnalité complet de ce ${typeLabel}.`
   ].filter(Boolean)
 
   const result = seo({
     title: `${produce.name} : est-ce que c'est la saison ?`,
     description: `${descriptionParts.join('. ')}.`,
-    keywords: `${produce.name.toLowerCase()}, saison ${produce.name.toLowerCase()}, est-ce que c'est la saison ${produce.name.toLowerCase()}, ${typeLabel} de saison, calendrier saisonnalit\u00E9 ${produce.name.toLowerCase()}`,
+    keywords: `${produce.name.toLowerCase()}, saison ${produce.name.toLowerCase()}, est-ce que c'est la saison ${produce.name.toLowerCase()}, ${typeLabel} de saison, calendrier saisonnalité ${produce.name.toLowerCase()}`,
     pathname: `/${produce.slug}`,
     image: `/images/og/${produce.slug}.png`,
     imageAlt: `${produce.name} - ${typeLabel} de saison`
@@ -186,7 +186,7 @@ function buildBreadcrumbList(produce: Produce): WithContext<BreadcrumbList> {
 
 function buildProductThing(produce: Produce): WithContext<Thing> {
   const seasonRange = getSeasonRangeLabel(produce)
-  const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'L\u00E9gume'
+  const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'Légume'
   const vitaminsLabel = getVitaminsLabel(produce.nutrition.vitamins)
 
   const descriptionParts = [

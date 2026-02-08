@@ -47,7 +47,7 @@ function getSeasonDisplay({
 }: GetSeasonDisplayParams): SeasonDisplay {
   if (matchIsInSeasonAllYear(produce)) {
     return {
-      label: "Disponible toute l'ann\u00E9e",
+      label: "Disponible toute l'année",
       detail: null,
       variant: 'positive'
     }
@@ -90,7 +90,7 @@ const ProductPage = () => {
 
   const badge = getDefaultProduceBadge({ produce, month: currentMonth })
   const isInSeason = matchIsInSeason(produce, currentMonth)
-  const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'L\u00E9gume'
+  const typeLabel = produce.type === 'fruit' ? 'Fruit' : 'Légume'
   const seasonDisplay = getSeasonDisplay({
     produce,
     month: currentMonth,

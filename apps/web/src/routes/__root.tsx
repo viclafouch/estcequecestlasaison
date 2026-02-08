@@ -61,7 +61,7 @@ const RootError = () => {
         to="/"
         className="focus-ring mt-8 rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white hover:bg-gray-800"
       >
-        Retour à l&apos;accueil
+        Retour à l'accueil
       </Link>
     </div>
   )

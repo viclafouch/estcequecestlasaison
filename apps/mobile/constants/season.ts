@@ -12,7 +12,7 @@ export const SEASON_DOT_STYLES = {
   },
   partial: {
     className: 'rounded-full border-2 border-warning-400',
-    label: 'D\u00e9but/fin de saison'
+    label: 'Début/fin de saison'
   },
   off: {
     className: 'rounded-full bg-gray-300',

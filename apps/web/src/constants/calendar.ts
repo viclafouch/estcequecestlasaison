@@ -12,11 +12,10 @@ type CalendarRouteConfig = {
 }
 
 export const CALENDAR_ALL_CONFIG = {
-  title: 'Calendrier des fruits et l\u00e9gumes de saison en France',
-  description:
-    'Tous les fruits et l\u00e9gumes de saison en France, mois par mois.',
+  title: 'Calendrier des fruits et légumes de saison en France',
+  description: 'Tous les fruits et légumes de saison en France, mois par mois.',
   keywords:
-    'calendrier fruits l\u00e9gumes saison, calendrier saisonnalit\u00e9, fruits de saison, l\u00e9gumes de saison, calendrier annuel',
+    'calendrier fruits légumes saison, calendrier saisonnalité, fruits de saison, légumes de saison, calendrier annuel',
   pathname: '/calendrier',
   breadcrumbs: [
     { name: 'Accueil', pathname: '/' },

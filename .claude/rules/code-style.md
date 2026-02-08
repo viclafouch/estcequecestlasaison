@@ -42,6 +42,10 @@ Avoid over-simplification that could:
 - Magic numbers replaced with named constants
 - No comments - code should speak for itself
 
+### Unicode
+- Write UTF-8 directly, never `\uXXXX` for printable characters: `"Début"` not `'D\u00e9but'`
+- Invisible characters (`\u00a0`, `\u200b`): use named constants
+
 ### JSX
 - No empty lines between sibling JSX elements (blank lines are forbidden inside JSX blocks)
 

@@ -33,7 +33,7 @@
     "generate-og": "npx tsx scripts/generate-og-images.ts"
   },
   "devDependencies": {
-    "@viclafouch/eslint-config-viclafouch": "4.22.1-beta.11",
+    "@viclafouch/eslint-config-viclafouch": "4.22.1-beta.14",
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
     "prettier": "^3.8.1",

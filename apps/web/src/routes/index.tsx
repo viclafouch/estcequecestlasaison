@@ -69,7 +69,7 @@ const Home = () => {
   const nextMonthName = getMonthName(nextMonth)
   const categoryLabel = CATEGORY_SUBTITLE_LABELS[activeCategory]
   const hasMonthVowelStart = /^[aeiouàâéèêëïîôùûü]/i.test(currentMonthName)
-  const seasonTitle = `En pleine saison d${hasMonthVowelStart ? '\u2019' : 'e '}${currentMonthName}`
+  const seasonTitle = `En pleine saison d${hasMonthVowelStart ? "'" : 'e '}${currentMonthName}`
 
   const handleOpenDrawer = () => {
     setIsDrawerOpen(true)
@@ -189,9 +189,9 @@ export const Route = createFileRoute('/')({
     const headData = seo({
       title: 'Fruits et légumes de saison en France',
       description:
-        'Découvrez quels fruits et légumes sont de saison en France. Calendrier interactif mois par mois pour manger local et de saison toute l\u2019année.',
+        "Découvrez quels fruits et légumes sont de saison en France. Calendrier interactif mois par mois pour manger local et de saison toute l'année.",
       keywords:
-        'fruits de saison, légumes de saison, est-ce que c\u2019est la saison, calendrier fruits et légumes, produits de saison france, manger de saison, fruits et légumes du mois, saison fruits france, saison légumes france, alimentation locale',
+        "fruits de saison, légumes de saison, est-ce que c'est la saison, calendrier fruits et légumes, produits de saison france, manger de saison, fruits et légumes du mois, saison fruits france, saison légumes france, alimentation locale",
       pathname: '/'
     })
 

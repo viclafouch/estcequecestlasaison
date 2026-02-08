@@ -151,7 +151,7 @@ const SearchCommandContent = ({ onClose }: SearchCommandContentProps) => {
                 <div className="flex flex-col items-center gap-2 px-4 py-10">
                   <Search className="size-8 text-gray-300" aria-hidden="true" />
                   <p className="text-sm text-gray-400">
-                    Tapez le nom d&apos;un fruit ou légume
+                    Tapez le nom d'un fruit ou légume
                   </p>
                 </div>
               )}

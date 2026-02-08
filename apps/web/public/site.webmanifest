@@ -1,7 +1,7 @@
 {
   "name": "Estcequecestlasaison",
   "short_name": "Saison",
-  "description": "D\u00e9couvrez quels fruits et l\u00e9gumes sont de saison en France, mois par mois.",
+  "description": "Découvrez quels fruits et légumes sont de saison en France, mois par mois.",
   "start_url": "/",
   "lang": "fr",
   "icons": [

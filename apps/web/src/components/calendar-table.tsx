@@ -105,23 +105,21 @@ export const CalendarTable = ({
       />
       <span className="sr-only" aria-live="polite" aria-atomic="true">
         {hasNoResults
-          ? 'Aucun produit trouv\u00e9'
-          : `${rows.length} produits affich\u00e9s sur ${produceList.length}`}
+          ? 'Aucun produit trouvé'
+          : `${rows.length} produits affichés sur ${produceList.length}`}
       </span>
       <div className="overflow-hidden rounded-xl border border-gray-200 bg-white print:overflow-visible print:rounded-none print:border-none">
         <div
           className="overflow-auto max-h-[calc(100vh-13rem)] md:max-h-[calc(100vh-11rem)] print:overflow-visible print:max-h-none"
           tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
           role="region"
-          aria-label="Tableau du calendrier, d&eacute;filable horizontalement"
+          aria-label="Tableau du calendrier, défilable horizontalement"
         >
           <table
             aria-describedby="calendar-legend"
             className="w-full min-w-175 border-collapse text-sm"
           >
-            <caption className="sr-only">
-              Calendrier de saisonnalit&eacute;
-            </caption>
+            <caption className="sr-only">Calendrier de saisonnalité</caption>
             <thead className="sticky top-0 z-30 print:static">
               {table.getHeaderGroups().map((headerGroup) => {
                 return (
@@ -262,7 +260,7 @@ export const CalendarTable = ({
                     colSpan={TOTAL_COLUMNS}
                     className="py-12 text-center text-sm text-gray-600"
                   >
-                    Aucun produit trouv&eacute;
+                    Aucun produit trouvé
                   </td>
                 </tr>
               ) : null}
@@ -274,7 +272,7 @@ export const CalendarTable = ({
           {isFiltered ? (
             <span
               className="shrink-0 text-xs tabular-nums text-gray-600 print:hidden"
-              aria-label={`${rows.length} produits affich\u00e9s sur ${produceList.length}`}
+              aria-label={`${rows.length} produits affichés sur ${produceList.length}`}
             >
               {rows.length}&nbsp;/&nbsp;{produceList.length}
             </span>

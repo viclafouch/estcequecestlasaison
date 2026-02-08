@@ -32,8 +32,8 @@ const NAV_LINKS = [
 ] as const satisfies readonly FooterNavLink[]
 
 const LEGAL_LINKS = [
-  { to: '/mentions-legales', label: 'Mentions l\u00e9gales' },
-  { to: '/confidentialite', label: 'Confidentialit\u00e9' },
+  { to: '/mentions-legales', label: 'Mentions légales' },
+  { to: '/confidentialite', label: 'Confidentialité' },
   { to: '/cgu', label: 'CGU' }
 ] as const satisfies readonly FooterNavLink[]
 
@@ -131,7 +131,7 @@ export const Footer = () => {
             &copy; {getCurrentYear()} estcequecestlasaison.fr
           </p>
           <nav
-            aria-label="Informations l&eacute;gales"
+            aria-label="Informations légales"
             className="flex items-center gap-2 text-sm text-gray-500"
           >
             {LEGAL_LINKS.map((link, index) => {

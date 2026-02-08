@@ -12,27 +12,27 @@ const MentionsLegalesPage = () => {
       >
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
-            Mentions l&eacute;gales
+            Mentions légales
           </h1>
           <p className="text-base text-gray-600">
-            Informations l&eacute;gales relatives au site
-            estcequecestlasaison.fr, conform&eacute;ment &agrave; la loi LCEN.
+            Informations légales relatives au site estcequecestlasaison.fr,
+            conformément à la loi LCEN.
           </p>
         </div>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
-          &Eacute;diteur du site
+          Éditeur du site
         </h2>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-gray-700">
           <li>
-            Nom : <strong>Victor de la Fouchardi&egrave;re</strong>
+            Nom : <strong>Victor de la Fouchardière</strong>
           </li>
           <li>Statut : Micro-entreprise</li>
           <li>
             SIRET : <strong>831 370 515 00023</strong>
           </li>
           <li>
-            Num&eacute;ro de TVA intracommunautaire : Non applicable &mdash;
-            franchise en base de TVA
+            Numéro de TVA intracommunautaire : Non applicable — franchise en
+            base de TVA
           </li>
           <li>
             Adresse : <strong>54 rue de Lancry, 75010 Paris</strong>
@@ -51,12 +51,10 @@ const MentionsLegalesPage = () => {
           Directeur de la publication
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          <strong>Victor de la Fouchardi&egrave;re</strong>, en qualit&eacute;
-          d&rsquo;&eacute;diteur du site.
+          <strong>Victor de la Fouchardière</strong>, en qualité d'éditeur du
+          site.
         </p>
-        <h2 className="mt-8 text-xl font-semibold text-gray-900">
-          H&eacute;bergeur
-        </h2>
+        <h2 className="mt-8 text-xl font-semibold text-gray-900">Hébergeur</h2>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-gray-700">
           <li>Raison sociale : Railway Corporation</li>
           <li>Adresse : San Francisco, CA, USA</li>
@@ -73,13 +71,13 @@ const MentionsLegalesPage = () => {
           </li>
         </ul>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
-          Propri&eacute;t&eacute; intellectuelle
+          Propriété intellectuelle
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          L&rsquo;ensemble du contenu de ce site (textes, donn&eacute;es,
-          graphismes, mise en page) est prot&eacute;g&eacute; par le droit
-          d&rsquo;auteur. Toute reproduction ou repr&eacute;sentation, totale ou
-          partielle, sans autorisation pr&eacute;alable est interdite.
+          L'ensemble du contenu de ce site (textes, données, graphismes, mise en
+          page) est protégé par le droit d'auteur. Toute reproduction ou
+          représentation, totale ou partielle, sans autorisation préalable est
+          interdite.
         </p>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
           Le code source du site est disponible en open source sur{' '}
@@ -94,11 +92,11 @@ const MentionsLegalesPage = () => {
           .
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
-          Cr&eacute;dits et sources des donn&eacute;es
+          Crédits et sources des données
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Les donn&eacute;es de saisonnalit&eacute; pr&eacute;sent&eacute;es sur
-          ce site proviennent de sources officielles et reconnues&nbsp;:
+          Les données de saisonnalité présentées sur ce site proviennent de
+          sources officielles et reconnues&nbsp;:
         </p>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-gray-700">
           <li>
@@ -110,8 +108,7 @@ const MentionsLegalesPage = () => {
             >
               APRIFEL
             </a>{' '}
-            &mdash; Agence pour la recherche et l&rsquo;information en fruits et
-            l&eacute;gumes
+            — Agence pour la recherche et l'information en fruits et légumes
           </li>
           <li>
             <a
@@ -122,7 +119,7 @@ const MentionsLegalesPage = () => {
             >
               Interfel
             </a>{' '}
-            &mdash; Interprofession des fruits et l&eacute;gumes frais
+            — Interprofession des fruits et légumes frais
           </li>
           <li>
             <a
@@ -131,7 +128,7 @@ const MentionsLegalesPage = () => {
               rel="noopener noreferrer"
               className="text-link"
             >
-              Minist&egrave;re de l&rsquo;Agriculture
+              Ministère de l'Agriculture
             </a>
           </li>
           <li>
@@ -143,7 +140,7 @@ const MentionsLegalesPage = () => {
             >
               Anses / Table Ciqual
             </a>{' '}
-            &mdash; Donn&eacute;es nutritionnelles
+            — Données nutritionnelles
           </li>
         </ul>
       </main>
@@ -154,10 +151,10 @@ const MentionsLegalesPage = () => {
 export const Route = createFileRoute('/mentions-legales')({
   head: () => {
     return seo({
-      title: 'Mentions l\u00e9gales',
+      title: 'Mentions légales',
       description:
-        'Mentions l\u00e9gales du site estcequecestlasaison.fr\u00a0: \u00e9diteur, h\u00e9bergeur, propri\u00e9t\u00e9 intellectuelle et cr\u00e9dits.',
-      keywords: 'mentions l\u00e9gales, \u00e9diteur, h\u00e9bergeur',
+        'Mentions légales du site estcequecestlasaison.fr\u00a0: éditeur, hébergeur, propriété intellectuelle et crédits.',
+      keywords: 'mentions légales, éditeur, hébergeur',
       pathname: '/mentions-legales'
     })
   },
