@@ -31,6 +31,12 @@ const NAV_LINKS = [
   { to: '/faq', label: 'FAQ' }
 ] as const satisfies readonly FooterNavLink[]
 
+const LEGAL_LINKS = [
+  { to: '/mentions-legales', label: 'Mentions l\u00e9gales' },
+  { to: '/confidentialite', label: 'Confidentialit\u00e9' },
+  { to: '/cgu', label: 'CGU' }
+] as const satisfies readonly FooterNavLink[]
+
 type ProduceLinkListParams = {
   items: readonly ProduceLink[]
   label: string
@@ -124,9 +130,24 @@ export const Footer = () => {
           <p className="text-sm text-gray-600">
             &copy; {getCurrentYear()} estcequecestlasaison.fr
           </p>
-          <p className="text-sm text-gray-600">
-            Bientôt disponible sur iOS et Android
-          </p>
+          <nav
+            aria-label="Informations l&eacute;gales"
+            className="flex items-center gap-2 text-sm text-gray-500"
+          >
+            {LEGAL_LINKS.map((link, index) => {
+              return (
+                <span key={link.to} className="flex items-center gap-2">
+                  {index > 0 ? <span aria-hidden="true">&middot;</span> : null}
+                  <Link
+                    to={link.to}
+                    className="focus-ring rounded-sm py-1 hover:text-gray-700"
+                  >
+                    {link.label}
+                  </Link>
+                </span>
+              )
+            })}
+          </nav>
         </div>
       </div>
     </footer>

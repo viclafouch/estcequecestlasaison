@@ -5,27 +5,6 @@ import { FAQ_ITEMS } from '@/constants/faq'
 import { seo } from '@/lib/seo'
 import { createFileRoute } from '@tanstack/react-router'
 
-const EXTERNAL_LINK_CLASS =
-  'font-medium text-gray-900 underline underline-offset-2 hover:text-primary-600'
-
-type ExternalLinkParams = {
-  href: string
-  children: React.ReactNode
-}
-
-const ExternalLink = ({ href, children }: ExternalLinkParams) => {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={EXTERNAL_LINK_CLASS}
-    >
-      {children}
-    </a>
-  )
-}
-
 const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
   presentation: (
     <>
@@ -41,19 +20,41 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
     <>
       Les données sont issues de <strong>sources officielles</strong> et
       reconnues&nbsp;: l&apos;
-      <ExternalLink href="https://www.aprifel.com">APRIFEL</ExternalLink>{' '}
+      <a
+        href="https://www.aprifel.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
+        APRIFEL
+      </a>{' '}
       (Agence pour la recherche et l&apos;information en fruits et légumes),{' '}
-      <ExternalLink href="https://www.lesfruitsetlegumesfrais.com">
+      <a
+        href="https://www.lesfruitsetlegumesfrais.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
         Interfel
-      </ExternalLink>{' '}
+      </a>{' '}
       (Interprofession des fruits et légumes frais), le{' '}
-      <ExternalLink href="https://agriculture.gouv.fr">
+      <a
+        href="https://agriculture.gouv.fr"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
         Ministère de l&apos;Agriculture
-      </ExternalLink>{' '}
+      </a>{' '}
       et l&apos;
-      <ExternalLink href="https://ciqual.anses.fr">
+      <a
+        href="https://ciqual.anses.fr"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
         Anses via la table Ciqual
-      </ExternalLink>{' '}
+      </a>{' '}
       pour les données nutritionnelles.
     </>
   ),
@@ -63,13 +64,23 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
       <strong>sources officielles françaises</strong> pour garantir leur
       exactitude. Si vous constatez une erreur, n&apos;hésitez pas à me le
       signaler via{' '}
-      <ExternalLink href="https://www.linkedin.com/in/victordelafouchardiere">
+      <a
+        href="https://www.linkedin.com/in/victordelafouchardiere"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
         LinkedIn
-      </ExternalLink>{' '}
+      </a>{' '}
       ou{' '}
-      <ExternalLink href="https://github.com/viclafouch/estcequecestlasaison">
+      <a
+        href="https://github.com/viclafouch/estcequecestlasaison"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
         GitHub
-      </ExternalLink>
+      </a>
       .
     </>
   ),
@@ -98,9 +109,14 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
       <strong>estcequecestlasaison.fr</strong> est un projet créé par{' '}
       <strong>Victor de la Fouchardière</strong>, développeur web passionné par
       l&apos;alimentation de saison. Retrouvez-moi sur{' '}
-      <ExternalLink href="https://www.linkedin.com/in/victordelafouchardiere">
+      <a
+        href="https://www.linkedin.com/in/victordelafouchardiere"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
         LinkedIn
-      </ExternalLink>
+      </a>
       .
     </>
   ),
@@ -108,18 +124,28 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
     <>
       Oui, le <strong>code source</strong> du site est entièrement disponible
       sur{' '}
-      <ExternalLink href="https://github.com/viclafouch/estcequecestlasaison">
+      <a
+        href="https://github.com/viclafouch/estcequecestlasaison"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
         GitHub
-      </ExternalLink>
+      </a>
       . Vous pouvez consulter, utiliser et contribuer au projet librement.
     </>
   ),
   contribuer: (
     <>
       Vous pouvez contribuer au projet via{' '}
-      <ExternalLink href="https://github.com/viclafouch/estcequecestlasaison">
+      <a
+        href="https://github.com/viclafouch/estcequecestlasaison"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
         GitHub
-      </ExternalLink>{' '}
+      </a>{' '}
       en ouvrant des <strong>issues</strong> pour signaler des erreurs ou en
       proposant des <strong>améliorations</strong> via des{' '}
       <strong>pull requests</strong>. Toute contribution est la bienvenue&nbsp;!
@@ -128,13 +154,23 @@ const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
   contact: (
     <>
       Vous pouvez me contacter via{' '}
-      <ExternalLink href="https://www.linkedin.com/in/victordelafouchardiere">
+      <a
+        href="https://www.linkedin.com/in/victordelafouchardiere"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
         LinkedIn
-      </ExternalLink>
+      </a>
       . Pour les questions techniques ou les suggestions, préférez{' '}
-      <ExternalLink href="https://github.com/viclafouch/estcequecestlasaison">
+      <a
+        href="https://github.com/viclafouch/estcequecestlasaison"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link"
+      >
         GitHub
-      </ExternalLink>
+      </a>
       .
     </>
   ),

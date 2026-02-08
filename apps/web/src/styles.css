@@ -64,6 +64,10 @@ input[type='search']::-webkit-search-cancel-button {
   appearance: none;
 }
 
+.text-link {
+  @apply font-medium text-gray-900 underline underline-offset-2 hover:text-primary-600;
+}
+
 .focus-ring {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2;
 }

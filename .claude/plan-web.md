@@ -204,9 +204,9 @@ Coeur du projet, donnees et helpers partages.
 | `/calendrier` | Calendrier annuel des 80 produits (tableau 12 mois) | Fait |
 | `/faq` | Questions frequentes (accordion, sources officielles) | Fait |
 | `/sitemap.xml` | Sitemap dynamique (toutes les URLs) | Fait |
-| `/mentions-legales` | Mentions legales (obligation legale francaise) | A faire (Milestone 6) |
-| `/confidentialite` | Politique de confidentialite RGPD (pre-requis AdSense + App Store) | A faire (Milestone 6) |
-| `/cgu` | Conditions generales d'utilisation (pre-requis App Store) | A faire (Milestone 6) |
+| `/mentions-legales` | Mentions legales (obligation legale francaise) | Fait |
+| `/confidentialite` | Politique de confidentialite RGPD (pre-requis AdSense + App Store) | Fait |
+| `/cgu` | Conditions generales d'utilisation (pre-requis App Store) | Fait |
 
 ### Data Flow
 
@@ -461,11 +461,11 @@ Setup monorepo, donnees (80 produits JSON + types + helpers Zod), page d'accueil
 
 **Pages legales (pre-requis AdSense + App Store)**
 
-- [ ] Page `/mentions-legales` — obligation legale francaise (editeur, hebergeur)
-- [ ] Page `/confidentialite` — politique de confidentialite RGPD (donnees collectees, cookies, droits)
-- [ ] Page `/cgu` — conditions generales d'utilisation (pre-requis App Store)
+- [x] Page `/mentions-legales` — obligation legale francaise (editeur, hebergeur)
+- [x] Page `/confidentialite` — politique de confidentialite RGPD (donnees collectees, cookies, droits)
+- [x] Page `/cgu` — conditions generales d'utilisation (pre-requis App Store)
 - [ ] Email support fonctionnel : `contact@estcequecestlasaison.fr`
-- [ ] Liens vers pages legales dans le footer
+- [x] Liens vers pages legales dans le footer
 
 **AdSense**
 

@@ -44,6 +44,21 @@ export const Route = createFileRoute('/sitemap.xml')({
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>${clientEnv.VITE_SITE_URL}/mentions-legales</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>${clientEnv.VITE_SITE_URL}/confidentialite</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>${clientEnv.VITE_SITE_URL}/cgu</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
 ${produceUrls}
 </urlset>`
 

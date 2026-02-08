@@ -672,29 +672,59 @@ L'app de consultation complete, miroir du site web.
 
 **Pages legales (sur estcequecestlasaison.fr — voir plan-web.md Milestone 6)**
 
-- [ ] Page mentions legales : `/mentions-legales` — hebergee et accessible
-- [ ] Page privacy policy : `/confidentialite` — hebergee et accessible
-- [ ] Page CGU : `/cgu` — hebergee et accessible
+- [x] Page mentions legales : `/mentions-legales` — hebergee et accessible
+- [x] Page privacy policy : `/confidentialite` — hebergee et accessible
+- [x] Page CGU : `/cgu` — hebergee et accessible
+- [x] Remplir les `[A COMPLETER]` dans les pages legales (nom, SIRET, adresse, TVA)
 - [ ] Email support fonctionnel : `contact@estcequecestlasaison.fr`
+
+**Pre-soumission iOS (audit fevrier 2026)**
+
+- [ ] `npx expo prebuild --platform ios --clean` (corrige bundle ID `com.anonymous.mobile` → `fr.estcequecestlasaison.app` + CFBundleDisplayName "mobile" → nom reel de l'app)
+- [ ] Activer privacy manifest aggregation : ajouter `"apple.privacyManifestAggregationEnabled": "true"` dans `ios/Podfile.properties.json`
+- [ ] Deployer `apple-app-site-association` sur le serveur web (deep linking)
+- [ ] Fichier servi avec `Content-Type: application/json`
+- [ ] Tester deep link depuis Safari sur device (URL web → ouvre l'app)
+
+> **Resultat audit iOS (fevrier 2026)** : score GOOD. 0 permission demandee, privacy manifest OK, 0 secret hardcode, 0 SDK tracking, 0 appel reseau, ATS stricte. App Privacy = "Data Not Collected" pour toutes les categories. Seul point bloquant : le prebuild clean pour corriger le bundle ID Xcode.
 
 **App Store Connect — App Privacy**
 
-- [ ] Data collection declaration : "No data collected" ou Sentry crash reports uniquement
+- [ ] Declarer "Data Not Collected" pour TOUTES les categories (aucune donnee collectee, verifie par audit)
 - [ ] Age rating : 4+ (aucun contenu sensible)
-- [ ] Categorie : Food & Drink
+- [ ] Categorie primaire : Food & Drink
+- [ ] Privacy Policy URL : `https://estcequecestlasaison.fr/confidentialite`
+- [ ] Support URL : `https://estcequecestlasaison.fr/faq`
+
+**App Review Notes (a copier dans App Store Connect)**
+
+```
+This is a 100% offline app with no user accounts, no analytics, and no ads.
+All data is bundled with the app. The app requests a review prompt after
+viewing 5 products (using expo-store-review, Apple's StoreKit API).
+
+Deep linking: tapping https://estcequecestlasaison.fr/* opens the app.
+Share button uses native iOS Share Sheet.
+
+Test credentials: Not applicable (no login).
+```
 
 **Builds et tests**
 
-- [ ] Build de production iOS (local)
+- [ ] Build de production iOS (local via Xcode Archive)
 - [ ] Build de production Android (local)
+- [ ] Valider l'archive dans Xcode Organizer ("Validate App") avant upload
 - [ ] TestFlight : test sur vrai device iOS si possible (simulateur insuffisant)
 - [ ] Test Android sur Pixel 9 physique
 - [ ] Memory leaks check (Xcode Instruments / Android Profiler)
+- [ ] Verifier app offline (mode avion, naviguer partout, aucun crash)
+- [ ] Verifier usage memoire < 100 MB
 
 **ASO — Metadata**
 
 - [ ] App icon 1024x1024 sans transparence
 - [ ] Screenshots orientes valeur (voir section ASO & Growth)
+- [ ] Screenshots obligatoires : iPhone 6.7" (1290x2796), 6.5" (1284x2778), 5.5" (1242x2208)
 - [ ] Titre : "Saison: Fruits & Legumes"
 - [ ] Subtitle iOS : "Calendrier des fruits et legumes de saison en France"
 - [ ] Short description Android : idem subtitle
