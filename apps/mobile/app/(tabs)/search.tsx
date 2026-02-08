@@ -10,7 +10,7 @@ import {
   searchProduce
 } from '@estcequecestlasaison/shared/services'
 import Ionicons from '@expo/vector-icons/Ionicons'
-import { FlashList } from '@shopify/flash-list'
+import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 import { useDebouncedValue } from '@tanstack/react-pacer'
 
 const DEBOUNCE_WAIT = 150
@@ -19,10 +19,6 @@ const ItemSeparator = () => {
   return (
     <View className="h-px bg-gray-100 mx-4" importantForAccessibility="no" />
   )
-}
-
-const renderItem = ({ item }: { item: Produce }) => {
-  return <SearchResultRow produce={item} />
 }
 
 const keyExtractor = (item: Produce) => {
@@ -44,6 +40,14 @@ const SearchScreen = () => {
   )
 
   const month = getCurrentMonth()
+
+  const renderItem = React.useCallback(
+    ({ item }: ListRenderItemInfo<Produce>) => {
+      return <SearchResultRow produce={item} month={month} />
+    },
+    [month]
+  )
+
   const inSeasonProduce = getGroupedProduce({
     searchQuery: '',
     category: 'all',

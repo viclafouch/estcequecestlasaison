@@ -1,6 +1,7 @@
 import React from 'react'
 import { Pressable, Share, Text, View } from 'react-native'
 import { Image } from 'expo-image'
+import { cn } from 'heroui-native'
 import {
   getProduceImage,
   type ProduceImageSlug
@@ -141,7 +142,7 @@ export const ProductHero = ({ produce, currentMonth }: ProductHeroProps) => {
       </Text>
       <View className="flex-row items-center gap-2.5">
         <View
-          className={`w-3 h-3 ${dotStyle.className}`}
+          className={cn('w-3 h-3', dotStyle.className)}
           importantForAccessibility="no"
         />
         <Text className="text-lg font-bold text-black">
@@ -150,7 +151,10 @@ export const ProductHero = ({ produce, currentMonth }: ProductHeroProps) => {
       </View>
       {seasonDisplay.detail ? (
         <Text
-          className={`text-sm font-medium -mt-2 ${DETAIL_VARIANT_CLASSES[seasonDisplay.variant]}`}
+          className={cn(
+            'text-sm font-medium -mt-2',
+            DETAIL_VARIANT_CLASSES[seasonDisplay.variant]
+          )}
         >
           {seasonDisplay.detail}
         </Text>

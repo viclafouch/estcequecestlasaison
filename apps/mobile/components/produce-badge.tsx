@@ -14,17 +14,19 @@ const VARIANT_CLASSES = {
   neutral: { container: 'bg-gray-200', label: 'text-gray-700' }
 } as const satisfies Record<BadgeVariant, { container: string; label: string }>
 
-export const ProduceBadge = ({ label, variant }: ProduceBadgeProps) => {
-  const variantClasses = VARIANT_CLASSES[variant]
+export const ProduceBadge = React.memo(
+  ({ label, variant }: ProduceBadgeProps) => {
+    const variantClasses = VARIANT_CLASSES[variant]
 
-  return (
-    <View className={cn('px-2 py-0.5 rounded-xl', variantClasses.container)}>
-      <Text
-        className={cn('text-xs font-semibold', variantClasses.label)}
-        numberOfLines={1}
-      >
-        {label}
-      </Text>
-    </View>
-  )
-}
+    return (
+      <View className={cn('px-2 py-0.5 rounded-xl', variantClasses.container)}>
+        <Text
+          className={cn('text-xs font-semibold', variantClasses.label)}
+          numberOfLines={1}
+        >
+          {label}
+        </Text>
+      </View>
+    )
+  }
+)

@@ -4,10 +4,18 @@ import { cn } from 'heroui-native'
 import { CalendarRow } from '@/components/calendar-row'
 import { SEASON_DOT_STYLES } from '@/constants/season'
 import { colors } from '@/constants/theme'
-import type { ProduceType, SeasonStatus } from '@estcequecestlasaison/shared'
+import {
+  getCurrentMonth,
+  type ProduceType,
+  type SeasonStatus
+} from '@estcequecestlasaison/shared'
 import { getCalendarData } from '@estcequecestlasaison/shared/services'
 import Ionicons from '@expo/vector-icons/Ionicons'
-import { FlashList, type FlashListRef } from '@shopify/flash-list'
+import {
+  FlashList,
+  type FlashListRef,
+  type ListRenderItemInfo
+} from '@shopify/flash-list'
 import { useDebouncedValue } from '@tanstack/react-pacer'
 
 type CalendarProduce = ReturnType<typeof getCalendarData>['produceList'][number]
@@ -32,12 +40,6 @@ const CATEGORIES = [
 const ItemSeparator = () => {
   return (
     <View className="h-px bg-gray-100 mx-4" importantForAccessibility="no" />
-  )
-}
-
-const renderItem = ({ item }: { item: CalendarProduce }) => {
-  return (
-    <CalendarRow slug={item.slug} name={item.name} seasons={item.seasons} />
   )
 }
 
@@ -92,6 +94,7 @@ const SCROLL_TOP_THRESHOLD = 2
 const DISABLE_MAINTAIN_POSITION = { disabled: true } as const
 
 const CalendarScreen = () => {
+  const currentMonth = getCurrentMonth()
   const listRef = React.useRef<FlashListRef<CalendarProduce>>(null)
   const scrollOffsetRef = React.useRef(0)
   const [searchQuery, setSearchQuery] = React.useState('')
@@ -101,25 +104,53 @@ const CalendarScreen = () => {
   const [category, setCategory] = React.useState<CategoryFilter>('all')
   const [sortBy, setSortBy] = React.useState<SortMode>('alpha')
 
-  const { produceList } = getCalendarData({ type: category })
+  const renderItem = React.useCallback(
+    ({ item }: ListRenderItemInfo<CalendarProduce>) => {
+      return (
+        <CalendarRow
+          slug={item.slug}
+          name={item.name}
+          seasons={item.seasons}
+          currentMonth={currentMonth}
+        />
+      )
+    },
+    [currentMonth]
+  )
+
+  const { produceList } = React.useMemo(() => {
+    return getCalendarData({ type: category })
+  }, [category])
 
   const query = debouncedQuery.trim().toLowerCase()
   const hasQuery = query.length > 0
 
-  const filtered = hasQuery
-    ? produceList.filter((item) => {
-        return item.name.toLowerCase().includes(query)
-      })
-    : produceList
+  const filtered = React.useMemo(() => {
+    if (!hasQuery) {
+      return produceList
+    }
 
-  const sorted =
-    sortBy === 'months'
-      ? filtered.toSorted((left, right) => {
-          return (
-            Object.keys(right.seasons).length - Object.keys(left.seasons).length
-          )
-        })
-      : filtered
+    return produceList.filter((item) => {
+      return item.name.toLowerCase().includes(query)
+    })
+  }, [produceList, hasQuery, query])
+
+  const sorted = React.useMemo(() => {
+    if (sortBy !== 'months') {
+      return filtered
+    }
+
+    return filtered
+      .map((item) => {
+        return { item, seasonCount: Object.keys(item.seasons).length }
+      })
+      .toSorted((left, right) => {
+        return right.seasonCount - left.seasonCount
+      })
+      .map(({ item }) => {
+        return item
+      })
+  }, [filtered, sortBy])
 
   const hasNoResults = hasQuery && sorted.length === 0
   const hasSearchInput = searchQuery.length > 0
@@ -179,17 +210,17 @@ const CalendarScreen = () => {
       </View>
       <View className="flex-row items-center px-4 py-3 gap-2">
         <View className="flex-row gap-2 flex-1">
-          {CATEGORIES.map((cat) => {
-            const isActive = category === cat.value
+          {CATEGORIES.map((categoryOption) => {
+            const isActive = category === categoryOption.value
 
             const handlePress = () => {
-              setCategory(cat.value)
+              setCategory(categoryOption.value)
               scrollToTopIfNeeded()
             }
 
             return (
               <Pressable
-                key={cat.value}
+                key={categoryOption.value}
                 onPress={handlePress}
                 className={cn(
                   'px-3.5 py-1.5 rounded-2xl border',
@@ -199,7 +230,7 @@ const CalendarScreen = () => {
                 )}
                 accessibilityRole="button"
                 accessibilityState={{ selected: isActive }}
-                accessibilityLabel={cat.label}
+                accessibilityLabel={categoryOption.label}
               >
                 <Text
                   className={cn(
@@ -209,7 +240,7 @@ const CalendarScreen = () => {
                       : 'font-medium text-black'
                   )}
                 >
-                  {cat.label}
+                  {categoryOption.label}
                 </Text>
               </Pressable>
             )

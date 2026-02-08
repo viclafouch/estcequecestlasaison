@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { cn } from 'heroui-native'
 import { SEASON_DOT_STYLES } from '@/constants/season'
 import type { Month, Produce, SeasonStatus } from '@estcequecestlasaison/shared'
 import {
@@ -72,16 +73,21 @@ export const SeasonCalendar = ({
           return (
             <View
               key={month}
-              className={`items-center gap-1.5 rounded-2xl py-3 ${bgClass}`}
+              className={cn('items-center gap-1.5 rounded-2xl py-3', bgClass)}
               style={styles.calendarCell}
               accessibilityRole="text"
               accessibilityLabel={`${getShortMonthName(month)} - ${SEASON_STATUS_LABELS[seasonType]}`}
             >
-              <Text className={`text-xs font-semibold uppercase ${textClass}`}>
+              <Text
+                className={cn('text-xs font-semibold uppercase', textClass)}
+              >
                 {getShortMonthName(month)}
               </Text>
               <View
-                className={`w-2 h-2 ${SEASON_DOT_STYLES[seasonType].className}`}
+                className={cn(
+                  'w-2 h-2',
+                  SEASON_DOT_STYLES[seasonType].className
+                )}
                 importantForAccessibility="no"
               />
             </View>
@@ -93,7 +99,7 @@ export const SeasonCalendar = ({
           return (
             <View key={item.status} className="flex-row items-center gap-2">
               <View
-                className={`w-2.5 h-2.5 ${item.style.className}`}
+                className={cn('w-2.5 h-2.5', item.style.className)}
                 importantForAccessibility="no"
               />
               <Text className="text-xs text-gray-500">{item.style.label}</Text>

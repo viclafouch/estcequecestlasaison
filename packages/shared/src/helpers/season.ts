@@ -171,32 +171,47 @@ export type SortProduceBySeasonEndParams = {
   month: Month
 }
 
+type ProduceSortKey = {
+  produce: Produce
+  isAllYear: boolean
+  isNew: boolean
+  endDistance: number
+}
+
 export function sortProduceBySeasonEnd({
   produceList,
   month
 }: SortProduceBySeasonEndParams) {
   const previousMonth = getPreviousMonth(month)
 
-  return produceList.toSorted((produceA, produceB) => {
-    const isAllYearA = matchIsInSeasonAllYear(produceA)
-    const isAllYearB = matchIsInSeasonAllYear(produceB)
+  const keyed: ProduceSortKey[] = produceList.map((produce) => {
+    const isAllYear = matchIsInSeasonAllYear(produce)
+    const isNew = !matchIsInSeason(produce, previousMonth)
+    const endMonth = getSeasonEndMonth({ produce, fromMonth: month })
 
-    if (isAllYearA !== isAllYearB) {
-      return isAllYearB ? -1 : 1
+    return {
+      produce,
+      isAllYear,
+      isNew,
+      endDistance: getMonthDistance(month, endMonth)
     }
-
-    const isNewA = !matchIsInSeason(produceA, previousMonth)
-    const isNewB = !matchIsInSeason(produceB, previousMonth)
-
-    if (isNewA !== isNewB) {
-      return isNewA ? -1 : 1
-    }
-
-    const endA = getSeasonEndMonth({ produce: produceA, fromMonth: month })
-    const endB = getSeasonEndMonth({ produce: produceB, fromMonth: month })
-
-    return getMonthDistance(month, endA) - getMonthDistance(month, endB)
   })
+
+  return keyed
+    .toSorted((left, right) => {
+      if (left.isAllYear !== right.isAllYear) {
+        return right.isAllYear ? -1 : 1
+      }
+
+      if (left.isNew !== right.isNew) {
+        return left.isNew ? -1 : 1
+      }
+
+      return left.endDistance - right.endDistance
+    })
+    .map(({ produce }) => {
+      return produce
+    })
 }
 
 export function matchIsInSeasonAllYear(produce: Produce) {

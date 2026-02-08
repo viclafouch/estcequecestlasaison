@@ -32,10 +32,20 @@ export function getNextMonth(month: Month) {
   return (month === 12 ? 1 : month + 1) as Month
 }
 
+const MONTH_NAME_CACHE = new Map<Month, string>()
+const MONTH_NAME_FORMATTER = new Intl.DateTimeFormat('fr-FR', { month: 'long' })
+
 export function getMonthName(month: Month) {
-  return new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(
-    new Date(2024, month - 1, 1)
-  )
+  const cached = MONTH_NAME_CACHE.get(month)
+
+  if (cached) {
+    return cached
+  }
+
+  const name = MONTH_NAME_FORMATTER.format(new Date(2024, month - 1, 1))
+  MONTH_NAME_CACHE.set(month, name)
+
+  return name
 }
 
 export function getShortMonthName(month: Month) {

@@ -5,19 +5,18 @@ import { ProduceAvatar } from '@/components/produce-avatar'
 import { ProduceBadge } from '@/components/produce-badge'
 import type { ProduceImageSlug } from '@/constants/produce-images'
 import {
-  getCurrentMonth,
   getDefaultProduceBadge,
+  type Month,
   type Produce
 } from '@estcequecestlasaison/shared'
 
 type SearchResultRowProps = {
   produce: Produce
+  month: Month
 }
 
-const month = getCurrentMonth()
-
 export const SearchResultRow = React.memo(
-  ({ produce }: SearchResultRowProps) => {
+  ({ produce, month }: SearchResultRowProps) => {
     const badge = getDefaultProduceBadge({ produce, month })
 
     return (

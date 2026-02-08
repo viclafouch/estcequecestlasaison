@@ -19,11 +19,13 @@ const HomeScreen = () => {
     React.useState<Month>(getCurrentMonth())
   const [isBottomSheetOpen, setIsBottomSheetOpen] = React.useState(false)
 
-  const { inSeason, comingNextMonth, offSeason } = getGroupedProduce({
-    searchQuery: '',
-    category: activeCategory,
-    month: selectedMonth
-  })
+  const { inSeason, comingNextMonth, offSeason } = React.useMemo(() => {
+    return getGroupedProduce({
+      searchQuery: '',
+      category: activeCategory,
+      month: selectedMonth
+    })
+  }, [activeCategory, selectedMonth])
 
   const monthName = getMonthName(selectedMonth)
   const nextMonthName = getMonthName(getNextMonth(selectedMonth))

@@ -7,7 +7,6 @@ import type { ProduceImageSlug } from '@/constants/produce-images'
 import { SEASON_DOT_STYLES } from '@/constants/season'
 import {
   ALL_MONTHS,
-  getCurrentMonth,
   type Month,
   type Seasons,
   type SeasonStatus
@@ -17,16 +16,15 @@ type CalendarRowProps = {
   slug: string
   name: string
   seasons: Seasons
+  currentMonth: Month
 }
-
-const currentMonth = getCurrentMonth()
 
 function getSeasonStatus(seasons: Seasons, month: Month): SeasonStatus {
   return seasons[month] ?? 'off'
 }
 
 export const CalendarRow = React.memo(
-  ({ slug, name, seasons }: CalendarRowProps) => {
+  ({ slug, name, seasons, currentMonth }: CalendarRowProps) => {
     return (
       <Link
         href={`/product/${slug}`}

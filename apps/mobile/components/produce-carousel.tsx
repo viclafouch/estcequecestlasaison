@@ -6,7 +6,7 @@ import type {
   Produce,
   ProduceSection
 } from '@estcequecestlasaison/shared'
-import { FlashList } from '@shopify/flash-list'
+import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 
 type ProduceCarouselProps = {
   title: string
@@ -37,12 +37,15 @@ export const ProduceCarousel = ({
   month,
   section
 }: ProduceCarouselProps) => {
+  const renderItem = React.useCallback(
+    ({ item }: ListRenderItemInfo<Produce>) => {
+      return <ProduceCard produce={item} month={month} section={section} />
+    },
+    [month, section]
+  )
+
   if (produceList.length === 0) {
     return null
-  }
-
-  const renderItem = ({ item }: { item: Produce }) => {
-    return <ProduceCard produce={item} month={month} section={section} />
   }
 
   return (
