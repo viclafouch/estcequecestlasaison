@@ -1,9 +1,10 @@
 import React from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { Link } from 'expo-router'
+import { useThemeColor } from 'heroui-native'
 import { ProduceAvatar } from '@/components/produce-avatar'
 import type { ProduceImageSlug } from '@/constants/produce-images'
-import { colors, squircle } from '@/constants/theme'
+import { squircle } from '@/constants/styles'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
 type SeasonAlternativesProps = {
@@ -13,6 +14,8 @@ type SeasonAlternativesProps = {
 export const SeasonAlternatives = ({
   alternatives
 }: SeasonAlternativesProps) => {
+  const mutedColor = useThemeColor('muted')
+
   return (
     <View
       className="rounded-2xl border border-primary-200 bg-primary-50 p-3"
@@ -53,7 +56,7 @@ export const SeasonAlternatives = ({
                 <Ionicons
                   name="chevron-forward"
                   size={14}
-                  color={colors.muted}
+                  color={String(mutedColor)}
                 />
               </Pressable>
             </Link>

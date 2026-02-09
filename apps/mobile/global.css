@@ -21,4 +21,51 @@
 
   --color-active-100: #dbeafe;
   --color-active-700: #1d4ed8;
+
+  --color-badge-positive: #10b981;
+  --color-badge-warning: #f59e0b;
+  --color-badge-neutral: #9ca3af;
+
+  --color-badge-text-positive: #047857;
+  --color-badge-text-warning: #b45309;
+  --color-badge-text-neutral: #6b7280;
+
+  --color-season-positive: #6ee7b7;
+  --color-season-warning: #fcd34d;
+}
+
+/* Uniwind requires all variants to declare the same variables (light AND dark) */
+@layer theme {
+  @variant light {
+    --gradient-dark: color-mix(in oklab, black 65%, transparent);
+    --gradient-hero: color-mix(in oklab, black 70%, transparent);
+    --gradient-carousel: color-mix(in oklab, black 55%, transparent);
+    --text-on-image: color-mix(in oklab, white 50%, transparent);
+    --text-on-image-strong: color-mix(in oklab, white 70%, transparent);
+    --overlay-button: color-mix(in oklab, black 25%, transparent);
+    --pill-bg: color-mix(in oklab, white 85%, transparent);
+    --pill-border: color-mix(in oklab, black 8%, transparent);
+  }
+
+  @variant dark {
+    --gradient-dark: color-mix(in oklab, black 65%, transparent);
+    --gradient-hero: color-mix(in oklab, black 70%, transparent);
+    --gradient-carousel: color-mix(in oklab, black 55%, transparent);
+    --text-on-image: color-mix(in oklab, white 50%, transparent);
+    --text-on-image-strong: color-mix(in oklab, white 70%, transparent);
+    --overlay-button: color-mix(in oklab, black 25%, transparent);
+    --pill-bg: color-mix(in oklab, white 85%, transparent);
+    --pill-border: color-mix(in oklab, black 8%, transparent);
+  }
+}
+
+@theme inline static {
+  --color-gradient-dark: var(--gradient-dark);
+  --color-gradient-hero: var(--gradient-hero);
+  --color-gradient-carousel: var(--gradient-carousel);
+  --color-text-on-image: var(--text-on-image);
+  --color-text-on-image-strong: var(--text-on-image-strong);
+  --color-overlay-button: var(--overlay-button);
+  --color-pill-bg: var(--pill-bg);
+  --color-pill-border: var(--pill-border);
 }

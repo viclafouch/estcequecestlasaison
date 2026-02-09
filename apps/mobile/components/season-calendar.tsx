@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { cn } from 'heroui-native'
 import { SEASON_DOT_STYLES } from '@/constants/season'
-import { squircle } from '@/constants/theme'
+import { squircle } from '@/constants/styles'
 import type { Month, Produce, SeasonStatus } from '@estcequecestlasaison/shared'
 import {
   ALL_MONTHS,

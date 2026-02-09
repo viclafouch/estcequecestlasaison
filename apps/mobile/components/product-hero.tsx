@@ -1,12 +1,13 @@
 import { Pressable, Share, StyleSheet, Text, View } from 'react-native'
 import { Image } from 'expo-image'
 import { LinearGradient } from 'expo-linear-gradient'
-import { BADGE_VARIANT_COLORS } from '@/components/season-badge'
+import { cn } from 'heroui-native'
+import { useCSSVariable } from 'uniwind'
+import { BADGE_DOT_CLASSES } from '@/components/season-badge'
 import {
   getProduceImage,
   type ProduceImageSlug
 } from '@/constants/produce-images'
-import { colors } from '@/constants/theme'
 import {
   type BadgeVariant,
   getDefaultProduceBadge,
@@ -77,10 +78,10 @@ const getSeasonDisplay = ({
   }
 }
 
-const SEASON_DETAIL_COLORS = {
-  positive: colors.seasonDetailPositive,
-  warning: colors.seasonDetailWarning,
-  neutral: colors.seasonDetailNeutral
+const SEASON_DETAIL_CLASSES = {
+  positive: 'text-season-positive',
+  warning: 'text-season-warning',
+  neutral: 'text-text-on-image'
 } as const satisfies Record<BadgeVariant, string>
 
 type ProductHeroProps = {
@@ -97,9 +98,8 @@ export const ProductHero = ({ produce, currentMonth }: ProductHeroProps) => {
     month: currentMonth,
     badge
   })
-  const dotColor = BADGE_VARIANT_COLORS[seasonDisplay.variant].dot
-  const detailColor = SEASON_DETAIL_COLORS[seasonDisplay.variant]
   const imageSource = getProduceImage(produce.slug as ProduceImageSlug)
+  const [gradientHero] = useCSSVariable(['--color-gradient-hero'])
 
   const handleShare = () => {
     const shareText = getShareText({
@@ -123,25 +123,20 @@ export const ProductHero = ({ produce, currentMonth }: ProductHeroProps) => {
         accessibilityLabel={`${produce.name}, ${typeLabel}`}
       />
       <LinearGradient
-        colors={[colors.gradientTransparent, colors.gradientHeroDark]}
+        colors={['transparent', String(gradientHero)]}
         style={styles.gradient}
       />
       <Pressable
-        className="absolute top-4 right-4 w-10 h-10 rounded-full items-center justify-center"
-        style={styles.shareButton}
+        className="absolute top-4 right-4 w-10 h-10 rounded-full items-center justify-center bg-overlay-button"
         onPress={handleShare}
         accessibilityLabel={`Partager ${produce.name}`}
         accessibilityRole="button"
       >
-        <Ionicons
-          name="share-outline"
-          size={20}
-          color={colors.cardTextPrimary}
-        />
+        <Ionicons name="share-outline" size={20} color="#ffffff" />
       </Pressable>
       <View className="absolute bottom-6 left-6 right-6">
         <Text
-          className="text-[11px] font-semibold mb-1"
+          className="text-[11px] font-semibold mb-1 text-text-on-image"
           style={styles.typeLabel}
         >
           {typeLabel}
@@ -154,8 +149,10 @@ export const ProductHero = ({ produce, currentMonth }: ProductHeroProps) => {
         </Text>
         <View className="flex-row items-center gap-2">
           <View
-            className="w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: dotColor }}
+            className={cn(
+              'w-2.5 h-2.5 rounded-full',
+              BADGE_DOT_CLASSES[seasonDisplay.variant]
+            )}
             importantForAccessibility="no"
           />
           <Text className="text-[15px] font-bold text-white">
@@ -164,8 +161,10 @@ export const ProductHero = ({ produce, currentMonth }: ProductHeroProps) => {
         </View>
         {seasonDisplay.detail ? (
           <Text
-            className="text-[13px] font-medium mt-1"
-            style={{ color: detailColor }}
+            className={cn(
+              'text-[13px] font-medium mt-1',
+              SEASON_DETAIL_CLASSES[seasonDisplay.variant]
+            )}
           >
             {seasonDisplay.detail}
           </Text>
@@ -189,14 +188,8 @@ const styles = StyleSheet.create({
     right: 0,
     height: '70%'
   },
-  // rgba backgroundColor crashes Uniwind opacity modifiers (bg-black/25)
-  shareButton: {
-    backgroundColor: colors.shareButtonBackground
-  },
-  // letterSpacing crashes Uniwind serializer (tracking-[2px]),
-  // rgba color crashes Uniwind opacity modifiers
+  // letterSpacing crashes Uniwind serializer (tracking-[2px])
   typeLabel: {
-    letterSpacing: 2,
-    color: colors.cardTextSecondary
+    letterSpacing: 2
   }
 })

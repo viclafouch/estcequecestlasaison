@@ -2,11 +2,11 @@ import { Pressable, StyleSheet, Text } from 'react-native'
 import { Image } from 'expo-image'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
+import { useCSSVariable } from 'uniwind'
 import {
   getProduceImage,
   type ProduceImageSlug
 } from '@/constants/produce-images'
-import { colors } from '@/constants/theme'
 
 type CarouselCardProps = {
   slug: string
@@ -15,6 +15,7 @@ type CarouselCardProps = {
 
 export const CarouselCard = ({ slug, name }: CarouselCardProps) => {
   const imageSource = getProduceImage(slug as ProduceImageSlug)
+  const [gradientCarousel] = useCSSVariable(['--color-gradient-carousel'])
 
   return (
     <Link href={`/product/${slug}`} asChild>
@@ -30,7 +31,7 @@ export const CarouselCard = ({ slug, name }: CarouselCardProps) => {
           accessibilityLabel={name}
         />
         <LinearGradient
-          colors={[colors.gradientTransparent, colors.gradientCarousel]}
+          colors={['transparent', String(gradientCarousel)]}
           style={styles.gradient}
         />
         <Text

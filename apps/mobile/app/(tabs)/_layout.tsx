@@ -1,7 +1,8 @@
 import React from 'react'
 import { Pressable } from 'react-native'
 import { Tabs, useRouter } from 'expo-router'
-import { colors } from '@/constants/theme'
+import { useThemeColor } from 'heroui-native'
+import { useCSSVariable } from 'uniwind'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
 type IoniconsName = React.ComponentProps<typeof Ionicons>['name']
@@ -27,6 +28,7 @@ const createTabBarIcon = ({ filled, outline }: TabBarIconNames) => {
 
 const HeaderInfoButton = () => {
   const router = useRouter()
+  const foregroundColor = useThemeColor('foreground')
 
   const handlePress = () => {
     router.push('/faq')
@@ -43,24 +45,28 @@ const HeaderInfoButton = () => {
       <Ionicons
         name="information-circle-outline"
         size={24}
-        color={colors.text}
+        color={String(foregroundColor)}
       />
     </Pressable>
   )
 }
 
 const TabLayout = () => {
+  const [surfaceColor, mutedColor, borderColor, foregroundColor] =
+    useThemeColor(['surface', 'muted', 'border', 'foreground'])
+  const [primaryColor] = useCSSVariable(['--color-primary-500'])
+
   return (
     <Tabs
       screenOptions={{
-        headerStyle: { backgroundColor: colors.background },
-        headerTintColor: colors.text,
+        headerStyle: { backgroundColor: String(surfaceColor) },
+        headerTintColor: String(foregroundColor),
         headerShadowVisible: false,
-        tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textMuted,
+        tabBarActiveTintColor: String(primaryColor),
+        tabBarInactiveTintColor: String(mutedColor),
         tabBarStyle: {
-          backgroundColor: colors.background,
-          borderTopColor: colors.border,
+          backgroundColor: String(surfaceColor),
+          borderTopColor: String(borderColor),
           borderTopWidth: 1
         }
       }}

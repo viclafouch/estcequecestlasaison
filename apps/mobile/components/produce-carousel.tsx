@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { CarouselCard } from '@/components/carousel-card'
-import { squircle } from '@/constants/theme'
+import { squircle } from '@/constants/styles'
 import type { Produce } from '@estcequecestlasaison/shared'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 

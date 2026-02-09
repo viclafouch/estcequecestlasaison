@@ -1,34 +1,24 @@
 import React from 'react'
 import { Chip } from 'heroui-native'
-import { colors } from '@/constants/theme'
 import type { BadgeVariant } from '@estcequecestlasaison/shared'
 
-type BadgeVariantColors = {
-  dot: string
-  text: string
-  chip: 'success' | 'warning' | 'default'
-}
+const BADGE_CHIP_COLOR = {
+  positive: 'success',
+  warning: 'warning',
+  neutral: 'default'
+} as const satisfies Record<BadgeVariant, 'success' | 'warning' | 'default'>
 
-export const BADGE_VARIANT_COLORS = {
-  positive: {
-    dot: colors.badgeDotPositive,
-    text: colors.badgeTextPositive,
-    chip: 'success'
-  },
-  warning: {
-    dot: colors.badgeDotWarning,
-    text: colors.badgeTextWarning,
-    chip: 'warning'
-  },
-  neutral: {
-    dot: colors.badgeDotNeutral,
-    text: colors.badgeTextNeutral,
-    chip: 'default'
-  }
-} as const satisfies Record<BadgeVariant, BadgeVariantColors>
+export const BADGE_DOT_CLASSES = {
+  positive: 'bg-badge-positive',
+  warning: 'bg-badge-warning',
+  neutral: 'bg-badge-neutral'
+} as const satisfies Record<BadgeVariant, string>
 
-export const BADGE_PILL_BACKGROUND = colors.badgePillBackground
-export const BADGE_PILL_BORDER = colors.badgePillBorder
+export const BADGE_TEXT_CLASSES = {
+  positive: 'text-badge-text-positive',
+  warning: 'text-badge-text-warning',
+  neutral: 'text-badge-text-neutral'
+} as const satisfies Record<BadgeVariant, string>
 
 type SeasonChipProps = {
   label: string
@@ -40,7 +30,7 @@ export const SeasonChip = React.memo(({ label, variant }: SeasonChipProps) => {
     <Chip
       size="sm"
       variant="soft"
-      color={BADGE_VARIANT_COLORS[variant].chip}
+      color={BADGE_CHIP_COLOR[variant]}
       animation="disable-all"
     >
       <Chip.Label numberOfLines={1}>{label}</Chip.Label>

@@ -2,16 +2,16 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { Image } from 'expo-image'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
+import { cn } from 'heroui-native'
+import { useCSSVariable } from 'uniwind'
 import {
-  BADGE_PILL_BACKGROUND,
-  BADGE_PILL_BORDER,
-  BADGE_VARIANT_COLORS
+  BADGE_DOT_CLASSES,
+  BADGE_TEXT_CLASSES
 } from '@/components/season-badge'
 import {
   getProduceImage,
   type ProduceImageSlug
 } from '@/constants/produce-images'
-import { colors } from '@/constants/theme'
 import {
   getProduceBadge,
   type Month,
@@ -37,8 +37,8 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
   const badge = getProduceBadge({ produce, month, section })
   const imageSource = getProduceImage(produce.slug as ProduceImageSlug)
   const typeLabel = produce.type === 'fruit' ? 'FRUIT' : 'LÉGUME'
-  const variantColors = BADGE_VARIANT_COLORS[badge.variant]
   const hasVitamins = produce.nutrition.vitamins.length > 0
+  const [gradientDark] = useCSSVariable(['--color-gradient-dark'])
 
   return (
     <Link href={`/product/${produce.slug}`} asChild>
@@ -54,27 +54,28 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
           accessibilityLabel={produce.name}
         />
         <LinearGradient
-          colors={[colors.gradientTransparent, colors.gradientDark]}
+          colors={['transparent', String(gradientDark)]}
           style={styles.gradient}
         />
-        <View
-          className="absolute top-4 left-4 flex-row items-center gap-2 rounded-full border px-4 py-2"
-          style={styles.badgePill}
-        >
+        <View className="absolute top-4 left-4 flex-row items-center gap-2 rounded-full border px-4 py-2 bg-pill-bg border-pill-border">
           <View
-            className="w-2 h-2 rounded-full"
-            style={{ backgroundColor: variantColors.dot }}
+            className={cn(
+              'w-2 h-2 rounded-full',
+              BADGE_DOT_CLASSES[badge.variant]
+            )}
           />
           <Text
-            className="text-sm font-semibold"
-            style={{ color: variantColors.text }}
+            className={cn(
+              'text-sm font-semibold',
+              BADGE_TEXT_CLASSES[badge.variant]
+            )}
           >
             {badge.label}
           </Text>
         </View>
         <View className="absolute bottom-7 left-6 right-6">
           <Text
-            className="text-[11px] font-semibold mb-1"
+            className="text-[11px] font-semibold mb-1 text-text-on-image"
             style={styles.typeLabel}
           >
             {typeLabel}
@@ -86,8 +87,7 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
             {produce.name}
           </Text>
           <Text
-            className="text-[13px] font-medium mt-1.5"
-            style={styles.nutritionLine}
+            className="text-[13px] font-medium mt-1.5 text-text-on-image-strong"
             numberOfLines={1}
           >
             {produce.nutrition.calories} kcal
@@ -110,19 +110,8 @@ const styles = StyleSheet.create({
     right: 0,
     height: '65%'
   },
-  // rgba backgroundColor/borderColor crash Uniwind opacity modifiers
-  badgePill: {
-    backgroundColor: BADGE_PILL_BACKGROUND,
-    borderColor: BADGE_PILL_BORDER
-  },
-  // letterSpacing crashes Uniwind serializer (tracking-[2px]),
-  // rgba color crashes Uniwind opacity modifiers
+  // letterSpacing crashes Uniwind serializer (tracking-[2px])
   typeLabel: {
-    letterSpacing: 2,
-    color: colors.cardTextSecondary
-  },
-  // rgba color crashes Uniwind opacity modifiers
-  nutritionLine: {
-    color: colors.cardTextTertiary
+    letterSpacing: 2
   }
 })
