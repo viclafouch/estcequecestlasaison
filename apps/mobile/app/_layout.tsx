@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
+import type { HeroUINativeConfig } from 'heroui-native'
 import { HeroUINativeProvider } from 'heroui-native'
 import { initializeReviewTracking } from '@/utils/review-tracker'
 import '../polyfills'
@@ -19,6 +20,10 @@ export const unstable_settings = {
 
 void SplashScreen.preventAutoHideAsync()
 
+const heroUIConfig: HeroUINativeConfig = {
+  devInfo: { stylingPrinciples: false }
+}
+
 const RootLayout = () => {
   React.useEffect(() => {
     initializeReviewTracking()
@@ -28,7 +33,7 @@ const RootLayout = () => {
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView className="flex-1">
-        <HeroUINativeProvider>
+        <HeroUINativeProvider config={heroUIConfig}>
           <ReducedMotionConfig mode={ReduceMotion.System} />
           <Stack
             screenOptions={{

@@ -1,12 +1,19 @@
 import React from 'react'
-import { Pressable, Text, TextInput, View } from 'react-native'
-import { cn } from 'heroui-native'
+import { Pressable, Text, View } from 'react-native'
+import {
+  Button,
+  cn,
+  Input,
+  Separator,
+  Tabs,
+  useThemeColor
+} from 'heroui-native'
 import { CalendarRow } from '@/components/calendar-row'
+import { CATEGORIES, type CategoryFilter } from '@/constants/categories'
 import { SEASON_DOT_STYLES } from '@/constants/season'
-import { colors, squircle } from '@/constants/theme'
+import { StyledIonicons } from '@/constants/styled'
 import {
   getCurrentMonth,
-  type ProduceType,
   type SeasonStatus
 } from '@estcequecestlasaison/shared'
 import { getCalendarData } from '@estcequecestlasaison/shared/services'
@@ -20,27 +27,12 @@ import { useDebouncedValue } from '@tanstack/react-pacer'
 
 type CalendarProduce = ReturnType<typeof getCalendarData>['produceList'][number]
 
-type CategoryFilter = ProduceType | 'all'
-
 type SortMode = 'alpha' | 'months'
 
 const DEBOUNCE_WAIT = 150
 
-type CategoryOption = {
-  value: CategoryFilter
-  label: string
-}
-
-const CATEGORIES = [
-  { value: 'all', label: 'Tous' },
-  { value: 'fruit', label: 'Fruits' },
-  { value: 'vegetable', label: 'Légumes' }
-] as const satisfies readonly CategoryOption[]
-
 const ItemSeparator = () => {
-  return (
-    <View className="h-px bg-gray-100 mx-4" importantForAccessibility="no" />
-  )
+  return <Separator className="mx-4" />
 }
 
 const keyExtractor = (item: CalendarProduce) => {
@@ -91,10 +83,13 @@ const Legend = () => {
 
 const SCROLL_TOP_THRESHOLD = 2
 
-const DISABLE_MAINTAIN_POSITION = { disabled: true } as const
+const DISABLE_MAINTAIN_POSITION = { disabled: true } as const satisfies {
+  disabled: boolean
+}
 
 const CalendarScreen = () => {
   const currentMonth = getCurrentMonth()
+  const defaultForeground = useThemeColor('default-foreground')
   const listRef = React.useRef<FlashListRef<CalendarProduce>>(null)
   const scrollOffsetRef = React.useRef(0)
   const [searchQuery, setSearchQuery] = React.useState('')
@@ -167,6 +162,11 @@ const CalendarScreen = () => {
     scrollOffsetRef.current = event.nativeEvent.contentOffset.y
   }
 
+  const handleCategoryChange = (value: string) => {
+    setCategory(value as CategoryFilter)
+    scrollToTopIfNeeded()
+  }
+
   const handleClear = () => {
     setSearchQuery('')
   }
@@ -181,15 +181,13 @@ const CalendarScreen = () => {
   return (
     <View className="flex-1 bg-white">
       <View
-        className="flex-row items-center mx-4 mt-2 px-3 py-2 rounded-xl bg-gray-100 gap-2"
-        style={squircle}
+        className="mx-4 mt-2 flex-row items-center"
         accessibilityRole="search"
       >
-        <Ionicons name="search" size={18} color={colors.textMuted} />
-        <TextInput
-          className="flex-1 text-sm text-black py-0"
+        <Input
+          variant="secondary"
+          className="flex-1 px-10"
           placeholder="Rechercher..."
-          placeholderTextColor={colors.textMuted}
           value={searchQuery}
           onChangeText={setSearchQuery}
           returnKeyType="search"
@@ -198,61 +196,54 @@ const CalendarScreen = () => {
           accessibilityLabel="Rechercher un produit"
           accessibilityHint="Filtrer la liste par nom"
         />
+        <StyledIonicons
+          name="search"
+          size={18}
+          className="absolute left-3.5 text-muted"
+          pointerEvents="none"
+        />
         {hasSearchInput ? (
           <Pressable
             onPress={handleClear}
+            className="absolute right-4"
             hitSlop={8}
             accessibilityRole="button"
             accessibilityLabel="Effacer la recherche"
           >
-            <Ionicons name="close-circle" size={18} color={colors.textMuted} />
+            <StyledIonicons
+              name="close-circle"
+              size={18}
+              className="text-muted"
+            />
           </Pressable>
         ) : null}
       </View>
       <View className="flex-row items-center px-4 py-3 gap-2">
-        <View className="flex-row gap-2 flex-1">
-          {CATEGORIES.map((categoryOption) => {
-            const isActive = category === categoryOption.value
-
-            const handlePress = () => {
-              setCategory(categoryOption.value)
-              scrollToTopIfNeeded()
-            }
-
-            return (
-              <Pressable
-                key={categoryOption.value}
-                onPress={handlePress}
-                className={cn(
-                  'px-3.5 py-1.5 rounded-2xl border',
-                  isActive
-                    ? 'bg-primary-500 border-primary-500'
-                    : 'bg-white border-gray-200'
-                )}
-                style={squircle}
-                accessibilityRole="button"
-                accessibilityState={{ selected: isActive }}
-                accessibilityLabel={categoryOption.label}
-              >
-                <Text
-                  className={cn(
-                    'text-xs',
-                    isActive
-                      ? 'font-semibold text-white'
-                      : 'font-medium text-black'
-                  )}
+        <Tabs
+          value={category}
+          onValueChange={handleCategoryChange}
+          variant="primary"
+          className="flex-1"
+        >
+          <Tabs.List>
+            <Tabs.Indicator />
+            {CATEGORIES.map((categoryOption) => {
+              return (
+                <Tabs.Trigger
+                  key={categoryOption.value}
+                  value={categoryOption.value}
+                  accessibilityLabel={categoryOption.label}
                 >
-                  {categoryOption.label}
-                </Text>
-              </Pressable>
-            )
-          })}
-        </View>
-        <Pressable
+                  <Tabs.Label>{categoryOption.label}</Tabs.Label>
+                </Tabs.Trigger>
+              )
+            })}
+          </Tabs.List>
+        </Tabs>
+        <Button
+          variant="outline"
+          size="sm"
           onPress={handleToggleSort}
-          className="flex-row items-center gap-1 px-3 py-1.5 rounded-2xl border border-gray-200"
-          style={squircle}
-          accessibilityRole="button"
           accessibilityLabel={
             sortBy === 'alpha' ? 'Tri alphabétique' : 'Tri par mois de saison'
           }
@@ -261,12 +252,10 @@ const CalendarScreen = () => {
           <Ionicons
             name={sortBy === 'alpha' ? 'text-outline' : 'leaf-outline'}
             size={14}
-            color={colors.text}
+            color={defaultForeground}
           />
-          <Text className="text-xs font-medium text-black">
-            {sortBy === 'alpha' ? 'A-Z' : 'Saison'}
-          </Text>
-        </Pressable>
+          <Button.Label>{sortBy === 'alpha' ? 'A-Z' : 'Saison'}</Button.Label>
+        </Button>
       </View>
       {hasNoResults ? (
         <View

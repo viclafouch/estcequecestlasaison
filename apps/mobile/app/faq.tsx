@@ -10,16 +10,20 @@ const FaqScreen = () => {
       contentInsetAdjustmentBehavior="automatic"
     >
       <View className="px-4 py-6">
-        <Accordion selectionMode="multiple">
+        <Accordion selectionMode="multiple" variant="surface">
           {FAQ_ITEMS.map((item) => {
             return (
               <Accordion.Item key={item.value} value={item.value}>
                 <Accordion.Trigger>
-                  <Text>{item.question}</Text>
+                  <Text className="text-foreground text-base flex-1">
+                    {item.question}
+                  </Text>
                   <Accordion.Indicator />
                 </Accordion.Trigger>
-                <Accordion.Content>
-                  <Text>{item.answer}</Text>
+                <Accordion.Content className="px-4">
+                  <Text className="text-muted text-base leading-relaxed">
+                    {item.answer}
+                  </Text>
                 </Accordion.Content>
               </Accordion.Item>
             )

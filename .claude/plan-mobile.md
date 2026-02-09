@@ -64,7 +64,7 @@ Statut : **en cours (M0)**
 | Styling | Uniwind (Tailwind v4 RN) | Build-time, classes utilitaires familieres depuis le web |
 | Animations | Reanimated 4 (riches) | CSS animations/transitions, layout animations, transitions ecrans |
 | Icones UI | Icones HeroUI | Zero dependance supplementaire, integre a la UI library |
-| Images produits | Bundlees dans l'app | Offline garanti, zero latence, +5-10MB taille app |
+| Images produits | Bundlees dans l'app (1024x1024 WebP, ~6.5 MB total) | Offline garanti, zero latence, source 1024x1024 PNG convertie en WebP q85 |
 | Listes | @shopify/flash-list v2 | Mainstream, mesure auto, JS-only, New Architecture only |
 | Design | Hybride web/natif | Couleurs et composants du web + patterns natifs (blur, navigation) |
 | Theme | Light only | Coherent avec le web, un seul theme |
@@ -90,13 +90,14 @@ Statut : **en cours (M0)**
 | @heroui/react-native | 1.0.0-beta.13+ | UI library — voir bugs connus ci-dessous |
 | uniwind | 1.2.2+ | Tailwind v4 bindings pour React Native, build-time, dark mode, pseudo-classes |
 | react-native-reanimated | ~4.2.1 | CSS animations/transitions, layout animations. Worklets dans react-native-worklets 0.7.2 |
+| expo-linear-gradient | ~55.0.5 | Gradient overlay sur les cartes immersives (feed homepage, carousel produit) |
 
 ### HeroUI Native — bugs connus (beta.13)
 
 **Composants a eviter** (utiliser du RN natif a la place) :
 - `Avatar` / `Avatar.Image` → crash Reanimated (animated style sur non-animated component)
-- `Chip` → warnings SVG "invalid" color (theme non resolu)
-- Composants dans des FlashList → lag + ecrans blancs
+
+**Composants OK avec `animation="disable-all"`** : `Chip`, `Card`, `Tabs`, `Button`, `Surface`, `Separator`, `Input` (utilises partout dans l'app)
 
 **Composants OK** : `BottomSheet`, `Accordion`, `Dialog`, `Toast`
 
@@ -185,23 +186,23 @@ apps/mobile/
 │   └── product/
 │       └── [slug].tsx         → Page produit dynamique
 ├── components/                → Composants UI mobile
-│   ├── produce-card.tsx       → Carte produit (avatar, nom, badge)
-│   ├── produce-carousel.tsx   → Carousel horizontal FlashList
+│   ├── produce-card.tsx       → Carte produit immersive (image full-bleed, gradient, badge pill)
+│   ├── produce-carousel.tsx   → Carousel horizontal FlashList (petit format)
 │   ├── produce-avatar.tsx     → Image circulaire produit (bundlee)
 │   ├── produce-badge.tsx      → Badge de saison colore
 │   ├── season-calendar.tsx    → Grille 12 mois avec dots
 │   ├── month-bottom-sheet.tsx → BottomSheet selection mois + stats
 │   ├── filter-chips.tsx       → Chips Tous/Fruits/Legumes
-│   ├── product-hero.tsx        → Hero produit (image, nom, statut, partage)
+│   ├── product-hero.tsx        → Hero produit immersif (image full-bleed, gradient, texte blanc)
 │   ├── faq-section.tsx        → Section FAQ en bas de homepage
 │   └── season-alternatives.tsx→ Alternatives en saison (hors saison)
 ├── (pas de services/ local — tout dans packages/shared)
 ├── constants/                 → Constantes app
-│   ├── theme.ts               → Couleurs, tailles (emerald #10b981)
+│   ├── theme.ts               → Couleurs, tailles (emerald #10b981, gradient, badge pill, season detail on dark, share button)
 │   ├── season.ts              → Styles dots saison + mapping badge→season
 │   └── navigation.ts          → Config Tab Bar
 ├── assets/                    → Images bundlees
-│   └── produce/               → 80 images produits (WebP ou PNG)
+│   └── produce/               → 80 images produits (1024x1024 WebP)
 ├── app.json                   → Config Expo (splash, icon, plugins)
 ├── package.json               → Dependances mobile
 └── tsconfig.json              → TypeScript config
@@ -254,25 +255,23 @@ La logique metier est centralisee dans `packages/shared/src/services/` :
 
 ## Ecran Accueil (`(tabs)/index.tsx`)
 
-Miroir de la homepage web, adapte mobile natif.
+Feed vertical style Instagram, cartes immersives plein ecran. Affiche uniquement les produits en saison (pas de section tabs).
 
 ### Layout
 
 - **Header** : titre app + icone info (ouvre FAQ)
-- **Chips filtres** : barre horizontale sticky (Tous / Fruits / Legumes) sous le header
-- **3 carousels horizontaux** (FlashList horizontal) :
-  1. **"En pleine saison de [mois]"** — produits peak/partial du mois courant
-  2. **"Nouveautes en [mois+1]"** — produits arrivant le mois prochain (mois courant uniquement)
-  3. **"Hors saison"** — produits ni ce mois ni le prochain
-- **Section FAQ** : quelques questions cles en bas du scroll + lien vers ecran FAQ complet
+- **Chips filtres** : barre horizontale (Tous / Fruits / Legumes) + badge mois
+- **Feed vertical** (FlashList) : cartes immersives 60% viewport height, image full-bleed, gradient, texte blanc
+- **Section FAQ** : ListFooterComponent, affichee apres les cartes
 - **BottomSheet mois** : accessible via un badge mois cliquable, affiche stats + produits arrivants/partants + compteurs animes
+- **Scroll-to-top** automatique au changement de categorie
 
 ### Interactions
 
 - Tap sur un ProduceCard → push vers `product/[slug]`
-- Tap sur un chip filtre → filtre les 3 carousels
+- Tap sur un chip filtre → filtre le feed par categorie, scroll-to-top
 - Tap sur le badge mois → ouvre BottomSheet mois
-- Swipe horizontal dans les carousels
+- Scroll vertical dans le feed
 
 ---
 
@@ -326,12 +325,12 @@ Page detail produit, push navigation depuis n'importe quel ecran.
 
 ### Layout (ScrollView, tout affiche sans accordeon)
 
-1. **Section hero** :
-   - Image produit grande (bundlee, aspect-square)
-   - Nom du produit + label type (Fruit/Legume)
-   - Bouton partage (texte + image via expo-sharing)
-   - Statut saison avec dot coloree (memes labels que le web)
-   - Detail badge ("Jusqu'en aout", "A partir de mars")
+1. **Section hero immersive** (400px, meme style que les cartes du feed) :
+   - Image full-bleed (contentFit cover) avec gradient overlay 70% (rgba(0,0,0,0.7))
+   - Nom du produit 34px extra-bold blanc + type label uppercase letter-spaced
+   - Statut saison avec dot coloree + label blanc 15px bold
+   - Detail badge colore pour fond sombre (emerald-300, amber-300, blanc/50)
+   - Bouton partage circulaire semi-transparent (top-right, 40x40)
    - **Alternatives en saison** (quand hors saison) : grille 2 colonnes, max 4 produits meme categorie
 
 2. **Infos nutritionnelles** :
@@ -595,8 +594,8 @@ L'app de consultation complete, miroir du site web.
 #### Milestone M3 : Ecran Accueil
 
 - [x] Chips filtres (Tous/Fruits/Legumes) sticky
-- [x] 3 carousels horizontaux (FlashList)
-- [x] ProduceCard (avatar, nom, badge)
+- [x] Feed vertical avec cartes immersives (FlashList, 60% viewport, image full-bleed, gradient)
+- [x] ProduceCard immersive (image, gradient, badge pill, texte blanc)
 - [x] ProduceBadge (logique partagee depuis shared)
 - [x] Badge mois cliquable
 - [x] BottomSheet mois (stats, arrivants/partants, compteurs animes)

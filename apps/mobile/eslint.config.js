@@ -32,7 +32,19 @@ export default [
   {
     files: ['**/*.tsx'],
     rules: {
-      'import/no-default-export': 'error'
+      'import/no-default-export': 'error',
+      'react-native/no-raw-text': [
+        'error',
+        {
+          skip: [
+            'Button.Label',
+            'Card.Title',
+            'Card.Description',
+            'Chip.Label',
+            'Tabs.Label'
+          ]
+        }
+      ]
     }
   },
   {

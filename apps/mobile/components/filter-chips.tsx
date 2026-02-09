@@ -1,11 +1,8 @@
 import React from 'react'
-import { Pressable, Text, View } from 'react-native'
-import { cn } from 'heroui-native'
-import { colors, squircle } from '@/constants/theme'
-import type { ProduceType } from '@estcequecestlasaison/shared'
+import { View } from 'react-native'
+import { Button, Tabs, useThemeColor } from 'heroui-native'
+import { CATEGORIES, type CategoryFilter } from '@/constants/categories'
 import Ionicons from '@expo/vector-icons/Ionicons'
-
-export type CategoryFilter = ProduceType | 'all'
 
 type FilterChipsProps = {
   activeCategory: CategoryFilter
@@ -14,72 +11,51 @@ type FilterChipsProps = {
   onMonthPress: () => void
 }
 
-type CategoryOption = {
-  value: CategoryFilter
-  label: string
-}
-
-const CATEGORIES = [
-  { value: 'all', label: 'Tous' },
-  { value: 'fruit', label: 'Fruits' },
-  { value: 'vegetable', label: 'Légumes' }
-] as const satisfies readonly CategoryOption[]
-
 export const FilterChips = ({
   activeCategory,
   onCategoryChange,
   monthLabel,
   onMonthPress
 }: FilterChipsProps) => {
+  const accentForeground = useThemeColor('accent-foreground')
+
+  const handleValueChange = (value: string) => {
+    onCategoryChange(value as CategoryFilter)
+  }
+
   return (
     <View className="flex-row items-center px-4 py-3 gap-2">
-      <View className="flex-row gap-2 flex-1">
-        {CATEGORIES.map((category) => {
-          const isActive = activeCategory === category.value
-
-          return (
-            <Pressable
-              key={category.value}
-              onPress={() => {
-                onCategoryChange(category.value)
-              }}
-              className={cn(
-                'px-3.5 py-1.5 rounded-2xl border',
-                isActive
-                  ? 'bg-primary-500 border-primary-500'
-                  : 'bg-white border-gray-200'
-              )}
-              style={squircle}
-              accessibilityRole="button"
-              accessibilityState={{ selected: isActive }}
-              accessibilityLabel={category.label}
-            >
-              <Text
-                className={cn(
-                  'text-xs',
-                  isActive
-                    ? 'font-semibold text-white'
-                    : 'font-medium text-black'
-                )}
+      <Tabs
+        value={activeCategory}
+        onValueChange={handleValueChange}
+        variant="primary"
+        className="flex-1"
+      >
+        <Tabs.List>
+          <Tabs.Indicator />
+          {CATEGORIES.map((category) => {
+            return (
+              <Tabs.Trigger
+                key={category.value}
+                value={category.value}
+                accessibilityLabel={category.label}
               >
-                {category.label}
-              </Text>
-            </Pressable>
-          )
-        })}
-      </View>
-      <Pressable
+                <Tabs.Label>{category.label}</Tabs.Label>
+              </Tabs.Trigger>
+            )
+          })}
+        </Tabs.List>
+      </Tabs>
+      <Button
+        variant="primary"
+        size="sm"
         onPress={onMonthPress}
-        className="flex-row items-center gap-1 bg-primary-500 px-3 py-1.5 rounded-2xl"
-        style={squircle}
-        accessibilityRole="button"
         accessibilityLabel={`Statistiques de ${monthLabel}`}
         accessibilityHint="Ouvre les statistiques du mois"
-        hitSlop={8}
       >
-        <Ionicons name="calendar-outline" size={14} color={colors.background} />
-        <Text className="text-xs font-semibold text-white">{monthLabel}</Text>
-      </Pressable>
+        <Ionicons name="calendar-outline" size={14} color={accentForeground} />
+        <Button.Label>{monthLabel}</Button.Label>
+      </Button>
     </View>
   )
 }

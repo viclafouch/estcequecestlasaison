@@ -1,23 +1,14 @@
 import React from 'react'
-import { Pressable, Text, View } from 'react-native'
-import { Link } from 'expo-router'
-import { BottomSheet } from 'heroui-native'
-import { colors } from '@/constants/theme'
+import { Text, View } from 'react-native'
+import { BottomSheet, Button, useThemeColor } from 'heroui-native'
 import {
   getMonthName,
   getNextMonth,
   getPreviousMonth,
-  type Month,
-  type Produce
+  type Month
 } from '@estcequecestlasaison/shared'
 import { getMonthStatsData } from '@estcequecestlasaison/shared/services'
 import Ionicons from '@expo/vector-icons/Ionicons'
-
-type ProduceListSectionProps = {
-  title: string
-  items: Pick<Produce, 'id' | 'name' | 'slug'>[]
-  emptyLabel: string
-}
 
 type MonthBottomSheetProps = {
   selectedMonth: Month
@@ -28,46 +19,13 @@ type MonthBottomSheetProps = {
 
 const SNAP_POINTS = ['50%', '80%']
 
-const ProduceListSection = ({
-  title,
-  items,
-  emptyLabel
-}: ProduceListSectionProps) => {
-  return (
-    <View className="px-4 py-2">
-      <Text
-        className="text-base font-semibold text-black mb-2"
-        accessibilityRole="header"
-      >
-        {title} ({items.length})
-      </Text>
-      {items.length > 0 ? (
-        items.map((item) => {
-          return (
-            <Link
-              key={item.id}
-              href={`/product/${item.slug}`}
-              className="py-2 px-1"
-              accessibilityRole="link"
-              accessibilityLabel={item.name}
-            >
-              <Text className="text-[15px] text-black">{item.name}</Text>
-            </Link>
-          )
-        })
-      ) : (
-        <Text className="text-sm text-gray-500 italic">{emptyLabel}</Text>
-      )}
-    </View>
-  )
-}
-
 export const MonthBottomSheet = ({
   selectedMonth,
   onMonthChange,
   isOpen,
   onOpenChange
 }: MonthBottomSheetProps) => {
+  const defaultForeground = useThemeColor('default-foreground')
   const stats = getMonthStatsData({ month: selectedMonth })
   const previousMonth = getPreviousMonth(selectedMonth)
   const nextMonth = getNextMonth(selectedMonth)
@@ -95,16 +53,20 @@ export const MonthBottomSheet = ({
         <BottomSheet.Overlay />
         <BottomSheet.Content snapPoints={SNAP_POINTS}>
           <View className="flex-row items-center justify-center gap-4 py-2">
-            <Pressable
+            <Button
+              variant="secondary"
+              size="sm"
+              isIconOnly
               onPress={handlePreviousMonth}
-              className="p-2 rounded-full bg-gray-200"
-              accessibilityRole="button"
               accessibilityLabel={`Mois précédent : ${previousMonthName}`}
               accessibilityHint="Naviguer vers le mois précédent"
-              hitSlop={8}
             >
-              <Ionicons name="chevron-back" size={20} color={colors.text} />
-            </Pressable>
+              <Ionicons
+                name="chevron-back"
+                size={20}
+                color={defaultForeground}
+              />
+            </Button>
             <Text
               className="text-xl font-bold text-black capitalize min-w-30 text-center"
               accessibilityRole="header"
@@ -112,16 +74,20 @@ export const MonthBottomSheet = ({
             >
               {monthName}
             </Text>
-            <Pressable
+            <Button
+              variant="secondary"
+              size="sm"
+              isIconOnly
               onPress={handleNextMonth}
-              className="p-2 rounded-full bg-gray-200"
-              accessibilityRole="button"
               accessibilityLabel={`Mois suivant : ${nextMonthName}`}
               accessibilityHint="Naviguer vers le mois suivant"
-              hitSlop={8}
             >
-              <Ionicons name="chevron-forward" size={20} color={colors.text} />
-            </Pressable>
+              <Ionicons
+                name="chevron-forward"
+                size={20}
+                color={defaultForeground}
+              />
+            </Button>
           </View>
           <View className="flex-row justify-around py-4 px-4">
             {statItems.map((stat) => {
@@ -137,16 +103,6 @@ export const MonthBottomSheet = ({
               )
             })}
           </View>
-          <ProduceListSection
-            title="Nouveautés"
-            items={stats.arriving}
-            emptyLabel="Aucune nouveauté"
-          />
-          <ProduceListSection
-            title="Derniers jours"
-            items={stats.leaving}
-            emptyLabel="Aucun départ"
-          />
         </BottomSheet.Content>
       </BottomSheet.Portal>
     </BottomSheet>

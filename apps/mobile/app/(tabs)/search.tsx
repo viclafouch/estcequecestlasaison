@@ -1,24 +1,23 @@
 import React from 'react'
-import { Pressable, Text, TextInput, View } from 'react-native'
+import type { TextInput } from 'react-native'
+import { Pressable, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useFocusEffect } from 'expo-router'
+import { Input, Separator } from 'heroui-native'
 import { SearchResultRow } from '@/components/search-result-row'
-import { colors, squircle } from '@/constants/theme'
+import { StyledIonicons } from '@/constants/styled'
 import { getCurrentMonth, type Produce } from '@estcequecestlasaison/shared'
 import {
   getGroupedProduce,
   searchProduce
 } from '@estcequecestlasaison/shared/services'
-import Ionicons from '@expo/vector-icons/Ionicons'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 import { useDebouncedValue } from '@tanstack/react-pacer'
 
 const DEBOUNCE_WAIT = 150
 
 const ItemSeparator = () => {
-  return (
-    <View className="h-px bg-gray-100 mx-4" importantForAccessibility="no" />
-  )
+  return <Separator className="mx-4" />
 }
 
 const keyExtractor = (item: Produce) => {
@@ -71,16 +70,14 @@ const SearchScreen = () => {
   return (
     <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
       <View
-        className="flex-row items-center mx-4 mt-2 mb-3 px-3 py-2 rounded-xl bg-gray-100 gap-2"
-        style={squircle}
+        className="mx-4 mt-2 mb-3 flex-row items-center"
         accessibilityRole="search"
       >
-        <Ionicons name="search" size={20} color={colors.textMuted} />
-        <TextInput
+        <Input
           ref={inputRef}
-          className="flex-1 text-base text-black py-0"
+          variant="secondary"
+          className="flex-1 px-10"
           placeholder="Rechercher un fruit ou légume"
-          placeholderTextColor={colors.textMuted}
           value={searchQuery}
           onChangeText={setSearchQuery}
           returnKeyType="search"
@@ -89,14 +86,25 @@ const SearchScreen = () => {
           accessibilityLabel="Rechercher un fruit ou légume"
           accessibilityHint="Saisissez le nom d'un fruit ou légume"
         />
+        <StyledIonicons
+          name="search"
+          size={20}
+          className="absolute left-3.5 text-muted"
+          pointerEvents="none"
+        />
         {hasSearchInput ? (
           <Pressable
             onPress={handleClear}
+            className="absolute right-4"
             hitSlop={8}
             accessibilityRole="button"
             accessibilityLabel="Effacer la recherche"
           >
-            <Ionicons name="close-circle" size={20} color={colors.textMuted} />
+            <StyledIonicons
+              name="close-circle"
+              size={20}
+              className="text-muted"
+            />
           </Pressable>
         ) : null}
       </View>

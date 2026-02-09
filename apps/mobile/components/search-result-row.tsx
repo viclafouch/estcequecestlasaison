@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import { Link } from 'expo-router'
 import { ProduceAvatar } from '@/components/produce-avatar'
-import { ProduceBadge } from '@/components/produce-badge'
+import { SeasonChip } from '@/components/season-badge'
 import type { ProduceImageSlug } from '@/constants/produce-images'
 import {
   getDefaultProduceBadge,
@@ -37,7 +37,7 @@ export const SearchResultRow = React.memo(
           >
             {produce.name}
           </Text>
-          <ProduceBadge label={badge.label} variant={badge.variant} />
+          <SeasonChip label={badge.label} variant={badge.variant} />
         </View>
       </Link>
     )

@@ -9,7 +9,13 @@ import {
  */
 export default [
   {
-    ignores: ['**/node_modules/**', 'apps/**', 'packages/**']
+    ignores: [
+      '**/node_modules/**',
+      'apps/**',
+      'packages/**',
+      '.claude/**',
+      '.agents/**'
+    ]
   },
   ...typescriptConfig,
   ...importsConfig,

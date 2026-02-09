@@ -1,16 +1,19 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { FaqSection } from '@/components/faq-section'
-import { type CategoryFilter, FilterChips } from '@/components/filter-chips'
+import { FilterChips } from '@/components/filter-chips'
 import { MonthBottomSheet } from '@/components/month-bottom-sheet'
-import { ProduceCarousel } from '@/components/produce-carousel'
+import { ProduceCard } from '@/components/produce-card'
+import type { CategoryFilter } from '@/constants/categories'
 import {
   getCurrentMonth,
   getMonthName,
-  getNextMonth,
   type Month
 } from '@estcequecestlasaison/shared'
 import { getGroupedProduce } from '@estcequecestlasaison/shared/services'
+
+const WINDOW_HEIGHT = Dimensions.get('window').height
+const CARD_HEIGHT = WINDOW_HEIGHT * 0.6
 
 const HomeScreen = () => {
   const [activeCategory, setActiveCategory] =
@@ -19,7 +22,9 @@ const HomeScreen = () => {
     React.useState<Month>(getCurrentMonth())
   const [isBottomSheetOpen, setIsBottomSheetOpen] = React.useState(false)
 
-  const { inSeason, comingNextMonth, offSeason } = React.useMemo(() => {
+  const scrollRef = React.useRef<ScrollView>(null)
+
+  const { inSeason } = React.useMemo(() => {
     return getGroupedProduce({
       searchQuery: '',
       category: activeCategory,
@@ -28,11 +33,16 @@ const HomeScreen = () => {
   }, [activeCategory, selectedMonth])
 
   const monthName = getMonthName(selectedMonth)
-  const nextMonthName = getMonthName(getNextMonth(selectedMonth))
-  const hasNoResults =
-    inSeason.length === 0 &&
-    comingNextMonth.length === 0 &&
-    offSeason.length === 0
+
+  const handleCategoryChange = React.useCallback((category: CategoryFilter) => {
+    setActiveCategory(category)
+    scrollRef.current?.scrollTo({ y: 0, animated: false })
+  }, [])
+
+  const handleMonthChange = React.useCallback((month: Month) => {
+    setSelectedMonth(month)
+    scrollRef.current?.scrollTo({ y: 0, animated: false })
+  }, [])
 
   const handleOpenBottomSheet = () => {
     setIsBottomSheetOpen(true)
@@ -42,48 +52,43 @@ const HomeScreen = () => {
     <View className="flex-1 bg-white">
       <FilterChips
         activeCategory={activeCategory}
-        onCategoryChange={setActiveCategory}
+        onCategoryChange={handleCategoryChange}
         monthLabel={monthName}
         onMonthPress={handleOpenBottomSheet}
       />
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        contentInsetAdjustmentBehavior="automatic"
-      >
-        {hasNoResults ? (
-          <View className="flex-1 items-center justify-center px-8 py-16">
-            <Text className="text-base text-gray-500 text-center">
-              Aucun produit trouvé pour cette catégorie.
-            </Text>
-          </View>
-        ) : (
-          <>
-            <ProduceCarousel
-              title={`En pleine saison de ${monthName}`}
-              produceList={inSeason}
-              month={selectedMonth}
-              section="in-season"
-            />
-            <ProduceCarousel
-              title={`Nouveautés en ${nextMonthName}`}
-              subtitle="Bientôt de saison"
-              produceList={comingNextMonth}
-              month={selectedMonth}
-              section="coming-next-month"
-            />
-            <ProduceCarousel
-              title="Hors saison"
-              produceList={offSeason}
-              month={selectedMonth}
-              section="off-season"
-            />
-            <FaqSection />
-          </>
-        )}
-      </ScrollView>
+      {inSeason.length === 0 ? (
+        <View className="flex-1 items-center justify-center px-8">
+          <Text className="text-base text-gray-500 text-center">
+            Aucun produit trouvé pour cette catégorie.
+          </Text>
+        </View>
+      ) : (
+        <ScrollView
+          ref={scrollRef}
+          contentContainerStyle={styles.scrollContent}
+          contentInsetAdjustmentBehavior="automatic"
+        >
+          {inSeason.map((produce) => {
+            return (
+              <View
+                key={produce.id}
+                className="overflow-hidden"
+                style={styles.cardContainer}
+              >
+                <ProduceCard
+                  produce={produce}
+                  month={selectedMonth}
+                  section="in-season"
+                />
+              </View>
+            )
+          })}
+          <FaqSection />
+        </ScrollView>
+      )}
       <MonthBottomSheet
         selectedMonth={selectedMonth}
-        onMonthChange={setSelectedMonth}
+        onMonthChange={handleMonthChange}
         isOpen={isBottomSheetOpen}
         onOpenChange={setIsBottomSheetOpen}
       />
@@ -92,9 +97,13 @@ const HomeScreen = () => {
 }
 
 const styles = StyleSheet.create({
+  // contentContainerStyle is a ScrollView prop, not className
   scrollContent: {
-    paddingBottom: 32,
-    gap: 24
+    paddingBottom: 32
+  },
+  // Runtime-computed value from Dimensions
+  cardContainer: {
+    height: CARD_HEIGHT
   }
 })
 

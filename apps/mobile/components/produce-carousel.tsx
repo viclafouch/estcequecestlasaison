@@ -1,29 +1,20 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { ProduceCard } from '@/components/produce-card'
-import type {
-  Month,
-  Produce,
-  ProduceSection
-} from '@estcequecestlasaison/shared'
+import { CarouselCard } from '@/components/carousel-card'
+import { squircle } from '@/constants/theme'
+import type { Produce } from '@estcequecestlasaison/shared'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 
 type ProduceCarouselProps = {
   title: string
   subtitle?: string
   produceList: Produce[]
-  month: Month
-  section: ProduceSection
 }
 
-const styles = StyleSheet.create({
-  listContent: {
-    paddingHorizontal: 16
-  }
-})
+const CAROUSEL_CARD_WIDTH = 140
 
 const ItemSeparator = () => {
-  return <View className="w-1" importantForAccessibility="no" />
+  return <View className="w-3" importantForAccessibility="no" />
 }
 
 const keyExtractor = (item: Produce) => {
@@ -33,15 +24,17 @@ const keyExtractor = (item: Produce) => {
 export const ProduceCarousel = ({
   title,
   subtitle,
-  produceList,
-  month,
-  section
+  produceList
 }: ProduceCarouselProps) => {
   const renderItem = React.useCallback(
     ({ item }: ListRenderItemInfo<Produce>) => {
-      return <ProduceCard produce={item} month={month} section={section} />
+      return (
+        <View style={[styles.cardWrapper, squircle]}>
+          <CarouselCard slug={item.slug} name={item.name} />
+        </View>
+      )
     },
-    [month, section]
+    []
   )
 
   if (produceList.length === 0) {
@@ -74,3 +67,18 @@ export const ProduceCarousel = ({
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  // contentContainerStyle is a FlashList prop, not className
+  listContent: {
+    paddingHorizontal: 16
+  },
+  // Style composition with squircle (borderCurve) requires style prop,
+  // aspect ratio via Uniwind (aspect-[3/4]) not supported for computed ratios
+  cardWrapper: {
+    width: CAROUSEL_CARD_WIDTH,
+    aspectRatio: 3 / 4,
+    borderRadius: 16,
+    overflow: 'hidden'
+  }
+})
