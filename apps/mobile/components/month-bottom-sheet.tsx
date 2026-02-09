@@ -33,11 +33,13 @@ export const MonthBottomSheet = ({
   const previousMonthName = getMonthName(previousMonth)
   const nextMonthName = getMonthName(nextMonth)
 
-  const statItems = [
-    { label: 'Fruits', value: stats.fruits },
-    { label: 'Légumes', value: stats.vegetables },
-    { label: 'Total', value: stats.total }
-  ]
+  const statItems = React.useMemo(() => {
+    return [
+      { label: 'Fruits', value: stats.fruits },
+      { label: 'Légumes', value: stats.vegetables },
+      { label: 'Total', value: stats.total }
+    ]
+  }, [stats.fruits, stats.vegetables, stats.total])
 
   const handlePreviousMonth = () => {
     onMonthChange(previousMonth)
