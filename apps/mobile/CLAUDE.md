@@ -71,3 +71,11 @@ Pas de server functions. Données dans le binary, 100% offline.
 |-------|-------|
 | `/react-native-best-practices` | Performance RN |
 | `/react-useeffect` | Audit hooks |
+
+---
+
+## Learning
+
+`learning-mobile.md` (racine mobile) — Journal des erreurs rencontrées et limitations découvertes.
+
+**Mettre à jour ce fichier** à chaque bug, crash ou limitation Uniwind/HeroUI/RN découvert.
