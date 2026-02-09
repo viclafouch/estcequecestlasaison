@@ -19,7 +19,8 @@ export default [
       '**/android/**',
       '**/dist/**',
       'metro.config.cjs',
-      'uniwind-types.d.ts'
+      'uniwind-types.d.ts',
+      'expo-env.d.ts'
     ]
   },
   ...typescriptConfig,
