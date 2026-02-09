@@ -676,7 +676,7 @@ L'app de consultation complete, miroir du site web.
 - [x] Page privacy policy : `/confidentialite` — hebergee et accessible
 - [x] Page CGU : `/cgu` — hebergee et accessible
 - [x] Remplir les `[A COMPLETER]` dans les pages legales (nom, SIRET, adresse, TVA)
-- [ ] Email support fonctionnel : `contact@estcequecestlasaison.fr`
+- [x] Email support fonctionnel : `contact@estcequecestlasaison.fr`
 
 **Cleanup deps et config (audit Expo Skills fevrier 2026)**
 

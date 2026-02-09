@@ -464,7 +464,7 @@ Setup monorepo, donnees (80 produits JSON + types + helpers Zod), page d'accueil
 - [x] Page `/mentions-legales` — obligation legale francaise (editeur, hebergeur)
 - [x] Page `/confidentialite` — politique de confidentialite RGPD (donnees collectees, cookies, droits)
 - [x] Page `/cgu` — conditions generales d'utilisation (pre-requis App Store)
-- [ ] Email support fonctionnel : `contact@estcequecestlasaison.fr`
+- [x] Email support fonctionnel : `contact@estcequecestlasaison.fr`
 - [x] Liens vers pages legales dans le footer
 
 **AdSense**
