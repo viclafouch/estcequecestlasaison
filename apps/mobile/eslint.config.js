@@ -41,7 +41,8 @@ export default [
             'Card.Title',
             'Card.Description',
             'Chip.Label',
-            'Tabs.Label'
+            'Tabs.Label',
+            'NativeTabs.Trigger.Label'
           ]
         }
       ]

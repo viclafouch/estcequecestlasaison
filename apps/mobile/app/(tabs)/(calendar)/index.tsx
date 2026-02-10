@@ -277,6 +277,7 @@ const CalendarScreen = () => {
           ListFooterComponent={Legend}
           keyboardShouldPersistTaps="handled"
           maintainVisibleContentPosition={DISABLE_MAINTAIN_POSITION}
+          contentInsetAdjustmentBehavior="automatic"
           accessibilityRole="list"
         />
       )}

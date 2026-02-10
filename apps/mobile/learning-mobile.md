@@ -48,6 +48,20 @@
 | `className` fonctionne sur `Image` d'expo-image | Parce que `ImageProps extends ViewProps` et Uniwind augmente `ViewProps` avec `className` |
 | `StyleSheet.absoluteFill` obligatoire pour remplir un parent | `className="absolute top-0 right-0 bottom-0 left-0"` ne fonctionne PAS (testé 2026-02-09, images invisibles) |
 
+## NativeTabs (expo-router/unstable-native-tabs)
+
+| Fait | Detail |
+|------|--------|
+| `Icon` et `Label` ne sont PAS des exports top-level | La doc/skill dit `import { Icon, Label }` mais le vrai API est `NativeTabs.Trigger.Icon`, `NativeTabs.Trigger.Label`, `NativeTabs.Trigger.Badge` (compound components) |
+| NativeTabs ne gere pas les headers | Il faut imbriquer un `<Stack>` dans chaque onglet qui a un header (ex: `index/_layout.tsx` avec `Stack.Screen`) |
+| `headerRightContainerStyle` n'existe pas sur NativeStackNavigationOptions | Prop specifique a `@react-navigation/bottom-tabs`. Mettre le padding directement sur le composant headerRight |
+| `react-native/no-raw-text` et `NativeTabs.Trigger.Label` | Ajouter `'NativeTabs.Trigger.Label'` au `skip` de la regle ESLint |
+| iOS 26 liquid glass trop transparent par défaut | Ajouter `blurEffect="systemThickMaterial"` + `disableTransparentOnScrollEdge` sur `<NativeTabs>` |
+| iOS 26 header buttons : padding interdit | Le header liquid glass wrap les boutons dans un pill natif. `className="pr-4"` sur le Pressable pousse l'icône hors du pill → ne PAS ajouter de padding sur les composants `headerRight` |
+| iOS 26 `tintColor` sur tab bar | Les couleurs saturées (emerald #10b981) clashent avec le liquid glass qui capte les tons du contenu. Mieux : ne pas set `tintColor` (bleu système adaptatif) |
+| `contentInsetAdjustmentBehavior="automatic"` obligatoire | Toutes les FlashList dans NativeTabs doivent l'avoir, sinon le contenu est masqué par la tab bar flottante |
+| `expo-image` + `sf:info.circle` invisible | La syntaxe `source={{ uri: 'sf:...' }}` ne fonctionne pas sans `expo-symbols` installé. Rester sur Ionicons pour les icônes dans les headers |
+
 ## Deps cachées
 
 | Package | Requis par | Note |

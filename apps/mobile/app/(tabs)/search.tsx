@@ -131,6 +131,7 @@ const SearchScreen = () => {
             keyExtractor={keyExtractor}
             ItemSeparatorComponent={ItemSeparator}
             keyboardShouldPersistTaps="handled"
+            contentInsetAdjustmentBehavior="automatic"
             accessibilityRole="list"
           />
         </>

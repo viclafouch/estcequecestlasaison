@@ -179,10 +179,14 @@ apps/mobile/
 ├── app/                       → Expo Router (file-based routing)
 │   ├── _layout.tsx            → Root layout (Tab Bar, providers)
 │   ├── (tabs)/                → Tab Bar group
-│   │   ├── _layout.tsx        → Tab Bar config (3 onglets)
-│   │   ├── index.tsx          → Accueil (carousels)
-│   │   ├── search.tsx         → Recherche (ecran dedie)
-│   │   └── calendar.tsx       → Calendrier (liste filtree)
+│   │   ├── _layout.tsx        → NativeTabs config (3 onglets, liquid glass iOS 26)
+│   │   ├── index/
+│   │   │   ├── _layout.tsx    → Stack (header Home + bouton info)
+│   │   │   └── index.tsx      → Accueil (carousels)
+│   │   ├── search.tsx         → Recherche (ecran dedie, pas de header)
+│   │   └── calendar/
+│   │       ├── _layout.tsx    → Stack (header Calendrier)
+│   │       └── index.tsx      → Calendrier (liste filtree)
 │   └── product/
 │       └── [slug].tsx         → Page produit dynamique
 ├── components/                → Composants UI mobile
@@ -195,7 +199,8 @@ apps/mobile/
 │   ├── filter-chips.tsx       → Chips Tous/Fruits/Legumes
 │   ├── product-hero.tsx        → Hero produit immersif (image full-bleed, gradient, texte blanc)
 │   ├── faq-section.tsx        → Section FAQ en bas de homepage
-│   └── season-alternatives.tsx→ Alternatives en saison (hors saison)
+│   ├── season-alternatives.tsx→ Alternatives en saison (hors saison)
+│   └── header-info-button.tsx → Bouton info (FAQ) dans le header
 ├── (pas de services/ local — tout dans packages/shared)
 ├── constants/                 → Constantes app
 │   ├── theme.ts               → Couleurs, tailles (emerald #10b981, gradient, badge pill, season detail on dark, share button)
@@ -757,7 +762,7 @@ Test credentials: Not applicable (no login).
 
 | Feature | Description | Impact |
 |---------|-------------|--------|
-| NativeTabs | Migrer `<Tabs>` JS vers `NativeTabs` (`expo-router/unstable-native-tabs`) | Tabs natifs (blur, liquid glass iOS 26) |
+| ~~NativeTabs~~ | ~~Migrer `<Tabs>` JS vers `NativeTabs` (`expo-router/unstable-native-tabs`)~~ | ~~Done — liquid glass iOS 26, SF Symbols, minimizeBehavior~~ |
 | Link.Preview | Long press sur les liens produit → apercu de la page (convention iOS) | Feel natif, navigation enrichie |
 
 #### Retention & Engagement
