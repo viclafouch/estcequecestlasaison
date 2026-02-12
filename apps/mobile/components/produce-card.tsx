@@ -42,61 +42,63 @@ export const ProduceCard = ({ produce, month, section }: ProduceCardProps) => {
 
   return (
     <Link href={`/product/${produce.slug}`} asChild>
-      <Pressable
-        style={StyleSheet.absoluteFill}
-        accessibilityRole="link"
-        accessibilityLabel={produce.name}
-      >
-        <Image
-          source={imageSource}
+      <Link.Trigger withAppleZoom>
+        <Pressable
           style={StyleSheet.absoluteFill}
-          contentFit="cover"
+          accessibilityRole="link"
           accessibilityLabel={produce.name}
-        />
-        <LinearGradient
-          colors={['transparent', String(gradientDark)]}
-          style={styles.gradient}
-        />
-        <View className="absolute top-4 left-4 flex-row items-center gap-2 rounded-full border px-4 py-2 bg-pill-bg border-pill-border">
-          <View
-            className={cn(
-              'w-2 h-2 rounded-full',
-              BADGE_DOT_CLASSES[badge.variant]
-            )}
+        >
+          <Image
+            source={imageSource}
+            style={StyleSheet.absoluteFill}
+            contentFit="cover"
+            accessibilityLabel={produce.name}
           />
-          <Text
-            className={cn(
-              'text-sm font-semibold',
-              BADGE_TEXT_CLASSES[badge.variant]
-            )}
-          >
-            {badge.label}
-          </Text>
-        </View>
-        <View className="absolute bottom-7 left-6 right-6">
-          <Text
-            className="text-[11px] font-semibold mb-1 text-text-on-image"
-            style={styles.typeLabel}
-          >
-            {typeLabel}
-          </Text>
-          <Text
-            className="text-[30px] font-extrabold text-white"
-            numberOfLines={1}
-          >
-            {produce.name}
-          </Text>
-          <Text
-            className="text-[13px] font-medium mt-1.5 text-text-on-image-strong"
-            numberOfLines={1}
-          >
-            {produce.nutrition.calories} kcal
-            {hasVitamins
-              ? ` · ${formatVitamins(produce.nutrition.vitamins)}`
-              : ''}
-          </Text>
-        </View>
-      </Pressable>
+          <LinearGradient
+            colors={['transparent', String(gradientDark)]}
+            style={styles.gradient}
+          />
+          <View className="absolute top-4 left-4 flex-row items-center gap-2 rounded-full border px-4 py-2 bg-pill-bg border-pill-border">
+            <View
+              className={cn(
+                'w-2 h-2 rounded-full',
+                BADGE_DOT_CLASSES[badge.variant]
+              )}
+            />
+            <Text
+              className={cn(
+                'text-sm font-semibold',
+                BADGE_TEXT_CLASSES[badge.variant]
+              )}
+            >
+              {badge.label}
+            </Text>
+          </View>
+          <View className="absolute bottom-7 left-6 right-6">
+            <Text
+              className="text-[11px] font-semibold mb-1 text-text-on-image"
+              style={styles.typeLabel}
+            >
+              {typeLabel}
+            </Text>
+            <Text
+              className="text-[30px] font-extrabold text-white"
+              numberOfLines={1}
+            >
+              {produce.name}
+            </Text>
+            <Text
+              className="text-[13px] font-medium mt-1.5 text-text-on-image-strong"
+              numberOfLines={1}
+            >
+              {produce.nutrition.calories} kcal
+              {hasVitamins
+                ? ` · ${formatVitamins(produce.nutrition.vitamins)}`
+                : ''}
+            </Text>
+          </View>
+        </Pressable>
+      </Link.Trigger>
     </Link>
   )
 }

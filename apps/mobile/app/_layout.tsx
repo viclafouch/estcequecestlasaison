@@ -37,7 +37,8 @@ const RootLayout = () => {
           <ReducedMotionConfig mode={ReduceMotion.System} />
           <Stack
             screenOptions={{
-              animation: 'slide_from_right'
+              animation: 'slide_from_right',
+              headerBackButtonDisplayMode: 'minimal'
             }}
           >
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

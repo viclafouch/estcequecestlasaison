@@ -1,5 +1,6 @@
 import React from 'react'
 import { ScrollView, Text, View } from 'react-native'
+import { Stack } from 'expo-router'
 import { Accordion } from 'heroui-native'
 import { FAQ_ITEMS } from '@/constants/faq'
 
@@ -9,6 +10,7 @@ const FaqScreen = () => {
       className="flex-1 bg-white"
       contentInsetAdjustmentBehavior="automatic"
     >
+      <Stack.Screen options={{ title: 'FAQ' }} />
       <View className="px-4 py-6">
         <Accordion selectionMode="multiple" variant="surface">
           {FAQ_ITEMS.map((item) => {

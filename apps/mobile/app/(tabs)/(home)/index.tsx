@@ -1,5 +1,6 @@
 import React from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import { Stack, useRouter } from 'expo-router'
 import { FaqSection } from '@/components/faq-section'
 import { FilterChips } from '@/components/filter-chips'
 import { MonthBottomSheet } from '@/components/month-bottom-sheet'
@@ -36,6 +37,7 @@ const ListEmpty = () => {
 }
 
 const HomeScreen = () => {
+  const router = useRouter()
   const [activeCategory, setActiveCategory] =
     React.useState<CategoryFilter>('all')
   const [selectedMonth, setSelectedMonth] =
@@ -83,8 +85,19 @@ const HomeScreen = () => {
     setIsBottomSheetOpen(true)
   }
 
+  const handleFaqPress = () => {
+    router.push('/faq')
+  }
+
   return (
     <View className="flex-1 bg-white">
+      <Stack.Toolbar placement="right">
+        <Stack.Toolbar.Button
+          icon="questionmark.circle"
+          onPress={handleFaqPress}
+          accessibilityLabel="Questions fréquentes"
+        />
+      </Stack.Toolbar>
       <FilterChips
         activeCategory={activeCategory}
         onCategoryChange={handleCategoryChange}

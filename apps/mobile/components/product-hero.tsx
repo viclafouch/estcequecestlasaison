@@ -1,6 +1,7 @@
-import { Pressable, Share, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { Image } from 'expo-image'
 import { LinearGradient } from 'expo-linear-gradient'
+import { Link } from 'expo-router'
 import { cn } from 'heroui-native'
 import { useCSSVariable } from 'uniwind'
 import { BADGE_DOT_CLASSES } from '@/components/season-badge'
@@ -12,16 +13,13 @@ import {
   type BadgeVariant,
   getDefaultProduceBadge,
   getPreviousMonth,
-  getShareText,
   matchIsInSeason,
   matchIsInSeasonAllYear,
   type Month,
   type Produce,
   type ProduceBadge
 } from '@estcequecestlasaison/shared'
-import Ionicons from '@expo/vector-icons/Ionicons'
 
-const SITE_DOMAIN = 'estcequecestlasaison.fr'
 const HERO_HEIGHT = 400
 
 type SeasonDisplay = {
@@ -91,7 +89,6 @@ type ProductHeroProps = {
 
 export const ProductHero = ({ produce, currentMonth }: ProductHeroProps) => {
   const badge = getDefaultProduceBadge({ produce, month: currentMonth })
-  const isInSeason = matchIsInSeason(produce, currentMonth)
   const typeLabel = produce.type === 'fruit' ? 'FRUIT' : 'LÉGUME'
   const seasonDisplay = getSeasonDisplay({
     produce,
@@ -101,39 +98,20 @@ export const ProductHero = ({ produce, currentMonth }: ProductHeroProps) => {
   const imageSource = getProduceImage(produce.slug as ProduceImageSlug)
   const [gradientHero] = useCSSVariable(['--color-gradient-hero'])
 
-  const handleShare = () => {
-    const shareText = getShareText({
-      produceName: produce.name,
-      isInSeason,
-      siteDomain: SITE_DOMAIN
-    })
-
-    void Share.share({
-      message: shareText,
-      url: `https://${SITE_DOMAIN}/${produce.slug}`
-    })
-  }
-
   return (
     <View className="overflow-hidden" style={styles.container}>
-      <Image
-        source={imageSource}
-        style={StyleSheet.absoluteFill}
-        contentFit="cover"
-        accessibilityLabel={`${produce.name}, ${typeLabel}`}
-      />
+      <Link.AppleZoomTarget>
+        <Image
+          source={imageSource}
+          style={StyleSheet.absoluteFill}
+          contentFit="cover"
+          accessibilityLabel={`${produce.name}, ${typeLabel}`}
+        />
+      </Link.AppleZoomTarget>
       <LinearGradient
         colors={['transparent', String(gradientHero)]}
         style={styles.gradient}
       />
-      <Pressable
-        className="absolute top-4 right-4 w-10 h-10 rounded-full items-center justify-center bg-overlay-button"
-        onPress={handleShare}
-        accessibilityLabel={`Partager ${produce.name}`}
-        accessibilityRole="button"
-      >
-        <Ionicons name="share-outline" size={20} color="#ffffff" />
-      </Pressable>
       <View className="absolute bottom-6 left-6 right-6">
         <Text
           className="text-[11px] font-semibold mb-1 text-text-on-image"

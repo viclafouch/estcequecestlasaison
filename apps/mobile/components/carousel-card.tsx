@@ -19,28 +19,30 @@ export const CarouselCard = ({ slug, name }: CarouselCardProps) => {
 
   return (
     <Link href={`/product/${slug}`} asChild>
-      <Pressable
-        style={StyleSheet.absoluteFill}
-        accessibilityRole="link"
-        accessibilityLabel={name}
-      >
-        <Image
-          source={imageSource}
+      <Link.Trigger withAppleZoom>
+        <Pressable
           style={StyleSheet.absoluteFill}
-          contentFit="cover"
+          accessibilityRole="link"
           accessibilityLabel={name}
-        />
-        <LinearGradient
-          colors={['transparent', String(gradientCarousel)]}
-          style={styles.gradient}
-        />
-        <Text
-          className="absolute bottom-3 left-3 right-3 text-[15px] font-bold text-white"
-          numberOfLines={1}
         >
-          {name}
-        </Text>
-      </Pressable>
+          <Image
+            source={imageSource}
+            style={StyleSheet.absoluteFill}
+            contentFit="cover"
+            accessibilityLabel={name}
+          />
+          <LinearGradient
+            colors={['transparent', String(gradientCarousel)]}
+            style={styles.gradient}
+          />
+          <Text
+            className="absolute bottom-3 left-3 right-3 text-[15px] font-bold text-white"
+            numberOfLines={1}
+          >
+            {name}
+          </Text>
+        </Pressable>
+      </Link.Trigger>
     </Link>
   )
 }

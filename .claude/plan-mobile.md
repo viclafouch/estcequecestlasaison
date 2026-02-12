@@ -6,7 +6,7 @@
 
 - **Profil** : 10 ans d'experience front-end web, zero experience mobile
 - **Appareil de test Android** : Google Pixel 9 — tests via dev build local
-- **Appareil de test iOS** : pas de device physique — tests via simulateur Xcode uniquement ⚠️ Risque : bugs specifiques a certains modeles non detectes
+- **Appareil de test iOS** : iPhone physique (Backmarket) iOS 26.1 + simulateur Xcode
 - **macOS** : Darwin 25.2.0, Xcode 26.0 installe
 - **Comptes stores** : aucun — a creer pendant le developpement (Apple Developer $99/an, Google Play $25 one-time)
 
@@ -199,8 +199,7 @@ apps/mobile/
 │   ├── filter-chips.tsx       → Chips Tous/Fruits/Legumes
 │   ├── product-hero.tsx        → Hero produit immersif (image full-bleed, gradient, texte blanc)
 │   ├── faq-section.tsx        → Section FAQ en bas de homepage
-│   ├── season-alternatives.tsx→ Alternatives en saison (hors saison)
-│   └── header-info-button.tsx → Bouton info (FAQ) dans le header
+│   └── season-alternatives.tsx→ Alternatives en saison (hors saison)
 ├── (pas de services/ local — tout dans packages/shared)
 ├── constants/                 → Constantes app
 │   ├── theme.ts               → Couleurs, tailles (emerald #10b981, gradient, badge pill, season detail on dark, share button)
@@ -644,7 +643,7 @@ L'app de consultation complete, miroir du site web.
 #### Milestone M8 : Deep Linking
 
 - [x] Configurer le scheme URL dans app.json
-- [x] Universal links iOS (apple-app-site-association sur le site web)
+- [ ] Universal links iOS (apple-app-site-association sur le site web) — **necessite compte Apple Developer payant** (`associatedDomains` retire de app.json pour le dev avec Personal Team gratuit, a remettre avec le compte payant)
 - [x] App links Android (assetlinks.json sur le site web)
 - [x] Routing : `/{slug}` → `product/[slug]`, `/calendrier` → `(tabs)/calendar`
 - [x] Fallback navigateur si app non installee
@@ -693,6 +692,7 @@ L'app de consultation complete, miroir du site web.
 
 - [ ] `npx expo prebuild --platform ios --clean` (corrige bundle ID `com.anonymous.mobile` → `fr.estcequecestlasaison.app` + CFBundleDisplayName "mobile" → nom reel de l'app)
 - [ ] Activer privacy manifest aggregation : ajouter `"apple.privacyManifestAggregationEnabled": "true"` dans `ios/Podfile.properties.json`
+- [ ] Remettre `associatedDomains` dans `app.json` (retire pour dev avec Personal Team gratuit)
 - [ ] Deployer `apple-app-site-association` sur le serveur web (deep linking)
 - [ ] Fichier servi avec `Content-Type: application/json`
 - [ ] Tester deep link depuis Safari sur device (URL web → ouvre l'app)
@@ -763,6 +763,10 @@ Test credentials: Not applicable (no login).
 | Feature | Description | Impact |
 |---------|-------------|--------|
 | ~~NativeTabs~~ | ~~Migrer `<Tabs>` JS vers `NativeTabs` (`expo-router/unstable-native-tabs`)~~ | ~~Done — liquid glass iOS 26, SF Symbols, minimizeBehavior~~ |
+| ~~Zoom Transition~~ | ~~`Link.Trigger withAppleZoom` sur ProduceCard/CarouselCard → page produit avec `Link.AppleZoomTarget`~~ | ~~Done — animation zoom fluide iOS 18+~~ |
+| ~~Stack Toolbar Right~~ | ~~Boutons header natifs SF Symbols (FAQ home, share produit) via `Stack.Toolbar placement="right"`~~ | ~~Done — liquid glass automatique~~ |
+| ~~Stack Toolbar Bottom~~ | ~~Toolbar bas produit scroll-aware~~ | ~~Implementé puis retiré — share suffisant dans le toolbar right~~ |
+| Fallback headerRight | `Stack.Toolbar` = iOS 26+ only. Sur Android et iOS < 26, les boutons toolbar (FAQ home, share produit) ne s'affichent pas. Ajouter un fallback `headerRight` conditionnel (`Platform.OS` + version check) pour ces plateformes | Accessibilité cross-platform |
 | Link.Preview | Long press sur les liens produit → apercu de la page (convention iOS) | Feel natif, navigation enrichie |
 
 #### Retention & Engagement

@@ -14,10 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "fr.estcequecestlasaison.app",
-      "associatedDomains": [
-        "applinks:estcequecestlasaison.fr"
-      ]
+      "bundleIdentifier": "fr.estcequecestlasaison.app"
     },
     "android": {
       "adaptiveIcon": {
