@@ -692,6 +692,7 @@ L'app de consultation complete, miroir du site web.
 
 - [ ] `npx expo prebuild --platform ios --clean` (corrige bundle ID `com.anonymous.mobile` → `fr.estcequecestlasaison.app` + CFBundleDisplayName "mobile" → nom reel de l'app)
 - [ ] Activer privacy manifest aggregation : ajouter `"apple.privacyManifestAggregationEnabled": "true"` dans `ios/Podfile.properties.json`
+- [ ] Ajouter `privacyManifests` dans `app.json` sous `expo.ios` (4 Required Reason APIs + NSPrivacyCollectedDataTypes vide + NSPrivacyTracking false) — necessaire pour l'aggregation correcte des CocoaPods statiques
 - [ ] Remettre `associatedDomains` dans `app.json` (retire pour dev avec Personal Team gratuit)
 - [ ] Deployer `apple-app-site-association` sur le serveur web (deep linking)
 - [ ] Fichier servi avec `Content-Type: application/json`
@@ -733,7 +734,10 @@ Test credentials: Not applicable (no login).
 
 **ASO — Metadata**
 
-- [ ] App icon 1024x1024 sans transparence
+- [ ] App icon 1024x1024 sans transparence (actuel : 512x512 avec alpha — bloquant)
+- [ ] Adaptive icon Android 1024x1024 (actuel : 512x512)
+- [ ] Splash icon 1024x1024 (actuel : 512x512, recommande pour Retina)
+- [ ] Feature graphic Android 1024x500 (obligatoire Google Play)
 - [ ] Screenshots orientes valeur (voir section ASO & Growth)
 - [ ] Screenshots obligatoires : iPhone 6.7" (1290x2796), 6.5" (1284x2778), 5.5" (1242x2208)
 - [ ] Titre : "Saison: Fruits & Legumes"
@@ -741,6 +745,22 @@ Test credentials: Not applicable (no login).
 - [ ] Short description Android : idem subtitle
 - [ ] Description longue < 4000 chars, conversationnelle (voice search)
 - [ ] Keywords iOS : fruits,legumes,saison,calendrier,local,france,manger,bio
+
+**Google Play — Data Safety**
+
+- [ ] Remplir Data Safety section (declarer "No data collected" + "No data shared")
+- [ ] Privacy policy URL dans Play Console ET accessible dans l'app
+- [ ] Premier upload Android DOIT etre manuel via Play Console (API indisponible avant)
+
+**Audit `/app-release` (fevrier 2026) — items supplementaires**
+
+- [ ] Decider `supportsTablet` : `true` (tester iPad) ou `false` (phone resolution sur iPad)
+- [ ] Aligner versions partout : `app.json` = `1.0.0`, `package.json` = `1.0.0`, Xcode MARKETING_VERSION = `1.0.0`
+- [ ] Retirer section `web` de `app.json` (inutile, app mobile-only)
+- [ ] Installer + configurer Sentry (`@sentry/react-native` + source maps) — reporte depuis M0, a faire avant soumission
+- [ ] Verifier `LSMinimumSystemVersion` coherent avec Expo SDK 55 (probablement iOS 16+)
+
+> **Resultat audit `/app-release` (16 fevrier 2026)** : 16/36 PASS, 10 FAIL, 10 WARN. Details dans `apps/mobile/AUDIT-RELEASE.md`. Points critiques : icone 512x512 avec alpha, `privacyManifests` absent de `app.json`, `associatedDomains` vide, placeholders AASA/assetlinks, pas de `eas.json`, pas de comptes stores.
 
 **Soumission**
 
