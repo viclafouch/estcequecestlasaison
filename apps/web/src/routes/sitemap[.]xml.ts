@@ -2,11 +2,12 @@ import { clientEnv } from '@/constants/env'
 import type { Produce } from '@estcequecestlasaison/shared'
 import { createFileRoute } from '@tanstack/react-router'
 
-function buildUrlEntry(produce: Produce) {
+function buildUrlEntry(produce: Produce, lastmod: string) {
   const loc = `${clientEnv.VITE_SITE_URL}/${produce.slug}`
 
   return `  <url>
     <loc>${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`
@@ -19,17 +20,18 @@ export const Route = createFileRoute('/sitemap.xml')({
         const { PRODUCE_LIST } =
           await import('@estcequecestlasaison/shared/services')
 
-        const today = new Date().toISOString().slice(0, 10)
+        const now = new Date()
+        const firstOfMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-01`
 
         const produceUrls = PRODUCE_LIST.map((produce) => {
-          return buildUrlEntry(produce)
+          return buildUrlEntry(produce, firstOfMonth)
         }).join('\n')
 
         const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${clientEnv.VITE_SITE_URL}/</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${firstOfMonth}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -40,7 +42,7 @@ export const Route = createFileRoute('/sitemap.xml')({
   </url>
   <url>
     <loc>${clientEnv.VITE_SITE_URL}/calendrier</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${firstOfMonth}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

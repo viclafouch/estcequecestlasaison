@@ -10,15 +10,6 @@ import { loadProduceData, matchIsExistingFile } from './utils'
 const OUTPUT_DIR = './generated-images'
 const DELAY_MS = 2000
 
-const CUSTOM_PROMPTS: Partial<Record<Produce['slug'], string>> = {
-  salade:
-    'A professional, high-quality photograph of a single fresh green lettuce leaf (laitue) placed on a rustic wooden cutting board in a blurred kitchen background. Just the lettuce leaf alone, no other vegetables. Natural lighting, 8k resolution, minimalist composition.',
-  groseille:
-    'A single professional food photograph of a fresh cluster of red currants (groseille, French fruit) still attached to their stem. Placed on a rustic wooden cutting board in a blurred kitchen background. One image only, no collage, no split views, no text, no labels, no watermark. Natural lighting, 8k resolution, minimalist composition.',
-  poivron:
-    'A single professional food photograph of one fresh green bell pepper (poivron vert, French vegetable). Placed on a rustic wooden cutting board in a blurred kitchen background. One image only, no collage, no split views, no text, no labels, no watermark. Natural lighting, 8k resolution, minimalist composition.'
-}
-
 if (!process.env.GOOGLE_API_KEY && !process.env.GEMINI_API_KEY) {
   console.error('Missing GOOGLE_API_KEY environment variable.')
   console.error('Get your key at https://aistudio.google.com/apikey')
@@ -56,12 +47,6 @@ async function askValidation(itemName: string): Promise<boolean> {
 }
 
 function buildPrompt(item: Produce) {
-  const customPrompt = CUSTOM_PROMPTS[item.slug]
-
-  if (customPrompt) {
-    return customPrompt
-  }
-
   return `Product photography, studio shot: a single fresh ${item.name} centered on a rustic wooden cutting board. Shallow depth of field, blurred kitchen background. Only the ${item.name}, nothing else in the frame. No people, no hands, no text, no watermark. Soft natural window light from the left, clean minimalist composition, 8k resolution.`
 }
 

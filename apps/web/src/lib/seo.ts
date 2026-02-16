@@ -54,16 +54,15 @@ export function seo({
   pathname = '/',
   ogType = 'website'
 }: SeoParams) {
-  const fullTitle = `${title} | ${SITE_NAME}`
   const url = buildUrl(pathname)
   const ogImage = buildOgImageUrl(image)
   const ogImageAlt = imageAlt ?? `${title} - ${SITE_NAME}`
 
   const baseMeta = [
-    { title: fullTitle },
+    { title },
     { property: 'og:type', content: ogType },
     { property: 'og:site_name', content: SITE_NAME },
-    { property: 'og:title', content: fullTitle },
+    { property: 'og:title', content: title },
     { property: 'og:url', content: url },
     { property: 'og:locale', content: 'fr_FR' },
     { property: 'og:image', content: ogImage },
@@ -72,7 +71,7 @@ export function seo({
     { property: 'og:image:height', content: String(OG_IMAGE_HEIGHT) },
     { property: 'og:image:alt', content: ogImageAlt },
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: fullTitle },
+    { name: 'twitter:title', content: title },
     { name: 'twitter:image', content: ogImage },
     { name: 'twitter:image:alt', content: ogImageAlt }
   ]
