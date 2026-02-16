@@ -70,6 +70,26 @@ const MentionsLegalesPage = () => {
             </a>
           </li>
         </ul>
+        <h2 className="mt-8 text-xl font-semibold text-gray-900">CDN et DNS</h2>
+        <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-gray-700">
+          <li>Raison sociale : Cloudflare, Inc.</li>
+          <li>Adresse : San Francisco, CA, USA</li>
+          <li>
+            Site web :{' '}
+            <a
+              href="https://www.cloudflare.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link"
+            >
+              cloudflare.com
+            </a>
+          </li>
+          <li>
+            Rôle : réseau de diffusion de contenu (CDN), gestion DNS et
+            protection contre les attaques
+          </li>
+        </ul>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
           Propriété intellectuelle
         </h2>

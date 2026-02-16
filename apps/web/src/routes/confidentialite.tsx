@@ -46,10 +46,28 @@ const ConfidentialitePage = () => {
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">Cookies</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Ce site n'utilise actuellement <strong>aucun cookie</strong>, ni
-          cookie de suivi, ni cookie publicitaire, ni cookie analytique. Cette
-          politique sera mise à jour si des cookies sont introduits à l'avenir
-          (par exemple lors de l'intégration de Google AdSense).
+          Ce site n'utilise <strong>aucun cookie de suivi</strong>, ni cookie
+          publicitaire, ni cookie analytique.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          Le réseau{' '}
+          <a
+            href="https://www.cloudflare.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-link"
+          >
+            Cloudflare
+          </a>
+          , utilisé pour la diffusion et la sécurité du site, peut déposer des
+          cookies techniques strictement nécessaires au fonctionnement du
+          service (protection contre les bots, gestion du trafic). Ces cookies
+          ne permettent pas de vous identifier personnellement.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          Cette politique sera mise à jour si des cookies supplémentaires sont
+          introduits à l'avenir (par exemple lors de l'intégration de Google
+          AdSense).
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
           Base légale du traitement
@@ -116,10 +134,20 @@ const ConfidentialitePage = () => {
           >
             Railway
           </a>{' '}
-          (San Francisco, États-Unis). Bien qu'aucune donnée personnelle ne soit
-          actuellement collectée, les requêtes HTTP transitent par les serveurs
-          de l'hébergeur. Railway s'engage à respecter des garanties adéquates
-          en matière de protection des données.
+          (San Francisco, États-Unis) et utilise le réseau{' '}
+          <a
+            href="https://www.cloudflare.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-link"
+          >
+            Cloudflare
+          </a>{' '}
+          (San Francisco, États-Unis) comme CDN et gestionnaire DNS. Bien
+          qu'aucune donnée personnelle ne soit actuellement collectée, les
+          requêtes HTTP transitent par les serveurs de ces prestataires. Railway
+          et Cloudflare s'engagent à respecter des garanties adéquates en
+          matière de protection des données.
         </p>
         <h2 className="mt-8 text-xl font-semibold text-gray-900">
           Application mobile

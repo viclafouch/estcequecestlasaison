@@ -15,7 +15,7 @@ Site web permettant de connaitre la saisonnalite des fruits et legumes en France
 | Aspect | Choix |
 |--------|-------|
 | Monorepo | pnpm workspaces (pnpm 10.28.2) |
-| Hosting Web | Railway (auto-deploy depuis main) |
+| Hosting Web | Railway (auto-deploy depuis main), Cloudflare (CDN, DNS, protection) |
 | Icones UI | lucide-react (fleches, menu, recherche, partage) |
 | Icones produits | SVG inline emojione (shadcn.io) pour header, images WebP pour produits |
 | Recherche | Fuse.js (fuzzy search server-side) |
@@ -437,6 +437,7 @@ Validation via `@t3-oss/env-core` + Zod dans `src/constants/env.ts`.
 | Service | Usage |
 |---------|-------|
 | Railway | Hebergement web (auto-deploy main) |
+| Cloudflare | CDN, DNS, protection DDoS, redirection apex → www |
 | Google AdSense | Monetisation web (a integrer) |
 
 ### CI/CD

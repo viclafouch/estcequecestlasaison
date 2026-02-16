@@ -93,7 +93,7 @@ Command palette accessible from any page via keyboard shortcut (Cmd+K / Ctrl+K) 
 
 ## Deployment
 
-Deployed on [Railway](https://railway.com) with automatic deploys from the `main` branch.
+Deployed on [Railway](https://railway.com) with automatic deploys from the `main` branch, behind [Cloudflare](https://www.cloudflare.com) for DNS, CDN, and DDoS protection.
 
 ```bash
 pnpm build
