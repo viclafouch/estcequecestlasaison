@@ -57,6 +57,7 @@ Logique business de saisonnalité, importe les utilitaires date depuis `date.ts`
 | `filterProduceByType(params)` | Filtre par type (fruit/vegetable) |
 | `groupProduceBySeason(params)` | Groupe par saison (inSeason, comingNextMonth, offSeason) |
 | `sortProduceBySeasonEnd(params)` | Trie par fin de saison (nouveaux en premier, toute l'année en dernier) |
+| `sortProduceByNextSeason(params)` | Trie hors-saison par proximité de la prochaine saison |
 | `getArrivingProduce(params)` | Produits qui arrivent ce mois (nouveautés) |
 | `getLeavingProduce(params)` | Produits qui partent ce mois (fin de saison) |
 | `getMonthStats(params)` | Stats du mois (fruits, vegetables, arriving, leaving) |

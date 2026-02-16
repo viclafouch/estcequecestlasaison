@@ -166,6 +166,60 @@ function getMonthDistance(from: Month, to: Month) {
   return to >= from ? to - from : 12 - from + to
 }
 
+type GetNextSeasonStartMonthParams = {
+  produce: Produce
+  fromMonth: Month
+}
+
+function getNextSeasonStartMonth({
+  produce,
+  fromMonth
+}: GetNextSeasonStartMonthParams) {
+  let current = fromMonth
+
+  for (let step = 0; step < 12; step += 1) {
+    if (matchIsInSeason(produce, current)) {
+      return current
+    }
+
+    current = getNextMonth(current)
+  }
+
+  return fromMonth
+}
+
+export type SortProduceByNextSeasonParams = {
+  produceList: Produce[]
+  month: Month
+}
+
+export function sortProduceByNextSeason({
+  produceList,
+  month
+}: SortProduceByNextSeasonParams) {
+  const searchStart = getNextMonth(getNextMonth(month))
+
+  const keyed = produceList.map((produce) => {
+    const nextSeasonMonth = getNextSeasonStartMonth({
+      produce,
+      fromMonth: searchStart
+    })
+
+    return {
+      produce,
+      distance: getMonthDistance(searchStart, nextSeasonMonth)
+    }
+  })
+
+  return keyed
+    .toSorted((left, right) => {
+      return left.distance - right.distance
+    })
+    .map(({ produce }) => {
+      return produce
+    })
+}
+
 export type SortProduceBySeasonEndParams = {
   produceList: Produce[]
   month: Month

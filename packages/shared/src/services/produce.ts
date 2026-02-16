@@ -6,6 +6,7 @@ import {
   getSeasonAlternatives,
   groupProduceBySeason,
   matchIsInSeason,
+  sortProduceByNextSeason,
   sortProduceBySeasonEnd
 } from '../helpers/season'
 import type { Month, Produce } from '../types'
@@ -68,7 +69,10 @@ export function getGroupedProduce({
       month
     }),
     comingNextMonth: grouped.comingNextMonth,
-    offSeason: grouped.offSeason
+    offSeason: sortProduceByNextSeason({
+      produceList: grouped.offSeason,
+      month
+    })
   }
 }
 
