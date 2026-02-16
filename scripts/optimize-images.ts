@@ -4,54 +4,71 @@ import sharp from 'sharp'
 import { matchIsExistingFile } from './utils'
 
 const INPUT_DIR = './generated-images'
-const OUTPUT_DIR = './apps/web/public/images/produce'
-const SIZES = [256, 512]
+const WEB_OUTPUT_DIR = './apps/web/public/images/produce'
+const MOBILE_OUTPUT_DIR = './apps/mobile/assets/produce'
+const WEB_SIZES = [256, 512]
+const MOBILE_SIZE = 1024
 const WEBP_QUALITY = 80
 
-async function findMissingSizes(slug: string) {
-  const checks = await Promise.all(
-    SIZES.map(async (size) => {
-      const outputPath = join(OUTPUT_DIR, `${slug}-${size}w.webp`)
-      const isExisting = await matchIsExistingFile(outputPath)
+type GeneratedTarget = {
+  label: string
+  outputPath: string
+  size: number
+}
 
-      return { size, isExisting }
-    })
-  )
+async function findMissingTargets(slug: string): Promise<GeneratedTarget[]> {
+  const targets: GeneratedTarget[] = []
 
-  return checks
-    .filter((check) => {
-      return !check.isExisting
+  for (const size of WEB_SIZES) {
+    const outputPath = join(WEB_OUTPUT_DIR, `${slug}-${size}w.webp`)
+    const isExisting = await matchIsExistingFile(outputPath)
+
+    if (!isExisting) {
+      targets.push({ label: `web ${size}w`, outputPath, size })
+    }
+  }
+
+  const mobileOutputPath = join(MOBILE_OUTPUT_DIR, `${slug}.webp`)
+  const isMobileExisting = await matchIsExistingFile(mobileOutputPath)
+
+  if (!isMobileExisting) {
+    targets.push({
+      label: `mobile ${MOBILE_SIZE}w`,
+      outputPath: mobileOutputPath,
+      size: MOBILE_SIZE
     })
-    .map((check) => {
-      return check.size
-    })
+  }
+
+  return targets
 }
 
 async function processFile(file: string) {
   const slug = parse(file).name
   const inputPath = join(INPUT_DIR, file)
-  const missingSizes = await findMissingSizes(slug)
+  const targets = await findMissingTargets(slug)
 
-  if (missingSizes.length === 0) {
+  if (targets.length === 0) {
     return 'skipped' as const
   }
 
-  for (const size of missingSizes) {
-    const outputPath = join(OUTPUT_DIR, `${slug}-${size}w.webp`)
-
+  for (const target of targets) {
     await sharp(inputPath)
-      .resize(size, size, { fit: 'cover' })
+      .resize(target.size, target.size, { fit: 'cover' })
       .webp({ quality: WEBP_QUALITY })
-      .toFile(outputPath)
+      .toFile(target.outputPath)
   }
 
-  console.log(`OK ${slug} (${missingSizes.join(', ')}w)`)
+  const labels = targets.map((target) => {
+    return target.label
+  })
+  console.log(`OK ${slug} (${labels.join(', ')})`)
 
   return 'generated' as const
 }
 
 async function optimizeImages() {
-  await mkdir(OUTPUT_DIR, { recursive: true })
+  await mkdir(WEB_OUTPUT_DIR, { recursive: true })
+  await mkdir(MOBILE_OUTPUT_DIR, { recursive: true })
 
   const files = await readdir(INPUT_DIR)
   const pngFiles = files.filter((file) => {

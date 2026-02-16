@@ -767,6 +767,7 @@ Test credentials: Not applicable (no login).
 - [ ] Soumission App Store (review 24-48h)
 - [ ] Soumission Google Play
 - [ ] Version 1.0.0
+- [ ] Mettre a jour le README avec les liens stores (App Store + Google Play)
 
 ### Dette technique
 

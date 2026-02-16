@@ -1,5 +1,7 @@
-import { mkdir, writeFile } from 'node:fs/promises'
+import { exec } from 'node:child_process'
+import { mkdir, unlink, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { createInterface } from 'node:readline/promises'
 import { generateImage } from '@tanstack/ai'
 import { geminiImage } from '@tanstack/ai-gemini'
 import type { Produce } from '../packages/shared/src/types'
@@ -26,6 +28,33 @@ if (!process.env.GOOGLE_API_KEY && !process.env.GEMINI_API_KEY) {
 
 const adapter = geminiImage('imagen-4.0-generate-001')
 
+const rl = createInterface({ input: process.stdin, output: process.stdout })
+
+function openInPreview(filePath: string) {
+  exec(`open "${filePath}"`)
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms)
+  })
+}
+
+async function askValidation(itemName: string): Promise<boolean> {
+  const answer = await rl.question(
+    `\n  ${itemName} — Valider ? (o = oui / n = non, régénérer / s = skip définitivement) : `
+  )
+  const normalized = answer.trim().toLowerCase()
+
+  if (normalized === 's') {
+    console.log(`  → ${itemName} skippé définitivement`)
+
+    return true
+  }
+
+  return normalized === 'o' || normalized === 'oui' || normalized === 'y'
+}
+
 function buildPrompt(item: Produce) {
   const customPrompt = CUSTOM_PROMPTS[item.slug]
 
@@ -33,69 +62,115 @@ function buildPrompt(item: Produce) {
     return customPrompt
   }
 
-  const typeLabel = item.type === 'fruit' ? 'fruit' : 'vegetable'
-
-  return `A single professional food photograph of one fresh ${typeLabel}: ${item.name} (French produce). The subject must be exactly this ${typeLabel} and nothing else. Placed on a rustic wooden cutting board in a blurred kitchen background. One image only, no collage, no triptych, no split views, no multiple angles, no text, no labels, no watermark. Natural lighting, 8k resolution, minimalist composition.`
+  return `Product photography, studio shot: a single fresh ${item.name} centered on a rustic wooden cutting board. Shallow depth of field, blurred kitchen background. Only the ${item.name}, nothing else in the frame. No people, no hands, no text, no watermark. Soft natural window light from the left, clean minimalist composition, 8k resolution.`
 }
 
-async function generateProduceImage(item: Produce) {
+async function saveImage(
+  outputPath: string,
+  image: { b64Json?: string; url?: string }
+): Promise<boolean> {
+  if (image.b64Json) {
+    await writeFile(outputPath, Buffer.from(image.b64Json, 'base64'))
+
+    return true
+  }
+
+  if (image.url) {
+    const response = await fetch(image.url)
+    await writeFile(outputPath, Buffer.from(await response.arrayBuffer()))
+
+    return true
+  }
+
+  return false
+}
+
+async function generateWithValidation(item: Produce) {
   const outputPath = join(OUTPUT_DIR, `${item.slug}.png`)
 
   if (await matchIsExistingFile(outputPath)) {
     console.log(`SKIP ${item.name}`)
 
-    return false
+    return 'skipped' as const
   }
 
-  console.log(`GENERATING ${item.name}...`)
+  let attempt = 1
 
-  const result = await generateImage({ adapter, prompt: buildPrompt(item) })
-  const image = result.images[0]
+  while (true) {
+    const attemptLabel = attempt > 1 ? ` (tentative ${attempt})` : ''
+    console.log(`\nGENERATING ${item.name}${attemptLabel}...`)
 
-  if (image?.b64Json) {
-    await writeFile(outputPath, Buffer.from(image.b64Json, 'base64'))
-    console.log(`OK ${item.name} -> ${outputPath}`)
+    const result = await generateImage({
+      adapter,
+      prompt: buildPrompt(item)
+    })
+    const image = result.images[0]
 
-    return true
+    if (!image) {
+      console.error(`  FAIL ${item.name} — pas d'image retournée`)
+
+      return 'failed' as const
+    }
+
+    const saved = await saveImage(outputPath, image)
+
+    if (!saved) {
+      console.error(`  FAIL ${item.name} — format d'image non supporté`)
+
+      return 'failed' as const
+    }
+
+    console.log(`  ✓ Image sauvegardée → ${outputPath}`)
+    openInPreview(outputPath)
+
+    const isValid = await askValidation(item.name)
+
+    if (isValid) {
+      console.log(`  ✓ ${item.name} validé`)
+
+      return 'generated' as const
+    }
+
+    console.log(`  ✗ ${item.name} rejeté, régénération...`)
+    await unlink(outputPath)
+    attempt += 1
+    await sleep(DELAY_MS)
   }
-
-  if (image?.url) {
-    const response = await fetch(image.url)
-    await writeFile(outputPath, Buffer.from(await response.arrayBuffer()))
-    console.log(`OK ${item.name} -> ${outputPath}`)
-
-    return true
-  }
-
-  console.error(`FAIL ${item.name} - no image data returned`)
-
-  return true
 }
 
 const produceData = await loadProduceData()
 
 await mkdir(OUTPUT_DIR, { recursive: true })
 
-let successCount = 0
-let failCount = 0
+console.log(`${produceData.length} produits à traiter\n`)
+console.log('Chaque image sera ouverte dans Aperçu pour validation.')
+console.log('  o = valider  |  n = régénérer  |  s = skip\n')
+
+let generatedCount = 0
+let skippedCount = 0
+let failedCount = 0
 
 for (const item of produceData) {
   try {
-    const hasGenerated = await generateProduceImage(item)
-    successCount += 1
+    const result = await generateWithValidation(item)
 
-    if (hasGenerated) {
-      await new Promise((resolve) => {
-        setTimeout(resolve, DELAY_MS)
-      })
+    if (result === 'generated') {
+      generatedCount += 1
+      await sleep(DELAY_MS)
+    } else if (result === 'skipped') {
+      skippedCount += 1
+    } else {
+      failedCount += 1
     }
   } catch (error) {
-    failCount += 1
+    failedCount += 1
     const message = error instanceof Error ? error.message : String(error)
-    console.error(`FAIL ${item.name} - ${message}`)
+    console.error(`FAIL ${item.name} — ${message}`)
   }
 }
 
+rl.close()
+
 console.log(
-  `\nDone: ${successCount} OK, ${failCount} failed, ${produceData.length} total`
+  `\nTerminé : ${generatedCount} générés, ${skippedCount} skippés, ${failedCount} échoués (${produceData.length} total)`
 )

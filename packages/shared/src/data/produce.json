@@ -2068,5 +2068,156 @@
     "conservation": "2-3 jours au réfrigérateur, consommer rapidement",
     "buyingTip": "Ferme et nacré, pas trop gros",
     "origin": "Île-de-France, Picardie"
+  },
+  {
+    "id": "amande",
+    "slug": "amande",
+    "name": "Amande",
+    "type": "fruit",
+    "icon": "chestnut",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "7": "partial",
+      "8": "peak",
+      "9": "peak",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 576,
+      "vitamins": [
+        "E",
+        "B2"
+      ],
+      "benefits": "Riche en fibres, magnésium et acides gras insaturés"
+    },
+    "conservation": "Fraîches : 3-4 jours à l'air ambiant. Sèches : plusieurs mois dans un endroit sec et frais",
+    "buyingTip": "Préférer en coque pour une meilleure conservation, peau lisse et sans rides pour les fraîches",
+    "origin": "Corse, PACA, Rhône-Alpes"
+  },
+  {
+    "id": "coing",
+    "slug": "coing",
+    "name": "Coing",
+    "type": "fruit",
+    "icon": "pear",
+    "seasons": {
+      "9": "partial",
+      "10": "peak",
+      "11": "peak"
+    },
+    "nutrition": {
+      "calories": 57,
+      "vitamins": [
+        "C",
+        "B1"
+      ],
+      "benefits": "Peu sucré, riche en minéraux et oligoéléments"
+    },
+    "conservation": "Plusieurs semaines dans une pièce fraîche (cave ou garage)",
+    "buyingTip": "Bien jaune, parfumé, sans traces de meurtrissures",
+    "origin": "Nord-Est, Alpes, Provence"
+  },
+  {
+    "id": "fruit-de-la-passion",
+    "slug": "fruit-de-la-passion",
+    "name": "Fruit de la passion",
+    "type": "fruit",
+    "icon": "tangerine",
+    "seasons": {
+      "10": "partial",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 97,
+      "vitamins": [
+        "A",
+        "C"
+      ],
+      "benefits": "Riche en fibres, potassium et carotène"
+    },
+    "conservation": "5 à 7 jours au réfrigérateur quand mûr, sinon laisser mûrir à température ambiante",
+    "buyingTip": "Odorant, peau plissée et molle signe de maturité, éviter les fruits trop légers",
+    "origin": "Bassin méditerranéen, Sud de la France"
+  },
+  {
+    "id": "kaki",
+    "slug": "kaki",
+    "name": "Kaki",
+    "type": "fruit",
+    "icon": "tomato",
+    "seasons": {
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 70,
+      "vitamins": [
+        "C",
+        "A"
+      ],
+      "benefits": "Riche en carotène, provitamines A et fibres"
+    },
+    "conservation": "1-2 jours à l'air libre quand mûr, 1 semaine si encore ferme",
+    "buyingTip": "Peau rouge-orangée foncée, lisse et sans meurtrissures, pédoncule intact",
+    "origin": "Bassin méditerranéen, Sud de la France"
+  },
+  {
+    "id": "olive",
+    "slug": "olive",
+    "name": "Olive",
+    "type": "fruit",
+    "icon": "olive",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "9": "partial",
+      "10": "peak",
+      "11": "peak",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 115,
+      "vitamins": [
+        "E",
+        "A"
+      ],
+      "benefits": "Riche en antioxydants et acides gras mono-insaturés, bonne pour le cardiovasculaire"
+    },
+    "conservation": "En bocaux avec salaison (eau et sel) ou transformée en huile",
+    "buyingTip": "Vertes pour les plus fermes, noires pour les plus mûres, selon les préférences",
+    "origin": "Bassin méditerranéen, Sud de la France"
+  },
+  {
+    "id": "pomelo",
+    "slug": "pomelo",
+    "name": "Pomelo",
+    "type": "fruit",
+    "icon": "lemon",
+    "seasons": {
+      "1": "peak",
+      "2": "peak",
+      "3": "peak",
+      "4": "peak",
+      "5": "partial",
+      "11": "partial",
+      "12": "peak"
+    },
+    "nutrition": {
+      "calories": 42,
+      "vitamins": [
+        "C",
+        "B9"
+      ],
+      "benefits": "Composé à 88% d'eau, excellent antioxydant, riche en potassium"
+    },
+    "conservation": "10 jours au frais, 8 jours à température ambiante",
+    "buyingTip": "Bien lourd (gage de jutosité), peau lisse, ferme et brillante, sans tâches brunâtres",
+    "origin": "Corse, Guadeloupe"
   }
 ]
