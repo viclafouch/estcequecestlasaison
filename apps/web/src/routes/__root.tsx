@@ -5,7 +5,6 @@ import { WEBSITE_JSON_LD } from '@/constants/json-ld'
 import { SITE_DOMAIN, SITE_NAME, THEME_COLOR } from '@/constants/site'
 import { SearchProvider } from '@/hooks/use-search'
 import appCss from '@/styles.css?url'
-import { TanStackDevtools } from '@tanstack/react-devtools'
 import type { QueryClient } from '@tanstack/react-query'
 import {
   createRootRouteWithContext,
@@ -13,7 +12,6 @@ import {
   Link,
   Scripts
 } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 
 const RootDocument = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -37,15 +35,6 @@ const RootDocument = ({ children }: { children: React.ReactNode }) => {
           {children}
           <Footer />
         </SearchProvider>
-        <TanStackDevtools
-          config={{ position: 'bottom-right' }}
-          plugins={[
-            {
-              name: 'TanStack Router',
-              render: <TanStackRouterDevtoolsPanel />
-            }
-          ]}
-        />
         <Scripts />
       </body>
     </html>

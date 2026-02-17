@@ -34,7 +34,7 @@ export function getRouter() {
     defaultPendingMinMs: 200,
     notFoundMode: 'fuzzy',
     defaultViewTransition: true,
-    scrollRestoration: true
+    scrollRestoration: false
   })
 
   setupRouterSsrQueryIntegration({
