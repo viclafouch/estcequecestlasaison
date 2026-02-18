@@ -2,6 +2,7 @@ import React from 'react'
 import {
   type NativeScrollEvent,
   type NativeSyntheticEvent,
+  Pressable,
   StyleSheet,
   Text,
   View
@@ -13,6 +14,7 @@ import { CompactProduceCard } from '@/components/compact-produce-card'
 import { FaqSection } from '@/components/faq-section'
 import { MonthBottomSheet } from '@/components/month-bottom-sheet'
 import type { CategoryFilter } from '@/constants/categories'
+import { SUPPORTS_TOOLBAR } from '@/constants/styles'
 import { getLastViewedSlug } from '@/utils/last-viewed'
 import {
   getCurrentMonth,
@@ -21,6 +23,7 @@ import {
   type Produce
 } from '@estcequecestlasaison/shared'
 import { getGroupedProduce } from '@estcequecestlasaison/shared/services'
+import Ionicons from '@expo/vector-icons/Ionicons'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 
 const keyExtractor = (item: Produce) => {
@@ -149,13 +152,36 @@ const HomeScreen = () => {
 
   return (
     <View className="flex-1 bg-white">
-      <Stack.Toolbar placement="right">
-        <Stack.Toolbar.Button
-          icon="questionmark.circle"
-          onPress={handleFaqPress}
-          accessibilityLabel="Questions fréquentes"
+      {SUPPORTS_TOOLBAR ? (
+        <Stack.Toolbar placement="right">
+          <Stack.Toolbar.Button
+            icon="questionmark.circle"
+            onPress={handleFaqPress}
+            accessibilityLabel="Questions fréquentes"
+          />
+        </Stack.Toolbar>
+      ) : (
+        <Stack.Screen
+          options={{
+            headerRight: () => {
+              return (
+                <Pressable
+                  onPress={handleFaqPress}
+                  hitSlop={8}
+                  accessibilityRole="button"
+                  accessibilityLabel="Questions fréquentes"
+                >
+                  <Ionicons
+                    name="help-circle-outline"
+                    size={24}
+                    color="#000000"
+                  />
+                </Pressable>
+              )
+            }
+          }}
         />
-      </Stack.Toolbar>
+      )}
       <View className="px-4">
         <BentoGrid
           scrollY={scrollY}

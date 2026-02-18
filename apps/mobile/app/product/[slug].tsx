@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, Share, Text, View } from 'react-native'
+import { Pressable, ScrollView, Share, Text, View } from 'react-native'
 import { Stack, useLocalSearchParams } from 'expo-router'
 import * as StoreReview from 'expo-store-review'
 import { Chip, Surface } from 'heroui-native'
@@ -7,6 +7,7 @@ import { ProduceCarousel } from '@/components/produce-carousel'
 import { ProductHero } from '@/components/product-hero'
 import { SeasonAlternatives } from '@/components/season-alternatives'
 import { SeasonCalendar } from '@/components/season-calendar'
+import { SUPPORTS_TOOLBAR } from '@/constants/styles'
 import { saveLastViewedSlug } from '@/utils/last-viewed'
 import {
   recordReviewRequest,
@@ -19,6 +20,7 @@ import {
   SITE_DOMAIN
 } from '@estcequecestlasaison/shared'
 import { getProductBySlug } from '@estcequecestlasaison/shared/services'
+import Ionicons from '@expo/vector-icons/Ionicons'
 
 const NotFoundScreen = () => {
   return (
@@ -158,16 +160,33 @@ const ProductScreen = () => {
         options={{
           title: '',
           headerTransparent: true,
-          headerShadowVisible: false
+          headerShadowVisible: false,
+          headerTintColor: '#FFFFFF',
+          headerRight: SUPPORTS_TOOLBAR
+            ? undefined
+            : () => {
+                return (
+                  <Pressable
+                    onPress={handleShare}
+                    hitSlop={8}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Partager ${produce.name}`}
+                  >
+                    <Ionicons name="share-outline" size={22} color="#FFFFFF" />
+                  </Pressable>
+                )
+              }
         }}
       />
-      <Stack.Toolbar placement="right">
-        <Stack.Toolbar.Button
-          icon="square.and.arrow.up"
-          onPress={handleShare}
-          accessibilityLabel={`Partager ${produce.name}`}
-        />
-      </Stack.Toolbar>
+      {SUPPORTS_TOOLBAR ? (
+        <Stack.Toolbar placement="right">
+          <Stack.Toolbar.Button
+            icon="square.and.arrow.up"
+            onPress={handleShare}
+            accessibilityLabel={`Partager ${produce.name}`}
+          />
+        </Stack.Toolbar>
+      ) : null}
     </>
   )
 }
