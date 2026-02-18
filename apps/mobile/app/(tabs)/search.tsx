@@ -1,6 +1,6 @@
 import React from 'react'
 import type { TextInput } from 'react-native'
-import { Pressable, Text, View } from 'react-native'
+import { Keyboard, Pressable, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Input, Separator } from 'heroui-native'
 import { SearchResultRow } from '@/components/search-result-row'
@@ -102,14 +102,15 @@ const SearchScreen = () => {
         ) : null}
       </View>
       {hasNoResults ? (
-        <View
+        <Pressable
           className="flex-1 items-center justify-center px-8"
+          onPress={Keyboard.dismiss}
           accessibilityLiveRegion="assertive"
         >
           <Text className="text-base text-gray-500 text-center">
             {`Aucun résultat pour « ${debouncedQuery.trim()} »`}
           </Text>
-        </View>
+        </Pressable>
       ) : (
         <>
           <Text
@@ -124,6 +125,7 @@ const SearchScreen = () => {
             keyExtractor={keyExtractor}
             ItemSeparatorComponent={ItemSeparator}
             keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
             contentInsetAdjustmentBehavior="automatic"
             accessibilityRole="list"
           />

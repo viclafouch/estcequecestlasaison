@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pressable, Text, View } from 'react-native'
+import { Keyboard, Pressable, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import {
   Button,
@@ -251,14 +251,15 @@ const CalendarScreen = () => {
       <Legend />
       <Separator />
       {hasNoResults ? (
-        <View
+        <Pressable
           className="flex-1 items-center justify-center px-8"
+          onPress={Keyboard.dismiss}
           accessibilityLiveRegion="assertive"
         >
           <Text className="text-base text-gray-500 text-center">
             {`Aucun résultat pour « ${debouncedQuery.trim()} »`}
           </Text>
-        </View>
+        </Pressable>
       ) : (
         <FlashList
           ref={listRef}
@@ -268,6 +269,7 @@ const CalendarScreen = () => {
           keyExtractor={keyExtractor}
           ItemSeparatorComponent={ItemSeparator}
           keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
           maintainVisibleContentPosition={DISABLE_MAINTAIN_POSITION}
           contentInsetAdjustmentBehavior="automatic"
           accessibilityRole="list"
