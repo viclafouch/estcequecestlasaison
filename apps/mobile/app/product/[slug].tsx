@@ -7,6 +7,7 @@ import { ProduceCarousel } from '@/components/produce-carousel'
 import { ProductHero } from '@/components/product-hero'
 import { SeasonAlternatives } from '@/components/season-alternatives'
 import { SeasonCalendar } from '@/components/season-calendar'
+import { saveLastViewedSlug } from '@/utils/last-viewed'
 import {
   recordReviewRequest,
   shouldRequestReview,
@@ -36,6 +37,7 @@ const ProductScreen = () => {
 
   React.useEffect(() => {
     trackProductView(slug)
+    saveLastViewedSlug(slug)
 
     if (shouldRequestReview()) {
       void StoreReview.isAvailableAsync().then((isAvailable) => {

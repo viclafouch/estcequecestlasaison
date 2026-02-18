@@ -145,7 +145,7 @@ Statut : **en cours (M0)**
 | Librairie | Version | Usage |
 |-----------|---------|-------|
 | expo-store-review | ~55.0.5 | Demande de rating natif (SKStoreReviewController iOS / ReviewManager Android) |
-| expo-sqlite | ~55.0.5 | KV store synchrone (`expo-sqlite/kv-store`) pour tracker les vues produit et demandes de rating |
+| expo-sqlite | ~55.0.5 | KV store synchrone (`expo-sqlite/kv-store`) pour tracker les vues produit, demandes de rating, et dernier produit consulte |
 
 ### Partage
 
@@ -190,16 +190,23 @@ apps/mobile/
 │   └── product/
 │       └── [slug].tsx         → Page produit dynamique
 ├── components/                → Composants UI mobile
-│   ├── produce-card.tsx       → Carte produit immersive (image full-bleed, gradient, badge pill)
+│   ├── bento-grid.tsx         → Bento grid accueil (compose widgets)
+│   ├── last-viewed-widget.tsx → Widget tall "vu recemment / a decouvrir"
+│   ├── category-toggle-widget.tsx → Widget toggle Fruits/Legumes
+│   ├── month-widget.tsx       → Widget mois courant
+│   ├── compact-produce-card.tsx → Carte compacte grille 2 colonnes
+│   ├── produce-card.tsx       → Carte produit immersive (page produit)
 │   ├── produce-carousel.tsx   → Carousel horizontal FlashList (petit format)
 │   ├── produce-avatar.tsx     → Image circulaire produit (bundlee)
 │   ├── produce-badge.tsx      → Badge de saison colore
 │   ├── season-calendar.tsx    → Grille 12 mois avec dots
 │   ├── month-bottom-sheet.tsx → BottomSheet selection mois + stats
-│   ├── filter-chips.tsx       → Chips Tous/Fruits/Legumes
-│   ├── product-hero.tsx        → Hero produit immersif (image full-bleed, gradient, texte blanc)
+│   ├── product-hero.tsx       → Hero produit immersif (image full-bleed, gradient, texte blanc)
 │   ├── faq-section.tsx        → Section FAQ en bas de homepage
 │   └── season-alternatives.tsx→ Alternatives en saison (hors saison)
+├── utils/                     → Utilitaires app
+│   ├── last-viewed.ts         → KV store dernier produit consulte
+│   └── review-tracker.ts      → KV store tracking review/rating
 ├── (pas de services/ local — tout dans packages/shared)
 ├── constants/                 → Constantes app
 │   ├── theme.ts               → Couleurs, tailles (emerald #10b981, gradient, badge pill, season detail on dark, share button)
@@ -259,23 +266,37 @@ La logique metier est centralisee dans `packages/shared/src/services/` :
 
 ## Ecran Accueil (`(tabs)/index.tsx`)
 
-Feed vertical style Instagram, cartes immersives plein ecran. Affiche uniquement les produits en saison (pas de section tabs).
+Layout bento grid + grille 2 colonnes, inspire des widgets iOS. Zone de widgets fonctionnels en haut, suivie d'une grille de produits de saison.
 
 ### Layout
 
 - **Header** : titre app + icone info (ouvre FAQ)
-- **Chips filtres** : barre horizontale (Tous / Fruits / Legumes) + badge mois
-- **Feed vertical** (FlashList) : cartes immersives 60% viewport height, image full-bleed, gradient, texte blanc
+- **Bento grid** (ListHeaderComponent) : zone de widgets en 2 colonnes
+  - **Last Viewed** (gauche, tall) : dernier produit consulte, image + nom, tap → page produit. Fallback "A decouvrir" si aucun produit vu
+  - **Month Widget** (gauche, 1 row) : mois courant, tap → ouvre BottomSheet mois
+  - **Fruits toggle** (droite, 1 row) : ON/OFF, filtre les fruits
+  - **Legumes toggle** (droite, 1 row) : ON/OFF, filtre les legumes
+  - **Placeholder** (droite, 1 row) : espace reserve
+- **Grille 2 colonnes** (FlashList `numColumns={2}`) : compact cards (~220px), image full-bleed, gradient, badge pill
 - **Section FAQ** : ListFooterComponent, affichee apres les cartes
-- **BottomSheet mois** : accessible via un badge mois cliquable, affiche stats + produits arrivants/partants + compteurs animes
-- **Scroll-to-top** automatique au changement de categorie
+- **BottomSheet mois** : accessible via le widget mois
+- **Scroll-to-top** automatique au changement de filtre
+
+### Filtres
+
+Toggles independants Fruits/Legumes (au lieu de Tabs exclusives). Impossible de tout desactiver : le handler empeche de toggler OFF quand l'autre est deja OFF.
+
+### Persistence
+
+Dernier produit consulte persiste via `expo-sqlite` KV store (`utils/last-viewed.ts`). Rafraichi au retour sur l'ecran via `useFocusEffect`.
 
 ### Interactions
 
-- Tap sur un ProduceCard → push vers `product/[slug]`
-- Tap sur un chip filtre → filtre le feed par categorie, scroll-to-top
-- Tap sur le badge mois → ouvre BottomSheet mois
-- Scroll vertical dans le feed
+- Tap sur un CompactProduceCard → push vers `product/[slug]`
+- Toggle Fruits/Legumes → filtre la grille, scroll-to-top
+- Tap sur le widget mois → ouvre BottomSheet mois
+- Tap sur le widget last viewed → push vers la page produit
+- Scroll vertical dans la grille
 
 ---
 

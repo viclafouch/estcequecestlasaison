@@ -1,11 +1,12 @@
 import React from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
-import { Stack, useRouter } from 'expo-router'
+import { StyleSheet, Text, View } from 'react-native'
+import { Stack, useFocusEffect, useRouter } from 'expo-router'
+import { BentoGrid } from '@/components/bento-grid'
+import { CompactProduceCard } from '@/components/compact-produce-card'
 import { FaqSection } from '@/components/faq-section'
-import { FilterChips } from '@/components/filter-chips'
 import { MonthBottomSheet } from '@/components/month-bottom-sheet'
-import { ProduceCard } from '@/components/produce-card'
 import type { CategoryFilter } from '@/constants/categories'
+import { getLastViewedSlug } from '@/utils/last-viewed'
 import {
   getCurrentMonth,
   getMonthName,
@@ -13,14 +14,7 @@ import {
   type Produce
 } from '@estcequecestlasaison/shared'
 import { getGroupedProduce } from '@estcequecestlasaison/shared/services'
-import {
-  FlashList,
-  type FlashListRef,
-  type ListRenderItemInfo
-} from '@shopify/flash-list'
-
-const WINDOW_HEIGHT = Dimensions.get('window').height
-const CARD_HEIGHT = WINDOW_HEIGHT * 0.6
+import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 
 const keyExtractor = (item: Produce) => {
   return item.id
@@ -36,15 +30,36 @@ const ListEmpty = () => {
   )
 }
 
+const deriveCategoryFilter = (
+  isFruitEnabled: boolean,
+  isVegetableEnabled: boolean
+): CategoryFilter => {
+  if (isFruitEnabled && isVegetableEnabled) {
+    return 'all'
+  }
+
+  if (isFruitEnabled) {
+    return 'fruit'
+  }
+
+  return 'vegetable'
+}
+
 const HomeScreen = () => {
   const router = useRouter()
-  const [activeCategory, setActiveCategory] =
-    React.useState<CategoryFilter>('all')
+  const [isFruitEnabled, setIsFruitEnabled] = React.useState(true)
+  const [isVegetableEnabled, setIsVegetableEnabled] = React.useState(true)
   const [selectedMonth, setSelectedMonth] =
     React.useState<Month>(getCurrentMonth())
   const [isBottomSheetOpen, setIsBottomSheetOpen] = React.useState(false)
+  const [lastViewedSlug, setLastViewedSlug] = React.useState(() => {
+    return getLastViewedSlug()
+  })
 
-  const listRef = React.useRef<FlashListRef<Produce>>(null)
+  const activeCategory = deriveCategoryFilter(
+    isFruitEnabled,
+    isVegetableEnabled
+  )
 
   const { inSeason } = React.useMemo(() => {
     return getGroupedProduce({
@@ -54,40 +69,64 @@ const HomeScreen = () => {
     })
   }, [activeCategory, selectedMonth])
 
+  const fallbackProduce = React.useMemo(() => {
+    return getGroupedProduce({
+      searchQuery: '',
+      category: 'all',
+      month: selectedMonth
+    }).inSeason[0]
+  }, [selectedMonth])
+
   const monthName = getMonthName(selectedMonth)
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setLastViewedSlug(getLastViewedSlug())
+    }, [])
+  )
 
   const renderItem = React.useCallback(
     ({ item }: ListRenderItemInfo<Produce>) => {
       return (
-        <View className="overflow-hidden" style={styles.cardContainer}>
-          <ProduceCard
-            produce={item}
-            month={selectedMonth}
-            section="in-season"
-          />
+        <View className="px-1.5 pb-3">
+          <CompactProduceCard produce={item} month={selectedMonth} />
         </View>
       )
     },
     [selectedMonth]
   )
 
-  const handleCategoryChange = React.useCallback((category: CategoryFilter) => {
-    setActiveCategory(category)
-    listRef.current?.scrollToOffset({ offset: 0, animated: false })
-  }, [])
+  const handleFruitToggle = React.useCallback(() => {
+    setIsFruitEnabled((prev) => {
+      if (prev && !isVegetableEnabled) {
+        return true
+      }
 
-  const handleMonthChange = React.useCallback((month: Month) => {
-    setSelectedMonth(month)
-    listRef.current?.scrollToOffset({ offset: 0, animated: false })
-  }, [])
+      return !prev
+    })
+  }, [isVegetableEnabled])
 
-  const handleOpenBottomSheet = () => {
+  const handleVegetableToggle = React.useCallback(() => {
+    setIsVegetableEnabled((prev) => {
+      if (prev && !isFruitEnabled) {
+        return true
+      }
+
+      return !prev
+    })
+  }, [isFruitEnabled])
+
+  const handleOpenBottomSheet = React.useCallback(() => {
     setIsBottomSheetOpen(true)
-  }
+  }, [])
 
-  const handleFaqPress = () => {
+  const handleFaqPress = React.useCallback(() => {
     router.push('/faq')
-  }
+  }, [router])
+
+  const listFooter = React.useMemo(() => {
+    return inSeason.length > 0 ? <FaqSection /> : null
+  }, [inSeason.length])
 
   return (
     <View className="flex-1 bg-white">
@@ -98,25 +137,34 @@ const HomeScreen = () => {
           accessibilityLabel="Questions fréquentes"
         />
       </Stack.Toolbar>
-      <FilterChips
-        activeCategory={activeCategory}
-        onCategoryChange={handleCategoryChange}
-        monthLabel={monthName}
-        onMonthPress={handleOpenBottomSheet}
-      />
-      <FlashList
-        ref={listRef}
-        data={inSeason}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        ListEmptyComponent={ListEmpty}
-        ListFooterComponent={inSeason.length > 0 ? <FaqSection /> : null}
-        contentContainerStyle={styles.scrollContent}
-        contentInsetAdjustmentBehavior="automatic"
-      />
+      <View className="px-4">
+        <BentoGrid
+          lastViewedSlug={lastViewedSlug}
+          fallbackProduce={fallbackProduce}
+          monthName={monthName}
+          isFruitEnabled={isFruitEnabled}
+          isVegetableEnabled={isVegetableEnabled}
+          onFruitToggle={handleFruitToggle}
+          onVegetableToggle={handleVegetableToggle}
+          onMonthPress={handleOpenBottomSheet}
+        />
+      </View>
+      <View className="flex-1">
+        <FlashList
+          key={`${selectedMonth}-${activeCategory}`}
+          data={inSeason}
+          renderItem={renderItem}
+          numColumns={2}
+          keyExtractor={keyExtractor}
+          ListEmptyComponent={ListEmpty}
+          ListFooterComponent={listFooter}
+          contentContainerStyle={styles.scrollContent}
+          contentInsetAdjustmentBehavior="automatic"
+        />
+      </View>
       <MonthBottomSheet
         selectedMonth={selectedMonth}
-        onMonthChange={handleMonthChange}
+        onMonthChange={setSelectedMonth}
         isOpen={isBottomSheetOpen}
         onOpenChange={setIsBottomSheetOpen}
       />
@@ -125,13 +173,10 @@ const HomeScreen = () => {
 }
 
 const styles = StyleSheet.create({
-  // contentContainerStyle is a FlashList prop, not className
+  // contentContainerStyle is a FlashList/ScrollView prop, not className
   scrollContent: {
+    paddingHorizontal: 16,
     paddingBottom: 32
-  },
-  // Runtime-computed value from Dimensions
-  cardContainer: {
-    height: CARD_HEIGHT
   }
 })
 
