@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Pressable, Text, View } from 'react-native'
 import { Link } from 'expo-router'
 import { cn } from 'heroui-native'
 import { ProduceAvatar } from '@/components/produce-avatar'
@@ -26,12 +26,12 @@ function getSeasonStatus(seasons: Seasons, month: Month): SeasonStatus {
 export const CalendarRow = React.memo(
   ({ slug, name, seasons, currentMonth }: CalendarRowProps) => {
     return (
-      <Link
-        href={`/product/${slug}`}
-        accessibilityRole="link"
-        accessibilityLabel={name}
-      >
-        <View className="flex-row items-center px-4 py-3 gap-3">
+      <Link href={`/product/${slug}`} asChild>
+        <Pressable
+          className="flex-row items-center px-4 py-3.5 gap-3"
+          accessibilityRole="link"
+          accessibilityLabel={name}
+        >
           <ProduceAvatar
             slug={slug as ProduceImageSlug}
             name={name}
@@ -77,7 +77,7 @@ export const CalendarRow = React.memo(
               )
             })}
           </View>
-        </View>
+        </Pressable>
       </Link>
     )
   }

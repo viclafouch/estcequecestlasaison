@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Pressable, Text } from 'react-native'
 import { Link } from 'expo-router'
 import { ProduceAvatar } from '@/components/produce-avatar'
 import { SeasonChip } from '@/components/season-badge'
@@ -20,12 +20,12 @@ export const SearchResultRow = React.memo(
     const badge = getDefaultProduceBadge({ produce, month })
 
     return (
-      <Link
-        href={`/product/${produce.slug}`}
-        accessibilityRole="link"
-        accessibilityLabel={produce.name}
-      >
-        <View className="flex-row items-center px-4 py-3 gap-3">
+      <Link href={`/product/${produce.slug}`} asChild>
+        <Pressable
+          className="flex-row items-center px-4 py-3.5 gap-3"
+          accessibilityRole="link"
+          accessibilityLabel={produce.name}
+        >
           <ProduceAvatar
             slug={produce.slug as ProduceImageSlug}
             name={produce.name}
@@ -38,7 +38,7 @@ export const SearchResultRow = React.memo(
             {produce.name}
           </Text>
           <SeasonChip label={badge.label} variant={badge.variant} />
-        </View>
+        </Pressable>
       </Link>
     )
   }

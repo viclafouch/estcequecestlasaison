@@ -1,5 +1,6 @@
 import React from 'react'
 import { Pressable, Text, View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import {
   Button,
   cn,
@@ -77,6 +78,7 @@ const DISABLE_MAINTAIN_POSITION = { disabled: true } as const satisfies {
 }
 
 const CalendarScreen = () => {
+  const insets = useSafeAreaInsets()
   const currentMonth = getCurrentMonth()
   const defaultForeground = useThemeColor('default-foreground')
   const listRef = React.useRef<FlashListRef<CalendarProduce>>(null)
@@ -168,7 +170,7 @@ const CalendarScreen = () => {
   }
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
       <View
         className="mx-4 mt-2 flex-row items-center"
         accessibilityRole="search"

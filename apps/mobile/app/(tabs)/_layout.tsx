@@ -13,7 +13,7 @@ const TabLayout = () => {
         />
         <NativeTabs.Trigger.Label>Accueil</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="(calendar)">
+      <NativeTabs.Trigger name="calendar">
         <NativeTabs.Trigger.Icon sf="calendar" />
         <NativeTabs.Trigger.Label>Calendrier</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>

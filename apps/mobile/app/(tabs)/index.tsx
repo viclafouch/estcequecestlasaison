@@ -2,19 +2,18 @@ import React from 'react'
 import {
   type NativeScrollEvent,
   type NativeSyntheticEvent,
-  Pressable,
   StyleSheet,
   Text,
   View
 } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
-import { Stack, useFocusEffect, useRouter } from 'expo-router'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useFocusEffect } from 'expo-router'
 import { BentoGrid } from '@/components/bento-grid'
 import { CompactProduceCard } from '@/components/compact-produce-card'
 import { FaqSection } from '@/components/faq-section'
 import { MonthBottomSheet } from '@/components/month-bottom-sheet'
 import type { CategoryFilter } from '@/constants/categories'
-import { SUPPORTS_TOOLBAR } from '@/constants/styles'
 import { getLastViewedSlug } from '@/utils/last-viewed'
 import {
   getCurrentMonth,
@@ -23,7 +22,6 @@ import {
   type Produce
 } from '@estcequecestlasaison/shared'
 import { getGroupedProduce } from '@estcequecestlasaison/shared/services'
-import Ionicons from '@expo/vector-icons/Ionicons'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 
 const keyExtractor = (item: Produce) => {
@@ -58,7 +56,7 @@ const deriveCategoryFilter = (
 const HomeScreen = () => {
   'use no memo'
 
-  const router = useRouter()
+  const insets = useSafeAreaInsets()
   const [isFruitEnabled, setIsFruitEnabled] = React.useState(true)
   const [isVegetableEnabled, setIsVegetableEnabled] = React.useState(true)
   const [selectedMonth, setSelectedMonth] =
@@ -142,46 +140,12 @@ const HomeScreen = () => {
     setIsBottomSheetOpen(true)
   }, [])
 
-  const handleFaqPress = React.useCallback(() => {
-    router.push('/faq')
-  }, [router])
-
   const listFooter = React.useMemo(() => {
     return inSeason.length > 0 ? <FaqSection /> : null
   }, [inSeason.length])
 
   return (
-    <View className="flex-1 bg-white">
-      {SUPPORTS_TOOLBAR ? (
-        <Stack.Toolbar placement="right">
-          <Stack.Toolbar.Button
-            icon="questionmark.circle"
-            onPress={handleFaqPress}
-            accessibilityLabel="Questions fréquentes"
-          />
-        </Stack.Toolbar>
-      ) : (
-        <Stack.Screen
-          options={{
-            headerRight: () => {
-              return (
-                <Pressable
-                  onPress={handleFaqPress}
-                  hitSlop={8}
-                  accessibilityRole="button"
-                  accessibilityLabel="Questions fréquentes"
-                >
-                  <Ionicons
-                    name="help-circle-outline"
-                    size={24}
-                    color="#000000"
-                  />
-                </Pressable>
-              )
-            }
-          }}
-        />
-      )}
+    <View className="flex-1 bg-white" style={{ paddingTop: insets.top }}>
       <View className="px-4">
         <BentoGrid
           scrollY={scrollY}
