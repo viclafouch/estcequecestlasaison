@@ -7,7 +7,7 @@ const TabLayout = () => {
       blurEffect="systemThickMaterial"
       disableTransparentOnScrollEdge
     >
-      <NativeTabs.Trigger name="(home)">
+      <NativeTabs.Trigger name="index">
         <NativeTabs.Trigger.Icon
           sf={{ default: 'house', selected: 'house.fill' }}
         />

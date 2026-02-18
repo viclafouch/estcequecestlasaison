@@ -803,7 +803,7 @@ Test credentials: Not applicable (no login).
 | # | Ecran | Description | Detail |
 |---|-------|-------------|--------|
 | ~~1~~ | ~~Recherche + Calendrier~~ | ~~Ne jamais autofocus les inputs de recherche~~ | ~~Done — supprime `useFocusEffect` focus dans search.tsx~~ |
-| 2 | Accueil | L'ecran initial doit toujours etre Accueil | Actuellement l'app ne demarre pas toujours sur l'onglet Accueil, meme apres un clean cache |
+| ~~2~~ | ~~Accueil~~ | ~~L'ecran initial doit toujours etre Accueil~~ | ~~Done — renomme `(home)/` en `index/` pour que Expo Router le selectionne par defaut~~ |
 | 3 | Accueil | Declencher l'animation bento grid apres 200-300px de scroll | L'animation ne doit pas se jouer immediatement au premier rendu, mais seulement quand l'utilisateur a scroll suffisamment |
 | 4 | Produit (`[slug]`) | Fixer les fallbacks des boutons hero (partage + retour) | Les boutons sont bleu par defaut — OK sur iOS 26 (liquid glass), mais tres moche sur iOS < 26. Ajouter un style fallback pour les anciennes versions |
 | 5 | Calendrier | Sticker la legende en haut + retirer "mois courant" de la legende | La legende (pleine saison / debut-fin / hors saison) est tout en bas → l'utilisateur ne comprend pas les dots. La sticker en haut sous la toolbar, retirer le mois courant de la legende, et rendre le design plus soigne (utiliser `/frontend-design`) |
