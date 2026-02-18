@@ -2,7 +2,6 @@ import React from 'react'
 import type { TextInput } from 'react-native'
 import { Pressable, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { useFocusEffect } from 'expo-router'
 import { Input, Separator } from 'heroui-native'
 import { SearchResultRow } from '@/components/search-result-row'
 import { StyledIonicons } from '@/constants/styled'
@@ -31,12 +30,6 @@ const SearchScreen = () => {
   const [debouncedQuery] = useDebouncedValue(searchQuery, {
     wait: DEBOUNCE_WAIT
   })
-
-  useFocusEffect(
-    React.useCallback(() => {
-      inputRef.current?.focus()
-    }, [])
-  )
 
   const month = getCurrentMonth()
 

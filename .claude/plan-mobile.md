@@ -798,6 +798,21 @@ Test credentials: Not applicable (no login).
 | `apps/mobile/app/_layout.tsx` | `import '../polyfills'` en premiere ligne | Supprimer en meme temps que le polyfill |
 | `package.json` (racine) | Override pnpm `dnssd-advertise: 1.1.3` — bug de transpilation `const enum` dans v1.1.2 ([issue #25](https://github.com/kitten/dnssd-advertise/issues/25), [fix PR #23](https://github.com/kitten/dnssd-advertise/pull/23)) | Quand `@expo/cli` bump sa dep `dnssd-advertise` a `>=1.1.3`. Verifier dans le lockfile apres chaque upgrade Expo. |
 
+### Fixes a faire
+
+| # | Ecran | Description | Detail |
+|---|-------|-------------|--------|
+| ~~1~~ | ~~Recherche + Calendrier~~ | ~~Ne jamais autofocus les inputs de recherche~~ | ~~Done — supprime `useFocusEffect` focus dans search.tsx~~ |
+| 2 | Accueil | L'ecran initial doit toujours etre Accueil | Actuellement l'app ne demarre pas toujours sur l'onglet Accueil, meme apres un clean cache |
+| 3 | Accueil | Declencher l'animation bento grid apres 200-300px de scroll | L'animation ne doit pas se jouer immediatement au premier rendu, mais seulement quand l'utilisateur a scroll suffisamment |
+| 4 | Produit (`[slug]`) | Fixer les fallbacks des boutons hero (partage + retour) | Les boutons sont bleu par defaut — OK sur iOS 26 (liquid glass), mais tres moche sur iOS < 26. Ajouter un style fallback pour les anciennes versions |
+| 5 | Calendrier | Sticker la legende en haut + retirer "mois courant" de la legende | La legende (pleine saison / debut-fin / hors saison) est tout en bas → l'utilisateur ne comprend pas les dots. La sticker en haut sous la toolbar, retirer le mois courant de la legende, et rendre le design plus soigne (utiliser `/frontend-design`) |
+| 6 | Produit (`[slug]`) | Boutons retour/partage disparaissent apres annulation du swipe-down | Sur device physique : naviguer vers un produit, commencer un swipe-down sur l'image hero (geste d'exit/dismiss), puis annuler (relacher avant completion) → les boutons retour et partage disparaissent definitivement, impossible de les faire reapparaitre. Probablement lie a la Zoom Transition ou au gesture handler |
+| 7 | Calendrier + Recherche | Espacement vertical asymetrique dans les items de liste | Le padding top et bottom de chaque row n'est pas identique (bordures haut/bas presentes mais espacement inegal vers le contenu). Harmoniser le padding vertical pour centrer le contenu entre les bordures |
+| 8 | Produit (`[slug]`) | Tab Bar invisible sur l'ecran produit | La route `product/[slug]` est hors du groupe `(tabs)/` donc la Tab Bar est masquee. Impossible de naviguer vers Calendrier ou Recherche depuis un ecran produit. Afficher la Tab Bar ou trouver une solution de navigation (ex: garder la Tab Bar visible, ou restructurer le routing) |
+| 9 | Recherche + Calendrier | Impossible de dismiss le clavier sans valider | Quand un input de recherche est focus, pas moyen de fermer le clavier sans soumettre. Ajouter `keyboardDismissMode="on-drag"` sur les FlashList/ScrollView (dismiss au scroll) + dismiss au tap en dehors de l'input (`Keyboard.dismiss()`) |
+| 10 | Accueil | *(Optionnel)* Animer le changement de filtre dans la grille | Quand on toggle Fruits/Legumes, les images changent instantanement sans transition — effet bizarre et abrupt. Ajouter une animation d'apparition/transition sur les items de la grille au changement de filtre (fade, layout animation, ou stagger). Utiliser `/frontend-design` pour le design de l'animation. Attention : FlashList + Reanimated layout animations = complexe |
+
 ### Phase 2 — Post-MVP
 
 #### UX natif (identifie par audit Expo Skills)
