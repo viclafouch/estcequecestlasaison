@@ -64,19 +64,8 @@ const renderLegendItem = (item: LegendItem) => {
 
 const Legend = () => {
   return (
-    <View className="px-4 py-4 gap-3">
-      <View className="flex-row flex-wrap items-center gap-4">
-        {LEGEND_ITEMS.map(renderLegendItem)}
-      </View>
-      <View className="flex-row items-center gap-2">
-        <View className="w-4 h-4 items-center justify-center rounded-full border border-gray-800">
-          <View
-            className="w-2 h-2 rounded-full bg-gray-300"
-            importantForAccessibility="no"
-          />
-        </View>
-        <Text className="text-xs text-gray-500">Mois courant</Text>
-      </View>
+    <View className="flex-row items-center gap-4 px-4 pb-2">
+      {LEGEND_ITEMS.map(renderLegendItem)}
     </View>
   )
 }
@@ -257,6 +246,8 @@ const CalendarScreen = () => {
           <Button.Label>{sortBy === 'alpha' ? 'A-Z' : 'Saison'}</Button.Label>
         </Button>
       </View>
+      <Legend />
+      <Separator />
       {hasNoResults ? (
         <View
           className="flex-1 items-center justify-center px-8"
@@ -274,7 +265,6 @@ const CalendarScreen = () => {
           renderItem={renderItem}
           keyExtractor={keyExtractor}
           ItemSeparatorComponent={ItemSeparator}
-          ListFooterComponent={Legend}
           keyboardShouldPersistTaps="handled"
           maintainVisibleContentPosition={DISABLE_MAINTAIN_POSITION}
           contentInsetAdjustmentBehavior="automatic"
