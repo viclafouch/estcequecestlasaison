@@ -62,6 +62,28 @@
 | `contentInsetAdjustmentBehavior="automatic"` obligatoire | Toutes les FlashList dans NativeTabs doivent l'avoir, sinon le contenu est masqué par la tab bar flottante |
 | `expo-image` + `sf:info.circle` invisible | La syntaxe `source={{ uri: 'sf:...' }}` ne fonctionne pas sans `expo-symbols` installé. Rester sur Ionicons pour les icônes dans les headers |
 
+## FlashList v2 + Reanimated
+
+| Erreur | Cause | Fix |
+|--------|-------|-----|
+| `_c.call is not a function` au scroll | `useAnimatedScrollHandler` retourne un worklet que FlashList v2 appelle via `.call()` dans RecyclerView.js — les worklets n'ont pas de `.call()` | Ne PAS utiliser `useAnimatedScrollHandler` ni `renderScrollComponent={Animated.ScrollView}` avec FlashList v2. Utiliser un plain `onScroll` JS qui set `scrollY.value` directement |
+| `_c.call is not a function` même après extraction module-level | Le React Compiler transforme aussi les refs passées en props et les worklets | Ajouter `'use no memo'` au composant qui utilise le scroll handler + `eslint-disable-next-line react-hooks/immutability` sur le `scrollY.value = ...` |
+| `react-hooks/immutability` sur `scrollY.value = ...` | Le React Compiler ESLint flag les mutations de valeurs retournées par des hooks (`useSharedValue`) | `eslint-disable-next-line react-hooks/immutability` — les SharedValue sont conçues pour être mutées |
+
+## React Compiler + Reanimated
+
+| Erreur | Cause | Fix |
+|--------|-------|-----|
+| `'use no memo'` ne supprime pas l'erreur ESLint | `'use no memo'` opt-out le TRANSFORM du compiler, pas les règles ESLint | Combiner `'use no memo'` (runtime) + `eslint-disable-next-line` (lint) |
+| Le compiler essaie de mémoiser `Animated.ScrollView` en prop | Le compiler cache les refs de composants passées en props JSX | Extraire au module-level OU ne pas passer de composant Animated en prop du tout |
+
+## expo-blur (BottomSheet background)
+
+| Erreur | Cause | Fix |
+|--------|-------|-----|
+| BottomSheet rose/rouge au lieu de frosted glass | `tint="systemMaterial"` capte les couleurs du contenu derrière (images de produits colorés) | Utiliser `tint="extraLight"` pour un frosted glass blanc neutre |
+| `WARN Unable to get the view config for ExpoBlurView` | Module natif non inclus dans le dev build actuel | Rebuild natif (`npx expo run:ios`) après installation de `expo-blur` |
+
 ## Deps cachées
 
 | Package | Requis par | Note |

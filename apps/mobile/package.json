@@ -19,6 +19,8 @@
     "@tanstack/react-pacer": "^0.19.4",
     "buffer": "^6.0.3",
     "expo": "55.0.0-preview.11",
+    "expo-blur": "^55.0.6",
+    "expo-glass-effect": "^55.0.6",
     "expo-image": "~55.0.3",
     "expo-linear-gradient": "~55.0.6",
     "expo-router": "55.0.0-preview.8",

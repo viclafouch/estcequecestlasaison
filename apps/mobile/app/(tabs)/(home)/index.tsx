@@ -1,5 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import {
+  type NativeScrollEvent,
+  type NativeSyntheticEvent,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native'
+import { useSharedValue } from 'react-native-reanimated'
 import { Stack, useFocusEffect, useRouter } from 'expo-router'
 import { BentoGrid } from '@/components/bento-grid'
 import { CompactProduceCard } from '@/components/compact-produce-card'
@@ -46,6 +53,8 @@ const deriveCategoryFilter = (
 }
 
 const HomeScreen = () => {
+  'use no memo'
+
   const router = useRouter()
   const [isFruitEnabled, setIsFruitEnabled] = React.useState(true)
   const [isVegetableEnabled, setIsVegetableEnabled] = React.useState(true)
@@ -55,6 +64,16 @@ const HomeScreen = () => {
   const [lastViewedSlug, setLastViewedSlug] = React.useState(() => {
     return getLastViewedSlug()
   })
+
+  const scrollY = useSharedValue(0)
+
+  const handleListScroll = React.useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue is designed to be mutable
+      scrollY.value = event.nativeEvent.contentOffset.y
+    },
+    [scrollY]
+  )
 
   const activeCategory = deriveCategoryFilter(
     isFruitEnabled,
@@ -139,6 +158,7 @@ const HomeScreen = () => {
       </Stack.Toolbar>
       <View className="px-4">
         <BentoGrid
+          scrollY={scrollY}
           lastViewedSlug={lastViewedSlug}
           fallbackProduce={fallbackProduce}
           monthName={monthName}
@@ -160,6 +180,8 @@ const HomeScreen = () => {
           ListFooterComponent={listFooter}
           contentContainerStyle={styles.scrollContent}
           contentInsetAdjustmentBehavior="automatic"
+          onScroll={handleListScroll}
+          scrollEventThrottle={16}
         />
       </View>
       <MonthBottomSheet

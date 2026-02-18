@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import { BottomSheet, Button, useThemeColor } from 'heroui-native'
+import { GlassSheetBackground } from '@/components/glass-sheet-background'
 import {
   getMonthName,
   getNextMonth,
@@ -53,7 +54,11 @@ export const MonthBottomSheet = ({
     <BottomSheet isOpen={isOpen} onOpenChange={onOpenChange}>
       <BottomSheet.Portal>
         <BottomSheet.Overlay />
-        <BottomSheet.Content snapPoints={SNAP_POINTS}>
+        <BottomSheet.Content
+          snapPoints={SNAP_POINTS}
+          backgroundComponent={GlassSheetBackground}
+          backgroundClassName="bg-transparent"
+        >
           <View className="flex-row items-center justify-center gap-4 py-2">
             <Button
               variant="secondary"
