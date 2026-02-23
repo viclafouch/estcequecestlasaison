@@ -246,7 +246,6 @@ Shared n'est JAMAIS importe statiquement dans les server functions (dynamic impo
 
 - **SearchCommand** : modale cmdk (Cmd+K / Ctrl+K) accessible depuis toutes les pages
 - **SearchBar** (homepage uniquement) : champ de recherche avec dropdown suggestions et zone mois cliquable
-- **SearchSuggestions** : dropdown autocomplete sous le SearchBar (navigation clavier fleches)
 - **useSearch** : context provider global (etat modale, raccourci clavier)
 - **SearchProvider** dans `__root.tsx` : modale disponible sur toutes les pages
 - Recherche fuzzy via Fuse.js (server function `getSearchSuggestions`, top 5)
@@ -359,7 +358,6 @@ Shared n'est JAMAIS importe statiquement dans les server functions (dynamic impo
 | `useSearch` | Context + provider pour la recherche globale (etat modale, raccourci Cmd+K) |
 | `useCarouselScroll` | Logique scroll horizontal avec fleches + scrollToStart |
 | `useMonthBarScroll` | Scroll snap horizontal du selecteur de mois (mobile, scroll infini) |
-| `useListKeyboardNav` | Navigation clavier dans une liste (ArrowUp/Down, Enter, Escape) |
 | `useCanShare` | Detection Web Share API disponible |
 | `useIsomorphicLayoutEffect` | useLayoutEffect SSR-safe (useEffect cote serveur) |
 
@@ -497,7 +495,7 @@ Premier carousel "En pleine saison de..." rendu en H1 hero (text-2xl/3xl bold). 
 
 ### Milestone 13 : Recherche Globale ✅
 
-Modale cmdk (Cmd+K), SearchCommand, SearchSuggestions (dropdown homepage), useSearch context provider, SearchProvider dans __root.tsx. Suppression de l'ancien SearchDrawer.
+Modale cmdk (Cmd+K), SearchCommand, useSearch context provider, SearchProvider dans __root.tsx. Suppression de l'ancien SearchDrawer et du dropdown SearchSuggestions (redondant avec le filtrage temps reel des carousels).
 
 ---
 

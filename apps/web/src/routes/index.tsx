@@ -96,7 +96,6 @@ const Home = () => {
         onSearchChange={setSearchQuery}
         currentMonth={selectedMonth}
         onMonthClick={handleOpenDrawer}
-        debouncedQuery={debouncedSearch}
       />
       <MonthDrawer
         selectedMonth={selectedMonth}

@@ -1,9 +1,7 @@
-import * as React from 'react'
 import { X } from 'lucide-react'
 import type { Month } from '@estcequecestlasaison/shared'
 import { getMonthName } from '@estcequecestlasaison/shared'
 import { ProduceIcon } from './icons'
-import { SearchSuggestions } from './search-suggestions'
 import { IconButton } from './ui/icon-button'
 
 type SearchBarProps = {
@@ -11,25 +9,15 @@ type SearchBarProps = {
   onSearchChange: (query: string) => void
   currentMonth: Month
   onMonthClick: () => void
-  debouncedQuery: string
 }
 
 export const SearchBar = ({
   searchQuery,
   onSearchChange,
   currentMonth,
-  onMonthClick,
-  debouncedQuery
+  onMonthClick
 }: SearchBarProps) => {
-  const [isFocused, setIsFocused] = React.useState(false)
   const monthName = getMonthName(currentMonth)
-
-  const hasSuggestions = isFocused && debouncedQuery.trim().length > 0
-
-  const handleSelect = () => {
-    setIsFocused(false)
-    onSearchChange('')
-  }
 
   return (
     <div className="relative hidden justify-center px-6 py-8 md:flex">
@@ -61,12 +49,6 @@ export const SearchBar = ({
             onChange={(event) => {
               return onSearchChange(event.target.value)
             }}
-            onFocus={() => {
-              setIsFocused(true)
-            }}
-            onBlur={() => {
-              setIsFocused(false)
-            }}
             placeholder="Rechercher un fruit ou légume…"
             aria-label="Rechercher un fruit ou légume"
             className="w-full bg-transparent py-4 text-lg text-gray-900 placeholder:text-gray-400 focus-visible:outline-none"
@@ -85,9 +67,6 @@ export const SearchBar = ({
           </IconButton>
         ) : null}
       </div>
-      {hasSuggestions ? (
-        <SearchSuggestions query={debouncedQuery} onSelect={handleSelect} />
-      ) : null}
     </div>
   )
 }
