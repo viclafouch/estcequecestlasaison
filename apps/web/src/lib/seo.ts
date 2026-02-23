@@ -9,6 +9,7 @@ import { clientEnv } from '@/constants/env'
 import { SITE_NAME } from '@/constants/site'
 import type { Month, Produce } from '@estcequecestlasaison/shared'
 import {
+  getMonthName,
   getSeasonRangeLabel,
   matchIsInSeasonAllYear
 } from '@estcequecestlasaison/shared'
@@ -126,21 +127,61 @@ type ProduceSeoParams = {
   month: Month
 }
 
+function getSeoTitleSuffix(produce: Produce, month: Month, monthName: string) {
+  if (matchIsInSeasonAllYear(produce)) {
+    return "disponible toute l'année"
+  }
+
+  const intensity = produce.seasons[month]
+
+  if (intensity === 'peak') {
+    return `en pleine saison en ${monthName}`
+  }
+
+  if (intensity === 'partial') {
+    return `en saison en ${monthName}`
+  }
+
+  return `hors saison en ${monthName}`
+}
+
+function getSeoDescriptionIntro(
+  produce: Produce,
+  month: Month,
+  monthName: string
+) {
+  if (matchIsInSeasonAllYear(produce)) {
+    return `${produce.name} est disponible toute l'année`
+  }
+
+  if (produce.seasons[month]) {
+    return `${produce.name} est en saison en ${monthName}`
+  }
+
+  return `${produce.name} est hors saison en ${monthName}`
+}
+
 export function produceSeo({ produce, month }: ProduceSeoParams) {
-  const statusLabel = getSeasonStatusLabel(produce, month)
   const seasonRange = getSeasonRangeLabel(produce)
   const vitaminsLabel = getVitaminsLabel(produce.nutrition.vitamins)
   const typeLabel = produce.type === 'fruit' ? 'fruit' : 'légume'
+  const monthName = getMonthName(month)
+  const isInSeason =
+    matchIsInSeasonAllYear(produce) || Boolean(produce.seasons[month])
+
+  const descriptionCta = isInSeason
+    ? `Calendrier, nutrition et conseils pour bien choisir ce ${typeLabel}.`
+    : `Découvrez les alternatives de saison et le calendrier complet de ce ${typeLabel}.`
 
   const descriptionParts = [
-    `${produce.name} : ${statusLabel.toLowerCase()}`,
+    getSeoDescriptionIntro(produce, month, monthName),
     matchIsInSeasonAllYear(produce) ? null : `Saison : ${seasonRange}`,
     vitaminsLabel,
-    `Découvrez le calendrier de saisonnalité complet de ce ${typeLabel}.`
+    descriptionCta
   ].filter(Boolean)
 
   const result = seo({
-    title: `${produce.name} : est-ce que c'est la saison ?`,
+    title: `${produce.name} : ${getSeoTitleSuffix(produce, month, monthName)}`,
     description: `${descriptionParts.join('. ')}.`,
     keywords: `${produce.name.toLowerCase()}, saison ${produce.name.toLowerCase()}, est-ce que c'est la saison ${produce.name.toLowerCase()}, ${typeLabel} de saison, calendrier saisonnalité ${produce.name.toLowerCase()}`,
     pathname: `/${produce.slug}`,
