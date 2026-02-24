@@ -15,7 +15,7 @@ Site web permettant de connaitre la saisonnalite des fruits et legumes en France
 | Aspect | Choix |
 |--------|-------|
 | Monorepo | pnpm workspaces (pnpm 10.28.2) |
-| Hosting Web | Railway (auto-deploy depuis main), Cloudflare (CDN, DNS, protection) |
+| Hosting Web | Vercel (auto-deploy depuis main), Cloudflare (CDN, DNS, protection) |
 | Icones UI | lucide-react (fleches, menu, recherche, partage) |
 | Icones produits | SVG inline emojione (shadcn.io) pour header, images WebP pour produits |
 | Recherche | Fuse.js (fuzzy search server-side) |
@@ -434,14 +434,14 @@ Validation via `@t3-oss/env-core` + Zod dans `src/constants/env.ts`.
 
 | Service | Usage |
 |---------|-------|
-| Railway | Hebergement web (auto-deploy main) → **migration vers Vercel en cours (Milestone 14)** |
+| Vercel | Hebergement web (auto-deploy main) |
 | Cloudflare | CDN, DNS, protection DDoS, redirection apex → www |
 | Google AdSense | Monetisation web (a integrer) |
 
 ### CI/CD
 
 - Pre-commit hook (Husky) : `pnpm lint` (TypeScript + ESLint)
-- Push sur `main` = deploiement automatique Railway (→ Vercel apres migration)
+- Push sur `main` = deploiement automatique Vercel
 
 ---
 
@@ -475,7 +475,7 @@ Setup monorepo, donnees (80 produits JSON + types + helpers Zod), page d'accueil
 
 ### Milestone 7-8 : SEO & Deploy ✅
 
-Favicons, OG images, sitemap dynamique, SearchAction JSON-LD, animations, deploiement Railway, domaine achete.
+Favicons, OG images, sitemap dynamique, SearchAction JSON-LD, animations, deploiement initial, domaine achete.
 
 ### Milestone 9 : Page Calendrier Annuel ✅
 
@@ -499,51 +499,16 @@ Modale cmdk (Cmd+K), SearchCommand, useSearch context provider, SearchProvider d
 
 ---
 
-### Milestone 14 : Migration Railway → Vercel
+### Milestone 14 : Migration Railway → Vercel ✅
 
-**Objectif** : Migrer l'hebergement web de Railway vers Vercel (meilleur support SSR/edge, preview deployments, integration Nitro native).
-
-**Pre-requis** : Compte Vercel cree, projet connecte au repo GitHub.
-
-**Code**
-
-- [ ] Ajouter le preset `vercel` dans la config Nitro (`vite.config.ts`) : `nitro({ preset: 'vercel', ... })`
-- [ ] Verifier que `pnpm build` genere bien `.vercel/output/` (au lieu de `.output/`)
-- [ ] Ajouter `.vercel/` au `.gitignore` si absent
-- [ ] Tester le build localement (`pnpm build` sans erreurs)
-- [ ] Lancer `pnpm lint:fix` et corriger les erreurs eventuelles
-
-**Vercel Dashboard**
-
-- [ ] Creer le projet Vercel (importer le repo GitHub)
-- [ ] Configurer le Root Directory : `apps/web`
-- [ ] Build Command : `pnpm build`
-- [ ] Install Command : `pnpm install`
-- [ ] Node.js version : 22.x
-- [ ] Ajouter la variable d'environnement `VITE_SITE_URL` = `https://www.estcequecestlasaison.fr`
-
-**DNS (Cloudflare)**
-
-- [ ] Ajouter le domaine custom dans Vercel Dashboard → Settings → Domains
-- [ ] Mettre a jour le CNAME chez Cloudflare : `www` → `cname.vercel-dns.com`
-- [ ] Verifier que le SSL fonctionne (Vercel genere le certificat automatiquement)
-- [ ] Tester le site en production sur le nouveau domaine
-
-**Nettoyage**
-
-- [ ] Verifier que les headers de securite sont bien appliques (X-Content-Type-Options, X-Frame-Options, Referrer-Policy)
-- [ ] Verifier que le cache immutable fonctionne sur `/images/**` et `/fonts/**`
-- [ ] Verifier que les routes `.well-known` repondent correctement
-- [ ] Supprimer le service Railway une fois Vercel valide
-- [ ] Mettre a jour la section Infrastructure du plan (Railway → Vercel)
+Hebergement migre de Railway vers Vercel (preset Nitro, preview deployments, DNS Cloudflare mis a jour).
 
 ---
 
 ## Ordre de priorite
 
-1. **Milestone 14** : Migration Railway → Vercel (hosting)
-2. **Milestone 6** : AdSense + pages legales (monetisation)
-3. **Milestone 5** : Banniere App (quand l'app mobile sera prete)
+1. **Milestone 6** : AdSense + pages legales (monetisation)
+2. **Milestone 5** : Banniere App (quand l'app mobile sera prete)
 
 ---
 

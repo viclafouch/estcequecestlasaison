@@ -22,7 +22,7 @@ Fruits and vegetables, static JSON data, French only.
 
 | Platform | Host | Status |
 |----------|------|--------|
-| Web | [Railway](https://railway.app) | Live |
+| Web | [Vercel](https://vercel.com) | Live |
 | iOS | App Store | Coming soon |
 | Android | Google Play | Coming soon |
 

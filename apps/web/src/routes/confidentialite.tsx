@@ -127,12 +127,12 @@ const ConfidentialitePage = () => {
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
           Le site est hébergé par{' '}
           <a
-            href="https://railway.app"
+            href="https://vercel.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-link"
           >
-            Railway
+            Vercel
           </a>{' '}
           (San Francisco, États-Unis) et utilise le réseau{' '}
           <a
@@ -145,7 +145,7 @@ const ConfidentialitePage = () => {
           </a>{' '}
           (San Francisco, États-Unis) comme CDN et gestionnaire DNS. Bien
           qu'aucune donnée personnelle ne soit actuellement collectée, les
-          requêtes HTTP transitent par les serveurs de ces prestataires. Railway
+          requêtes HTTP transitent par les serveurs de ces prestataires. Vercel
           et Cloudflare s'engagent à respecter des garanties adéquates en
           matière de protection des données.
         </p>
