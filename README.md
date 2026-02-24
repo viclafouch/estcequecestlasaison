@@ -16,7 +16,7 @@ Fruits and vegetables, static JSON data, French only.
 | `packages/shared/` | Data, types, helpers (Fuse.js, Zod) |
 | `scripts/` | Image generation and optimization |
 
-**Package manager**: pnpm 10 — **Node**: >= 20
+**Package manager**: pnpm 10 — **Node**: >= 200
 
 ## Deployment
 
