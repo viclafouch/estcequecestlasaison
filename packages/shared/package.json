@@ -19,7 +19,7 @@
     "./types": "./src/types.ts"
   },
   "scripts": {
-    "lint": "tsc && eslint",
+    "lint": "tsc && eslint --debug",
     "lint:fix": "pnpm lint --fix"
   },
   "dependencies": {

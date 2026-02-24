@@ -15,7 +15,8 @@ export default [
       '**/node_modules/**',
       '**/.output/**',
       '**/.tanstack/**',
-      '**/dist/**'
+      '**/dist/**',
+      '**/vercel/**'
     ]
   },
   ...typescriptConfig,

@@ -24,6 +24,7 @@ export default defineConfig({
     tailwindcss(),
     tanstackStart(),
     nitro({
+      preset: 'vercel',
       routeRules: {
         '/**': { headers: SECURITY_HEADERS },
         '/images/**': { headers: { ...SECURITY_HEADERS, ...IMMUTABLE_CACHE } },
