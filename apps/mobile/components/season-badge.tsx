@@ -27,12 +27,7 @@ type SeasonChipProps = {
 
 export const SeasonChip = React.memo(({ label, variant }: SeasonChipProps) => {
   return (
-    <Chip
-      size="sm"
-      variant="soft"
-      color={BADGE_CHIP_COLOR[variant]}
-      animation="disable-all"
-    >
+    <Chip size="sm" variant="soft" color={BADGE_CHIP_COLOR[variant]}>
       <Chip.Label numberOfLines={1}>{label}</Chip.Label>
     </Chip>
   )

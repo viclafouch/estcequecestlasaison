@@ -2,7 +2,7 @@ import React from 'react'
 import type { TextInput } from 'react-native'
 import { Keyboard, Pressable, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { Input, Separator } from 'heroui-native'
+import { Input } from 'heroui-native'
 import { getCurrentMonth, type Produce } from '@estcequecestlasaison/shared'
 import {
   getGroupedProduce,
@@ -16,7 +16,7 @@ import { StyledIonicons } from '@/constants/styled'
 const DEBOUNCE_WAIT = 150
 
 const ItemSeparator = () => {
-  return <Separator className="mx-4" />
+  return <View className="mx-4 h-px bg-gray-100" />
 }
 
 const keyExtractor = (item: Produce) => {
@@ -69,7 +69,7 @@ const SearchScreen = () => {
         <Input
           ref={inputRef}
           variant="secondary"
-          className="flex-1 px-10"
+          className="flex-1 pl-10 pr-10"
           placeholder="Rechercher un fruit ou légume"
           value={searchQuery}
           onChangeText={setSearchQuery}

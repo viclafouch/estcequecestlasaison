@@ -6,6 +6,7 @@ export default defineConfig({
   ignorePatterns: [
     'apps/web/src/routeTree.gen.ts',
     'apps/web/.tanstack/**',
+    'apps/mobile/uniwind-types.d.ts',
     '.claude/**',
     '.agents/**'
   ]

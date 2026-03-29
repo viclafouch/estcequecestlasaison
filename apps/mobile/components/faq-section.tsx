@@ -12,7 +12,11 @@ export const FaqSection = () => {
       >
         Questions fréquentes
       </Text>
-      <Accordion selectionMode="multiple" variant="surface">
+      <Accordion
+        selectionMode="multiple"
+        variant="surface"
+        className="border-0"
+      >
         {FAQ_ITEMS.map((item) => {
           return (
             <Accordion.Item key={item.value} value={item.value}>

@@ -22,9 +22,12 @@
 
 ## Metro
 
-| Erreur                                                   | Cause                                                                                                                     | Fix                                                 |
-| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Tous les styles Uniwind/Tailwind disparaissent d'un coup | `metro.config.js` avec `"type": "module"` dans package.json → `module.exports` ignoré silencieusement → Metro recoit `{}` | Renommer en `metro.config.cjs` pour forcer CommonJS |
+| Erreur                                                               | Cause                                                                                                                     | Fix                                                                                                             |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Tous les styles Uniwind/Tailwind disparaissent d'un coup             | `metro.config.js` avec `"type": "module"` dans package.json → `module.exports` ignoré silencieusement → Metro recoit `{}` | Renommer en `metro.config.cjs` pour forcer CommonJS                                                             |
+| `Unable to resolve module expo-router/entry` en monorepo pnpm        | pnpm utilise des symlinks isolés (`.pnpm/`) que Metro ne résout pas correctement                                          | Ajouter `.npmrc` avec `node-linker=hoisted` à la racine + clean install (`rm -rf node_modules && pnpm install`) |
+| Watchman `Operation not permitted` sur node_modules                  | Watchman n'a pas Full Disk Access sur macOS                                                                               | Réglages Système → Confidentialité → Accès complet au disque → ajouter `/opt/homebrew/bin/watchman`             |
+| `.watchmanconfig` avec `"ignore_dirs": ["node_modules"]` casse Metro | Metro a besoin de Watchman pour résoudre les modules dans node_modules                                                    | `.watchmanconfig` doit être `{}` (vide) — ne jamais ignorer node_modules                                        |
 
 ## Hermes (moteur JS React Native)
 
@@ -33,13 +36,22 @@
 | `toSorted is not a function`              | Hermes ne supporte pas ES2023 (`toSorted`, `toReversed`, etc.)      | Polyfill dans `polyfills.ts`, importé en premier dans root `_layout.tsx`                           |
 | Polyfill pas chargé dans certaines routes | Expo Router peut évaluer les modules enfants avant le layout parent | Ne JAMAIS appeler `toSorted` au module-level (hors composant). Toujours dans le corps du composant |
 
-## HeroUI Native (beta.13)
+## HeroUI Native (v1.0.0)
 
-| Composant                                                         | Bug                                                                       | Workaround                                            |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------- |
-| `Avatar` / `Avatar.Image`                                         | Crash Reanimated : animated style appliqué sur composant non-animated     | Ne pas utiliser (issue #33)                           |
-| `Button variant="ghost"`                                          | `colorKit.RGB` erreur sur couleur "invalid"                               | Ne pas utiliser (issue #262)                          |
-| `Chip`, `Card`, `Tabs`, `Button`, `Surface`, `Separator`, `Input` | Animations Reanimated crashent dans certains contextes (FlashList, mount) | Ajouter `animation="disable-all"` sur chaque instance |
+**Migration beta.13 → v1.0.0 effectuée le 2026-03-29.**
+
+| Composant / Changement                     | Détail                                                                                        | Statut                                            |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `Avatar` / `Avatar.Image` crash Reanimated | Corrigé en RC-3 (`combineStyles` fix)                                                         | **À re-tester**                                   |
+| `Button variant="ghost"` crash colorKit    | Issue #262 fermée en RC-3                                                                     | **À re-tester**                                   |
+| `animation="disable-all"` workaround       | Bugs animations corrigés RC-1 à RC-3 — workaround **retiré**                                  | **Fait**                                          |
+| `Separator` bordures visibles              | Theme surface refactor RC-1 a changé les styles par défaut                                    | **Remplacé par View natif** (`h-px bg-gray-100`)  |
+| `Accordion variant="surface"` bordures     | Même cause (theme surface refactor)                                                           | **Fixé** avec `className="border-0"`              |
+| `isBottomSheetAware` supprimé de Input     | Utiliser `useBottomSheetAwareHandlers` hook                                                   | Non impacté (pas d'Input dans BottomSheet)        |
+| Button feedback API refactoré              | `pressableFeedbackVariant` → `feedbackVariant` + `animation`                                  | Non impacté (props non utilisées)                 |
+| `SearchField` nouveau composant            | `pl-9` interne ne surcharge pas `px-3` de Input dans Uniwind → icône chevauche le placeholder | **Non adopté** (bug Uniwind, garder Input custom) |
+
+**Nouveaux composants disponibles (non adoptés)** : `Alert`, `ListGroup`, `Slider`, `TagGroup`, `Menu`, `SubMenu`, `InputGroup`, `InputField`, `LinkButton`
 
 ## Expo Image
 

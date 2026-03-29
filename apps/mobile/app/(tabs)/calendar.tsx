@@ -1,14 +1,7 @@
 import React from 'react'
 import { Keyboard, Pressable, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import {
-  Button,
-  cn,
-  Input,
-  Separator,
-  Tabs,
-  useThemeColor
-} from 'heroui-native'
+import { Button, cn, Input, Tabs, useThemeColor } from 'heroui-native'
 import {
   getCurrentMonth,
   type SeasonStatus
@@ -33,7 +26,7 @@ type SortMode = 'alpha' | 'months'
 const DEBOUNCE_WAIT = 150
 
 const ItemSeparator = () => {
-  return <Separator className="mx-4" />
+  return <View className="mx-4 h-px bg-gray-100" />
 }
 
 const keyExtractor = (item: CalendarProduce) => {
@@ -177,7 +170,7 @@ const CalendarScreen = () => {
       >
         <Input
           variant="secondary"
-          className="flex-1 px-10"
+          className="flex-1 pl-10 pr-10"
           placeholder="Rechercher..."
           value={searchQuery}
           onChangeText={setSearchQuery}
@@ -249,7 +242,7 @@ const CalendarScreen = () => {
         </Button>
       </View>
       <Legend />
-      <Separator />
+      <View className="h-px bg-gray-100" />
       {hasNoResults ? (
         <Pressable
           className="flex-1 items-center justify-center px-8"

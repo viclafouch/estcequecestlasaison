@@ -12,7 +12,11 @@ const FaqScreen = () => {
     >
       <Stack.Screen options={{ title: 'FAQ' }} />
       <View className="px-4 py-6">
-        <Accordion selectionMode="multiple" variant="surface">
+        <Accordion
+          selectionMode="multiple"
+          variant="surface"
+          className="border-0"
+        >
           {FAQ_ITEMS.map((item) => {
             return (
               <Accordion.Item key={item.value} value={item.value}>

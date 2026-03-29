@@ -41,11 +41,11 @@
 
 | Technologie | Version | Notes |
 |-------------|---------|-------|
-| React Native | 0.83.1 | New Architecture obligatoire (legacy supprimee) |
-| Expo SDK | 55 (preview) | New Architecture par defaut, `newArchEnabled` supprime |
-| React | 19.2.0 | React Compiler non activé (à évaluer Phase 2 si besoin perf) |
+| React Native | 0.83.4 | New Architecture obligatoire (legacy supprimee) |
+| Expo SDK | 55 (stable) | New Architecture par defaut, `newArchEnabled` supprime |
+| React | 19.2.4 | React Compiler non activé (à évaluer Phase 2 si besoin perf) |
 | Hermes | v1 | Opt-in, nouveau compilateur + VM, gains de performance significatifs |
-| Expo Router | v5 (55.0.0-preview) | File-based routing, Native Tabs API, deep linking |
+| Expo Router | v5 (55.0.8 stable) | File-based routing, Native Tabs API, deep linking |
 
 Statut : **en cours (M0)**
 
@@ -60,7 +60,7 @@ Statut : **en cours (M0)**
 | Data layer | Couche service locale | Module service centralise, pas de server functions, offline by design |
 | Data updates | JSON bundle dans le binary | Mise a jour = nouvelle version app sur les stores, zero infra |
 | Recherche | Fuse.js direct (JS thread) | 80 items negligeable, debounce suffisant, partage avec shared |
-| UI library | @heroui/react-native (all-in) | Tous les composants via HeroUI, accepter le risque beta |
+| UI library | @heroui/react-native (all-in) | Tous les composants via HeroUI Native v1.0.0 stable |
 | Styling | Uniwind (Tailwind v4 RN) | Build-time, classes utilitaires familieres depuis le web |
 | Animations | Reanimated 4 (riches) | CSS animations/transitions, layout animations, transitions ecrans |
 | Icones UI | Icones HeroUI | Zero dependance supplementaire, integre a la UI library |
@@ -87,41 +87,39 @@ Statut : **en cours (M0)**
 
 | Librairie | Version | Usage |
 |-----------|---------|-------|
-| @heroui/react-native | 1.0.0-beta.13+ | UI library — voir bugs connus ci-dessous |
-| uniwind | 1.2.2+ | Tailwind v4 bindings pour React Native, build-time, dark mode, pseudo-classes |
+| heroui-native | 1.0.0 (stable) | UI library — v1.0.0 stable, toutes les issues beta corrigees |
+| uniwind | 1.6.1+ | Tailwind v4 bindings pour React Native, build-time, dark mode, pseudo-classes |
 | react-native-reanimated | ~4.2.1 | CSS animations/transitions, layout animations. Worklets dans react-native-worklets 0.7.2 |
-| expo-linear-gradient | ~55.0.5 | Gradient overlay sur les cartes immersives (feed homepage, carousel produit) |
+| expo-linear-gradient | ~55.0.9 | Gradient overlay sur les cartes immersives (feed homepage, carousel produit) |
 
-### HeroUI Native — bugs connus (beta.13)
+### HeroUI Native — notes (v1.0.0)
 
-**Composants a eviter** (utiliser du RN natif a la place) :
-- `Avatar` / `Avatar.Image` → crash Reanimated (animated style sur non-animated component)
+**Workaround `animation="disable-all"` retire** : bugs animations corriges RC-1 a RC-3. Plus aucun composant n'utilise ce workaround.
 
-**Composants OK avec `animation="disable-all"`** : `Chip`, `Card`, `Tabs`, `Button`, `Surface`, `Separator`, `Input` (utilises partout dans l'app)
+**Composants utilises** : `Accordion`, `Button`, `BottomSheet`, `Chip`, `Input`, `SearchField`, `Surface`, `Tabs`
 
-**Composants OK** : `BottomSheet`, `Accordion`, `Dialog`, `Toast`
+**`SearchField` non adopte** : bug Uniwind — `pl-9` interne ne surcharge pas `px-3` de Input base (icone chevauche placeholder). Garder Input custom.
 
-**Issues GitHub a surveiller** (si fixees → re-tester) :
+**Separator HeroUI remplace** : la refonte theme surface (RC-1) a change les bordures par defaut. Tous les `Separator` HeroUI remplaces par `<View className="h-px bg-gray-100" />`.
 
-| Issue | Statut | Description |
-|-------|--------|-------------|
-| [#253](https://github.com/heroui-inc/heroui-native/issues/253) | OPEN | Lag + blank screens dans FlashList |
-| [#262](https://github.com/heroui-inc/heroui-native/issues/262) | OPEN | Button Ghost `colorKit.RGB` error (meme cause que Chip "invalid") |
-| [#270](https://github.com/heroui-inc/heroui-native/issues/270) | OPEN | Beta 13 + Uniwind error |
-| [#33](https://github.com/heroui-inc/heroui-native/issues/33) | CLOSED | Reanimated crash (Avatar, pas vraiment resolu) |
+**Accordion `variant="surface"`** : ajouter `className="border-0"` pour retirer la bordure ajoutee par le theme surface refactor.
+
+**Nouveaux composants disponibles (non adoptes)** : `Alert`, `ListGroup`, `Slider`, `TagGroup`, `Menu`, `SubMenu`, `InputGroup`, `InputField`, `LinkButton`
+
+**A re-tester** : `Avatar` (crash Reanimated corrige en RC-3), `Button variant="ghost"` (issue #262 fermee)
 
 ### Navigation & Ecrans
 
 | Librairie | Version | Usage |
 |-----------|---------|-------|
-| expo-router | v5 (55.0.0-preview) | File-based routing, Native Tabs API, deep linking, typed routes |
-| react-native-screens | ~4.22.0 | Primitives de navigation natives, dependance Expo Router |
+| expo-router | v5 (55.0.8 stable) | File-based routing, Native Tabs API, deep linking, typed routes |
+| react-native-screens | ~4.23.0 | Primitives de navigation natives, dependance Expo Router |
 
 ### Listes & Performance
 
 | Librairie | Version | Usage |
 |-----------|---------|-------|
-| @shopify/flash-list | 2.2.0+ | Listes virtualisees haute performance, mesure auto v2, New Architecture only |
+| @shopify/flash-list | 2.3.1 | Listes virtualisees haute performance, mesure auto v2, New Architecture only |
 
 ### Widgets & Features natives
 
@@ -144,8 +142,8 @@ Statut : **en cours (M0)**
 
 | Librairie | Version | Usage |
 |-----------|---------|-------|
-| expo-store-review | ~55.0.5 | Demande de rating natif (SKStoreReviewController iOS / ReviewManager Android) |
-| expo-sqlite | ~55.0.5 | KV store synchrone (`expo-sqlite/kv-store`) pour tracker les vues produit, demandes de rating, et dernier produit consulte |
+| expo-store-review | ~55.0.9 | Demande de rating natif (SKStoreReviewController iOS / ReviewManager Android) |
+| expo-sqlite | ~55.0.11 | KV store synchrone (`expo-sqlite/kv-store`) pour tracker les vues produit, demandes de rating, et dernier produit consulte |
 
 ### Partage
 

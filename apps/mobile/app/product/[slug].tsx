@@ -109,7 +109,6 @@ const ProductScreen = () => {
                         size="sm"
                         color="success"
                         variant="soft"
-                        animation="disable-all"
                       >
                         <Chip.Label>{vitamin}</Chip.Label>
                       </Chip>
