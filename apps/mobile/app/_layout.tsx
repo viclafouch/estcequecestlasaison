@@ -7,6 +7,7 @@ import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
 import type { HeroUINativeConfig } from 'heroui-native'
 import { HeroUINativeProvider } from 'heroui-native'
+import * as Sentry from '@sentry/react-native'
 import { initializeReviewTracking } from '@/utils/review-tracker'
 import '../polyfills'
 import '../global.css'
@@ -16,6 +17,13 @@ export { ErrorBoundary } from 'expo-router'
 export const unstable_settings = {
   initialRouteName: '(tabs)'
 }
+
+Sentry.init({
+  dsn: 'https://1c1e24beedf3453198675e6889636014@o4510925983514624.ingest.de.sentry.io/4511128496439376',
+  tracesSampleRate: 0.2,
+  enableAutoPerformanceTracing: true,
+  enableAppStartTracking: true
+})
 
 void SplashScreen.preventAutoHideAsync()
 
@@ -53,4 +61,4 @@ const RootLayout = () => {
   )
 }
 
-export default RootLayout
+export default Sentry.wrap(RootLayout)

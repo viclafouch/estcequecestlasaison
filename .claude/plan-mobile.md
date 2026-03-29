@@ -594,7 +594,7 @@ L'app de consultation complete, miroir du site web.
 - [x] Configurer Uniwind (Tailwind v4 RN)
 - [x] Setup dev build local iOS (simulateur Xcode)
 - [ ] Setup dev build local Android (Android Studio + Pixel 9) — reporte, validation Android plus tard
-- [ ] Configurer Sentry — reporte avant soumission stores (M10)
+- [x] Configurer Sentry (`@sentry/react-native` v8, DSN configure, Expo plugin, Metro, Sentry.wrap)
 - [x] Splash screen (logo centre, fond blanc)
 - [x] App icon
 - [x] Verrouiller orientation portrait
@@ -776,7 +776,7 @@ Test credentials: Not applicable (no login).
 - [x] Decider `supportsTablet` : `false` (phone only, pas de layout tablette)
 - [x] Aligner versions : `app.json` = `1.0.0`, `package.json` = `1.0.0` (Xcode se mettra a jour au prebuild)
 - [ ] Retirer section `web` de `app.json` (inutile, app mobile-only)
-- [ ] Installer + configurer Sentry (`@sentry/react-native` + source maps) — reporte depuis M0, a faire avant soumission
+- [x] Installer + configurer Sentry (`@sentry/react-native@^8.6.0` + Expo plugin + source maps auto)
 - [ ] Verifier `LSMinimumSystemVersion` coherent avec Expo SDK 55 (probablement iOS 16+)
 
 > **Resultat audit `/app-release` (16 fevrier 2026)** : 16/36 PASS, 10 FAIL, 10 WARN. Details dans `apps/mobile/AUDIT-RELEASE.md`. Points critiques : icone 512x512 avec alpha, `privacyManifests` absent de `app.json`, `associatedDomains` vide, placeholders AASA/assetlinks, pas de `eas.json`, pas de comptes stores.

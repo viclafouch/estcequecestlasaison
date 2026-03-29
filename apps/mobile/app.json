@@ -66,7 +66,19 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": ["expo-router", "expo-image", "expo-sqlite"],
+    "plugins": [
+      "expo-router",
+      "expo-image",
+      "expo-sqlite",
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "react-native",
+          "organization": "viclafouch"
+        }
+      ]
+    ],
     "experiments": {
       "typedRoutes": true
     }
