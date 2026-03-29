@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { CalendarDays, HelpCircle } from 'lucide-react'
+import { CalendarDays, CircleHelp } from 'lucide-react'
 import type { LinkOptions } from '@tanstack/react-router'
 
 type NavLink = LinkOptions & {
@@ -21,7 +21,7 @@ export const BURGER_NAV_LINKS = [
     to: '/faq',
     label: 'FAQ',
     description: 'Questions fréquentes',
-    icon: HelpCircle,
+    icon: CircleHelp,
     exact: true
   }
 ] as const satisfies readonly NavLink[]

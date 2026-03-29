@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Command } from 'cmdk'
-import { Command as CommandIcon, Loader2, Search, X } from 'lucide-react'
+import { Command as CommandIcon, LoaderCircle, Search, X } from 'lucide-react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { INSTANT_TRANSITION, SCALE_TRANSITION } from '@/constants/animation'
 import { searchSuggestionsOptions } from '@/constants/queries'
@@ -101,7 +101,7 @@ const SearchCommandContent = ({ onClose }: SearchCommandContentProps) => {
                 className="flex-1 bg-transparent py-4 text-base text-gray-900 placeholder:text-gray-400 focus-visible:outline-none"
               />
               {isLoading ? (
-                <Loader2
+                <LoaderCircle
                   className="size-4 shrink-0 animate-spin text-gray-400"
                   aria-hidden="true"
                 />

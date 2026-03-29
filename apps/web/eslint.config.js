@@ -16,7 +16,7 @@ export default [
       '**/.output/**',
       '**/.tanstack/**',
       '**/dist/**',
-      '**/vercel/**'
+      '**/.vercel/**'
     ]
   },
   ...typescriptConfig,
