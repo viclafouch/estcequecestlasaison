@@ -1,9 +1,9 @@
+import { createFileRoute } from '@tanstack/react-router'
 import { CalendarPageContent } from '@/components/calendar-page'
 import { SiteHeader } from '@/components/site-header'
 import { CALENDAR_ALL_CONFIG } from '@/constants/calendar'
 import { calendarOptions } from '@/constants/queries'
 import { seo } from '@/lib/seo'
-import { createFileRoute } from '@tanstack/react-router'
 
 const CalendarPage = () => {
   return (

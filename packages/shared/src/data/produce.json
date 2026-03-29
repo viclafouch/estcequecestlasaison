@@ -17,11 +17,7 @@
     },
     "nutrition": {
       "calories": 52,
-      "vitamins": [
-        "C",
-        "B6",
-        "K"
-      ],
+      "vitamins": ["C", "B6", "K"],
       "benefits": "Riche en fibres et antioxydants, favorise la digestion"
     },
     "conservation": "2-3 semaines au réfrigérateur, loin des autres fruits",
@@ -46,10 +42,7 @@
     },
     "nutrition": {
       "calories": 57,
-      "vitamins": [
-        "C",
-        "K"
-      ],
+      "vitamins": ["C", "K"],
       "benefits": "Excellente source de fibres, hydratante"
     },
     "conservation": "Quelques jours à température ambiante pour mûrir, puis au réfrigérateur",
@@ -78,10 +71,7 @@
     },
     "nutrition": {
       "calories": 89,
-      "vitamins": [
-        "B6",
-        "C"
-      ],
+      "vitamins": ["B6", "C"],
       "benefits": "Riche en potassium, énergie rapide"
     },
     "conservation": "À température ambiante, ne pas réfrigérer avant maturité",
@@ -104,11 +94,7 @@
     },
     "nutrition": {
       "calories": 47,
-      "vitamins": [
-        "C",
-        "B1",
-        "B9"
-      ],
+      "vitamins": ["C", "B1", "B9"],
       "benefits": "Excellente source de vitamine C, renforce l'immunité"
     },
     "conservation": "1 semaine à température ambiante, 2 semaines au réfrigérateur",
@@ -131,9 +117,7 @@
     },
     "nutrition": {
       "calories": 29,
-      "vitamins": [
-        "C"
-      ],
+      "vitamins": ["C"],
       "benefits": "Antiseptique naturel, aide à la digestion"
     },
     "conservation": "1 semaine à température ambiante, 3 semaines au réfrigérateur",
@@ -154,10 +138,7 @@
     },
     "nutrition": {
       "calories": 47,
-      "vitamins": [
-        "C",
-        "B9"
-      ],
+      "vitamins": ["C", "B9"],
       "benefits": "Facile à peler, riche en vitamine C"
     },
     "conservation": "1 semaine à température ambiante, 2 semaines au réfrigérateur",
@@ -178,10 +159,7 @@
     },
     "nutrition": {
       "calories": 53,
-      "vitamins": [
-        "C",
-        "A"
-      ],
+      "vitamins": ["C", "A"],
       "benefits": "Parfumée, riche en antioxydants"
     },
     "conservation": "1 semaine à température ambiante",
@@ -203,10 +181,7 @@
     },
     "nutrition": {
       "calories": 42,
-      "vitamins": [
-        "C",
-        "A"
-      ],
+      "vitamins": ["C", "A"],
       "benefits": "Peu calorique, favorise la perte de poids"
     },
     "conservation": "1 semaine à température ambiante, 2 semaines au réfrigérateur",
@@ -228,10 +203,7 @@
     },
     "nutrition": {
       "calories": 33,
-      "vitamins": [
-        "C",
-        "B9"
-      ],
+      "vitamins": ["C", "B9"],
       "benefits": "Très riche en vitamine C, antioxydante"
     },
     "conservation": "2-3 jours au réfrigérateur, ne pas laver avant consommation",
@@ -252,10 +224,7 @@
     },
     "nutrition": {
       "calories": 52,
-      "vitamins": [
-        "C",
-        "E"
-      ],
+      "vitamins": ["C", "E"],
       "benefits": "Riche en fibres et antioxydants"
     },
     "conservation": "1-2 jours au réfrigérateur, très fragile",
@@ -275,10 +244,7 @@
     },
     "nutrition": {
       "calories": 57,
-      "vitamins": [
-        "C",
-        "K"
-      ],
+      "vitamins": ["C", "K"],
       "benefits": "Excellente pour la vue, très antioxydante"
     },
     "conservation": "1 semaine au réfrigérateur",
@@ -297,10 +263,7 @@
     },
     "nutrition": {
       "calories": 63,
-      "vitamins": [
-        "C",
-        "E"
-      ],
+      "vitamins": ["C", "E"],
       "benefits": "Champion de la vitamine C, anti-inflammatoire"
     },
     "conservation": "2-3 jours au réfrigérateur",
@@ -320,9 +283,7 @@
     },
     "nutrition": {
       "calories": 56,
-      "vitamins": [
-        "C"
-      ],
+      "vitamins": ["C"],
       "benefits": "Acidulée, riche en vitamine C"
     },
     "conservation": "2-3 jours au réfrigérateur",
@@ -342,11 +303,7 @@
     },
     "nutrition": {
       "calories": 43,
-      "vitamins": [
-        "C",
-        "K",
-        "E"
-      ],
+      "vitamins": ["C", "K", "E"],
       "benefits": "Riche en antioxydants et fibres"
     },
     "conservation": "1-2 jours au réfrigérateur, très fragile",
@@ -366,10 +323,7 @@
     },
     "nutrition": {
       "calories": 63,
-      "vitamins": [
-        "C",
-        "A"
-      ],
+      "vitamins": ["C", "A"],
       "benefits": "Anti-inflammatoire, aide au sommeil"
     },
     "conservation": "2-3 jours au réfrigérateur",
@@ -389,10 +343,7 @@
     },
     "nutrition": {
       "calories": 48,
-      "vitamins": [
-        "A",
-        "C"
-      ],
+      "vitamins": ["A", "C"],
       "benefits": "Excellent pour la peau, riche en bêta-carotène"
     },
     "conservation": "2-3 jours à température ambiante, fragile une fois mûr",
@@ -413,10 +364,7 @@
     },
     "nutrition": {
       "calories": 39,
-      "vitamins": [
-        "C",
-        "A"
-      ],
+      "vitamins": ["C", "A"],
       "benefits": "Hydratante, bonne pour la peau"
     },
     "conservation": "2-3 jours à température ambiante pour mûrir",
@@ -437,10 +385,7 @@
     },
     "nutrition": {
       "calories": 44,
-      "vitamins": [
-        "C",
-        "A"
-      ],
+      "vitamins": ["C", "A"],
       "benefits": "Similaire à la pêche, peau lisse"
     },
     "conservation": "2-3 jours à température ambiante",
@@ -461,10 +406,7 @@
     },
     "nutrition": {
       "calories": 46,
-      "vitamins": [
-        "C",
-        "K"
-      ],
+      "vitamins": ["C", "K"],
       "benefits": "Favorise le transit, riche en antioxydants"
     },
     "conservation": "3-5 jours au réfrigérateur",
@@ -483,10 +425,7 @@
     },
     "nutrition": {
       "calories": 67,
-      "vitamins": [
-        "C",
-        "A"
-      ],
+      "vitamins": ["C", "A"],
       "benefits": "Spécialité lorraine, très sucrée"
     },
     "conservation": "2-3 jours au réfrigérateur",
@@ -507,10 +446,7 @@
     },
     "nutrition": {
       "calories": 69,
-      "vitamins": [
-        "C",
-        "K"
-      ],
+      "vitamins": ["C", "K"],
       "benefits": "Énergétique, bon pour le cœur"
     },
     "conservation": "3-5 jours au réfrigérateur",
@@ -531,10 +467,7 @@
     },
     "nutrition": {
       "calories": 34,
-      "vitamins": [
-        "A",
-        "C"
-      ],
+      "vitamins": ["A", "C"],
       "benefits": "Très hydratant, rafraîchissant"
     },
     "conservation": "Entier à température ambiante, coupé 2-3 jours au réfrigérateur",
@@ -555,10 +488,7 @@
     },
     "nutrition": {
       "calories": 30,
-      "vitamins": [
-        "A",
-        "C"
-      ],
+      "vitamins": ["A", "C"],
       "benefits": "92% d'eau, très rafraîchissante"
     },
     "conservation": "Entière 1 semaine, coupée 3-4 jours au réfrigérateur",
@@ -579,10 +509,7 @@
     },
     "nutrition": {
       "calories": 74,
-      "vitamins": [
-        "B6",
-        "K"
-      ],
+      "vitamins": ["B6", "K"],
       "benefits": "Riche en fibres et minéraux"
     },
     "conservation": "1-2 jours au réfrigérateur, très fragile",
@@ -605,11 +532,7 @@
     },
     "nutrition": {
       "calories": 61,
-      "vitamins": [
-        "C",
-        "K",
-        "E"
-      ],
+      "vitamins": ["C", "K", "E"],
       "benefits": "Plus de vitamine C que l'orange"
     },
     "conservation": "Plusieurs semaines au réfrigérateur, quelques jours à température ambiante",
@@ -629,10 +552,7 @@
     },
     "nutrition": {
       "calories": 83,
-      "vitamins": [
-        "C",
-        "K"
-      ],
+      "vitamins": ["C", "K"],
       "benefits": "Très antioxydante, bon pour le cœur"
     },
     "conservation": "2 semaines à température ambiante, 1 mois au réfrigérateur",
@@ -652,10 +572,7 @@
     },
     "nutrition": {
       "calories": 131,
-      "vitamins": [
-        "B6",
-        "C"
-      ],
+      "vitamins": ["B6", "C"],
       "benefits": "Énergétique, riche en glucides complexes"
     },
     "conservation": "1 semaine au réfrigérateur dans un sac perforé",
@@ -676,10 +593,7 @@
     },
     "nutrition": {
       "calories": 654,
-      "vitamins": [
-        "E",
-        "B6"
-      ],
+      "vitamins": ["E", "B6"],
       "benefits": "Riche en oméga-3, bon pour le cerveau"
     },
     "conservation": "Plusieurs mois dans un endroit frais et sec",
@@ -699,10 +613,7 @@
     },
     "nutrition": {
       "calories": 628,
-      "vitamins": [
-        "E",
-        "B6"
-      ],
+      "vitamins": ["E", "B6"],
       "benefits": "Riche en vitamine E et magnésium"
     },
     "conservation": "Plusieurs mois en coque dans un endroit frais et sec",
@@ -723,10 +634,7 @@
     },
     "nutrition": {
       "calories": 21,
-      "vitamins": [
-        "C",
-        "K"
-      ],
+      "vitamins": ["C", "K"],
       "benefits": "Très peu calorique, riche en fibres"
     },
     "conservation": "4-5 jours au réfrigérateur dans un linge humide",
@@ -755,11 +663,7 @@
     },
     "nutrition": {
       "calories": 41,
-      "vitamins": [
-        "A",
-        "K",
-        "B6"
-      ],
+      "vitamins": ["A", "K", "B6"],
       "benefits": "Excellente pour la vue, riche en bêta-carotène"
     },
     "conservation": "2-3 semaines au réfrigérateur dans un sac perforé",
@@ -781,11 +685,7 @@
     },
     "nutrition": {
       "calories": 18,
-      "vitamins": [
-        "C",
-        "K",
-        "A"
-      ],
+      "vitamins": ["C", "K", "A"],
       "benefits": "Riche en lycopène, antioxydant puissant"
     },
     "conservation": "À température ambiante, jamais au réfrigérateur",
@@ -808,10 +708,7 @@
     },
     "nutrition": {
       "calories": 17,
-      "vitamins": [
-        "C",
-        "B6"
-      ],
+      "vitamins": ["C", "B6"],
       "benefits": "Très peu calorique, hydratante"
     },
     "conservation": "1 semaine au réfrigérateur",
@@ -833,10 +730,7 @@
     },
     "nutrition": {
       "calories": 25,
-      "vitamins": [
-        "B1",
-        "B6"
-      ],
+      "vitamins": ["B1", "B6"],
       "benefits": "Riche en fibres, antioxydante"
     },
     "conservation": "4-5 jours au réfrigérateur",
@@ -858,11 +752,7 @@
     },
     "nutrition": {
       "calories": 31,
-      "vitamins": [
-        "C",
-        "A",
-        "B6"
-      ],
+      "vitamins": ["C", "A", "B6"],
       "benefits": "Très riche en vitamine C (surtout rouge)"
     },
     "conservation": "1 semaine au réfrigérateur",
@@ -885,10 +775,7 @@
     },
     "nutrition": {
       "calories": 16,
-      "vitamins": [
-        "K",
-        "C"
-      ],
+      "vitamins": ["K", "C"],
       "benefits": "96% d'eau, très rafraîchissant"
     },
     "conservation": "1 semaine au réfrigérateur",
@@ -910,11 +797,7 @@
     },
     "nutrition": {
       "calories": 31,
-      "vitamins": [
-        "C",
-        "K",
-        "A"
-      ],
+      "vitamins": ["C", "K", "A"],
       "benefits": "Riche en fibres, peu calorique"
     },
     "conservation": "3-4 jours au réfrigérateur",
@@ -935,11 +818,7 @@
     },
     "nutrition": {
       "calories": 81,
-      "vitamins": [
-        "C",
-        "K",
-        "B1"
-      ],
+      "vitamins": ["C", "K", "B1"],
       "benefits": "Riche en protéines végétales"
     },
     "conservation": "2-3 jours au réfrigérateur en cosse",
@@ -960,11 +839,7 @@
     },
     "nutrition": {
       "calories": 88,
-      "vitamins": [
-        "B1",
-        "B6",
-        "C"
-      ],
+      "vitamins": ["B1", "B6", "C"],
       "benefits": "Riche en protéines et fibres"
     },
     "conservation": "2-3 jours au réfrigérateur en cosse",
@@ -988,11 +863,7 @@
     },
     "nutrition": {
       "calories": 23,
-      "vitamins": [
-        "K",
-        "A",
-        "C"
-      ],
+      "vitamins": ["K", "A", "C"],
       "benefits": "Très riche en fer et vitamines"
     },
     "conservation": "2-3 jours au réfrigérateur, consommer rapidement",
@@ -1016,11 +887,7 @@
     },
     "nutrition": {
       "calories": 15,
-      "vitamins": [
-        "K",
-        "A",
-        "C"
-      ],
+      "vitamins": ["K", "A", "C"],
       "benefits": "Très peu calorique, hydratante"
     },
     "conservation": "3-5 jours au réfrigérateur dans un linge humide",
@@ -1043,11 +910,7 @@
     },
     "nutrition": {
       "calories": 21,
-      "vitamins": [
-        "C",
-        "B9",
-        "A"
-      ],
+      "vitamins": ["C", "B9", "A"],
       "benefits": "Riche en oméga-3 et fer"
     },
     "conservation": "2-3 jours au réfrigérateur",
@@ -1071,11 +934,7 @@
     },
     "nutrition": {
       "calories": 25,
-      "vitamins": [
-        "K",
-        "C",
-        "A"
-      ],
+      "vitamins": ["K", "C", "A"],
       "benefits": "Goût poivré, riche en antioxydants"
     },
     "conservation": "2-3 jours au réfrigérateur dans un linge humide",
@@ -1097,11 +956,7 @@
     },
     "nutrition": {
       "calories": 11,
-      "vitamins": [
-        "K",
-        "C",
-        "A"
-      ],
+      "vitamins": ["K", "C", "A"],
       "benefits": "Un des légumes les plus nutritifs"
     },
     "conservation": "1-2 jours au réfrigérateur, les tiges dans l'eau",
@@ -1126,11 +981,7 @@
     },
     "nutrition": {
       "calories": 25,
-      "vitamins": [
-        "C",
-        "K",
-        "B6"
-      ],
+      "vitamins": ["C", "K", "B6"],
       "benefits": "Riche en fibres, anti-cancer"
     },
     "conservation": "1 semaine au réfrigérateur",
@@ -1153,11 +1004,7 @@
     },
     "nutrition": {
       "calories": 34,
-      "vitamins": [
-        "C",
-        "K",
-        "B9"
-      ],
+      "vitamins": ["C", "K", "B9"],
       "benefits": "Excellente source de vitamine C, anti-cancer"
     },
     "conservation": "4-5 jours au réfrigérateur",
@@ -1180,10 +1027,7 @@
     },
     "nutrition": {
       "calories": 25,
-      "vitamins": [
-        "C",
-        "K"
-      ],
+      "vitamins": ["C", "K"],
       "benefits": "Très riche en vitamine C"
     },
     "conservation": "1-2 semaines au réfrigérateur",
@@ -1207,10 +1051,7 @@
     },
     "nutrition": {
       "calories": 31,
-      "vitamins": [
-        "C",
-        "K"
-      ],
+      "vitamins": ["C", "K"],
       "benefits": "Riche en anthocyanes antioxydants"
     },
     "conservation": "1-2 semaines au réfrigérateur",
@@ -1232,11 +1073,7 @@
     },
     "nutrition": {
       "calories": 43,
-      "vitamins": [
-        "C",
-        "K",
-        "B6"
-      ],
+      "vitamins": ["C", "K", "B6"],
       "benefits": "Très riche en vitamines C et K"
     },
     "conservation": "1 semaine au réfrigérateur",
@@ -1259,11 +1096,7 @@
     },
     "nutrition": {
       "calories": 13,
-      "vitamins": [
-        "C",
-        "K",
-        "A"
-      ],
+      "vitamins": ["C", "K", "A"],
       "benefits": "Très peu calorique, croquant"
     },
     "conservation": "1 semaine au réfrigérateur",
@@ -1285,11 +1118,7 @@
     },
     "nutrition": {
       "calories": 49,
-      "vitamins": [
-        "K",
-        "C",
-        "A"
-      ],
+      "vitamins": ["K", "C", "A"],
       "benefits": "Superaliment, très riche en nutriments"
     },
     "conservation": "4-5 jours au réfrigérateur dans un sac",
@@ -1314,11 +1143,7 @@
     },
     "nutrition": {
       "calories": 61,
-      "vitamins": [
-        "K",
-        "C",
-        "B6"
-      ],
+      "vitamins": ["K", "C", "B6"],
       "benefits": "Diurétique, riche en fibres"
     },
     "conservation": "1-2 semaines au réfrigérateur",
@@ -1347,10 +1172,7 @@
     },
     "nutrition": {
       "calories": 40,
-      "vitamins": [
-        "C",
-        "B6"
-      ],
+      "vitamins": ["C", "B6"],
       "benefits": "Antibactérien, bon pour le cœur"
     },
     "conservation": "Plusieurs semaines dans un endroit frais et sec",
@@ -1373,10 +1195,7 @@
     },
     "nutrition": {
       "calories": 72,
-      "vitamins": [
-        "B6",
-        "C"
-      ],
+      "vitamins": ["B6", "C"],
       "benefits": "Saveur délicate, antioxydante"
     },
     "conservation": "Plusieurs semaines dans un endroit frais et sec",
@@ -1405,10 +1224,7 @@
     },
     "nutrition": {
       "calories": 149,
-      "vitamins": [
-        "B6",
-        "C"
-      ],
+      "vitamins": ["B6", "C"],
       "benefits": "Antibactérien puissant, bon pour l'immunité"
     },
     "conservation": "Plusieurs semaines dans un endroit frais et sec",
@@ -1437,10 +1253,7 @@
     },
     "nutrition": {
       "calories": 77,
-      "vitamins": [
-        "C",
-        "B6"
-      ],
+      "vitamins": ["C", "B6"],
       "benefits": "Source d'énergie, riche en potassium"
     },
     "conservation": "Plusieurs semaines au frais et à l'abri de la lumière",
@@ -1461,11 +1274,7 @@
     },
     "nutrition": {
       "calories": 86,
-      "vitamins": [
-        "A",
-        "C",
-        "B6"
-      ],
+      "vitamins": ["A", "C", "B6"],
       "benefits": "Index glycémique bas, riche en bêta-carotène"
     },
     "conservation": "1-2 semaines dans un endroit frais et sec",
@@ -1487,10 +1296,7 @@
     },
     "nutrition": {
       "calories": 73,
-      "vitamins": [
-        "B1",
-        "B3"
-      ],
+      "vitamins": ["B1", "B3"],
       "benefits": "Prébiotique, bon pour la flore intestinale"
     },
     "conservation": "1 semaine au réfrigérateur dans un sac perforé",
@@ -1513,11 +1319,7 @@
     },
     "nutrition": {
       "calories": 75,
-      "vitamins": [
-        "C",
-        "K",
-        "B9"
-      ],
+      "vitamins": ["C", "K", "B9"],
       "benefits": "Saveur douce, riche en fibres"
     },
     "conservation": "2-3 semaines au réfrigérateur",
@@ -1542,10 +1344,7 @@
     },
     "nutrition": {
       "calories": 28,
-      "vitamins": [
-        "C",
-        "K"
-      ],
+      "vitamins": ["C", "K"],
       "benefits": "Peu calorique, bon pour la digestion"
     },
     "conservation": "1-2 semaines au réfrigérateur",
@@ -1567,10 +1366,7 @@
     },
     "nutrition": {
       "calories": 16,
-      "vitamins": [
-        "C",
-        "B6"
-      ],
+      "vitamins": ["C", "B6"],
       "benefits": "Croquant, aide à la digestion"
     },
     "conservation": "4-5 jours au réfrigérateur sans les fanes",
@@ -1591,10 +1387,7 @@
     },
     "nutrition": {
       "calories": 20,
-      "vitamins": [
-        "C",
-        "B9"
-      ],
+      "vitamins": ["C", "B9"],
       "benefits": "Détoxifiant pour le foie"
     },
     "conservation": "1-2 semaines au réfrigérateur",
@@ -1618,10 +1411,7 @@
     },
     "nutrition": {
       "calories": 43,
-      "vitamins": [
-        "B9",
-        "C"
-      ],
+      "vitamins": ["B9", "C"],
       "benefits": "Améliore l'endurance, riche en nitrates"
     },
     "conservation": "2-3 semaines au réfrigérateur crue",
@@ -1644,11 +1434,7 @@
     },
     "nutrition": {
       "calories": 42,
-      "vitamins": [
-        "K",
-        "C",
-        "B6"
-      ],
+      "vitamins": ["K", "C", "B6"],
       "benefits": "Peu calorique, riche en fibres"
     },
     "conservation": "2-3 semaines au réfrigérateur",
@@ -1671,10 +1457,7 @@
     },
     "nutrition": {
       "calories": 16,
-      "vitamins": [
-        "K",
-        "C"
-      ],
+      "vitamins": ["K", "C"],
       "benefits": "Très peu calorique, croquant"
     },
     "conservation": "1-2 semaines au réfrigérateur",
@@ -1697,10 +1480,7 @@
     },
     "nutrition": {
       "calories": 31,
-      "vitamins": [
-        "C",
-        "B9"
-      ],
+      "vitamins": ["C", "B9"],
       "benefits": "Aide à la digestion, saveur anisée"
     },
     "conservation": "1 semaine au réfrigérateur",
@@ -1723,11 +1503,7 @@
     },
     "nutrition": {
       "calories": 47,
-      "vitamins": [
-        "C",
-        "K",
-        "B9"
-      ],
+      "vitamins": ["C", "K", "B9"],
       "benefits": "Bon pour le foie, riche en fibres"
     },
     "conservation": "4-5 jours au réfrigérateur",
@@ -1747,11 +1523,7 @@
     },
     "nutrition": {
       "calories": 20,
-      "vitamins": [
-        "K",
-        "B9",
-        "C"
-      ],
+      "vitamins": ["K", "B9", "C"],
       "benefits": "Diurétique, riche en acide folique"
     },
     "conservation": "2-3 jours au réfrigérateur debout dans un verre d'eau",
@@ -1775,10 +1547,7 @@
     },
     "nutrition": {
       "calories": 17,
-      "vitamins": [
-        "K",
-        "B9"
-      ],
+      "vitamins": ["K", "B9"],
       "benefits": "Croquante, favorise la digestion"
     },
     "conservation": "1 semaine au réfrigérateur à l'abri de la lumière",
@@ -1801,11 +1570,7 @@
     },
     "nutrition": {
       "calories": 19,
-      "vitamins": [
-        "K",
-        "A",
-        "C"
-      ],
+      "vitamins": ["K", "A", "C"],
       "benefits": "Très riche en vitamines K et A"
     },
     "conservation": "3-4 jours au réfrigérateur",
@@ -1826,10 +1591,7 @@
     },
     "nutrition": {
       "calories": 26,
-      "vitamins": [
-        "A",
-        "C"
-      ],
+      "vitamins": ["A", "C"],
       "benefits": "Riche en bêta-carotène"
     },
     "conservation": "Plusieurs mois entier dans un endroit frais et sec",
@@ -1850,11 +1612,7 @@
     },
     "nutrition": {
       "calories": 63,
-      "vitamins": [
-        "A",
-        "C",
-        "E"
-      ],
+      "vitamins": ["A", "C", "E"],
       "benefits": "Goût de châtaigne, riche en vitamines"
     },
     "conservation": "Plusieurs mois entier dans un endroit frais et sec",
@@ -1875,11 +1633,7 @@
     },
     "nutrition": {
       "calories": 45,
-      "vitamins": [
-        "A",
-        "C",
-        "E"
-      ],
+      "vitamins": ["A", "C", "E"],
       "benefits": "Texture fondante, riche en bêta-carotène"
     },
     "conservation": "Plusieurs mois entier dans un endroit frais et sec",
@@ -1900,10 +1654,7 @@
     },
     "nutrition": {
       "calories": 31,
-      "vitamins": [
-        "C",
-        "B6"
-      ],
+      "vitamins": ["C", "B6"],
       "benefits": "Alternative aux pâtes, peu calorique"
     },
     "conservation": "Plusieurs mois entier dans un endroit frais et sec",
@@ -1932,11 +1683,7 @@
     },
     "nutrition": {
       "calories": 22,
-      "vitamins": [
-        "D",
-        "B2",
-        "B3"
-      ],
+      "vitamins": ["D", "B2", "B3"],
       "benefits": "Source de vitamine D, peu calorique"
     },
     "conservation": "3-4 jours au réfrigérateur dans un sac en papier",
@@ -1957,11 +1704,7 @@
     },
     "nutrition": {
       "calories": 86,
-      "vitamins": [
-        "B1",
-        "B9",
-        "C"
-      ],
+      "vitamins": ["B1", "B9", "C"],
       "benefits": "Énergétique, riche en fibres"
     },
     "conservation": "2-3 jours au réfrigérateur en épi",
@@ -1984,10 +1727,7 @@
     },
     "nutrition": {
       "calories": 27,
-      "vitamins": [
-        "C",
-        "B6"
-      ],
+      "vitamins": ["C", "B6"],
       "benefits": "Croquant, très riche en vitamine C"
     },
     "conservation": "1-2 semaines au réfrigérateur",
@@ -2009,10 +1749,7 @@
     },
     "nutrition": {
       "calories": 82,
-      "vitamins": [
-        "B6",
-        "C"
-      ],
+      "vitamins": ["B6", "C"],
       "benefits": "Riche en inuline, bon pour les intestins"
     },
     "conservation": "1 semaine au réfrigérateur dans un linge humide",
@@ -2035,10 +1772,7 @@
     },
     "nutrition": {
       "calories": 37,
-      "vitamins": [
-        "C",
-        "B6"
-      ],
+      "vitamins": ["C", "B6"],
       "benefits": "Ancien légume oublié, riche en vitamine C"
     },
     "conservation": "2-3 semaines au réfrigérateur",
@@ -2059,10 +1793,7 @@
     },
     "nutrition": {
       "calories": 75,
-      "vitamins": [
-        "B1",
-        "B3"
-      ],
+      "vitamins": ["B1", "B3"],
       "benefits": "Saveur délicate, riche en glucides"
     },
     "conservation": "2-3 jours au réfrigérateur, consommer rapidement",
@@ -2087,10 +1818,7 @@
     },
     "nutrition": {
       "calories": 576,
-      "vitamins": [
-        "E",
-        "B2"
-      ],
+      "vitamins": ["E", "B2"],
       "benefits": "Riche en fibres, magnésium et acides gras insaturés"
     },
     "conservation": "Fraîches : 3-4 jours à l'air ambiant. Sèches : plusieurs mois dans un endroit sec et frais",
@@ -2110,10 +1838,7 @@
     },
     "nutrition": {
       "calories": 57,
-      "vitamins": [
-        "C",
-        "B1"
-      ],
+      "vitamins": ["C", "B1"],
       "benefits": "Peu sucré, riche en minéraux et oligoéléments"
     },
     "conservation": "Plusieurs semaines dans une pièce fraîche (cave ou garage)",
@@ -2133,10 +1858,7 @@
     },
     "nutrition": {
       "calories": 97,
-      "vitamins": [
-        "A",
-        "C"
-      ],
+      "vitamins": ["A", "C"],
       "benefits": "Riche en fibres, potassium et carotène"
     },
     "conservation": "5 à 7 jours au réfrigérateur quand mûr, sinon laisser mûrir à température ambiante",
@@ -2157,10 +1879,7 @@
     },
     "nutrition": {
       "calories": 70,
-      "vitamins": [
-        "C",
-        "A"
-      ],
+      "vitamins": ["C", "A"],
       "benefits": "Riche en carotène, provitamines A et fibres"
     },
     "conservation": "1-2 jours à l'air libre quand mûr, 1 semaine si encore ferme",
@@ -2183,10 +1902,7 @@
     },
     "nutrition": {
       "calories": 115,
-      "vitamins": [
-        "E",
-        "A"
-      ],
+      "vitamins": ["E", "A"],
       "benefits": "Riche en antioxydants et acides gras mono-insaturés, bonne pour le cardiovasculaire"
     },
     "conservation": "En bocaux avec salaison (eau et sel) ou transformée en huile",
@@ -2210,10 +1926,7 @@
     },
     "nutrition": {
       "calories": 42,
-      "vitamins": [
-        "C",
-        "B9"
-      ],
+      "vitamins": ["C", "B9"],
       "benefits": "Composé à 88% d'eau, excellent antioxydant, riche en potassium"
     },
     "conservation": "10 jours au frais, 8 jours à température ambiante",

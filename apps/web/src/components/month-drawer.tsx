@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import type { LucideIcon } from 'lucide-react'
 import { ChevronLeft, ChevronRight, Leaf, Sprout } from 'lucide-react'
 import { Drawer } from 'vaul'

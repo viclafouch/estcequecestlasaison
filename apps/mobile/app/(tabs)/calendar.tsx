@@ -9,10 +9,6 @@ import {
   Tabs,
   useThemeColor
 } from 'heroui-native'
-import { CalendarRow } from '@/components/calendar-row'
-import { CATEGORIES, type CategoryFilter } from '@/constants/categories'
-import { SEASON_DOT_STYLES } from '@/constants/season'
-import { StyledIonicons } from '@/constants/styled'
 import {
   getCurrentMonth,
   type SeasonStatus
@@ -25,6 +21,10 @@ import {
   type ListRenderItemInfo
 } from '@shopify/flash-list'
 import { useDebouncedValue } from '@tanstack/react-pacer'
+import { CalendarRow } from '@/components/calendar-row'
+import { CATEGORIES, type CategoryFilter } from '@/constants/categories'
+import { SEASON_DOT_STYLES } from '@/constants/season'
+import { StyledIonicons } from '@/constants/styled'
 
 type CalendarProduce = ReturnType<typeof getCalendarData>['produceList'][number]
 

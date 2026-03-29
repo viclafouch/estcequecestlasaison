@@ -9,22 +9,22 @@ Fruits and vegetables, static JSON data, French only.
 
 ## Monorepo
 
-| Directory | Stack |
-|-----------|-------|
-| `apps/web/` | TanStack Start, React 19, Tailwind CSS 4 |
-| `apps/mobile/` | Expo 55, React Native, HeroUI Native, Uniwind |
-| `packages/shared/` | Data, types, helpers (Fuse.js, Zod) |
-| `scripts/` | Image generation and optimization |
+| Directory          | Stack                                         |
+| ------------------ | --------------------------------------------- |
+| `apps/web/`        | TanStack Start, React 19, Tailwind CSS 4      |
+| `apps/mobile/`     | Expo 55, React Native, HeroUI Native, Uniwind |
+| `packages/shared/` | Data, types, helpers (Fuse.js, Zod)           |
+| `scripts/`         | Image generation and optimization             |
 
 **Package manager**: pnpm 10 — **Node**: >= 200
 
 ## Deployment
 
-| Platform | Host | Status |
-|----------|------|--------|
-| Web | [Vercel](https://vercel.com) | Live |
-| iOS | App Store | Coming soon |
-| Android | Google Play | Coming soon |
+| Platform | Host                         | Status      |
+| -------- | ---------------------------- | ----------- |
+| Web      | [Vercel](https://vercel.com) | Live        |
+| iOS      | App Store                    | Coming soon |
+| Android  | Google Play                  | Coming soon |
 
 ## Installation
 
@@ -36,16 +36,18 @@ Fruits and vegetables, static JSON data, French only.
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Web dev server (port 3000) |
-| `pnpm build` | Production web build |
-| `pnpm lint` | TypeScript + ESLint |
-| `pnpm lint:fix` | Lint with auto-fix |
-| `pnpm test` | Unit tests (Vitest) |
+| Command                | Description                                      |
+| ---------------------- | ------------------------------------------------ |
+| `pnpm dev`             | Web dev server (port 3000)                       |
+| `pnpm build`           | Production web build                             |
+| `pnpm lint`            | TypeScript + OxLint                              |
+| `pnpm lint:fix`        | Lint + auto-fix + OxFormat                       |
+| `pnpm format`          | Format code (OxFormat)                           |
+| `pnpm format:check`    | Check formatting                                 |
+| `pnpm test`            | Unit tests (Vitest)                              |
 | `pnpm generate-images` | Generate produce images (Gemini AI, interactive) |
-| `pnpm optimize-images` | Optimize PNG to WebP (web + mobile) |
-| `pnpm generate-og` | Generate Open Graph images |
+| `pnpm optimize-images` | Optimize PNG to WebP (web + mobile)              |
+| `pnpm generate-og`     | Generate Open Graph images                       |
 
 For mobile: `cd apps/mobile` then `pnpm ios` or `pnpm android`.
 

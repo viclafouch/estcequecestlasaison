@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { produceJsonLd } from '@/lib/seo'
 import type { Month } from '@estcequecestlasaison/shared'
 import { createServerFn } from '@tanstack/react-start'
+import { produceJsonLd } from '@/lib/seo'
 
 const searchSuggestionsInputSchema = z.object({
   query: z.string().max(200)

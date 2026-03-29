@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import { BottomSheet, Button, useThemeColor } from 'heroui-native'
-import { GlassSheetBackground } from '@/components/glass-sheet-background'
 import {
   getMonthName,
   getNextMonth,
@@ -10,6 +9,7 @@ import {
 } from '@estcequecestlasaison/shared'
 import { getMonthStatsData } from '@estcequecestlasaison/shared/services'
 import Ionicons from '@expo/vector-icons/Ionicons'
+import { GlassSheetBackground } from '@/components/glass-sheet-background'
 
 type MonthBottomSheetProps = {
   selectedMonth: Month

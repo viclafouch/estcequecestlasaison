@@ -1,8 +1,8 @@
 import { ChevronRight, Menu, X } from 'lucide-react'
-import { BURGER_NAV_LINKS } from '@/constants/navigation'
-import { SITE_NAME_DISPLAY } from '@/constants/site'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Link, useLocation } from '@tanstack/react-router'
+import { BURGER_NAV_LINKS } from '@/constants/navigation'
+import { SITE_NAME_DISPLAY } from '@/constants/site'
 import { FrenchFlag } from './french-flag'
 import { IconButton } from './ui/icon-button'
 

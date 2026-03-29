@@ -1,7 +1,7 @@
 import { Printer } from 'lucide-react'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { calendarOptions } from '@/constants/queries'
 import { calendarBreadcrumbJsonLd, calendarItemListJsonLd } from '@/lib/seo'
-import { useSuspenseQuery } from '@tanstack/react-query'
 import { CalendarTable } from './calendar-table'
 import { IconButton } from './ui/icon-button'
 
@@ -67,12 +67,12 @@ export const CalendarPageContent = ({
       </main>
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+        // oxlint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd }}
       />
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+        // oxlint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: itemListJsonLd }}
       />
     </>

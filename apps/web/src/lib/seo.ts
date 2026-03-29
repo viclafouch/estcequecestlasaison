@@ -5,14 +5,14 @@ import type {
   Thing,
   WithContext
 } from 'schema-dts'
-import { clientEnv } from '@/constants/env'
-import { SITE_NAME } from '@/constants/site'
 import type { Month, Produce } from '@estcequecestlasaison/shared'
 import {
   getMonthName,
   getSeasonRangeLabel,
   matchIsInSeasonAllYear
 } from '@estcequecestlasaison/shared'
+import { clientEnv } from '@/constants/env'
+import { SITE_NAME } from '@/constants/site'
 
 const OG_IMAGE_WIDTH = 1200
 const OG_IMAGE_HEIGHT = 630

@@ -13,6 +13,7 @@
 - [ ] **Adaptive icon 512x512** — L'icone Android (`adaptive-icon.png`) fait 512x512. Google Play recommande 1024x1024 pour la qualite HD dans le store.
 
 - [ ] **Pas de `privacyManifests` dans `app.json`** — Le `PrivacyInfo.xcprivacy` natif existe, mais il ne sera pas agrege correctement sans la config dans `app.json`. Ajouter sous `expo.ios` :
+
   ```json
   "privacyManifests": {
     "NSPrivacyAccessedAPITypes": [
@@ -29,9 +30,11 @@
 - [ ] **Pas de `apple.privacyManifestAggregationEnabled`** — Ajouter `"apple.privacyManifestAggregationEnabled": "true"` dans `ios/Podfile.properties.json`. Sans ca, les privacy manifests des CocoaPods statiques ne sont pas agreges.
 
 - [ ] **`associatedDomains` absent des entitlements** — Le fichier `Estcequecestlasaison.entitlements` est vide. Ajouter dans `app.json` :
+
   ```json
   "ios": { "associatedDomains": ["applinks:estcequecestlasaison.fr"] }
   ```
+
   Puis `npx expo prebuild --platform ios --clean`.
 
 - [ ] **AASA placeholder Team ID (`XXXXXXXXXX`)** — Remplacer dans `apps/web/public/.well-known/apple-app-site-association` par le vrai Team ID du compte Apple Developer.
@@ -77,7 +80,7 @@
 - [x] **PrivacyInfo.xcprivacy** : 4 Required Reason APIs (FileTimestamp, SystemBootTime, DiskSpace, UserDefaults)
 - [x] **NSPrivacyCollectedDataTypes** : tableau vide (correct, zero data)
 - [x] **NSPrivacyTracking** : `false`
-- [x] **Zero permissions** demandees (aucune cle NS*UsageDescription)
+- [x] **Zero permissions** demandees (aucune cle NS\*UsageDescription)
 - [x] **URL scheme** enregistre (`estcequecestlasaison`)
 - [x] **Intent filters Android** configures pour deep linking
 - [x] **Edge-to-edge** active (Android 15+)
@@ -93,21 +96,21 @@
 
 ## Priorites d'action
 
-| # | Action | Bloquant? |
-|---|--------|-----------|
-| 1 | Generer icone 1024x1024 sans alpha | Oui |
-| 2 | Creer compte Apple Developer | Oui |
-| 3 | Creer compte Google Play Developer | Oui |
-| 4 | Ajouter `privacyManifests` dans `app.json` | Oui |
-| 5 | Ajouter `apple.privacyManifestAggregationEnabled` | Oui |
-| 6 | Ajouter `associatedDomains` + rebuild | Oui |
-| 7 | Creer `eas.json` | Oui |
-| 8 | Remplacer placeholders AASA/assetlinks | Oui |
-| 9 | Decider `supportsTablet` true/false | Recommande |
-| 10 | Aligner versions (1.0.0 partout) | Recommande |
-| 11 | Installer + configurer Sentry | Recommande |
-| 12 | Preparer screenshots store | Avant soumission |
-| 13 | Rediger description + keywords definitifs | Avant soumission |
+| #   | Action                                            | Bloquant?        |
+| --- | ------------------------------------------------- | ---------------- |
+| 1   | Generer icone 1024x1024 sans alpha                | Oui              |
+| 2   | Creer compte Apple Developer                      | Oui              |
+| 3   | Creer compte Google Play Developer                | Oui              |
+| 4   | Ajouter `privacyManifests` dans `app.json`        | Oui              |
+| 5   | Ajouter `apple.privacyManifestAggregationEnabled` | Oui              |
+| 6   | Ajouter `associatedDomains` + rebuild             | Oui              |
+| 7   | Creer `eas.json`                                  | Oui              |
+| 8   | Remplacer placeholders AASA/assetlinks            | Oui              |
+| 9   | Decider `supportsTablet` true/false               | Recommande       |
+| 10  | Aligner versions (1.0.0 partout)                  | Recommande       |
+| 11  | Installer + configurer Sentry                     | Recommande       |
+| 12  | Preparer screenshots store                        | Avant soumission |
+| 13  | Rediger description + keywords definitifs         | Avant soumission |
 
 ---
 

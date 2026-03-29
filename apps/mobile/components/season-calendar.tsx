@@ -1,8 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { cn } from 'heroui-native'
-import { SEASON_DOT_STYLES } from '@/constants/season'
-import { squircle } from '@/constants/styles'
 import type { Month, Produce, SeasonStatus } from '@estcequecestlasaison/shared'
 import {
   ALL_MONTHS,
@@ -10,6 +8,8 @@ import {
   getShortMonthName,
   SEASON_STATUS_LABELS
 } from '@estcequecestlasaison/shared'
+import { SEASON_DOT_STYLES } from '@/constants/season'
+import { squircle } from '@/constants/styles'
 
 type SeasonCalendarProps = {
   produce: Produce

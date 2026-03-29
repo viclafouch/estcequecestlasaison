@@ -3,8 +3,6 @@ import type { TextInput } from 'react-native'
 import { Keyboard, Pressable, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Input, Separator } from 'heroui-native'
-import { SearchResultRow } from '@/components/search-result-row'
-import { StyledIonicons } from '@/constants/styled'
 import { getCurrentMonth, type Produce } from '@estcequecestlasaison/shared'
 import {
   getGroupedProduce,
@@ -12,6 +10,8 @@ import {
 } from '@estcequecestlasaison/shared/services'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 import { useDebouncedValue } from '@tanstack/react-pacer'
+import { SearchResultRow } from '@/components/search-result-row'
+import { StyledIonicons } from '@/constants/styled'
 
 const DEBOUNCE_WAIT = 150
 

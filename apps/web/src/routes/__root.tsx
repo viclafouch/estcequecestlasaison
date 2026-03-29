@@ -1,10 +1,3 @@
-/// <reference types="vite/client" />
-import { Footer } from '@/components/footer'
-import { NotFound } from '@/components/not-found'
-import { WEBSITE_JSON_LD } from '@/constants/json-ld'
-import { SITE_DOMAIN, SITE_NAME, THEME_COLOR } from '@/constants/site'
-import { SearchProvider } from '@/hooks/use-search'
-import appCss from '@/styles.css?url'
 import type { QueryClient } from '@tanstack/react-query'
 import {
   createRootRouteWithContext,
@@ -12,6 +5,13 @@ import {
   Link,
   Scripts
 } from '@tanstack/react-router'
+/// <reference types="vite/client" />
+import { Footer } from '@/components/footer'
+import { NotFound } from '@/components/not-found'
+import { WEBSITE_JSON_LD } from '@/constants/json-ld'
+import { SITE_DOMAIN, SITE_NAME, THEME_COLOR } from '@/constants/site'
+import { SearchProvider } from '@/hooks/use-search'
+import appCss from '@/styles.css?url'
 
 const RootDocument = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -19,7 +19,7 @@ const RootDocument = ({ children }: { children: React.ReactNode }) => {
       <head>
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
+          // oxlint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: WEBSITE_JSON_LD }}
         />
         <HeadContent />
@@ -62,7 +62,7 @@ export const Route = createRootRouteWithContext<{
   head: () => {
     return {
       meta: [
-        { charSet: 'utf-8' },
+        { charSet: 'utf8' },
         {
           name: 'viewport',
           content: 'width=device-width, initial-scale=1, viewport-fit=cover'

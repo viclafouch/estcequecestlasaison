@@ -1,6 +1,6 @@
 import { ChevronRight } from 'lucide-react'
-import { ProduceAvatar } from '@/components/produce-avatar'
 import { Link } from '@tanstack/react-router'
+import { ProduceAvatar } from '@/components/produce-avatar'
 
 type SeasonAlternativesParams = {
   alternatives: { slug: string; name: string }[]

@@ -9,12 +9,6 @@ import {
 import { useSharedValue } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useFocusEffect } from 'expo-router'
-import { BentoGrid } from '@/components/bento-grid'
-import { CompactProduceCard } from '@/components/compact-produce-card'
-import { FaqSection } from '@/components/faq-section'
-import { MonthBottomSheet } from '@/components/month-bottom-sheet'
-import type { CategoryFilter } from '@/constants/categories'
-import { getLastViewedSlug } from '@/utils/last-viewed'
 import {
   getCurrentMonth,
   getMonthName,
@@ -23,6 +17,12 @@ import {
 } from '@estcequecestlasaison/shared'
 import { getGroupedProduce } from '@estcequecestlasaison/shared/services'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
+import { BentoGrid } from '@/components/bento-grid'
+import { CompactProduceCard } from '@/components/compact-produce-card'
+import { FaqSection } from '@/components/faq-section'
+import { MonthBottomSheet } from '@/components/month-bottom-sheet'
+import type { CategoryFilter } from '@/constants/categories'
+import { getLastViewedSlug } from '@/utils/last-viewed'
 
 const keyExtractor = (item: Produce) => {
   return item.id
@@ -70,7 +70,6 @@ const HomeScreen = () => {
 
   const handleListScroll = React.useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-      // eslint-disable-next-line react-hooks/immutability -- Reanimated SharedValue is designed to be mutable
       scrollY.value = event.nativeEvent.contentOffset.y
     },
     [scrollY]

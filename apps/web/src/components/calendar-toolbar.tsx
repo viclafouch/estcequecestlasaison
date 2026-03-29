@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { ArrowUpDown, Search, X } from 'lucide-react'
 import type { Month } from '@estcequecestlasaison/shared'
 import { getMonthName } from '@estcequecestlasaison/shared'

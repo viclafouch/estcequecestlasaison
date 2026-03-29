@@ -1,6 +1,4 @@
 import type { Transition } from 'motion/react'
-import { SEASON_DOT_STYLES } from '@/constants/season'
-import { getProduceImageSrc } from '@/helpers/produce-image'
 import type {
   Month,
   Produce,
@@ -10,6 +8,8 @@ import type {
 import { ALL_MONTHS, getShortMonthName } from '@estcequecestlasaison/shared'
 import { Link } from '@tanstack/react-router'
 import type { ColumnDef, FilterFn } from '@tanstack/react-table'
+import { SEASON_DOT_STYLES } from '@/constants/season'
+import { getProduceImageSrc } from '@/helpers/produce-image'
 
 export type CalendarItem = Pick<Produce, 'slug' | 'name' | 'type' | 'seasons'>
 

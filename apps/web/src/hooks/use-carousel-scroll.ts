@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 const DEFAULT_GAP = 24
 const DEFAULT_CARD_WIDTH = 200

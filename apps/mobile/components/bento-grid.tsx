@@ -6,10 +6,10 @@ import Animated, {
   type SharedValue,
   useAnimatedStyle
 } from 'react-native-reanimated'
+import type { Produce } from '@estcequecestlasaison/shared'
 import { CategoryToggleWidget } from '@/components/category-toggle-widget'
 import { LastViewedWidget } from '@/components/last-viewed-widget'
 import { MonthWidget } from '@/components/month-widget'
-import type { Produce } from '@estcequecestlasaison/shared'
 
 type BentoGridProps = {
   lastViewedSlug: string | null

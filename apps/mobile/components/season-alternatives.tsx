@@ -2,10 +2,10 @@ import React from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { Link } from 'expo-router'
 import { useThemeColor } from 'heroui-native'
+import Ionicons from '@expo/vector-icons/Ionicons'
 import { ProduceAvatar } from '@/components/produce-avatar'
 import type { ProduceImageSlug } from '@/constants/produce-images'
 import { squircle } from '@/constants/styles'
-import Ionicons from '@expo/vector-icons/Ionicons'
 
 type SeasonAlternativesProps = {
   alternatives: { slug: string; name: string }[]

@@ -1,7 +1,7 @@
-import { SITE_NAME_DISPLAY } from '@/constants/site'
 import { getCurrentYear } from '@estcequecestlasaison/shared'
 import type { LinkOptions } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
+import { SITE_NAME_DISPLAY } from '@/constants/site'
 import { FrenchFlag } from './french-flag'
 
 type ProduceLink = { slug: string; name: string }

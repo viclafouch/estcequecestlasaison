@@ -1,6 +1,6 @@
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { SiteHeader } from '@/components/site-header'
 import { seo } from '@/lib/seo'
-import { createFileRoute, Link } from '@tanstack/react-router'
 
 const CguPage = () => {
   return (

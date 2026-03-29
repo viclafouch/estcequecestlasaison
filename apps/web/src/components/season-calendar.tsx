@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { SEASON_DOT_STYLES } from '@/constants/season'
 import type { Month, Produce, SeasonStatus } from '@estcequecestlasaison/shared'
 import {
   ALL_MONTHS,
@@ -9,6 +8,7 @@ import {
   getShortMonthName,
   SEASON_STATUS_LABELS
 } from '@estcequecestlasaison/shared'
+import { SEASON_DOT_STYLES } from '@/constants/season'
 
 const STAGGER_DELAY = 0.04
 

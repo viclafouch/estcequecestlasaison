@@ -1,9 +1,9 @@
-import * as React from 'react'
+import React from 'react'
 import { ChevronDown } from 'lucide-react'
+import { createFileRoute } from '@tanstack/react-router'
 import { SiteHeader } from '@/components/site-header'
 import { FAQ_ITEMS } from '@/constants/faq'
 import { seo } from '@/lib/seo'
-import { createFileRoute } from '@tanstack/react-router'
 
 const FAQ_RICH_ANSWERS: Partial<Record<string, React.ReactNode>> = {
   presentation: (

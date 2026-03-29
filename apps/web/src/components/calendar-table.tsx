@@ -1,6 +1,5 @@
-import * as React from 'react'
+import React from 'react'
 import { motion, useReducedMotion } from 'motion/react'
-import { INSTANT_TRANSITION } from '@/constants/animation'
 import type { Month, SeasonStatus } from '@estcequecestlasaison/shared'
 import {
   getMonthName,
@@ -12,6 +11,7 @@ import {
   getFilteredRowModel,
   useReactTable
 } from '@tanstack/react-table'
+import { INSTANT_TRANSITION } from '@/constants/animation'
 import { PrintLegend, SeasonLegend } from './calendar-legend'
 import {
   buildColumns,
@@ -44,7 +44,6 @@ export const CalendarTable = ({
   const effectiveSortMonth = selectedMonth ?? currentMonth
   const effectiveSortOption = hasSelectedMonth ? 'season' : sortOption
 
-  // eslint-disable-next-line no-restricted-syntax -- required: unstable references cause TanStack Table infinite re-render loop
   const sortedData = React.useMemo(() => {
     return sortProduceList({
       produceList,
@@ -53,7 +52,6 @@ export const CalendarTable = ({
     })
   }, [produceList, effectiveSortMonth, effectiveSortOption])
 
-  // eslint-disable-next-line no-restricted-syntax -- required: unstable references cause TanStack Table infinite re-render loop
   const columns = React.useMemo(() => {
     return buildColumns()
   }, [])
@@ -111,7 +109,7 @@ export const CalendarTable = ({
       <div className="overflow-hidden rounded-xl border border-gray-200 bg-white print:overflow-visible print:rounded-none print:border-none">
         <div
           className="overflow-auto max-h-[calc(100vh-13rem)] md:max-h-[calc(100vh-11rem)] print:overflow-visible print:max-h-none"
-          tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+          tabIndex={0} // oxlint-disable-line jsx-a11y/no-noninteractive-tabindex
           role="region"
           aria-label="Tableau du calendrier, défilable horizontalement"
         >

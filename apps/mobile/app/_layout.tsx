@@ -13,7 +13,6 @@ import '../global.css'
 
 export { ErrorBoundary } from 'expo-router'
 
-// eslint-disable-next-line @typescript-eslint/naming-convention, camelcase
 export const unstable_settings = {
   initialRouteName: '(tabs)'
 }
@@ -46,7 +45,7 @@ const RootLayout = () => {
             <Stack.Screen name="product/[slug]" options={{ title: '' }} />
             <Stack.Screen name="faq" options={{ title: 'FAQ' }} />
           </Stack>
-          {/* eslint-disable-next-line react/style-prop-object */}
+          {/* oxlint-disable-next-line react/style-prop-object */}
           <StatusBar style="dark" />
         </HeroUINativeProvider>
       </GestureHandlerRootView>

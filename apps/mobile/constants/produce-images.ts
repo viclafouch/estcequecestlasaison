@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports, global-require */
 import type { ImageSourcePropType } from 'react-native'
 
 const PRODUCE_IMAGE_MAP = {

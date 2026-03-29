@@ -1,23 +1,23 @@
 {
   "name": "@estcequecestlasaison/web",
-  "description": "Web application - estcequecestlasaison.fr",
-  "author": "Victor de la Fouchardiere",
-  "license": "UNLICENSED",
-  "keywords": [
-    "seasonal",
-    "fruits",
-    "vegetables",
-    "web",
-    "ssr"
-  ],
   "private": true,
+  "description": "Web application - estcequecestlasaison.fr",
+  "keywords": [
+    "fruits",
+    "seasonal",
+    "ssr",
+    "vegetables",
+    "web"
+  ],
+  "license": "UNLICENSED",
+  "author": "Victor de la Fouchardiere",
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
     "start": "node .output/server/index.mjs",
-    "lint": "tsc && eslint",
-    "lint:fix": "pnpm lint --fix"
+    "lint": "tsc && oxlint",
+    "lint:fix": "tsc && oxlint --fix"
   },
   "dependencies": {
     "@estcequecestlasaison/shared": "workspace:*",

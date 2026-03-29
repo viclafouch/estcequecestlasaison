@@ -1,15 +1,15 @@
 {
   "name": "@estcequecestlasaison/shared",
-  "description": "Shared data, types and helpers for estcequecestlasaison",
-  "author": "Victor de la Fouchardiere",
-  "license": "UNLICENSED",
-  "keywords": [
-    "seasonal",
-    "fruits",
-    "vegetables",
-    "shared"
-  ],
   "private": true,
+  "description": "Shared data, types and helpers for estcequecestlasaison",
+  "keywords": [
+    "fruits",
+    "seasonal",
+    "shared",
+    "vegetables"
+  ],
+  "license": "UNLICENSED",
+  "author": "Victor de la Fouchardiere",
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -19,8 +19,8 @@
     "./types": "./src/types.ts"
   },
   "scripts": {
-    "lint": "tsc && eslint --debug",
-    "lint:fix": "pnpm lint --fix"
+    "lint": "tsc && oxlint",
+    "lint:fix": "tsc && oxlint --fix"
   },
   "dependencies": {
     "fuse.js": "^7.1.0",

@@ -34,26 +34,26 @@ JAMAIS importer `@estcequecestlasaison/shared` statiquement dans les server func
 
 ## MCP
 
-| MCP | Usage |
-|-----|-------|
+| MCP      | Usage                                    |
+| -------- | ---------------------------------------- |
 | Context7 | TanStack Router, TanStack Query, Fuse.js |
-| shadcn | Composants + icons |
+| shadcn   | Composants + icons                       |
 
 ---
 
 ## Agents
 
-| Agent | Quand |
-|-------|-------|
+| Agent               | Quand                           |
+| ------------------- | ------------------------------- |
 | `react-performance` | Après implémentation composants |
-| `tailwind-audit` | Après modification styles |
+| `tailwind-audit`    | Après modification styles       |
 
 ---
 
 ## Skills
 
-| Skill | Usage |
-|-------|-------|
-| `/frontend-design` | Interfaces haute qualité |
+| Skill                          | Usage                           |
+| ------------------------------ | ------------------------------- |
+| `/frontend-design`             | Interfaces haute qualité        |
 | `/vercel-react-best-practices` | Performance React/Next patterns |
-| `/react-useeffect` | Audit hooks |
+| `/react-useeffect`             | Audit hooks                     |

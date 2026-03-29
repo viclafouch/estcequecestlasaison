@@ -1,7 +1,7 @@
-import { MINUTE, SECOND } from '@/constants/time'
 import { QueryClient } from '@tanstack/react-query'
 import { createRouter } from '@tanstack/react-router'
 import { setupRouterSsrQueryIntegration } from '@tanstack/react-router-ssr-query'
+import { MINUTE, SECOND } from '@/constants/time'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
@@ -45,8 +45,9 @@ export function getRouter() {
   return router
 }
 
+// oxfmt-ignore
 declare module '@tanstack/react-router' {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+  // oxlint-disable-next-line typescript-eslint/consistent-type-definitions
   interface Register {
     router: ReturnType<typeof getRouter>
   }

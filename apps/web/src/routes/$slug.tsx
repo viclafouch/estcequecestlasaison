@@ -1,14 +1,5 @@
-import * as React from 'react'
+import React from 'react'
 import { ChevronDown } from 'lucide-react'
-import { NotFound } from '@/components/not-found'
-import { ProduceCarousel } from '@/components/produce-carousel'
-import { ProduceImage } from '@/components/produce-image'
-import { SeasonAlternatives } from '@/components/season-alternatives'
-import { SeasonCalendar } from '@/components/season-calendar'
-import { SiteHeader } from '@/components/site-header'
-import { BADGE_VARIANT_TO_SEASON, SEASON_DOT_STYLES } from '@/constants/season'
-import { produceSeo } from '@/lib/seo'
-import { getSlugPageData } from '@/server/produce'
 import type {
   BadgeVariant,
   Month,
@@ -22,6 +13,15 @@ import {
   matchIsInSeasonAllYear
 } from '@estcequecestlasaison/shared'
 import { createFileRoute, notFound } from '@tanstack/react-router'
+import { NotFound } from '@/components/not-found'
+import { ProduceCarousel } from '@/components/produce-carousel'
+import { ProduceImage } from '@/components/produce-image'
+import { SeasonAlternatives } from '@/components/season-alternatives'
+import { SeasonCalendar } from '@/components/season-calendar'
+import { SiteHeader } from '@/components/site-header'
+import { BADGE_VARIANT_TO_SEASON, SEASON_DOT_STYLES } from '@/constants/season'
+import { produceSeo } from '@/lib/seo'
+import { getSlugPageData } from '@/server/produce'
 
 type SeasonDisplay = {
   label: string
@@ -98,7 +98,7 @@ const ProductPage = () => {
           <script
             key={index}
             type="application/ld+json"
-            // eslint-disable-next-line react/no-danger
+            // oxlint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: schema }}
           />
         )

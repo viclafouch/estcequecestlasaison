@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type {
   Month,
@@ -100,7 +100,7 @@ export const ProduceCarousel = ({
           ref={scrollContainerRef}
           role="region"
           aria-label={`${title}, défilable horizontalement`}
-          tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+          tabIndex={0} // oxlint-disable-line jsx-a11y/no-noninteractive-tabindex
           className="focus-ring scrollbar-hide flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-px-6 px-6 sm:gap-3"
         >
           {produceList.map((produce, index) => {

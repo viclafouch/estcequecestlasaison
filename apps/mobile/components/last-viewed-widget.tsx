@@ -4,13 +4,13 @@ import { Image } from 'expo-image'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
 import { useCSSVariable } from 'uniwind'
+import type { Produce } from '@estcequecestlasaison/shared'
+import { PRODUCE_LIST } from '@estcequecestlasaison/shared/services'
 import {
   getProduceImage,
   type ProduceImageSlug
 } from '@/constants/produce-images'
 import { squircle } from '@/constants/styles'
-import type { Produce } from '@estcequecestlasaison/shared'
-import { PRODUCE_LIST } from '@estcequecestlasaison/shared/services'
 
 type LastViewedWidgetProps = {
   slug: string | null

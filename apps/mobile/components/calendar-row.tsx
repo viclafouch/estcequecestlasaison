@@ -2,15 +2,15 @@ import React from 'react'
 import { Pressable, Text, View } from 'react-native'
 import { Link } from 'expo-router'
 import { cn } from 'heroui-native'
-import { ProduceAvatar } from '@/components/produce-avatar'
-import type { ProduceImageSlug } from '@/constants/produce-images'
-import { SEASON_DOT_STYLES } from '@/constants/season'
 import {
   ALL_MONTHS,
   type Month,
   type Seasons,
   type SeasonStatus
 } from '@estcequecestlasaison/shared'
+import { ProduceAvatar } from '@/components/produce-avatar'
+import type { ProduceImageSlug } from '@/constants/produce-images'
+import { SEASON_DOT_STYLES } from '@/constants/season'
 
 type CalendarRowProps = {
   slug: string

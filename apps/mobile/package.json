@@ -1,16 +1,17 @@
 {
   "name": "@estcequecestlasaison/mobile",
-  "main": "expo-router/entry",
   "version": "0.1.0",
+  "private": true,
   "type": "module",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "export": "EXPO_UNSTABLE_METRO_OPTIMIZE_GRAPH=1 EXPO_UNSTABLE_TREE_SHAKING=1 expo export",
     "web": "expo start --web",
-    "lint": "tsc && eslint",
-    "lint:fix": "pnpm lint --fix"
+    "lint": "tsc && oxlint",
+    "lint:fix": "tsc && oxlint --fix"
   },
   "dependencies": {
     "@estcequecestlasaison/shared": "workspace:*",
@@ -46,6 +47,5 @@
     "@expo/vector-icons": "^15.0.3",
     "@types/react": "~19.2.14",
     "babel-plugin-react-compiler": "^1.0.0"
-  },
-  "private": true
+  }
 }

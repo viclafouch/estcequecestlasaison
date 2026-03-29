@@ -6,17 +6,17 @@ Built with server-side rendering for SEO, the site targets search queries like _
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Framework | [TanStack Start](https://tanstack.com/start) (SSR) |
-| UI | [React](https://react.dev) |
-| Routing | [TanStack Router](https://tanstack.com/router) (file-based) |
-| Data Fetching | [TanStack Query](https://tanstack.com/query) |
-| Styling | [Tailwind CSS](https://tailwindcss.com) |
-| Animations | [Framer Motion](https://motion.dev) |
-| Server Runtime | [Nitro](https://nitro.build) |
-| Bundler | [Vite](https://vite.dev) |
-| Language | [TypeScript](https://www.typescriptlang.org) (strict mode) |
+| Layer          | Technology                                                  |
+| -------------- | ----------------------------------------------------------- |
+| Framework      | [TanStack Start](https://tanstack.com/start) (SSR)          |
+| UI             | [React](https://react.dev)                                  |
+| Routing        | [TanStack Router](https://tanstack.com/router) (file-based) |
+| Data Fetching  | [TanStack Query](https://tanstack.com/query)                |
+| Styling        | [Tailwind CSS](https://tailwindcss.com)                     |
+| Animations     | [Framer Motion](https://motion.dev)                         |
+| Server Runtime | [Nitro](https://nitro.build)                                |
+| Bundler        | [Vite](https://vite.dev)                                    |
+| Language       | [TypeScript](https://www.typescriptlang.org) (strict mode)  |
 
 ## Prerequisites
 
@@ -44,22 +44,22 @@ pnpm dev
 
 Variables are defined in `.env.local` at the monorepo root and validated at build time. See `.env.example` for the full list and descriptions.
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `VITE_SITE_URL` | Yes | Site URL for canonical links, Open Graph, and SEO meta tags. Use `http://localhost:3000` in development. |
+| Variable        | Required | Description                                                                                              |
+| --------------- | -------- | -------------------------------------------------------------------------------------------------------- |
+| `VITE_SITE_URL` | Yes      | Site URL for canonical links, Open Graph, and SEO meta tags. Use `http://localhost:3000` in development. |
 
 ## Scripts
 
 Run from the monorepo root:
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start the dev server on port 3000 |
-| `pnpm build` | Build for production |
-| `pnpm start` | Start the production server |
-| `pnpm lint` | TypeScript type checking + ESLint |
-| `pnpm lint:fix` | Lint with auto-fix |
-| `pnpm test` | Run tests with Vitest |
+| Command         | Description                       |
+| --------------- | --------------------------------- |
+| `pnpm dev`      | Start the dev server on port 3000 |
+| `pnpm build`    | Build for production              |
+| `pnpm start`    | Start the production server       |
+| `pnpm lint`     | TypeScript type checking + OxLint |
+| `pnpm lint:fix` | Lint with auto-fix                |
+| `pnpm test`     | Run tests with Vitest             |
 
 ## Features
 
@@ -102,8 +102,8 @@ pnpm start
 
 ## Related Packages
 
-| Package | Description |
-|---------|-------------|
+| Package                        | Description                                                    |
+| ------------------------------ | -------------------------------------------------------------- |
 | `@estcequecestlasaison/shared` | Shared types, season helpers, date utilities, and produce data |
 
 ## License

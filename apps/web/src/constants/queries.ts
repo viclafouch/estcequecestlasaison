@@ -1,11 +1,11 @@
+import type { Month, ProduceType } from '@estcequecestlasaison/shared'
+import { queryOptions } from '@tanstack/react-query'
 import {
   getCalendarData,
   getGroupedProduceData,
   getMonthStatsData,
   getSearchSuggestions
 } from '@/server/produce'
-import type { Month, ProduceType } from '@estcequecestlasaison/shared'
-import { queryOptions } from '@tanstack/react-query'
 
 type GroupedProduceParams = {
   searchQuery: string

@@ -1,6 +1,6 @@
-import { clientEnv } from '@/constants/env'
 import type { Produce } from '@estcequecestlasaison/shared'
 import { createFileRoute } from '@tanstack/react-router'
+import { clientEnv } from '@/constants/env'
 
 function buildUrlEntry(produce: Produce, lastmod: string) {
   const loc = `${clientEnv.VITE_SITE_URL}/${produce.slug}`

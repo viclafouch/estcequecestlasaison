@@ -3,6 +3,13 @@ import { Pressable, ScrollView, Share, Text, View } from 'react-native'
 import { Stack, useLocalSearchParams } from 'expo-router'
 import * as StoreReview from 'expo-store-review'
 import { Chip, Surface } from 'heroui-native'
+import {
+  getShareText,
+  matchIsInSeason,
+  SITE_DOMAIN
+} from '@estcequecestlasaison/shared'
+import { getProductBySlug } from '@estcequecestlasaison/shared/services'
+import Ionicons from '@expo/vector-icons/Ionicons'
 import { ProduceCarousel } from '@/components/produce-carousel'
 import { ProductHero } from '@/components/product-hero'
 import { SeasonAlternatives } from '@/components/season-alternatives'
@@ -14,13 +21,6 @@ import {
   shouldRequestReview,
   trackProductView
 } from '@/utils/review-tracker'
-import {
-  getShareText,
-  matchIsInSeason,
-  SITE_DOMAIN
-} from '@estcequecestlasaison/shared'
-import { getProductBySlug } from '@estcequecestlasaison/shared/services'
-import Ionicons from '@expo/vector-icons/Ionicons'
 
 const NotFoundScreen = () => {
   return (

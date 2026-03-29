@@ -1,14 +1,14 @@
 import React from 'react'
 import { Pressable, Text } from 'react-native'
 import { Link } from 'expo-router'
-import { ProduceAvatar } from '@/components/produce-avatar'
-import { SeasonChip } from '@/components/season-badge'
-import type { ProduceImageSlug } from '@/constants/produce-images'
 import {
   getDefaultProduceBadge,
   type Month,
   type Produce
 } from '@estcequecestlasaison/shared'
+import { ProduceAvatar } from '@/components/produce-avatar'
+import { SeasonChip } from '@/components/season-badge'
+import type { ProduceImageSlug } from '@/constants/produce-images'
 
 type SearchResultRowProps = {
   produce: Produce

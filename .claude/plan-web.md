@@ -171,8 +171,8 @@ Coeur du projet, donnees et helpers partages.
 |-----------|-------|
 | `husky` | Git hooks (lint avant commit) |
 | `vitest` | Tests unitaires |
-| `eslint` | Linting (config custom @viclafouch) |
-| `prettier` | Formatage code |
+| `oxlint` | Linting (config custom @viclafouch/oxc-config) |
+| `oxfmt` | Formatage code |
 | `typescript` | TypeScript 5.9 strict |
 
 ### Scripts (root)
@@ -440,7 +440,7 @@ Validation via `@t3-oss/env-core` + Zod dans `src/constants/env.ts`.
 
 ### CI/CD
 
-- Pre-commit hook (Husky) : `pnpm lint` (TypeScript + ESLint)
+- Pre-commit hook (Husky) : `pnpm lint && pnpm format:check` (TypeScript + OxLint + OxFormat)
 - Push sur `main` = deploiement automatique Vercel
 
 ---

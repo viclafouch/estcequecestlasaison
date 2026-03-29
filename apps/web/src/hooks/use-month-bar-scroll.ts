@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import type { Month } from '@estcequecestlasaison/shared'
 import { useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect'
 

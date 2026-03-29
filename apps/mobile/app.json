@@ -34,10 +34,7 @@
               "host": "estcequecestlasaison.fr"
             }
           ],
-          "category": [
-            "BROWSABLE",
-            "DEFAULT"
-          ]
+          "category": ["BROWSABLE", "DEFAULT"]
         }
       ]
     },
@@ -46,11 +43,7 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": [
-      "expo-router",
-      "expo-image",
-      "expo-sqlite"
-    ],
+    "plugins": ["expo-router", "expo-image", "expo-sqlite"],
     "experiments": {
       "typedRoutes": true
     }

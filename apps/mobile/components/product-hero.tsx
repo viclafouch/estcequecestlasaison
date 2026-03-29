@@ -4,11 +4,6 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
 import { cn } from 'heroui-native'
 import { useCSSVariable } from 'uniwind'
-import { BADGE_DOT_CLASSES } from '@/components/season-badge'
-import {
-  getProduceImage,
-  type ProduceImageSlug
-} from '@/constants/produce-images'
 import {
   type BadgeVariant,
   getDefaultProduceBadge,
@@ -19,6 +14,11 @@ import {
   type Produce,
   type ProduceBadge
 } from '@estcequecestlasaison/shared'
+import { BADGE_DOT_CLASSES } from '@/components/season-badge'
+import {
+  getProduceImage,
+  type ProduceImageSlug
+} from '@/constants/produce-images'
 
 const HERO_HEIGHT = 400
 

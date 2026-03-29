@@ -5,6 +5,12 @@ import { Link } from 'expo-router'
 import { cn } from 'heroui-native'
 import { useCSSVariable } from 'uniwind'
 import {
+  getProduceBadge,
+  type Month,
+  type Produce,
+  type ProduceSection
+} from '@estcequecestlasaison/shared'
+import {
   BADGE_DOT_CLASSES,
   BADGE_TEXT_CLASSES
 } from '@/components/season-badge'
@@ -12,12 +18,6 @@ import {
   getProduceImage,
   type ProduceImageSlug
 } from '@/constants/produce-images'
-import {
-  getProduceBadge,
-  type Month,
-  type Produce,
-  type ProduceSection
-} from '@estcequecestlasaison/shared'
 
 type ProduceCardProps = {
   produce: Produce

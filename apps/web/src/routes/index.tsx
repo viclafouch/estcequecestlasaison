@@ -1,12 +1,5 @@
-import * as React from 'react'
+import React from 'react'
 import { z } from 'zod'
-import { MonthBar } from '@/components/month-bar'
-import { MonthDrawer } from '@/components/month-drawer'
-import { ProduceCarousel } from '@/components/produce-carousel'
-import { SearchBar } from '@/components/search-bar'
-import { SiteHeader } from '@/components/site-header'
-import { groupedProduceOptions, monthStatsOptions } from '@/constants/queries'
-import { seo } from '@/lib/seo'
 import type { ProduceType } from '@estcequecestlasaison/shared'
 import {
   getCurrentMonth,
@@ -16,6 +9,13 @@ import {
 import { useDebouncedValue } from '@tanstack/react-pacer'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
+import { MonthBar } from '@/components/month-bar'
+import { MonthDrawer } from '@/components/month-drawer'
+import { ProduceCarousel } from '@/components/produce-carousel'
+import { SearchBar } from '@/components/search-bar'
+import { SiteHeader } from '@/components/site-header'
+import { groupedProduceOptions, monthStatsOptions } from '@/constants/queries'
+import { seo } from '@/lib/seo'
 
 const homeSearchSchema = z.object({
   q: z.string().optional()
