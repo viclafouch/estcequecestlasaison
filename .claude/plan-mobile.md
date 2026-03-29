@@ -684,12 +684,12 @@ L'app de consultation complete, miroir du site web.
 
 **Comptes et certificats**
 
-- [ ] Creer compte Apple Developer ($99/an)
+- [x] Creer compte Apple Developer ($99/an) — Team ID: 2CTS2GD4PQ
 - [ ] Creer compte Google Play Developer ($25 one-time)
 - [ ] Bundle ID coherent partout : `fr.estcequecestlasaison.app`
 - [ ] Certificats iOS valides (non expires)
 - [ ] Keystore Android sauvegarde securisee
-- [ ] Remplacer le placeholder Team ID dans `apps/web/public/.well-known/apple-app-site-association` (`XXXXXXXXXX` → vrai Team ID Apple)
+- [x] Remplacer le placeholder Team ID dans `apps/web/public/.well-known/apple-app-site-association` (`XXXXXXXXXX` → `2CTS2GD4PQ`)
 - [ ] Remplacer le placeholder SHA-256 dans `apps/web/public/.well-known/assetlinks.json` (→ vrai fingerprint du keystore Android)
 
 **Pages legales (sur estcequecestlasaison.fr — voir plan-web.md Milestone 6)**
@@ -705,14 +705,14 @@ L'app de consultation complete, miroir du site web.
 - [x] Retirer `react-dom` et `react-native-web` de package.json (app mobile-only, inutile)
 - [x] Deplacer `@expo/vector-icons` en devDependencies (runtime fourni par Expo, types necessaires pour tsc)
 - [x] Ajouter `borderCurve: 'continuous'` sur les coins arrondis (squircle iOS natif) — constante `squircle` dans `constants/theme.ts`
-- [ ] Configurer `eas.json` (profils development + production, dev client TestFlight)
+- [x] Configurer `eas.json` (profils development + preview + production, Team ID 2CTS2GD4PQ)
 
 **Pre-soumission iOS (audit fevrier 2026)**
 
 - [ ] `npx expo prebuild --platform ios --clean` (corrige bundle ID `com.anonymous.mobile` → `fr.estcequecestlasaison.app` + CFBundleDisplayName "mobile" → nom reel de l'app)
-- [ ] Activer privacy manifest aggregation : ajouter `"apple.privacyManifestAggregationEnabled": "true"` dans `ios/Podfile.properties.json`
-- [ ] Ajouter `privacyManifests` dans `app.json` sous `expo.ios` (4 Required Reason APIs + NSPrivacyCollectedDataTypes vide + NSPrivacyTracking false) — necessaire pour l'aggregation correcte des CocoaPods statiques
-- [ ] Remettre `associatedDomains` dans `app.json` (retire pour dev avec Personal Team gratuit)
+- [x] Activer privacy manifest aggregation : `"apple.privacyManifestAggregationEnabled": "true"` dans `ios/Podfile.properties.json`
+- [x] Ajouter `privacyManifests` dans `app.json` sous `expo.ios` (4 Required Reason APIs + NSPrivacyCollectedDataTypes vide + NSPrivacyTracking false)
+- [x] Remettre `associatedDomains` dans `app.json` (`["applinks:estcequecestlasaison.fr"]`)
 - [ ] Deployer `apple-app-site-association` sur le serveur web (deep linking)
 - [ ] Fichier servi avec `Content-Type: application/json`
 - [ ] Tester deep link depuis Safari sur device (URL web → ouvre l'app)
@@ -773,8 +773,8 @@ Test credentials: Not applicable (no login).
 
 **Audit `/app-release` (fevrier 2026) — items supplementaires**
 
-- [ ] Decider `supportsTablet` : `true` (tester iPad) ou `false` (phone resolution sur iPad)
-- [ ] Aligner versions partout : `app.json` = `1.0.0`, `package.json` = `1.0.0`, Xcode MARKETING_VERSION = `1.0.0`
+- [x] Decider `supportsTablet` : `false` (phone only, pas de layout tablette)
+- [x] Aligner versions : `app.json` = `1.0.0`, `package.json` = `1.0.0` (Xcode se mettra a jour au prebuild)
 - [ ] Retirer section `web` de `app.json` (inutile, app mobile-only)
 - [ ] Installer + configurer Sentry (`@sentry/react-native` + source maps) — reporte depuis M0, a faire avant soumission
 - [ ] Verifier `LSMinimumSystemVersion` coherent avec Expo SDK 55 (probablement iOS 16+)
