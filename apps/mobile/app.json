@@ -16,7 +16,8 @@
       "supportsTablet": false,
       "bundleIdentifier": "fr.estcequecestlasaison.app",
       "infoPlist": {
-        "CFBundleDisplayName": "Saison"
+        "CFBundleDisplayName": "Saison",
+        "ITSAppUsesNonExemptEncryption": false
       },
       "associatedDomains": ["applinks:estcequecestlasaison.fr"],
       "privacyManifests": {
@@ -79,6 +80,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bf9d47aa-71ab-4495-8cd9-4331ecef0f87"
+      }
+    },
+    "owner": "victordlf"
   }
 }

@@ -721,11 +721,12 @@ L'app de consultation complete, miroir du site web.
 
 **App Store Connect — App Privacy**
 
-- [ ] Declarer "Data Not Collected" pour TOUTES les categories (aucune donnee collectee, verifie par audit)
-- [ ] Age rating : 4+ (aucun contenu sensible)
-- [ ] Categorie primaire : Food & Drink
-- [ ] Privacy Policy URL : `https://estcequecestlasaison.fr/confidentialite`
-- [ ] Support URL : `https://estcequecestlasaison.fr/faq`
+- [x] Declarer Diagnostics (Crash Data + Performance Data) — lié à Sentry, non lié à l'identité, pas de suivi
+- [x] Age rating : 4+ (aucun contenu sensible)
+- [x] Categorie primaire : Cuisine et boissons (Food & Drink)
+- [x] Categorie secondaire : References
+- [x] Privacy Policy URL : `https://www.estcequecestlasaison.fr/confidentialite`
+- [x] Support URL : `https://www.estcequecestlasaison.fr`
 
 **App Review Notes (a copier dans App Store Connect)**
 
@@ -742,10 +743,9 @@ Test credentials: Not applicable (no login).
 
 **Builds et tests**
 
-- [ ] Build de production iOS (local via Xcode Archive)
+- [x] Build de production iOS via EAS Build (cloud) — Xcode Archive local bloqué par `com.apple.provenance` macOS 26
 - [ ] Build de production Android (local)
-- [ ] Valider l'archive dans Xcode Organizer ("Validate App") avant upload
-- [ ] TestFlight : test sur vrai device iOS si possible (simulateur insuffisant)
+- [x] TestFlight : testé sur device iOS physique
 - [ ] Test Android sur Pixel 9 physique
 - [ ] Memory leaks check (Xcode Instruments / Android Profiler)
 - [ ] Verifier app offline (mode avion, naviguer partout, aucun crash)
@@ -760,7 +760,7 @@ Test credentials: Not applicable (no login).
 - [ ] Screenshots orientes valeur (voir section ASO & Growth)
 - [ ] Screenshots obligatoires : iPhone 6.7" (1290x2796), 6.5" (1284x2778), 5.5" (1242x2208)
 - [x] Titre : "Saison: Fruits & Légumes"
-- [x] Subtitle iOS : "Quels fruits et légumes ce mois ?"
+- [x] Subtitle iOS : "Fruits & légumes de saison"
 - [ ] Short description Android : idem subtitle
 - [x] Description longue < 4000 chars, conversationnelle (voice search) — finalisee
 - [x] Keywords iOS : fruits,légumes,saison,calendrier,local,france,mois,bio,marché,potager,hiver,été,printemps,recette
@@ -783,9 +783,8 @@ Test credentials: Not applicable (no login).
 
 **Soumission**
 
-- [ ] Soumission App Store (review 24-48h)
+- [x] Soumission App Store v1.0.0 (build 4) — soumise le 2026-03-30, review en cours (24-48h)
 - [ ] Soumission Google Play
-- [ ] Version 1.0.0
 - [ ] Mettre a jour le README avec les liens stores (App Store + Google Play)
 
 ### Dette technique
