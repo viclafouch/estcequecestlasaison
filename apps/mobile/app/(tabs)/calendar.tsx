@@ -225,7 +225,7 @@ const CalendarScreen = () => {
           </Tabs.List>
         </Tabs>
         <Button
-          variant="outline"
+          variant="ghost"
           size="sm"
           onPress={handleToggleSort}
           accessibilityLabel={

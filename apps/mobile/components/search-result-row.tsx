@@ -1,13 +1,14 @@
 import React from 'react'
 import { Pressable, Text } from 'react-native'
 import { Link } from 'expo-router'
+import { cn } from 'heroui-native'
 import {
   getDefaultProduceBadge,
   type Month,
   type Produce
 } from '@estcequecestlasaison/shared'
 import { ProduceAvatar } from '@/components/produce-avatar'
-import { SeasonChip } from '@/components/season-badge'
+import { BADGE_TEXT_CLASSES } from '@/components/season-badge'
 import type { ProduceImageSlug } from '@/constants/produce-images'
 
 type SearchResultRowProps = {
@@ -37,7 +38,15 @@ export const SearchResultRow = React.memo(
           >
             {produce.name}
           </Text>
-          <SeasonChip label={badge.label} variant={badge.variant} />
+          <Text
+            className={cn(
+              'text-sm font-medium',
+              BADGE_TEXT_CLASSES[badge.variant]
+            )}
+            numberOfLines={1}
+          >
+            {badge.label}
+          </Text>
         </Pressable>
       </Link>
     )

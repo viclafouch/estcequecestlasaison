@@ -19,7 +19,9 @@ export const unstable_settings = {
 }
 
 Sentry.init({
-  dsn: 'https://1c1e24beedf3453198675e6889636014@o4510925983514624.ingest.de.sentry.io/4511128496439376',
+  dsn: __DEV__
+    ? undefined
+    : 'https://1c1e24beedf3453198675e6889636014@o4510925983514624.ingest.de.sentry.io/4511128496439376',
   tracesSampleRate: 0.2,
   enableAutoPerformanceTracing: true,
   enableAppStartTracking: true

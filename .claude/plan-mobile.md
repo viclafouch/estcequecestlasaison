@@ -475,9 +475,9 @@ L'ASO genere 65% des installs organiques. Optimiser des le lancement.
 
 | Element | iOS (App Store) | Android (Google Play) |
 |---------|-----------------|----------------------|
-| Titre | `Saison: Fruits & Legumes` | `Saison: Fruits & Legumes` |
-| Subtitle / Short description | "Calendrier des fruits et legumes de saison en France" | "Calendrier des fruits et legumes de saison en France" |
-| Keywords (iOS only) | fruits,legumes,saison,calendrier,local,france,manger,bio | N/A |
+| Titre | `Saison: Fruits & Légumes` | `Saison: Fruits & Légumes` |
+| Subtitle / Short description | "Quels fruits et légumes ce mois ?" | "Quels fruits et légumes ce mois ?" |
+| Keywords (iOS only) | fruits,légumes,saison,calendrier,local,france,mois,bio,marché,potager,hiver,été,printemps,recette | N/A |
 
 #### Keywords long-tail a cibler
 
@@ -753,17 +753,17 @@ Test credentials: Not applicable (no login).
 
 **ASO — Metadata**
 
-- [ ] App icon 1024x1024 sans transparence (actuel : 512x512 avec alpha — bloquant)
+- [x] App icon 1024x1024 sans alpha (75% logo centre, fond blanc)
 - [ ] Adaptive icon Android 1024x1024 (actuel : 512x512)
-- [ ] Splash icon 1024x1024 (actuel : 512x512, recommande pour Retina)
+- [x] Splash icon 1284x1284 (logo 360px centre, fond blanc)
 - [ ] Feature graphic Android 1024x500 (obligatoire Google Play)
 - [ ] Screenshots orientes valeur (voir section ASO & Growth)
 - [ ] Screenshots obligatoires : iPhone 6.7" (1290x2796), 6.5" (1284x2778), 5.5" (1242x2208)
-- [ ] Titre : "Saison: Fruits & Legumes"
-- [ ] Subtitle iOS : "Calendrier des fruits et legumes de saison en France"
+- [x] Titre : "Saison: Fruits & Légumes"
+- [x] Subtitle iOS : "Quels fruits et légumes ce mois ?"
 - [ ] Short description Android : idem subtitle
-- [ ] Description longue < 4000 chars, conversationnelle (voice search)
-- [ ] Keywords iOS : fruits,legumes,saison,calendrier,local,france,manger,bio
+- [x] Description longue < 4000 chars, conversationnelle (voice search) — finalisee
+- [x] Keywords iOS : fruits,légumes,saison,calendrier,local,france,mois,bio,marché,potager,hiver,été,printemps,recette
 
 **Google Play — Data Safety**
 
@@ -775,7 +775,7 @@ Test credentials: Not applicable (no login).
 
 - [x] Decider `supportsTablet` : `false` (phone only, pas de layout tablette)
 - [x] Aligner versions : `app.json` = `1.0.0`, `package.json` = `1.0.0` (Xcode se mettra a jour au prebuild)
-- [ ] Retirer section `web` de `app.json` (inutile, app mobile-only)
+- [x] Retirer section `web` de `app.json` + supprimer `favicon.png` inutile
 - [x] Installer + configurer Sentry (`@sentry/react-native@^8.6.0` + Expo plugin + source maps auto)
 - [ ] Verifier `LSMinimumSystemVersion` coherent avec Expo SDK 55 (probablement iOS 16+)
 

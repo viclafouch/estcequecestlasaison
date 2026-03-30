@@ -2,7 +2,7 @@ import React from 'react'
 import { Pressable, ScrollView, Share, Text, View } from 'react-native'
 import { Stack, useLocalSearchParams } from 'expo-router'
 import * as StoreReview from 'expo-store-review'
-import { Chip, Surface } from 'heroui-native'
+import { Surface } from 'heroui-native'
 import {
   getShareText,
   matchIsInSeason,
@@ -101,20 +101,9 @@ const ProductScreen = () => {
                 <Text className="text-xs font-medium text-gray-500">
                   Vitamines
                 </Text>
-                <View className="flex-row flex-wrap gap-1">
-                  {produce.nutrition.vitamins.map((vitamin) => {
-                    return (
-                      <Chip
-                        key={vitamin}
-                        size="sm"
-                        color="success"
-                        variant="soft"
-                      >
-                        <Chip.Label>{vitamin}</Chip.Label>
-                      </Chip>
-                    )
-                  })}
-                </View>
+                <Text className="text-base font-semibold text-black">
+                  {produce.nutrition.vitamins.join(', ')}
+                </Text>
               </Surface>
             </View>
             <Surface variant="secondary" className="gap-1">

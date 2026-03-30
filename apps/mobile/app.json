@@ -15,6 +15,9 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "fr.estcequecestlasaison.app",
+      "infoPlist": {
+        "CFBundleDisplayName": "Saison"
+      },
       "associatedDomains": ["applinks:estcequecestlasaison.fr"],
       "privacyManifests": {
         "NSPrivacyAccessedAPITypes": [
@@ -60,11 +63,6 @@
           "category": ["BROWSABLE", "DEFAULT"]
         }
       ]
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
       "expo-router",
